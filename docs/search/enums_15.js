@@ -14,5 +14,6 @@ var searchData=
   ['varmemtype_11',['VarMemType',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_event_variable_node.html#a06c5686c42649a7f9258d5dd68cf7776',1,'BrawlLib::SSBB::ResourceNodes::MoveDefEventVariableNode']]],
   ['vertexformats_12',['VertexFormats',['../namespace_brawl_lib_1_1_wii_1_1_models.html#ad60abe1fb6bc18fceeeed8f7b1567e75',1,'BrawlLib::Wii::Models']]],
   ['viewportprojection_13',['ViewportProjection',['../namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b',1,'BrawlLib::OpenGL']]],
-  ['vis0flags_14',['VIS0Flags',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations.html#a27c04f6f0b86076b80659db9dbeac138',1,'BrawlLib::SSBB::Types::Animations']]]
+  ['villagerid_14',['VillagerID',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#aa932453aebab0f8cba8acb1f189afdcf',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['vis0flags_15',['VIS0Flags',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations.html#a27c04f6f0b86076b80659db9dbeac138',1,'BrawlLib::SSBB::Types::Animations']]]
 ];

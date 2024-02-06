@@ -12,12 +12,14 @@ var searchData=
   ['vertexeditor_9',['VertexEditor',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_vertex_editor.html',1,'BrawlLib::Internal::Windows::Controls::ModelViewer::Editors']]],
   ['vertexstate_10',['VertexState',['../class_brawl_lib_1_1_modeling_1_1_vertex_state.html',1,'BrawlLib::Modeling']]],
   ['videoplaybackpanel_11',['VideoPlaybackPanel',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_video_playback_panel.html',1,'BrawlLib::Internal::Windows::Controls']]],
-  ['virtualfunctiontable_12',['VirtualFunctionTable',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_virtual_function_table.html',1,'BrawlLib::SSBB::Types']]],
-  ['vis0editor_13',['VIS0Editor',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_v_i_s0_editor.html',1,'BrawlLib::Internal::Windows::Controls::ModelViewer::Editors']]],
-  ['vis0entrynode_14',['VIS0EntryNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_v_i_s0_entry_node.html',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['vis0node_15',['VIS0Node',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_v_i_s0_node.html',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['vis0wrapper_16',['VIS0Wrapper',['../class_brawl_crate_1_1_node_wrappers_1_1_v_i_s0_wrapper.html',1,'BrawlCrate::NodeWrappers']]],
-  ['viseditor_17',['VisEditor',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_vis_editor.html',1,'BrawlLib::Internal::Windows::Controls']]],
-  ['voidptr_18',['VoidPtr',['../struct_brawl_lib_1_1_internal_1_1_void_ptr.html',1,'BrawlLib::Internal']]],
-  ['vquant_19',['VQuant',['../class_brawl_lib_1_1_internal_1_1_v_quant.html',1,'BrawlLib::Internal']]]
+  ['villagerdropdown_12',['VillagerDropdown',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_villager_dropdown.html',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['villagernameattribute_13',['VillagerNameAttribute',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_villager_name_attribute.html',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['virtualfunctiontable_14',['VirtualFunctionTable',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_virtual_function_table.html',1,'BrawlLib::SSBB::Types']]],
+  ['vis0editor_15',['VIS0Editor',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_v_i_s0_editor.html',1,'BrawlLib::Internal::Windows::Controls::ModelViewer::Editors']]],
+  ['vis0entrynode_16',['VIS0EntryNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_v_i_s0_entry_node.html',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['vis0node_17',['VIS0Node',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_v_i_s0_node.html',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['vis0wrapper_18',['VIS0Wrapper',['../class_brawl_crate_1_1_node_wrappers_1_1_v_i_s0_wrapper.html',1,'BrawlCrate::NodeWrappers']]],
+  ['viseditor_19',['VisEditor',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_vis_editor.html',1,'BrawlLib::Internal::Windows::Controls']]],
+  ['voidptr_20',['VoidPtr',['../struct_brawl_lib_1_1_internal_1_1_void_ptr.html',1,'BrawlLib::Internal']]],
+  ['vquant_21',['VQuant',['../class_brawl_lib_1_1_internal_1_1_v_quant.html',1,'BrawlLib::Internal']]]
 ];

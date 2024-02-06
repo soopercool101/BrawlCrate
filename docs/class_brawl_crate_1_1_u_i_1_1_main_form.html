@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40a</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.41</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -222,14 +222,14 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno"> 1546</span>        {</div>
-<div class="line"><span class="lineno"> 1547</span>            <span class="keywordflow">if</span> (disposing)</div>
-<div class="line"><span class="lineno"> 1548</span>            {</div>
-<div class="line"><span class="lineno"> 1549</span>                components?.Dispose();</div>
-<div class="line"><span class="lineno"> 1550</span>            }</div>
-<div class="line"><span class="lineno"> 1551</span> </div>
-<div class="line"><span class="lineno"> 1552</span>            base.Dispose(disposing);</div>
-<div class="line"><span class="lineno"> 1553</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1548</span>        {</div>
+<div class="line"><span class="lineno"> 1549</span>            <span class="keywordflow">if</span> (disposing)</div>
+<div class="line"><span class="lineno"> 1550</span>            {</div>
+<div class="line"><span class="lineno"> 1551</span>                components?.Dispose();</div>
+<div class="line"><span class="lineno"> 1552</span>            }</div>
+<div class="line"><span class="lineno"> 1553</span> </div>
+<div class="line"><span class="lineno"> 1554</span>            base.Dispose(disposing);</div>
+<div class="line"><span class="lineno"> 1555</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -256,27 +256,27 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1462</span>        {</div>
-<div class="line"><span class="lineno"> 1463</span>            DirectoryInfo dir = Directory.CreateDirectory(path);</div>
-<div class="line"><span class="lineno"> 1464</span>            List&lt;FileInfo&gt; scripts = <span class="keyword">new</span> List&lt;FileInfo&gt;();</div>
-<div class="line"><span class="lineno"> 1465</span> </div>
-<div class="line"><span class="lineno"> 1466</span>            <span class="keywordflow">foreach</span> (DirectoryInfo d <span class="keywordflow">in</span> dir.GetDirectories())</div>
-<div class="line"><span class="lineno"> 1467</span>            {</div>
-<div class="line"><span class="lineno"> 1468</span>                ToolStripMenuItem folder = <span class="keyword">new</span> ToolStripMenuItem();</div>
-<div class="line"><span class="lineno"> 1469</span>                folder.Name = folder.Text = d.Name;</div>
-<div class="line"><span class="lineno"> 1470</span>                scripts.AddRange(<a class="code hl_function" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac2355e6b5aa880017aee19f1881071f8">GetScripts</a>(d.FullName));</div>
-<div class="line"><span class="lineno"> 1471</span>            }</div>
-<div class="line"><span class="lineno"> 1472</span> </div>
-<div class="line"><span class="lineno"> 1473</span>            <span class="keywordflow">foreach</span> (FileInfo script <span class="keywordflow">in</span> dir.GetFiles().Where(f =&gt;</div>
-<div class="line"><span class="lineno"> 1474</span>                f.Extension.Equals(<span class="stringliteral">&quot;.py&quot;</span>, StringComparison.OrdinalIgnoreCase) ||</div>
-<div class="line"><span class="lineno"> 1475</span>                f.Extension.Equals(<span class="stringliteral">&quot;.fsx&quot;</span>, StringComparison.OrdinalIgnoreCase)))</div>
-<div class="line"><span class="lineno"> 1476</span>            {</div>
-<div class="line"><span class="lineno"> 1477</span>                scripts.Add(script);</div>
-<div class="line"><span class="lineno"> 1478</span>            }</div>
-<div class="line"><span class="lineno"> 1479</span> </div>
-<div class="line"><span class="lineno"> 1480</span>            <span class="keywordflow">return</span> scripts;</div>
-<div class="line"><span class="lineno"> 1481</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_ac2355e6b5aa880017aee19f1881071f8"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac2355e6b5aa880017aee19f1881071f8">BrawlCrate.UI.MainForm.GetScripts</a></div><div class="ttdeci">static List&lt; FileInfo &gt; GetScripts(string path)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:1461</div></div>
+<div class="fragment"><div class="line"><span class="lineno"> 1464</span>        {</div>
+<div class="line"><span class="lineno"> 1465</span>            DirectoryInfo dir = Directory.CreateDirectory(path);</div>
+<div class="line"><span class="lineno"> 1466</span>            List&lt;FileInfo&gt; scripts = <span class="keyword">new</span> List&lt;FileInfo&gt;();</div>
+<div class="line"><span class="lineno"> 1467</span> </div>
+<div class="line"><span class="lineno"> 1468</span>            <span class="keywordflow">foreach</span> (DirectoryInfo d <span class="keywordflow">in</span> dir.GetDirectories())</div>
+<div class="line"><span class="lineno"> 1469</span>            {</div>
+<div class="line"><span class="lineno"> 1470</span>                ToolStripMenuItem folder = <span class="keyword">new</span> ToolStripMenuItem();</div>
+<div class="line"><span class="lineno"> 1471</span>                folder.Name = folder.Text = d.Name;</div>
+<div class="line"><span class="lineno"> 1472</span>                scripts.AddRange(<a class="code hl_function" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac2355e6b5aa880017aee19f1881071f8">GetScripts</a>(d.FullName));</div>
+<div class="line"><span class="lineno"> 1473</span>            }</div>
+<div class="line"><span class="lineno"> 1474</span> </div>
+<div class="line"><span class="lineno"> 1475</span>            <span class="keywordflow">foreach</span> (FileInfo script <span class="keywordflow">in</span> dir.GetFiles().Where(f =&gt;</div>
+<div class="line"><span class="lineno"> 1476</span>                f.Extension.Equals(<span class="stringliteral">&quot;.py&quot;</span>, StringComparison.OrdinalIgnoreCase) ||</div>
+<div class="line"><span class="lineno"> 1477</span>                f.Extension.Equals(<span class="stringliteral">&quot;.fsx&quot;</span>, StringComparison.OrdinalIgnoreCase)))</div>
+<div class="line"><span class="lineno"> 1478</span>            {</div>
+<div class="line"><span class="lineno"> 1479</span>                scripts.Add(script);</div>
+<div class="line"><span class="lineno"> 1480</span>            }</div>
+<div class="line"><span class="lineno"> 1481</span> </div>
+<div class="line"><span class="lineno"> 1482</span>            <span class="keywordflow">return</span> scripts;</div>
+<div class="line"><span class="lineno"> 1483</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_ac2355e6b5aa880017aee19f1881071f8"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac2355e6b5aa880017aee19f1881071f8">BrawlCrate.UI.MainForm.GetScripts</a></div><div class="ttdeci">static List&lt; FileInfo &gt; GetScripts(string path)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:1463</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -303,14 +303,14 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1198</span>        {</div>
-<div class="line"><span class="lineno"> 1199</span>            <span class="keywordflow">if</span> (!Program.Close())</div>
-<div class="line"><span class="lineno"> 1200</span>            {</div>
-<div class="line"><span class="lineno"> 1201</span>                e.Cancel = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno"> 1202</span>            }</div>
-<div class="line"><span class="lineno"> 1203</span> </div>
-<div class="line"><span class="lineno"> 1204</span>            base.OnClosing(e);</div>
-<div class="line"><span class="lineno"> 1205</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1200</span>        {</div>
+<div class="line"><span class="lineno"> 1201</span>            <span class="keywordflow">if</span> (!Program.Close())</div>
+<div class="line"><span class="lineno"> 1202</span>            {</div>
+<div class="line"><span class="lineno"> 1203</span>                e.Cancel = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno"> 1204</span>            }</div>
+<div class="line"><span class="lineno"> 1205</span> </div>
+<div class="line"><span class="lineno"> 1206</span>            base.OnClosing(e);</div>
+<div class="line"><span class="lineno"> 1207</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -337,20 +337,20 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1184</span>        {</div>
-<div class="line"><span class="lineno"> 1185</span>            Focus();</div>
-<div class="line"><span class="lineno"> 1186</span>            base.OnShown(e);</div>
-<div class="line"><span class="lineno"> 1187</span><span class="preprocessor">#if (!DEBUG &amp;&amp; !CANARY)</span></div>
-<div class="line"><span class="lineno"> 1188</span>            <span class="keywordflow">if</span> (<a class="code hl_namespace" href="namespace_brawl_crate.html">BrawlCrate</a>.Properties.Settings.Default.UpdateAutomatically &amp;&amp; Program.FirstBoot)</div>
-<div class="line"><span class="lineno"> 1189</span>            {</div>
-<div class="line"><span class="lineno"> 1190</span>                MessageBox.Show(Program.UpdateMessage);</div>
-<div class="line"><span class="lineno"> 1191</span>            }</div>
-<div class="line"><span class="lineno"> 1192</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno"> 1193</span>            <a class="code hl_function" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#aab6fc54814f7fa1dea6835b714e69eaa">UpdateDiscordRPC</a>(<span class="keyword">null</span>, <span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno"> 1194</span>            <a class="code hl_function" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a82ca52679cc0f16534c8b4fad80df50b">resourceTree_SelectionChanged</a>(<span class="keyword">null</span>, <span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno"> 1195</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1186</span>        {</div>
+<div class="line"><span class="lineno"> 1187</span>            Focus();</div>
+<div class="line"><span class="lineno"> 1188</span>            base.OnShown(e);</div>
+<div class="line"><span class="lineno"> 1189</span><span class="preprocessor">#if (!DEBUG &amp;&amp; !CANARY)</span></div>
+<div class="line"><span class="lineno"> 1190</span>            <span class="keywordflow">if</span> (<a class="code hl_namespace" href="namespace_brawl_crate.html">BrawlCrate</a>.Properties.Settings.Default.UpdateAutomatically &amp;&amp; Program.FirstBoot)</div>
+<div class="line"><span class="lineno"> 1191</span>            {</div>
+<div class="line"><span class="lineno"> 1192</span>                MessageBox.Show(Program.UpdateMessage);</div>
+<div class="line"><span class="lineno"> 1193</span>            }</div>
+<div class="line"><span class="lineno"> 1194</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno"> 1195</span>            <a class="code hl_function" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#aab6fc54814f7fa1dea6835b714e69eaa">UpdateDiscordRPC</a>(<span class="keyword">null</span>, <span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno"> 1196</span>            <a class="code hl_function" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a82ca52679cc0f16534c8b4fad80df50b">resourceTree_SelectionChanged</a>(<span class="keyword">null</span>, <span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno"> 1197</span>        }</div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a82ca52679cc0f16534c8b4fad80df50b"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a82ca52679cc0f16534c8b4fad80df50b">BrawlCrate.UI.MainForm.resourceTree_SelectionChanged</a></div><div class="ttdeci">unsafe void resourceTree_SelectionChanged(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:533</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_aab6fc54814f7fa1dea6835b714e69eaa"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#aab6fc54814f7fa1dea6835b714e69eaa">BrawlCrate.UI.MainForm.UpdateDiscordRPC</a></div><div class="ttdeci">static void UpdateDiscordRPC(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:1155</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_aab6fc54814f7fa1dea6835b714e69eaa"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#aab6fc54814f7fa1dea6835b714e69eaa">BrawlCrate.UI.MainForm.UpdateDiscordRPC</a></div><div class="ttdeci">static void UpdateDiscordRPC(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:1157</div></div>
 <div class="ttc" id="anamespace_brawl_crate_html"><div class="ttname"><a href="namespace_brawl_crate.html">BrawlCrate</a></div><div class="ttdef"><b>Definition:</b> BrawlAPIInternal.cs:21</div></div>
 </div><!-- fragment -->
 </div>
@@ -388,12 +388,12 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1454</span>        {</div>
-<div class="line"><span class="lineno"> 1455</span>            BrawlAPIInternal.Plugins.Clear();</div>
-<div class="line"><span class="lineno"> 1456</span>            pluginToolStripMenuItem.DropDown.Items.Clear();</div>
-<div class="line"><span class="lineno"> 1457</span>            AddPlugins(pluginToolStripMenuItem, Program.ApiPluginPath);</div>
-<div class="line"><span class="lineno"> 1458</span>            pluginToolStripMenuItem.Enabled = pluginToolStripMenuItem.HasDropDownItems;</div>
-<div class="line"><span class="lineno"> 1459</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1456</span>        {</div>
+<div class="line"><span class="lineno"> 1457</span>            BrawlAPIInternal.Plugins.Clear();</div>
+<div class="line"><span class="lineno"> 1458</span>            pluginToolStripMenuItem.DropDown.Items.Clear();</div>
+<div class="line"><span class="lineno"> 1459</span>            AddPlugins(pluginToolStripMenuItem, Program.ApiPluginPath);</div>
+<div class="line"><span class="lineno"> 1460</span>            pluginToolStripMenuItem.Enabled = pluginToolStripMenuItem.HasDropDownItems;</div>
+<div class="line"><span class="lineno"> 1461</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -579,7 +579,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno"> 1094</span>                }</div>
 <div class="line"><span class="lineno"> 1095</span>            }</div>
 <div class="line"><span class="lineno"> 1096</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a42eb850ff695997a623c3c9879a4cdbb"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a42eb850ff695997a623c3c9879a4cdbb">BrawlCrate.UI.MainForm.modelPanel1</a></div><div class="ttdeci">ModelPanel modelPanel1</div><div class="ttdef"><b>Definition:</b> MainForm.cs:2454</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a42eb850ff695997a623c3c9879a4cdbb"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a42eb850ff695997a623c3c9879a4cdbb">BrawlCrate.UI.MainForm.modelPanel1</a></div><div class="ttdeci">ModelPanel modelPanel1</div><div class="ttdef"><b>Definition:</b> MainForm.cs:2456</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a54bc16f26da5af432ff3e91aadd11d16"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a54bc16f26da5af432ff3e91aadd11d16">BrawlCrate.UI.MainForm.RenderBRRES</a></div><div class="ttdeci">void RenderBRRES(BRRESNode brresNode, out float? minX, out float? minY, out float? minZ, out float? maxX, out float? maxY, out float? maxZ)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:1098</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a7dfd1608513abc7508e43e883120d8ff"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a7dfd1608513abc7508e43e883120d8ff">BrawlCrate.UI.MainForm.RenderARC</a></div><div class="ttdeci">void RenderARC(ARCNode arcNode, out float? minX, out float? minY, out float? minZ, out float? maxX, out float? maxY, out float? maxZ)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:975</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_html_abec3dbe4068c9bb0ffe3030b720a84ab"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#abec3dbe4068c9bb0ffe3030b720a84ab">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanel.AddTarget</a></div><div class="ttdeci">void AddTarget(IRenderedObject target)</div><div class="ttdef"><b>Definition:</b> ModelPanel.cs:134</div></div>
@@ -670,49 +670,51 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno"> 1106</span>            maxY = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno"> 1107</span>            maxZ = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno"> 1108</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html">BRESGroupNode</a> modelGroup = brresNode.GetFolder&lt;<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html">MDL0Node</a>&gt;();</div>
-<div class="line"><span class="lineno"> 1109</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html">MDL0Node</a> model <span class="keywordflow">in</span> modelGroup.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
-<div class="line"><span class="lineno"> 1110</span>            {</div>
-<div class="line"><span class="lineno"> 1111</span>                <span class="keywordflow">if</span> (model.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">_children</a> == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno"> 1112</span>                {</div>
-<div class="line"><span class="lineno"> 1113</span>                    model.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aca9218a7c5999d578533211edf0d7320">Populate</a>(0);</div>
-<div class="line"><span class="lineno"> 1114</span>                }</div>
-<div class="line"><span class="lineno"> 1115</span> </div>
-<div class="line"><span class="lineno"> 1116</span>                model.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html#af16339c3a8e571d71f1ff836a078c04c">ResetToBindState</a>();</div>
+<div class="line"><span class="lineno"> 1109</span>            <span class="keywordflow">if</span> (modelGroup == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno"> 1110</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno"> 1111</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html">MDL0Node</a> model <span class="keywordflow">in</span> modelGroup.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
+<div class="line"><span class="lineno"> 1112</span>            {</div>
+<div class="line"><span class="lineno"> 1113</span>                <span class="keywordflow">if</span> (model.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">_children</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno"> 1114</span>                {</div>
+<div class="line"><span class="lineno"> 1115</span>                    model.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aca9218a7c5999d578533211edf0d7320">Populate</a>(0);</div>
+<div class="line"><span class="lineno"> 1116</span>                }</div>
 <div class="line"><span class="lineno"> 1117</span> </div>
-<div class="line"><span class="lineno"> 1118</span>                <a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a42eb850ff695997a623c3c9879a4cdbb">modelPanel1</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#abec3dbe4068c9bb0ffe3030b720a84ab">AddTarget</a>(model, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno"> 1119</span>                <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_box.html">Box</a> b = model.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html#a6a536ebcbd5c47e0eebba047952c1fe6">GetBox</a>();</div>
-<div class="line"><span class="lineno"> 1120</span> </div>
-<div class="line"><span class="lineno"> 1121</span>                <span class="keywordflow">if</span> (minX == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a> &lt; minX)</div>
-<div class="line"><span class="lineno"> 1122</span>                {</div>
-<div class="line"><span class="lineno"> 1123</span>                    minX = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a>;</div>
-<div class="line"><span class="lineno"> 1124</span>                }</div>
-<div class="line"><span class="lineno"> 1125</span> </div>
-<div class="line"><span class="lineno"> 1126</span>                <span class="keywordflow">if</span> (minY == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a> &lt; minY)</div>
-<div class="line"><span class="lineno"> 1127</span>                {</div>
-<div class="line"><span class="lineno"> 1128</span>                    minY = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a>;</div>
-<div class="line"><span class="lineno"> 1129</span>                }</div>
-<div class="line"><span class="lineno"> 1130</span> </div>
-<div class="line"><span class="lineno"> 1131</span>                <span class="keywordflow">if</span> (minZ == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a> &lt; minZ)</div>
-<div class="line"><span class="lineno"> 1132</span>                {</div>
-<div class="line"><span class="lineno"> 1133</span>                    minZ = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a>;</div>
-<div class="line"><span class="lineno"> 1134</span>                }</div>
-<div class="line"><span class="lineno"> 1135</span> </div>
-<div class="line"><span class="lineno"> 1136</span>                <span class="keywordflow">if</span> (maxX == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a> &gt; maxX)</div>
-<div class="line"><span class="lineno"> 1137</span>                {</div>
-<div class="line"><span class="lineno"> 1138</span>                    maxX = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a>;</div>
-<div class="line"><span class="lineno"> 1139</span>                }</div>
-<div class="line"><span class="lineno"> 1140</span> </div>
-<div class="line"><span class="lineno"> 1141</span>                <span class="keywordflow">if</span> (maxY == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a> &gt; maxY)</div>
-<div class="line"><span class="lineno"> 1142</span>                {</div>
-<div class="line"><span class="lineno"> 1143</span>                    maxY = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a>;</div>
-<div class="line"><span class="lineno"> 1144</span>                }</div>
-<div class="line"><span class="lineno"> 1145</span> </div>
-<div class="line"><span class="lineno"> 1146</span>                <span class="keywordflow">if</span> (maxZ == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a> &gt; maxZ)</div>
-<div class="line"><span class="lineno"> 1147</span>                {</div>
-<div class="line"><span class="lineno"> 1148</span>                    maxZ = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a>;</div>
-<div class="line"><span class="lineno"> 1149</span>                }</div>
-<div class="line"><span class="lineno"> 1150</span>            }</div>
-<div class="line"><span class="lineno"> 1151</span>        }</div>
+<div class="line"><span class="lineno"> 1118</span>                model.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html#af16339c3a8e571d71f1ff836a078c04c">ResetToBindState</a>();</div>
+<div class="line"><span class="lineno"> 1119</span> </div>
+<div class="line"><span class="lineno"> 1120</span>                <a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a42eb850ff695997a623c3c9879a4cdbb">modelPanel1</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#abec3dbe4068c9bb0ffe3030b720a84ab">AddTarget</a>(model, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno"> 1121</span>                <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_box.html">Box</a> b = model.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html#a6a536ebcbd5c47e0eebba047952c1fe6">GetBox</a>();</div>
+<div class="line"><span class="lineno"> 1122</span> </div>
+<div class="line"><span class="lineno"> 1123</span>                <span class="keywordflow">if</span> (minX == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a> &lt; minX)</div>
+<div class="line"><span class="lineno"> 1124</span>                {</div>
+<div class="line"><span class="lineno"> 1125</span>                    minX = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a>;</div>
+<div class="line"><span class="lineno"> 1126</span>                }</div>
+<div class="line"><span class="lineno"> 1127</span> </div>
+<div class="line"><span class="lineno"> 1128</span>                <span class="keywordflow">if</span> (minY == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a> &lt; minY)</div>
+<div class="line"><span class="lineno"> 1129</span>                {</div>
+<div class="line"><span class="lineno"> 1130</span>                    minY = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a>;</div>
+<div class="line"><span class="lineno"> 1131</span>                }</div>
+<div class="line"><span class="lineno"> 1132</span> </div>
+<div class="line"><span class="lineno"> 1133</span>                <span class="keywordflow">if</span> (minZ == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a> &lt; minZ)</div>
+<div class="line"><span class="lineno"> 1134</span>                {</div>
+<div class="line"><span class="lineno"> 1135</span>                    minZ = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#a5f63624f672ec0abfed9cb20babed204">Min</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a>;</div>
+<div class="line"><span class="lineno"> 1136</span>                }</div>
+<div class="line"><span class="lineno"> 1137</span> </div>
+<div class="line"><span class="lineno"> 1138</span>                <span class="keywordflow">if</span> (maxX == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a> &gt; maxX)</div>
+<div class="line"><span class="lineno"> 1139</span>                {</div>
+<div class="line"><span class="lineno"> 1140</span>                    maxX = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a>;</div>
+<div class="line"><span class="lineno"> 1141</span>                }</div>
+<div class="line"><span class="lineno"> 1142</span> </div>
+<div class="line"><span class="lineno"> 1143</span>                <span class="keywordflow">if</span> (maxY == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a> &gt; maxY)</div>
+<div class="line"><span class="lineno"> 1144</span>                {</div>
+<div class="line"><span class="lineno"> 1145</span>                    maxY = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a>;</div>
+<div class="line"><span class="lineno"> 1146</span>                }</div>
+<div class="line"><span class="lineno"> 1147</span> </div>
+<div class="line"><span class="lineno"> 1148</span>                <span class="keywordflow">if</span> (maxZ == <span class="keyword">null</span> || b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a> &gt; maxZ)</div>
+<div class="line"><span class="lineno"> 1149</span>                {</div>
+<div class="line"><span class="lineno"> 1150</span>                    maxZ = b.<a class="code hl_property" href="struct_brawl_lib_1_1_internal_1_1_box.html#ac97825544b0b1e09c505851a1f0a777b">Max</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a>;</div>
+<div class="line"><span class="lineno"> 1151</span>                }</div>
+<div class="line"><span class="lineno"> 1152</span>            }</div>
+<div class="line"><span class="lineno"> 1153</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html">BrawlLib.SSBB.ResourceNodes.BRESGroupNode</a></div><div class="ttdef"><b>Definition:</b> BRRESNode.cs:777</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node_html_a6a536ebcbd5c47e0eebba047952c1fe6"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html#a6a536ebcbd5c47e0eebba047952c1fe6">BrawlLib.SSBB.ResourceNodes.MDL0Node.GetBox</a></div><div class="ttdeci">Box GetBox()</div><div class="ttdoc">Call ApplyCHR0 before calling this</div><div class="ttdef"><b>Definition:</b> MDL0Node.cs:376</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node_html_af16339c3a8e571d71f1ff836a078c04c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html#af16339c3a8e571d71f1ff836a078c04c">BrawlLib.SSBB.ResourceNodes.MDL0Node.ResetToBindState</a></div><div class="ttdeci">void ResetToBindState()</div><div class="ttdef"><b>Definition:</b> MDL0Node.cs:3195</div></div>
@@ -990,7 +992,7 @@ Properties</h2></td></tr>
 <div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_base_wrapper_html_ace37baf4948ae3f8641b86240017d5f6"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#ace37baf4948ae3f8641b86240017d5f6">BrawlCrate.NodeWrappers.BaseWrapper.Wrap</a></div><div class="ttdeci">static BaseWrapper Wrap(ResourceNode node)</div><div class="ttdef"><b>Definition:</b> BaseWrapper.cs:400</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a30af21bc3f6d64ed2a35fca2d1924897"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a30af21bc3f6d64ed2a35fca2d1924897">BrawlCrate.UI.MainForm.RootNode</a></div><div class="ttdeci">BaseWrapper RootNode</div><div class="ttdef"><b>Definition:</b> MainForm.cs:40</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a4e552bbfef290269e24a6905231420ec"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a4e552bbfef290269e24a6905231420ec">BrawlCrate.UI.MainForm.UpdateName</a></div><div class="ttdeci">void UpdateName()</div><div class="ttdef"><b>Definition:</b> MainForm.cs:506</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a68ab544bb15a5ffcc22b7e124964f386"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">BrawlCrate.UI.MainForm.resourceTree</a></div><div class="ttdeci">ResourceTree resourceTree</div><div class="ttdef"><b>Definition:</b> MainForm.cs:2416</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a68ab544bb15a5ffcc22b7e124964f386"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">BrawlCrate.UI.MainForm.resourceTree</a></div><div class="ttdeci">ResourceTree resourceTree</div><div class="ttdef"><b>Definition:</b> MainForm.cs:2418</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_resource_tree_html_a81392031ab06ae7e551348a5ba69a52b"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a81392031ab06ae7e551348a5ba69a52b">BrawlCrate.UI.ResourceTree.Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> ResourceTree.cs:170</div></div>
 </div><!-- fragment -->
 </div>
@@ -1370,7 +1372,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  873</span>            selectedType = <a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#ae685b97e105be3ba554f34f5abeecf1d">SelectedNode</a>?.GetType();</div>
 <div class="line"><span class="lineno">  874</span>        }</div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a35730a40d350ae7b8ded6b95d7fc280b"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a35730a40d350ae7b8ded6b95d7fc280b">BrawlCrate.UI.MainForm.ShowHex</a></div><div class="ttdeci">bool ShowHex</div><div class="ttdef"><b>Definition:</b> MainForm.cs:372</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a38c5b01545a0d141aa25333f42585d84"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a38c5b01545a0d141aa25333f42585d84">BrawlCrate.UI.MainForm.propertyGrid1</a></div><div class="ttdeci">PropertyGrid propertyGrid1</div><div class="ttdef"><b>Definition:</b> MainForm.cs:2431</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a38c5b01545a0d141aa25333f42585d84"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a38c5b01545a0d141aa25333f42585d84">BrawlCrate.UI.MainForm.propertyGrid1</a></div><div class="ttdeci">PropertyGrid propertyGrid1</div><div class="ttdef"><b>Definition:</b> MainForm.cs:2433</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a496bdeacc01bec6fbecab5331a2c0aaf"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a496bdeacc01bec6fbecab5331a2c0aaf">BrawlCrate.UI.MainForm.CompatibilityMode</a></div><div class="ttdeci">bool CompatibilityMode</div><div class="ttdef"><b>Definition:</b> MainForm.cs:387</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_af79e8163080050e988308b758937eb35"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#af79e8163080050e988308b758937eb35">BrawlCrate.UI.MainForm._currentControl</a></div><div class="ttdeci">Control _currentControl</div><div class="ttdef"><b>Definition:</b> MainForm.cs:529</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_resource_tree_html_ae685b97e105be3ba554f34f5abeecf1d"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#ae685b97e105be3ba554f34f5abeecf1d">BrawlCrate.UI.ResourceTree.SelectedNode</a></div><div class="ttdeci">new TreeNode SelectedNode</div><div class="ttdef"><b>Definition:</b> ResourceTree.cs:43</div></div>
@@ -1494,32 +1496,32 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1156</span>        {</div>
-<div class="line"><span class="lineno"> 1157</span>            <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno"> 1158</span>            {</div>
-<div class="line"><span class="lineno"> 1159</span>                <span class="keywordflow">if</span> (Program.CanRunDiscordRPC)</div>
-<div class="line"><span class="lineno"> 1160</span>                {</div>
-<div class="line"><span class="lineno"> 1161</span>                    <span class="keywordflow">if</span> (Discord.DiscordSettings.DiscordControllerSet)</div>
-<div class="line"><span class="lineno"> 1162</span>                    {</div>
-<div class="line"><span class="lineno"> 1163</span>                        Discord.DiscordSettings.Update();</div>
-<div class="line"><span class="lineno"> 1164</span>                    }</div>
-<div class="line"><span class="lineno"> 1165</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1166</span>                    {</div>
-<div class="line"><span class="lineno"> 1167</span>                        Process[] px = Process.GetProcessesByName(<span class="stringliteral">&quot;BrawlCrate&quot;</span>);</div>
-<div class="line"><span class="lineno"> 1168</span>                        <span class="keywordflow">if</span> (px.Length == 1)</div>
-<div class="line"><span class="lineno"> 1169</span>                        {</div>
-<div class="line"><span class="lineno"> 1170</span>                            Discord.DiscordRpc.ClearPresence();</div>
-<div class="line"><span class="lineno"> 1171</span>                        }</div>
-<div class="line"><span class="lineno"> 1172</span> </div>
-<div class="line"><span class="lineno"> 1173</span>                        Discord.DiscordSettings.LoadSettings(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno"> 1174</span>                    }</div>
-<div class="line"><span class="lineno"> 1175</span>                }</div>
-<div class="line"><span class="lineno"> 1176</span>            }</div>
-<div class="line"><span class="lineno"> 1177</span>            <span class="keywordflow">catch</span></div>
-<div class="line"><span class="lineno"> 1178</span>            {</div>
-<div class="line"><span class="lineno"> 1179</span>                <span class="comment">// Discord RPC doesn&#39;t need to work always</span></div>
-<div class="line"><span class="lineno"> 1180</span>            }</div>
-<div class="line"><span class="lineno"> 1181</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1158</span>        {</div>
+<div class="line"><span class="lineno"> 1159</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno"> 1160</span>            {</div>
+<div class="line"><span class="lineno"> 1161</span>                <span class="keywordflow">if</span> (Program.CanRunDiscordRPC)</div>
+<div class="line"><span class="lineno"> 1162</span>                {</div>
+<div class="line"><span class="lineno"> 1163</span>                    <span class="keywordflow">if</span> (Discord.DiscordSettings.DiscordControllerSet)</div>
+<div class="line"><span class="lineno"> 1164</span>                    {</div>
+<div class="line"><span class="lineno"> 1165</span>                        Discord.DiscordSettings.Update();</div>
+<div class="line"><span class="lineno"> 1166</span>                    }</div>
+<div class="line"><span class="lineno"> 1167</span>                    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1168</span>                    {</div>
+<div class="line"><span class="lineno"> 1169</span>                        Process[] px = Process.GetProcessesByName(<span class="stringliteral">&quot;BrawlCrate&quot;</span>);</div>
+<div class="line"><span class="lineno"> 1170</span>                        <span class="keywordflow">if</span> (px.Length == 1)</div>
+<div class="line"><span class="lineno"> 1171</span>                        {</div>
+<div class="line"><span class="lineno"> 1172</span>                            Discord.DiscordRpc.ClearPresence();</div>
+<div class="line"><span class="lineno"> 1173</span>                        }</div>
+<div class="line"><span class="lineno"> 1174</span> </div>
+<div class="line"><span class="lineno"> 1175</span>                        Discord.DiscordSettings.LoadSettings(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno"> 1176</span>                    }</div>
+<div class="line"><span class="lineno"> 1177</span>                }</div>
+<div class="line"><span class="lineno"> 1178</span>            }</div>
+<div class="line"><span class="lineno"> 1179</span>            <span class="keywordflow">catch</span></div>
+<div class="line"><span class="lineno"> 1180</span>            {</div>
+<div class="line"><span class="lineno"> 1181</span>                <span class="comment">// Discord RPC doesn&#39;t need to work always</span></div>
+<div class="line"><span class="lineno"> 1182</span>            }</div>
+<div class="line"><span class="lineno"> 1183</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40a</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.41</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -128,6 +128,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae829924af5378ae13d7156817bd8107a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85505c09e0095d3313fd38f2cc393659"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html">MDL0BoneNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a85505c09e0095d3313fd38f2cc393659">ChildTree</a> (List&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html">MDL0BoneNode</a> &gt; list)</td></tr>
 <tr class="separator:a85505c09e0095d3313fd38f2cc393659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade162cc19f4b2c4914e1e75a98058d0a"><td class="memItemLeft" align="right" valign="top">override byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ade162cc19f4b2c4914e1e75a98058d0a">MD5</a> ()</td></tr>
+<tr class="memdesc:ade162cc19f4b2c4914e1e75a98058d0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the MD5 checksum of this node's data. Basically, don't check string offset and instead hash the name itself   <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ade162cc19f4b2c4914e1e75a98058d0a">More...</a><br /></td></tr>
+<tr class="separator:ade162cc19f4b2c4914e1e75a98058d0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a668f756667177a0c649c3ad63a5902f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a668f756667177a0c649c3ad63a5902f0">Render</a> (bool targetModel, <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html">ModelPanelViewport</a> viewport, <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> parentPos=new <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>())</td></tr>
 <tr class="separator:a668f756667177a0c649c3ad63a5902f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_entry_node"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_entry_node')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_entry_node.html">BrawlLib.SSBB.ResourceNodes.MDL0EntryNode</a></td></tr>
@@ -937,31 +940,31 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1411</span>        {</div>
-<div class="line"><span class="lineno"> 1412</span>            <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html">GLDisplayList</a> circle = <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a>.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#af17a72fffdaa4ad959aeb2e93952b229">GetRingList</a>();</div>
-<div class="line"><span class="lineno"> 1413</span>            <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html">GLDisplayList</a> orb = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html">GLDisplayList</a>();</div>
-<div class="line"><span class="lineno"> 1414</span> </div>
-<div class="line"><span class="lineno"> 1415</span>            orb.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a6ee2c539ef3d832b752eb99788e3a8cb">Begin</a>();</div>
-<div class="line"><span class="lineno"> 1416</span>            GL.PushMatrix();</div>
-<div class="line"><span class="lineno"> 1417</span> </div>
-<div class="line"><span class="lineno"> 1418</span>            GL.Scale(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a>);</div>
-<div class="line"><span class="lineno"> 1419</span>            circle.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a2fc08a471e105fa10c5399ef685ba319">Call</a>();</div>
-<div class="line"><span class="lineno"> 1420</span>            GL.Rotate(90.0f, 0.0f, 1.0f, 0.0f);</div>
-<div class="line"><span class="lineno"> 1421</span>            circle.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a2fc08a471e105fa10c5399ef685ba319">Call</a>();</div>
-<div class="line"><span class="lineno"> 1422</span>            GL.Rotate(90.0f, 1.0f, 0.0f, 0.0f);</div>
-<div class="line"><span class="lineno"> 1423</span>            circle.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a2fc08a471e105fa10c5399ef685ba319">Call</a>();</div>
-<div class="line"><span class="lineno"> 1424</span> </div>
-<div class="line"><span class="lineno"> 1425</span>            GL.PopMatrix();</div>
-<div class="line"><span class="lineno"> 1426</span>            orb.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a97590b92d61e4e8ba881b75b48ce68ca">End</a>();</div>
-<div class="line"><span class="lineno"> 1427</span>            <span class="keywordflow">return</span> orb;</div>
-<div class="line"><span class="lineno"> 1428</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1438</span>        {</div>
+<div class="line"><span class="lineno"> 1439</span>            <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html">GLDisplayList</a> circle = <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a>.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#af17a72fffdaa4ad959aeb2e93952b229">GetRingList</a>();</div>
+<div class="line"><span class="lineno"> 1440</span>            <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html">GLDisplayList</a> orb = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html">GLDisplayList</a>();</div>
+<div class="line"><span class="lineno"> 1441</span> </div>
+<div class="line"><span class="lineno"> 1442</span>            orb.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a6ee2c539ef3d832b752eb99788e3a8cb">Begin</a>();</div>
+<div class="line"><span class="lineno"> 1443</span>            GL.PushMatrix();</div>
+<div class="line"><span class="lineno"> 1444</span> </div>
+<div class="line"><span class="lineno"> 1445</span>            GL.Scale(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a>);</div>
+<div class="line"><span class="lineno"> 1446</span>            circle.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a2fc08a471e105fa10c5399ef685ba319">Call</a>();</div>
+<div class="line"><span class="lineno"> 1447</span>            GL.Rotate(90.0f, 0.0f, 1.0f, 0.0f);</div>
+<div class="line"><span class="lineno"> 1448</span>            circle.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a2fc08a471e105fa10c5399ef685ba319">Call</a>();</div>
+<div class="line"><span class="lineno"> 1449</span>            GL.Rotate(90.0f, 1.0f, 0.0f, 0.0f);</div>
+<div class="line"><span class="lineno"> 1450</span>            circle.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a2fc08a471e105fa10c5399ef685ba319">Call</a>();</div>
+<div class="line"><span class="lineno"> 1451</span> </div>
+<div class="line"><span class="lineno"> 1452</span>            GL.PopMatrix();</div>
+<div class="line"><span class="lineno"> 1453</span>            orb.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a97590b92d61e4e8ba881b75b48ce68ca">End</a>();</div>
+<div class="line"><span class="lineno"> 1454</span>            <span class="keywordflow">return</span> orb;</div>
+<div class="line"><span class="lineno"> 1455</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_display_list_html"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html">BrawlLib.OpenGL.GLDisplayList</a></div><div class="ttdef"><b>Definition:</b> GLDisplayList.cs:8</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_display_list_html_a2fc08a471e105fa10c5399ef685ba319"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a2fc08a471e105fa10c5399ef685ba319">BrawlLib.OpenGL.GLDisplayList.Call</a></div><div class="ttdeci">void Call()</div><div class="ttdef"><b>Definition:</b> GLDisplayList.cs:32</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_display_list_html_a6ee2c539ef3d832b752eb99788e3a8cb"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a6ee2c539ef3d832b752eb99788e3a8cb">BrawlLib.OpenGL.GLDisplayList.Begin</a></div><div class="ttdeci">void Begin()</div><div class="ttdef"><b>Definition:</b> GLDisplayList.cs:17</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_display_list_html_a97590b92d61e4e8ba881b75b48ce68ca"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_display_list.html#a97590b92d61e4e8ba881b75b48ce68ca">BrawlLib.OpenGL.GLDisplayList.End</a></div><div class="ttdeci">void End()</div><div class="ttdef"><b>Definition:</b> GLDisplayList.cs:27</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_t_k_context_html"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">BrawlLib.OpenGL.TKContext</a></div><div class="ttdef"><b>Definition:</b> TKContext.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_t_k_context_html_af17a72fffdaa4ad959aeb2e93952b229"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#af17a72fffdaa4ad959aeb2e93952b229">BrawlLib.OpenGL.TKContext.GetRingList</a></div><div class="ttdeci">static GLDisplayList GetRingList()</div><div class="ttdef"><b>Definition:</b> TKContext.cs:382</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a86f99fc099ba2f3656627266ef4d0078"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode._nodeRadius</a></div><div class="ttdeci">const float _nodeRadius</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1263</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a86f99fc099ba2f3656627266ef4d0078"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode._nodeRadius</a></div><div class="ttdeci">const float _nodeRadius</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1290</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1055,23 +1058,23 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1431</span>        {</div>
-<div class="line"><span class="lineno"> 1432</span>            GL.Begin(BeginMode.Lines);</div>
-<div class="line"><span class="lineno"> 1433</span> </div>
-<div class="line"><span class="lineno"> 1434</span>            GL.Color4(1.0f, 0.0f, 0.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1435</span>            GL.Vertex3(0.0f, 0.0f, 0.0f);</div>
-<div class="line"><span class="lineno"> 1436</span>            GL.Vertex3(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a> * 2, 0.0f, 0.0f);</div>
-<div class="line"><span class="lineno"> 1437</span> </div>
-<div class="line"><span class="lineno"> 1438</span>            GL.Color4(0.0f, 1.0f, 0.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1439</span>            GL.Vertex3(0.0f, 0.0f, 0.0f);</div>
-<div class="line"><span class="lineno"> 1440</span>            GL.Vertex3(0.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a> * 2, 0.0f);</div>
-<div class="line"><span class="lineno"> 1441</span> </div>
-<div class="line"><span class="lineno"> 1442</span>            GL.Color4(0.0f, 0.0f, 1.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1443</span>            GL.Vertex3(0.0f, 0.0f, 0.0f);</div>
-<div class="line"><span class="lineno"> 1444</span>            GL.Vertex3(0.0f, 0.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a> * 2);</div>
-<div class="line"><span class="lineno"> 1445</span> </div>
-<div class="line"><span class="lineno"> 1446</span>            GL.End();</div>
-<div class="line"><span class="lineno"> 1447</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1458</span>        {</div>
+<div class="line"><span class="lineno"> 1459</span>            GL.Begin(BeginMode.Lines);</div>
+<div class="line"><span class="lineno"> 1460</span> </div>
+<div class="line"><span class="lineno"> 1461</span>            GL.Color4(1.0f, 0.0f, 0.0f, alpha);</div>
+<div class="line"><span class="lineno"> 1462</span>            GL.Vertex3(0.0f, 0.0f, 0.0f);</div>
+<div class="line"><span class="lineno"> 1463</span>            GL.Vertex3(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a> * 2, 0.0f, 0.0f);</div>
+<div class="line"><span class="lineno"> 1464</span> </div>
+<div class="line"><span class="lineno"> 1465</span>            GL.Color4(0.0f, 1.0f, 0.0f, alpha);</div>
+<div class="line"><span class="lineno"> 1466</span>            GL.Vertex3(0.0f, 0.0f, 0.0f);</div>
+<div class="line"><span class="lineno"> 1467</span>            GL.Vertex3(0.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a> * 2, 0.0f);</div>
+<div class="line"><span class="lineno"> 1468</span> </div>
+<div class="line"><span class="lineno"> 1469</span>            GL.Color4(0.0f, 0.0f, 1.0f, alpha);</div>
+<div class="line"><span class="lineno"> 1470</span>            GL.Vertex3(0.0f, 0.0f, 0.0f);</div>
+<div class="line"><span class="lineno"> 1471</span>            GL.Vertex3(0.0f, 0.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a86f99fc099ba2f3656627266ef4d0078">_nodeRadius</a> * 2);</div>
+<div class="line"><span class="lineno"> 1472</span> </div>
+<div class="line"><span class="lineno"> 1473</span>            GL.End();</div>
+<div class="line"><span class="lineno"> 1474</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1117,6 +1120,62 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ade162cc19f4b2c4914e1e75a98058d0a" name="ade162cc19f4b2c4914e1e75a98058d0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade162cc19f4b2c4914e1e75a98058d0a">&#9670;&#160;</a></span>MD5()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override byte[] BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.MD5 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find the MD5 checksum of this node's data. Basically, don't check string offset and instead hash the name itself  </p>
+
+<p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a921a6738503b2677e76efa563fa91af3">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1255</span>        {</div>
+<div class="line"><span class="lineno"> 1256</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a> == <span class="keyword">null</span> || <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a> == 0)</div>
+<div class="line"><span class="lineno"> 1257</span>            {</div>
+<div class="line"><span class="lineno"> 1258</span>                <span class="comment">// skip fix. This should probably never happen but whatever</span></div>
+<div class="line"><span class="lineno"> 1259</span>                <span class="keywordflow">return</span> base.MD5();</div>
+<div class="line"><span class="lineno"> 1260</span>            }</div>
+<div class="line"><span class="lineno"> 1261</span> </div>
+<div class="line"><span class="lineno"> 1262</span>            <span class="keywordtype">int</span> size = WorkingUncompressed.Length + <a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a7f79faca14836a08f06119e84e70fd76">Name</a>.UTF8Length();</div>
+<div class="line"><span class="lineno"> 1263</span>            <span class="keywordtype">byte</span>[] data = <span class="keyword">new</span> <span class="keywordtype">byte</span>[size];</div>
+<div class="line"><span class="lineno"> 1264</span>            fixed (<span class="keywordtype">byte</span>* ptr = data)</div>
+<div class="line"><span class="lineno"> 1265</span>            {</div>
+<div class="line"><span class="lineno"> 1266</span>                <span class="comment">// Write the initial data</span></div>
+<div class="line"><span class="lineno"> 1267</span>                <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">Move</a>(ptr, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a>, (uint)<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>);</div>
+<div class="line"><span class="lineno"> 1268</span>                <span class="comment">// Write the name string</span></div>
+<div class="line"><span class="lineno"> 1269</span>                ((<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) ptr).WriteUTF8String(<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a7f79faca14836a08f06119e84e70fd76">Name</a>, <span class="keyword">false</span>, (uint)<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>);</div>
+<div class="line"><span class="lineno"> 1270</span>            }</div>
+<div class="line"><span class="lineno"> 1271</span>            <span class="comment">// 0 out the name offset</span></div>
+<div class="line"><span class="lineno"> 1272</span>            data[0x8] = data[0x9] = data[0xA] = data[0xB] = 0;</div>
+<div class="line"><span class="lineno"> 1273</span> </div>
+<div class="line"><span class="lineno"> 1274</span>            <span class="keywordflow">return</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a>.ComputeHash(data);</div>
+<div class="line"><span class="lineno"> 1275</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html">BrawlLib.Internal.Memory</a></div><div class="ttdef"><b>Definition:</b> Memory.cs:8</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html_a22c0cb3641b22e5ce664d45ad2f10132"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">BrawlLib.Internal.Memory.Move</a></div><div class="ttdeci">static void Move(VoidPtr dst, VoidPtr src, uint size)</div><div class="ttdef"><b>Definition:</b> Memory.cs:9</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a696ea2cc5631b17d54370848c2261553"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">BrawlLib.SSBB.ResourceNodes.ResourceNode.MD5Provider</a></div><div class="ttdeci">static MD5CryptoServiceProvider MD5Provider</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:1659</div></div>
+<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_bone_node_html_a7f79faca14836a08f06119e84e70fd76"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a7f79faca14836a08f06119e84e70fd76">BrawlLib.Modeling.IBoneNode.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> IBoneNode.cs:11</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:9</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_a0f9a87e8ce6929677cf3b301b82e9c86"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">BrawlLib.SSBB.ResourceNodes.DataSource.Length</a></div><div class="ttdeci">int Length</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:32</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a00b72c5fa928775c35aee3a3ec77f4fd" name="a00b72c5fa928775c35aee3a3ec77f4fd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00b72c5fa928775c35aee3a3ec77f4fd">&#9670;&#160;</a></span>OnCalculateSize()</h2>
 
@@ -1145,7 +1204,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  687</span>        {</div>
 <div class="line"><span class="lineno">  688</span>            <span class="keywordflow">return</span> 0xD0 + _userEntries.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection.html#af964603e13da76aca8b2397393cd3b13">GetSize</a>();</div>
 <div class="line"><span class="lineno">  689</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_html_af964603e13da76aca8b2397393cd3b13"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection.html#af964603e13da76aca8b2397393cd3b13">BrawlLib.SSBB.UserDataCollection.GetSize</a></div><div class="ttdeci">int GetSize()</div><div class="ttdef"><b>Definition:</b> UserData.cs:118</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_html_af964603e13da76aca8b2397393cd3b13"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection.html#af964603e13da76aca8b2397393cd3b13">BrawlLib.SSBB.UserDataCollection.GetSize</a></div><div class="ttdeci">int GetSize()</div><div class="ttdef"><b>Definition:</b> UserData.cs:123</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1203,7 +1262,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  657</span> </div>
 <div class="line"><span class="lineno">  658</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a80d617163d2f056c6eb1c2e04471a1ef">_extents</a> = header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_bone.html#a42102dbeaea2321de376d858a39bc83d">_extents</a>;</div>
 <div class="line"><span class="lineno">  659</span> </div>
-<div class="line"><span class="lineno">  660</span>            (_userEntries = <span class="keyword">new</span> UserDataCollection()).Read(header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_bone.html#a09658f9612f92f31b14210e2b2c7c7fc">UserDataAddress</a>);</div>
+<div class="line"><span class="lineno">  660</span>            (_userEntries = <span class="keyword">new</span> UserDataCollection()).Read(header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_bone.html#a09658f9612f92f31b14210e2b2c7c7fc">UserDataAddress</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>);</div>
 <div class="line"><span class="lineno">  661</span> </div>
 <div class="line"><span class="lineno">  662</span>            <span class="comment">//We don&#39;t want to process children because not all have been parsed yet.</span></div>
 <div class="line"><span class="lineno">  663</span>            <span class="comment">//Child assignments will be handled by the parent group.</span></div>
@@ -1345,7 +1404,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  803</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a5852a987ce9519fbc655e82a552e0edc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a5852a987ce9519fbc655e82a552e0edc">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode._bbRefNode</a></div><div class="ttdeci">MDL0BoneNode _bbRefNode</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:50</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a6f0c44a3070fd6b1c357b63b54398852"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a6f0c44a3070fd6b1c357b63b54398852">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.SingleBindObjects</a></div><div class="ttdeci">MDL0ObjectNode[] SingleBindObjects</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:170</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_html_a95c9e766949ba50d2ba2b9c158ca6a07"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection.html#a95c9e766949ba50d2ba2b9c158ca6a07">BrawlLib.SSBB.UserDataCollection.Write</a></div><div class="ttdeci">void Write(VoidPtr userDataAddr)</div><div class="ttdef"><b>Definition:</b> UserData.cs:140</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_html_a95c9e766949ba50d2ba2b9c158ca6a07"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection.html#a95c9e766949ba50d2ba2b9c158ca6a07">BrawlLib.SSBB.UserDataCollection.Write</a></div><div class="ttdeci">void Write(VoidPtr userDataAddr)</div><div class="ttdef"><b>Definition:</b> UserData.cs:145</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_bone_html_a68a164b8b935771d36b0d9f42a0fb89f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_bone.html#a68a164b8b935771d36b0d9f42a0fb89f">BrawlLib.SSBB.Types.MDL0Bone._bbIndex</a></div><div class="ttdeci">buint _bbIndex</div><div class="ttdef"><b>Definition:</b> MDL0.cs:660</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_bone_html_ae56358de6e19573de626a01c3166863b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_bone.html#ae56358de6e19573de626a01c3166863b">BrawlLib.SSBB.Types.MDL0Bone._userDataOffset</a></div><div class="ttdeci">bint _userDataOffset</div><div class="ttdef"><b>Definition:</b> MDL0.cs:671</div></div>
 </div><!-- fragment -->
@@ -1672,103 +1731,103 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a15bfaeb4ee151d44e6f7d22f77423661">BrawlLib.Modeling.IBoneNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1312</span>        {</div>
-<div class="line"><span class="lineno"> 1313</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a42a2d19e1649431bc5369fdab73a798c">_render</a>)</div>
-<div class="line"><span class="lineno"> 1314</span>            {</div>
-<div class="line"><span class="lineno"> 1315</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno"> 1316</span>            }</div>
-<div class="line"><span class="lineno"> 1317</span> </div>
-<div class="line"><span class="lineno"> 1318</span>            <span class="comment">//Draw name if selected</span></div>
-<div class="line"><span class="lineno"> 1319</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">_nodeColor</a> != Color.Transparent &amp;&amp; viewport != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno"> 1320</span>            {</div>
-<div class="line"><span class="lineno"> 1321</span>                <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> screenPos = viewport.<a class="code hl_property" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a1d00195161448b63bd35e0ce639bb4c5">Camera</a>.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_camera.html#abc08bc9811206a1ec022219e66c7d2d6">Project</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a75ed77bd2ae49b06a0d04748c53d9cee">_frameMatrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8d09e1033484426c130172e18b2dc23e">GetPoint</a>());</div>
-<div class="line"><span class="lineno"> 1322</span>                viewport.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#ab588a323a028fdfcd5dce88e67622927">SettingsScreenText</a>[<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a7f79faca14836a08f06119e84e70fd76">Name</a>] = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(screenPos.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a>, screenPos.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a> - 9.0f, screenPos.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a>);</div>
-<div class="line"><span class="lineno"> 1323</span>            }</div>
-<div class="line"><span class="lineno"> 1324</span> </div>
-<div class="line"><span class="lineno"> 1325</span>            <span class="keywordtype">float</span> alpha = targetModel ? 1.0f : 0.45f;</div>
-<div class="line"><span class="lineno"> 1326</span> </div>
-<div class="line"><span class="lineno"> 1327</span>            <span class="comment">//Set bone line color</span></div>
-<div class="line"><span class="lineno"> 1328</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a7499ef65fa836d89f16c955fa9728724">_boneColor</a> != Color.Transparent)</div>
-<div class="line"><span class="lineno"> 1329</span>            {</div>
-<div class="line"><span class="lineno"> 1330</span>                GL.Color4(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a7499ef65fa836d89f16c955fa9728724">_boneColor</a>.R / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a7499ef65fa836d89f16c955fa9728724">_boneColor</a>.G / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a7499ef65fa836d89f16c955fa9728724">_boneColor</a>.B / 255.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1331</span>            }</div>
-<div class="line"><span class="lineno"> 1332</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1333</span>            {</div>
-<div class="line"><span class="lineno"> 1334</span>                GL.Color4(targetModel ? <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a8a5ed529ccd90305ddeeb78b01ab8006">DefaultLineColor</a> : <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a718045c37600113f6b386a3247e51e94">DefaultLineDeselectedColor</a>);</div>
-<div class="line"><span class="lineno"> 1335</span>            }</div>
-<div class="line"><span class="lineno"> 1336</span> </div>
-<div class="line"><span class="lineno"> 1337</span>            <span class="comment">//Draw bone line</span></div>
-<div class="line"><span class="lineno"> 1338</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> currentPos = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a75ed77bd2ae49b06a0d04748c53d9cee">_frameMatrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8d09e1033484426c130172e18b2dc23e">GetPoint</a>();</div>
-<div class="line"><span class="lineno"> 1339</span>            GL.Begin(BeginMode.Lines);</div>
-<div class="line"><span class="lineno"> 1340</span>            GL.Vertex3((<span class="keywordtype">float</span>*) &amp;parentPos);</div>
-<div class="line"><span class="lineno"> 1341</span>            GL.Vertex3((<span class="keywordtype">float</span>*) &amp;currentPos);</div>
-<div class="line"><span class="lineno"> 1342</span>            GL.End();</div>
-<div class="line"><span class="lineno"> 1343</span> </div>
-<div class="line"><span class="lineno"> 1344</span>            <span class="comment">//Set bone orb color</span></div>
-<div class="line"><span class="lineno"> 1345</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">_nodeColor</a> != Color.Transparent)</div>
-<div class="line"><span class="lineno"> 1346</span>            {</div>
-<div class="line"><span class="lineno"> 1347</span>                GL.Color4(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">_nodeColor</a>.R / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">_nodeColor</a>.G / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">_nodeColor</a>.B / 255.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1348</span>            }</div>
-<div class="line"><span class="lineno"> 1349</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1350</span>            {</div>
-<div class="line"><span class="lineno"> 1351</span>                GL.Color4(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a19861acbe1cbe34b94fc7e607d65cae9">DefaultNodeColor</a>.R / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a19861acbe1cbe34b94fc7e607d65cae9">DefaultNodeColor</a>.G / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a19861acbe1cbe34b94fc7e607d65cae9">DefaultNodeColor</a>.B / 255.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1352</span>            }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1339</span>        {</div>
+<div class="line"><span class="lineno"> 1340</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a42a2d19e1649431bc5369fdab73a798c">_render</a>)</div>
+<div class="line"><span class="lineno"> 1341</span>            {</div>
+<div class="line"><span class="lineno"> 1342</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno"> 1343</span>            }</div>
+<div class="line"><span class="lineno"> 1344</span> </div>
+<div class="line"><span class="lineno"> 1345</span>            <span class="comment">//Draw name if selected</span></div>
+<div class="line"><span class="lineno"> 1346</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">_nodeColor</a> != Color.Transparent &amp;&amp; viewport != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno"> 1347</span>            {</div>
+<div class="line"><span class="lineno"> 1348</span>                <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> screenPos = viewport.<a class="code hl_property" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a1d00195161448b63bd35e0ce639bb4c5">Camera</a>.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_camera.html#abc08bc9811206a1ec022219e66c7d2d6">Project</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a75ed77bd2ae49b06a0d04748c53d9cee">_frameMatrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8d09e1033484426c130172e18b2dc23e">GetPoint</a>());</div>
+<div class="line"><span class="lineno"> 1349</span>                viewport.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#ab588a323a028fdfcd5dce88e67622927">SettingsScreenText</a>[<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a7f79faca14836a08f06119e84e70fd76">Name</a>] = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(screenPos.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a>, screenPos.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a> - 9.0f, screenPos.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a>);</div>
+<div class="line"><span class="lineno"> 1350</span>            }</div>
+<div class="line"><span class="lineno"> 1351</span> </div>
+<div class="line"><span class="lineno"> 1352</span>            <span class="keywordtype">float</span> alpha = targetModel ? 1.0f : 0.45f;</div>
 <div class="line"><span class="lineno"> 1353</span> </div>
-<div class="line"><span class="lineno"> 1354</span>            <span class="comment">//Draw bone orb</span></div>
-<div class="line"><span class="lineno"> 1355</span>            GL.PushMatrix();</div>
-<div class="line"><span class="lineno"> 1356</span> </div>
-<div class="line"><span class="lineno"> 1357</span>            <span class="keywordtype">bool</span> ignoreBoneScale = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno"> 1358</span>            <span class="keywordtype">bool</span> scaleBones = viewport != <span class="keyword">null</span> &amp;&amp; viewport.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#a723090049df5f302b229bb5aaa599670">_renderAttrib</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_render_attributes.html#afc6783b51c74d87048138226e71157db">_scaleBones</a>;</div>
-<div class="line"><span class="lineno"> 1359</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a> transform = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a75ed77bd2ae49b06a0d04748c53d9cee">_frameMatrix</a>;</div>
-<div class="line"><span class="lineno"> 1360</span>            <span class="keywordflow">if</span> (ignoreBoneScale)</div>
-<div class="line"><span class="lineno"> 1361</span>            {</div>
-<div class="line"><span class="lineno"> 1362</span>                transform = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a0bd1bf40055909654d230ce4950095e0">TranslationMatrix</a>(currentPos) *</div>
-<div class="line"><span class="lineno"> 1363</span>                            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a75ed77bd2ae49b06a0d04748c53d9cee">_frameMatrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a51952c1f83e3059f1cea474b0d00a93d">GetRotationMatrix</a>() *</div>
-<div class="line"><span class="lineno"> 1364</span>                            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">ScaleMatrix</a>(<span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(1.0f));</div>
-<div class="line"><span class="lineno"> 1365</span>            }</div>
-<div class="line"><span class="lineno"> 1366</span> </div>
-<div class="line"><span class="lineno"> 1367</span>            <span class="keywordflow">if</span> (viewport.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#a723090049df5f302b229bb5aaa599670">_renderAttrib</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_render_attributes.html#a878b8a48224f68cc513b3e36faf20a8b">_renderBonesAsPoints</a>)</div>
-<div class="line"><span class="lineno"> 1368</span>            {</div>
-<div class="line"><span class="lineno"> 1369</span>                GL.MultMatrix((<span class="keywordtype">float</span>*) &amp;transform);</div>
+<div class="line"><span class="lineno"> 1354</span>            <span class="comment">//Set bone line color</span></div>
+<div class="line"><span class="lineno"> 1355</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a7499ef65fa836d89f16c955fa9728724">_boneColor</a> != Color.Transparent)</div>
+<div class="line"><span class="lineno"> 1356</span>            {</div>
+<div class="line"><span class="lineno"> 1357</span>                GL.Color4(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a7499ef65fa836d89f16c955fa9728724">_boneColor</a>.R / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a7499ef65fa836d89f16c955fa9728724">_boneColor</a>.G / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a7499ef65fa836d89f16c955fa9728724">_boneColor</a>.B / 255.0f, alpha);</div>
+<div class="line"><span class="lineno"> 1358</span>            }</div>
+<div class="line"><span class="lineno"> 1359</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1360</span>            {</div>
+<div class="line"><span class="lineno"> 1361</span>                GL.Color4(targetModel ? <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a8a5ed529ccd90305ddeeb78b01ab8006">DefaultLineColor</a> : <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a718045c37600113f6b386a3247e51e94">DefaultLineDeselectedColor</a>);</div>
+<div class="line"><span class="lineno"> 1362</span>            }</div>
+<div class="line"><span class="lineno"> 1363</span> </div>
+<div class="line"><span class="lineno"> 1364</span>            <span class="comment">//Draw bone line</span></div>
+<div class="line"><span class="lineno"> 1365</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> currentPos = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a75ed77bd2ae49b06a0d04748c53d9cee">_frameMatrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8d09e1033484426c130172e18b2dc23e">GetPoint</a>();</div>
+<div class="line"><span class="lineno"> 1366</span>            GL.Begin(BeginMode.Lines);</div>
+<div class="line"><span class="lineno"> 1367</span>            GL.Vertex3((<span class="keywordtype">float</span>*) &amp;parentPos);</div>
+<div class="line"><span class="lineno"> 1368</span>            GL.Vertex3((<span class="keywordtype">float</span>*) &amp;currentPos);</div>
+<div class="line"><span class="lineno"> 1369</span>            GL.End();</div>
 <div class="line"><span class="lineno"> 1370</span> </div>
-<div class="line"><span class="lineno"> 1371</span>                <span class="keywordflow">if</span> (!scaleBones)</div>
-<div class="line"><span class="lineno"> 1372</span>                {</div>
-<div class="line"><span class="lineno"> 1373</span>                    GL.PointSize(1.0f / <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html">ModelEditorBase</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#ac5b19db55f4d1a300ec9ed9fcc33be89">OrbRadius</a>(<span class="keyword">this</span>, viewport.<a class="code hl_property" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a1d00195161448b63bd35e0ce639bb4c5">Camera</a>) * 10.0f);</div>
-<div class="line"><span class="lineno"> 1374</span>                }</div>
-<div class="line"><span class="lineno"> 1375</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1376</span>                {</div>
-<div class="line"><span class="lineno"> 1377</span>                    GL.PointSize(10.0f);</div>
-<div class="line"><span class="lineno"> 1378</span>                }</div>
-<div class="line"><span class="lineno"> 1379</span> </div>
-<div class="line"><span class="lineno"> 1380</span>                GL.Enable(EnableCap.PointSmooth);</div>
-<div class="line"><span class="lineno"> 1381</span>                GL.Begin(BeginMode.Points);</div>
-<div class="line"><span class="lineno"> 1382</span>                GL.Vertex3(0, 0, 0);</div>
-<div class="line"><span class="lineno"> 1383</span>                GL.End();</div>
-<div class="line"><span class="lineno"> 1384</span>            }</div>
-<div class="line"><span class="lineno"> 1385</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1386</span>            {</div>
-<div class="line"><span class="lineno"> 1387</span>                <span class="keywordflow">if</span> (scaleBones)</div>
-<div class="line"><span class="lineno"> 1388</span>                {</div>
-<div class="line"><span class="lineno"> 1389</span>                    transform.Scale(<span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html">ModelEditorBase</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#ac5b19db55f4d1a300ec9ed9fcc33be89">OrbRadius</a>(<span class="keyword">this</span>, viewport.<a class="code hl_property" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a1d00195161448b63bd35e0ce639bb4c5">Camera</a>)));</div>
-<div class="line"><span class="lineno"> 1390</span>                }</div>
-<div class="line"><span class="lineno"> 1391</span> </div>
-<div class="line"><span class="lineno"> 1392</span>                GL.MultMatrix((<span class="keywordtype">float</span>*) &amp;transform);</div>
+<div class="line"><span class="lineno"> 1371</span>            <span class="comment">//Set bone orb color</span></div>
+<div class="line"><span class="lineno"> 1372</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">_nodeColor</a> != Color.Transparent)</div>
+<div class="line"><span class="lineno"> 1373</span>            {</div>
+<div class="line"><span class="lineno"> 1374</span>                GL.Color4(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">_nodeColor</a>.R / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">_nodeColor</a>.G / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">_nodeColor</a>.B / 255.0f, alpha);</div>
+<div class="line"><span class="lineno"> 1375</span>            }</div>
+<div class="line"><span class="lineno"> 1376</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1377</span>            {</div>
+<div class="line"><span class="lineno"> 1378</span>                GL.Color4(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a19861acbe1cbe34b94fc7e607d65cae9">DefaultNodeColor</a>.R / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a19861acbe1cbe34b94fc7e607d65cae9">DefaultNodeColor</a>.G / 255.0f, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a19861acbe1cbe34b94fc7e607d65cae9">DefaultNodeColor</a>.B / 255.0f, alpha);</div>
+<div class="line"><span class="lineno"> 1379</span>            }</div>
+<div class="line"><span class="lineno"> 1380</span> </div>
+<div class="line"><span class="lineno"> 1381</span>            <span class="comment">//Draw bone orb</span></div>
+<div class="line"><span class="lineno"> 1382</span>            GL.PushMatrix();</div>
+<div class="line"><span class="lineno"> 1383</span> </div>
+<div class="line"><span class="lineno"> 1384</span>            <span class="keywordtype">bool</span> ignoreBoneScale = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno"> 1385</span>            <span class="keywordtype">bool</span> scaleBones = viewport != <span class="keyword">null</span> &amp;&amp; viewport.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#a723090049df5f302b229bb5aaa599670">_renderAttrib</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_render_attributes.html#afc6783b51c74d87048138226e71157db">_scaleBones</a>;</div>
+<div class="line"><span class="lineno"> 1386</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a> transform = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a75ed77bd2ae49b06a0d04748c53d9cee">_frameMatrix</a>;</div>
+<div class="line"><span class="lineno"> 1387</span>            <span class="keywordflow">if</span> (ignoreBoneScale)</div>
+<div class="line"><span class="lineno"> 1388</span>            {</div>
+<div class="line"><span class="lineno"> 1389</span>                transform = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a0bd1bf40055909654d230ce4950095e0">TranslationMatrix</a>(currentPos) *</div>
+<div class="line"><span class="lineno"> 1390</span>                            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a75ed77bd2ae49b06a0d04748c53d9cee">_frameMatrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a51952c1f83e3059f1cea474b0d00a93d">GetRotationMatrix</a>() *</div>
+<div class="line"><span class="lineno"> 1391</span>                            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">ScaleMatrix</a>(<span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(1.0f));</div>
+<div class="line"><span class="lineno"> 1392</span>            }</div>
 <div class="line"><span class="lineno"> 1393</span> </div>
-<div class="line"><span class="lineno"> 1394</span>                <span class="comment">//Orb</span></div>
-<div class="line"><span class="lineno"> 1395</span>                <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a>.FindOrCreate(<span class="stringliteral">&quot;BoneNodeOrb&quot;</span>, <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a38b612f60d52a5a0d8c72b27a4f4b389">CreateNodeOrb</a>).Call();</div>
-<div class="line"><span class="lineno"> 1396</span> </div>
-<div class="line"><span class="lineno"> 1397</span>                <span class="comment">//Axes</span></div>
-<div class="line"><span class="lineno"> 1398</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#af73fe145ea65e31d6a4b8bf387cf232b">DrawNodeOrients</a>(alpha);</div>
-<div class="line"><span class="lineno"> 1399</span>            }</div>
-<div class="line"><span class="lineno"> 1400</span> </div>
-<div class="line"><span class="lineno"> 1401</span>            GL.PopMatrix();</div>
-<div class="line"><span class="lineno"> 1402</span> </div>
-<div class="line"><span class="lineno"> 1403</span>            <span class="comment">//Render children</span></div>
-<div class="line"><span class="lineno"> 1404</span>            <span class="keywordflow">foreach</span> (MDL0BoneNode n <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
-<div class="line"><span class="lineno"> 1405</span>            {</div>
-<div class="line"><span class="lineno"> 1406</span>                n.Render(targetModel, viewport, currentPos);</div>
-<div class="line"><span class="lineno"> 1407</span>            }</div>
-<div class="line"><span class="lineno"> 1408</span>        }</div>
+<div class="line"><span class="lineno"> 1394</span>            <span class="keywordflow">if</span> (viewport.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#a723090049df5f302b229bb5aaa599670">_renderAttrib</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_render_attributes.html#a878b8a48224f68cc513b3e36faf20a8b">_renderBonesAsPoints</a>)</div>
+<div class="line"><span class="lineno"> 1395</span>            {</div>
+<div class="line"><span class="lineno"> 1396</span>                GL.MultMatrix((<span class="keywordtype">float</span>*) &amp;transform);</div>
+<div class="line"><span class="lineno"> 1397</span> </div>
+<div class="line"><span class="lineno"> 1398</span>                <span class="keywordflow">if</span> (!scaleBones)</div>
+<div class="line"><span class="lineno"> 1399</span>                {</div>
+<div class="line"><span class="lineno"> 1400</span>                    GL.PointSize(1.0f / <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html">ModelEditorBase</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#ac5b19db55f4d1a300ec9ed9fcc33be89">OrbRadius</a>(<span class="keyword">this</span>, viewport.<a class="code hl_property" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a1d00195161448b63bd35e0ce639bb4c5">Camera</a>) * 10.0f);</div>
+<div class="line"><span class="lineno"> 1401</span>                }</div>
+<div class="line"><span class="lineno"> 1402</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1403</span>                {</div>
+<div class="line"><span class="lineno"> 1404</span>                    GL.PointSize(10.0f);</div>
+<div class="line"><span class="lineno"> 1405</span>                }</div>
+<div class="line"><span class="lineno"> 1406</span> </div>
+<div class="line"><span class="lineno"> 1407</span>                GL.Enable(EnableCap.PointSmooth);</div>
+<div class="line"><span class="lineno"> 1408</span>                GL.Begin(BeginMode.Points);</div>
+<div class="line"><span class="lineno"> 1409</span>                GL.Vertex3(0, 0, 0);</div>
+<div class="line"><span class="lineno"> 1410</span>                GL.End();</div>
+<div class="line"><span class="lineno"> 1411</span>            }</div>
+<div class="line"><span class="lineno"> 1412</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1413</span>            {</div>
+<div class="line"><span class="lineno"> 1414</span>                <span class="keywordflow">if</span> (scaleBones)</div>
+<div class="line"><span class="lineno"> 1415</span>                {</div>
+<div class="line"><span class="lineno"> 1416</span>                    transform.Scale(<span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html">ModelEditorBase</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#ac5b19db55f4d1a300ec9ed9fcc33be89">OrbRadius</a>(<span class="keyword">this</span>, viewport.<a class="code hl_property" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a1d00195161448b63bd35e0ce639bb4c5">Camera</a>)));</div>
+<div class="line"><span class="lineno"> 1417</span>                }</div>
+<div class="line"><span class="lineno"> 1418</span> </div>
+<div class="line"><span class="lineno"> 1419</span>                GL.MultMatrix((<span class="keywordtype">float</span>*) &amp;transform);</div>
+<div class="line"><span class="lineno"> 1420</span> </div>
+<div class="line"><span class="lineno"> 1421</span>                <span class="comment">//Orb</span></div>
+<div class="line"><span class="lineno"> 1422</span>                <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a>.FindOrCreate(<span class="stringliteral">&quot;BoneNodeOrb&quot;</span>, <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a38b612f60d52a5a0d8c72b27a4f4b389">CreateNodeOrb</a>).Call();</div>
+<div class="line"><span class="lineno"> 1423</span> </div>
+<div class="line"><span class="lineno"> 1424</span>                <span class="comment">//Axes</span></div>
+<div class="line"><span class="lineno"> 1425</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#af73fe145ea65e31d6a4b8bf387cf232b">DrawNodeOrients</a>(alpha);</div>
+<div class="line"><span class="lineno"> 1426</span>            }</div>
+<div class="line"><span class="lineno"> 1427</span> </div>
+<div class="line"><span class="lineno"> 1428</span>            GL.PopMatrix();</div>
+<div class="line"><span class="lineno"> 1429</span> </div>
+<div class="line"><span class="lineno"> 1430</span>            <span class="comment">//Render children</span></div>
+<div class="line"><span class="lineno"> 1431</span>            <span class="keywordflow">foreach</span> (MDL0BoneNode n <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
+<div class="line"><span class="lineno"> 1432</span>            {</div>
+<div class="line"><span class="lineno"> 1433</span>                n.Render(targetModel, viewport, currentPos);</div>
+<div class="line"><span class="lineno"> 1434</span>            }</div>
+<div class="line"><span class="lineno"> 1435</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport_html_a723090049df5f302b229bb5aaa599670"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#a723090049df5f302b229bb5aaa599670">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport._renderAttrib</a></div><div class="ttdeci">ModelRenderAttributes _renderAttrib</div><div class="ttdef"><b>Definition:</b> modelpanelviewport.cs:93</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport_html_ab588a323a028fdfcd5dce88e67622927"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#ab588a323a028fdfcd5dce88e67622927">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.SettingsScreenText</a></div><div class="ttdeci">ScreenTextHandler SettingsScreenText</div><div class="ttdef"><b>Definition:</b> modelpanelviewport.cs:132</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html">BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase.ModelEditorBase</a></div><div class="ttdef"><b>Definition:</b> Animation.cs:11</div></div>
@@ -1776,15 +1835,14 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_render_attributes_html_a878b8a48224f68cc513b3e36faf20a8b"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_render_attributes.html#a878b8a48224f68cc513b3e36faf20a8b">BrawlLib.Modeling.ModelRenderAttributes._renderBonesAsPoints</a></div><div class="ttdeci">bool _renderBonesAsPoints</div><div class="ttdef"><b>Definition:</b> IModel.cs:52</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_render_attributes_html_afc6783b51c74d87048138226e71157db"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_render_attributes.html#afc6783b51c74d87048138226e71157db">BrawlLib.Modeling.ModelRenderAttributes._scaleBones</a></div><div class="ttdeci">bool _scaleBones</div><div class="ttdef"><b>Definition:</b> IModel.cs:51</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_camera_html_abc08bc9811206a1ec022219e66c7d2d6"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_camera.html#abc08bc9811206a1ec022219e66c7d2d6">BrawlLib.OpenGL.GLCamera.Project</a></div><div class="ttdeci">Vector3 Project(float x, float y, float z)</div><div class="ttdoc">Projects a world point to screen coordinates.</div><div class="ttdef"><b>Definition:</b> GLCamera.cs:329</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a19861acbe1cbe34b94fc7e607d65cae9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a19861acbe1cbe34b94fc7e607d65cae9">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.DefaultNodeColor</a></div><div class="ttdeci">static Color DefaultNodeColor</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1258</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a38b612f60d52a5a0d8c72b27a4f4b389"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a38b612f60d52a5a0d8c72b27a4f4b389">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.CreateNodeOrb</a></div><div class="ttdeci">static GLDisplayList CreateNodeOrb()</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1410</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a42a2d19e1649431bc5369fdab73a798c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a42a2d19e1649431bc5369fdab73a798c">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode._render</a></div><div class="ttdeci">bool _render</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1309</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a718045c37600113f6b386a3247e51e94"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a718045c37600113f6b386a3247e51e94">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.DefaultLineDeselectedColor</a></div><div class="ttdeci">static Color DefaultLineDeselectedColor</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1257</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a7499ef65fa836d89f16c955fa9728724"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a7499ef65fa836d89f16c955fa9728724">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode._boneColor</a></div><div class="ttdeci">Color _boneColor</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1260</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a8a5ed529ccd90305ddeeb78b01ab8006"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a8a5ed529ccd90305ddeeb78b01ab8006">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.DefaultLineColor</a></div><div class="ttdeci">static Color DefaultLineColor</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1256</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_ad727cf4bde5ad71d0339804ed1ee012a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode._nodeColor</a></div><div class="ttdeci">Color _nodeColor</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1261</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_af73fe145ea65e31d6a4b8bf387cf232b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#af73fe145ea65e31d6a4b8bf387cf232b">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.DrawNodeOrients</a></div><div class="ttdeci">static void DrawNodeOrients(float alpha=1.0f)</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1430</div></div>
-<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_bone_node_html_a7f79faca14836a08f06119e84e70fd76"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a7f79faca14836a08f06119e84e70fd76">BrawlLib.Modeling.IBoneNode.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> IBoneNode.cs:11</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a19861acbe1cbe34b94fc7e607d65cae9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a19861acbe1cbe34b94fc7e607d65cae9">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.DefaultNodeColor</a></div><div class="ttdeci">static Color DefaultNodeColor</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1285</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a38b612f60d52a5a0d8c72b27a4f4b389"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a38b612f60d52a5a0d8c72b27a4f4b389">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.CreateNodeOrb</a></div><div class="ttdeci">static GLDisplayList CreateNodeOrb()</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1437</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a42a2d19e1649431bc5369fdab73a798c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a42a2d19e1649431bc5369fdab73a798c">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode._render</a></div><div class="ttdeci">bool _render</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1336</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a718045c37600113f6b386a3247e51e94"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a718045c37600113f6b386a3247e51e94">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.DefaultLineDeselectedColor</a></div><div class="ttdeci">static Color DefaultLineDeselectedColor</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1284</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a7499ef65fa836d89f16c955fa9728724"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a7499ef65fa836d89f16c955fa9728724">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode._boneColor</a></div><div class="ttdeci">Color _boneColor</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1287</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a8a5ed529ccd90305ddeeb78b01ab8006"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a8a5ed529ccd90305ddeeb78b01ab8006">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.DefaultLineColor</a></div><div class="ttdeci">static Color DefaultLineColor</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1283</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_ad727cf4bde5ad71d0339804ed1ee012a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#ad727cf4bde5ad71d0339804ed1ee012a">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode._nodeColor</a></div><div class="ttdeci">Color _nodeColor</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1288</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_af73fe145ea65e31d6a4b8bf387cf232b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#af73fe145ea65e31d6a4b8bf387cf232b">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.DrawNodeOrients</a></div><div class="ttdeci">static void DrawNodeOrients(float alpha=1.0f)</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:1457</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a0bd1bf40055909654d230ce4950095e0"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a0bd1bf40055909654d230ce4950095e0">BrawlLib.Internal.Matrix.TranslationMatrix</a></div><div class="ttdeci">static Matrix TranslationMatrix(Vector3 v)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:353</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a8d09e1033484426c130172e18b2dc23e"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8d09e1033484426c130172e18b2dc23e">BrawlLib.Internal.Matrix.GetPoint</a></div><div class="ttdeci">Vector3 GetPoint()</div><div class="ttdef"><b>Definition:</b> Matrix.cs:321</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_ad47698246e93b51c683829ba7d0d3ab1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">BrawlLib.Internal.Matrix.ScaleMatrix</a></div><div class="ttdeci">static Matrix ScaleMatrix(Vector3 scale)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:337</div></div>
@@ -2717,10 +2775,10 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#ab880c1cc68c72c77fd5da4e6afed1932">BrawlLib.Modeling.IBoneNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1304</span>        {</div>
-<div class="line"><span class="lineno"> 1305</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a42a2d19e1649431bc5369fdab73a798c">_render</a>;</div>
-<div class="line"><span class="lineno"> 1306</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a42a2d19e1649431bc5369fdab73a798c">_render</a> = value;</div>
-<div class="line"><span class="lineno"> 1307</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1331</span>        {</div>
+<div class="line"><span class="lineno"> 1332</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a42a2d19e1649431bc5369fdab73a798c">_render</a>;</div>
+<div class="line"><span class="lineno"> 1333</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a42a2d19e1649431bc5369fdab73a798c">_render</a> = value;</div>
+<div class="line"><span class="lineno"> 1334</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

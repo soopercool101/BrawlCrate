@@ -24,5 +24,8 @@ var searchData=
   ['userdataclass_21',['UserDataClass',['../class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html',1,'BrawlLib::SSBB']]],
   ['userdatacollection_22',['UserDataCollection',['../class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection.html',1,'BrawlLib::SSBB']]],
   ['userdatacollectionpropertydescriptor_23',['UserDataCollectionPropertyDescriptor',['../class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html',1,'BrawlLib::SSBB']]],
-  ['userdataentry_24',['UserDataEntry',['../struct_brawl_lib_1_1_s_s_b_b_1_1_user_data_entry.html',1,'BrawlLib::SSBB']]]
+  ['userdataentry_24',['UserDataEntry',['../struct_brawl_lib_1_1_s_s_b_b_1_1_user_data_entry.html',1,'BrawlLib::SSBB']]],
+  ['userinputbyteenumdropdown_25',['UserInputByteEnumDropdown',['../class_brawl_lib_1_1_internal_1_1_user_input_byte_enum_dropdown.html',1,'BrawlLib::Internal']]],
+  ['userinputhexbyteenumdropdown_26',['UserInputHexByteEnumDropdown',['../class_brawl_lib_1_1_internal_1_1_user_input_hex_byte_enum_dropdown.html',1,'BrawlLib::Internal']]],
+  ['userinputhexbyteenumdropdown_3c_20villagerid_20_3e_27',['UserInputHexByteEnumDropdown&lt; VillagerID &gt;',['../class_brawl_lib_1_1_internal_1_1_user_input_hex_byte_enum_dropdown.html',1,'BrawlLib::Internal']]]
 ];

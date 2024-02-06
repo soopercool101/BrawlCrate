@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40a</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.41</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -412,11 +412,11 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a827da2b5393280f05854efd78e273152">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  127</span>        {</div>
-<div class="line"><span class="lineno">  128</span>            <span class="comment">// Constant size (14 bytes)</span></div>
-<div class="line"><span class="lineno">  129</span>            <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html">EventMatchDifficultyData</a>);</div>
-<div class="line"><span class="lineno">  130</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html">BrawlLib.SSBB.Types.EventMatchDifficultyData</a></div><div class="ttdef"><b>Definition:</b> EventMatch.cs:92</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  128</span>        {</div>
+<div class="line"><span class="lineno">  129</span>            <span class="comment">// Constant size (14 bytes)</span></div>
+<div class="line"><span class="lineno">  130</span>            <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html">EventMatchDifficultyData</a>);</div>
+<div class="line"><span class="lineno">  131</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html">BrawlLib.SSBB.Types.EventMatchDifficultyData</a></div><div class="ttdef"><b>Definition:</b> EventMatch.cs:106</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -444,19 +444,19 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aca8bfdd04f5339dd3135a9daf03495a8">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  106</span>        {</div>
-<div class="line"><span class="lineno">  107</span>            base.OnInitialize();</div>
-<div class="line"><span class="lineno">  108</span> </div>
-<div class="line"><span class="lineno">  109</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a> != <span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html">EventMatchDifficultyData</a>))</div>
-<div class="line"><span class="lineno">  110</span>            {</div>
-<div class="line"><span class="lineno">  111</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Wrong size for EventMatchDifficultyNode&quot;</span>);</div>
-<div class="line"><span class="lineno">  112</span>            }</div>
-<div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>            <span class="comment">// Copy the data from the address</span></div>
-<div class="line"><span class="lineno">  115</span>            data = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html">EventMatchDifficultyData</a>*) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a>;</div>
-<div class="line"><span class="lineno">  116</span> </div>
-<div class="line"><span class="lineno">  117</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  118</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  107</span>        {</div>
+<div class="line"><span class="lineno">  108</span>            base.OnInitialize();</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a> != <span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html">EventMatchDifficultyData</a>))</div>
+<div class="line"><span class="lineno">  111</span>            {</div>
+<div class="line"><span class="lineno">  112</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Wrong size for EventMatchDifficultyNode&quot;</span>);</div>
+<div class="line"><span class="lineno">  113</span>            }</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>            <span class="comment">// Copy the data from the address</span></div>
+<div class="line"><span class="lineno">  116</span>            data = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html">EventMatchDifficultyData</a>*) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a>;</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  119</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_acba0e48a7ed4557ceefbbc7b19c36b2d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">BrawlLib.SSBB.ResourceNodes.ResourceNode.WorkingUncompressed</a></div><div class="ttdeci">DataSource WorkingUncompressed</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:183</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_a0f9a87e8ce6929677cf3b301b82e9c86"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">BrawlLib.SSBB.ResourceNodes.DataSource.Length</a></div><div class="ttdeci">int Length</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:32</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_ae84563550ab4a05aa5c916f03260d08d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">BrawlLib.SSBB.ResourceNodes.DataSource.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:31</div></div>
@@ -504,10 +504,10 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a041a23bb933e6da8b0e03fdf664ba5db">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  121</span>        {</div>
-<div class="line"><span class="lineno">  122</span>            <span class="comment">// Copy the data back to the address</span></div>
-<div class="line"><span class="lineno">  123</span>            *(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html">EventMatchDifficultyData</a>*) address = data;</div>
-<div class="line"><span class="lineno">  124</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  122</span>        {</div>
+<div class="line"><span class="lineno">  123</span>            <span class="comment">// Copy the data back to the address</span></div>
+<div class="line"><span class="lineno">  124</span>            *(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html">EventMatchDifficultyData</a>*) address = data;</div>
+<div class="line"><span class="lineno">  125</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -531,16 +531,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   45</span>        {</div>
-<div class="line"><span class="lineno">   46</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a24ccec2cb5c9cf222d2438d6e6240e3a">_aiType</a>;</div>
-<div class="line"><span class="lineno">   47</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   48</span>            {</div>
-<div class="line"><span class="lineno">   49</span>                data._aiType = value;</div>
-<div class="line"><span class="lineno">   50</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">   51</span>            }</div>
-<div class="line"><span class="lineno">   52</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>        {</div>
+<div class="line"><span class="lineno">   47</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a24ccec2cb5c9cf222d2438d6e6240e3a">_aiType</a>;</div>
+<div class="line"><span class="lineno">   48</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">   49</span>            {</div>
+<div class="line"><span class="lineno">   50</span>                data._aiType = value;</div>
+<div class="line"><span class="lineno">   51</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">   52</span>            }</div>
+<div class="line"><span class="lineno">   53</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a7d6d973b631a29f1f86bff9500bbb7eb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">BrawlLib.SSBB.ResourceNodes.ResourceNode.SignalPropertyChange</a></div><div class="ttdeci">virtual void SignalPropertyChange()</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:313</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_a24ccec2cb5c9cf222d2438d6e6240e3a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a24ccec2cb5c9cf222d2438d6e6240e3a">BrawlLib.SSBB.Types.EventMatchDifficultyData._aiType</a></div><div class="ttdeci">byte _aiType</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:99</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_a24ccec2cb5c9cf222d2438d6e6240e3a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a24ccec2cb5c9cf222d2438d6e6240e3a">BrawlLib.SSBB.Types.EventMatchDifficultyData._aiType</a></div><div class="ttdeci">byte _aiType</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:113</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -563,15 +563,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   55</span>        {</div>
-<div class="line"><span class="lineno">   56</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#ab19c39eef631ab868561b00f4ef529a3">_costume</a>;</div>
-<div class="line"><span class="lineno">   57</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   58</span>            {</div>
-<div class="line"><span class="lineno">   59</span>                data._costume = value;</div>
-<div class="line"><span class="lineno">   60</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">   61</span>            }</div>
-<div class="line"><span class="lineno">   62</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_ab19c39eef631ab868561b00f4ef529a3"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#ab19c39eef631ab868561b00f4ef529a3">BrawlLib.SSBB.Types.EventMatchDifficultyData._costume</a></div><div class="ttdeci">byte _costume</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:100</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>        {</div>
+<div class="line"><span class="lineno">   57</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#ab19c39eef631ab868561b00f4ef529a3">_costume</a>;</div>
+<div class="line"><span class="lineno">   58</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">   59</span>            {</div>
+<div class="line"><span class="lineno">   60</span>                data._costume = value;</div>
+<div class="line"><span class="lineno">   61</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">   62</span>            }</div>
+<div class="line"><span class="lineno">   63</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_ab19c39eef631ab868561b00f4ef529a3"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#ab19c39eef631ab868561b00f4ef529a3">BrawlLib.SSBB.Types.EventMatchDifficultyData._costume</a></div><div class="ttdeci">byte _costume</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:114</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -594,15 +594,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   15</span>        {</div>
-<div class="line"><span class="lineno">   16</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#aa5035ce64a4affe96ec042fa8953f5aa">_cpuLevel</a>;</div>
-<div class="line"><span class="lineno">   17</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   18</span>            {</div>
-<div class="line"><span class="lineno">   19</span>                data._cpuLevel = value;</div>
-<div class="line"><span class="lineno">   20</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">   21</span>            }</div>
-<div class="line"><span class="lineno">   22</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_aa5035ce64a4affe96ec042fa8953f5aa"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#aa5035ce64a4affe96ec042fa8953f5aa">BrawlLib.SSBB.Types.EventMatchDifficultyData._cpuLevel</a></div><div class="ttdeci">byte _cpuLevel</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:95</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>        {</div>
+<div class="line"><span class="lineno">   17</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#aa5035ce64a4affe96ec042fa8953f5aa">_cpuLevel</a>;</div>
+<div class="line"><span class="lineno">   18</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">   19</span>            {</div>
+<div class="line"><span class="lineno">   20</span>                data._cpuLevel = value;</div>
+<div class="line"><span class="lineno">   21</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">   22</span>            }</div>
+<div class="line"><span class="lineno">   23</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_aa5035ce64a4affe96ec042fa8953f5aa"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#aa5035ce64a4affe96ec042fa8953f5aa">BrawlLib.SSBB.Types.EventMatchDifficultyData._cpuLevel</a></div><div class="ttdeci">byte _cpuLevel</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:109</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -625,15 +625,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   35</span>        {</div>
-<div class="line"><span class="lineno">   36</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a35f5ecd5a2cdd71dca3e19e3322ab2df">_defenseRatio</a>;</div>
-<div class="line"><span class="lineno">   37</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   38</span>            {</div>
-<div class="line"><span class="lineno">   39</span>                data._defenseRatio = value;</div>
-<div class="line"><span class="lineno">   40</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">   41</span>            }</div>
-<div class="line"><span class="lineno">   42</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_a35f5ecd5a2cdd71dca3e19e3322ab2df"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a35f5ecd5a2cdd71dca3e19e3322ab2df">BrawlLib.SSBB.Types.EventMatchDifficultyData._defenseRatio</a></div><div class="ttdeci">bushort _defenseRatio</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:98</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>        {</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a35f5ecd5a2cdd71dca3e19e3322ab2df">_defenseRatio</a>;</div>
+<div class="line"><span class="lineno">   38</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">   39</span>            {</div>
+<div class="line"><span class="lineno">   40</span>                data._defenseRatio = value;</div>
+<div class="line"><span class="lineno">   41</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">   42</span>            }</div>
+<div class="line"><span class="lineno">   43</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_a35f5ecd5a2cdd71dca3e19e3322ab2df"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a35f5ecd5a2cdd71dca3e19e3322ab2df">BrawlLib.SSBB.Types.EventMatchDifficultyData._defenseRatio</a></div><div class="ttdeci">bushort _defenseRatio</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:112</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -656,15 +656,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   86</span>        {</div>
-<div class="line"><span class="lineno">   87</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a27dded3ce9b297ad4fc93b296e939b26">_initialHitPoints</a>;</div>
-<div class="line"><span class="lineno">   88</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   89</span>            {</div>
-<div class="line"><span class="lineno">   90</span>                data._initialHitPoints = value;</div>
-<div class="line"><span class="lineno">   91</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">   92</span>            }</div>
-<div class="line"><span class="lineno">   93</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_a27dded3ce9b297ad4fc93b296e939b26"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a27dded3ce9b297ad4fc93b296e939b26">BrawlLib.SSBB.Types.EventMatchDifficultyData._initialHitPoints</a></div><div class="ttdeci">bshort _initialHitPoints</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:103</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>        {</div>
+<div class="line"><span class="lineno">   88</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a27dded3ce9b297ad4fc93b296e939b26">_initialHitPoints</a>;</div>
+<div class="line"><span class="lineno">   89</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">   90</span>            {</div>
+<div class="line"><span class="lineno">   91</span>                data._initialHitPoints = value;</div>
+<div class="line"><span class="lineno">   92</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">   93</span>            }</div>
+<div class="line"><span class="lineno">   94</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_a27dded3ce9b297ad4fc93b296e939b26"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a27dded3ce9b297ad4fc93b296e939b26">BrawlLib.SSBB.Types.EventMatchDifficultyData._initialHitPoints</a></div><div class="ttdeci">bshort _initialHitPoints</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:117</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -687,15 +687,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   25</span>        {</div>
-<div class="line"><span class="lineno">   26</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a02b13db6cc065de588c869d441a80103">_offenseRatio</a>;</div>
-<div class="line"><span class="lineno">   27</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   28</span>            {</div>
-<div class="line"><span class="lineno">   29</span>                data._offenseRatio = value;</div>
-<div class="line"><span class="lineno">   30</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">   31</span>            }</div>
-<div class="line"><span class="lineno">   32</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_a02b13db6cc065de588c869d441a80103"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a02b13db6cc065de588c869d441a80103">BrawlLib.SSBB.Types.EventMatchDifficultyData._offenseRatio</a></div><div class="ttdeci">bushort _offenseRatio</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:97</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>        {</div>
+<div class="line"><span class="lineno">   27</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a02b13db6cc065de588c869d441a80103">_offenseRatio</a>;</div>
+<div class="line"><span class="lineno">   28</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">   29</span>            {</div>
+<div class="line"><span class="lineno">   30</span>                data._offenseRatio = value;</div>
+<div class="line"><span class="lineno">   31</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">   32</span>            }</div>
+<div class="line"><span class="lineno">   33</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_a02b13db6cc065de588c869d441a80103"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a02b13db6cc065de588c869d441a80103">BrawlLib.SSBB.Types.EventMatchDifficultyData._offenseRatio</a></div><div class="ttdeci">bushort _offenseRatio</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:111</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -718,15 +718,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   96</span>        {</div>
-<div class="line"><span class="lineno">   97</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#ae7312c9f27e8a1952d7038e80517913b">_startingDamage</a>;</div>
-<div class="line"><span class="lineno">   98</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   99</span>            {</div>
-<div class="line"><span class="lineno">  100</span>                data._startingDamage = value;</div>
-<div class="line"><span class="lineno">  101</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">  102</span>            }</div>
-<div class="line"><span class="lineno">  103</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_ae7312c9f27e8a1952d7038e80517913b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#ae7312c9f27e8a1952d7038e80517913b">BrawlLib.SSBB.Types.EventMatchDifficultyData._startingDamage</a></div><div class="ttdeci">bshort _startingDamage</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:104</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>        {</div>
+<div class="line"><span class="lineno">   98</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#ae7312c9f27e8a1952d7038e80517913b">_startingDamage</a>;</div>
+<div class="line"><span class="lineno">   99</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">  100</span>            {</div>
+<div class="line"><span class="lineno">  101</span>                data._startingDamage = value;</div>
+<div class="line"><span class="lineno">  102</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">  103</span>            }</div>
+<div class="line"><span class="lineno">  104</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_ae7312c9f27e8a1952d7038e80517913b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#ae7312c9f27e8a1952d7038e80517913b">BrawlLib.SSBB.Types.EventMatchDifficultyData._startingDamage</a></div><div class="ttdeci">bshort _startingDamage</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:118</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -749,15 +749,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   65</span>        {</div>
-<div class="line"><span class="lineno">   66</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a590d9e3acd1a8f689964197ead5d67cb">_stockCount</a>;</div>
-<div class="line"><span class="lineno">   67</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   68</span>            {</div>
-<div class="line"><span class="lineno">   69</span>                data._stockCount = value;</div>
-<div class="line"><span class="lineno">   70</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">   71</span>            }</div>
-<div class="line"><span class="lineno">   72</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_a590d9e3acd1a8f689964197ead5d67cb"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a590d9e3acd1a8f689964197ead5d67cb">BrawlLib.SSBB.Types.EventMatchDifficultyData._stockCount</a></div><div class="ttdeci">byte _stockCount</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:101</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>        {</div>
+<div class="line"><span class="lineno">   67</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a590d9e3acd1a8f689964197ead5d67cb">_stockCount</a>;</div>
+<div class="line"><span class="lineno">   68</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">   69</span>            {</div>
+<div class="line"><span class="lineno">   70</span>                data._stockCount = value;</div>
+<div class="line"><span class="lineno">   71</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">   72</span>            }</div>
+<div class="line"><span class="lineno">   73</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_a590d9e3acd1a8f689964197ead5d67cb"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#a590d9e3acd1a8f689964197ead5d67cb">BrawlLib.SSBB.Types.EventMatchDifficultyData._stockCount</a></div><div class="ttdeci">byte _stockCount</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:115</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -780,15 +780,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   76</span>        {</div>
-<div class="line"><span class="lineno">   77</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#af3b84ae2a81b1b6a1a0de31b819f6880">_unknown09</a>;</div>
-<div class="line"><span class="lineno">   78</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   79</span>            {</div>
-<div class="line"><span class="lineno">   80</span>                data._unknown09 = value;</div>
-<div class="line"><span class="lineno">   81</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">   82</span>            }</div>
-<div class="line"><span class="lineno">   83</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_af3b84ae2a81b1b6a1a0de31b819f6880"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#af3b84ae2a81b1b6a1a0de31b819f6880">BrawlLib.SSBB.Types.EventMatchDifficultyData._unknown09</a></div><div class="ttdeci">byte _unknown09</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:102</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   77</span>        {</div>
+<div class="line"><span class="lineno">   78</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#af3b84ae2a81b1b6a1a0de31b819f6880">_unknown09</a>;</div>
+<div class="line"><span class="lineno">   79</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">   80</span>            {</div>
+<div class="line"><span class="lineno">   81</span>                data._unknown09 = value;</div>
+<div class="line"><span class="lineno">   82</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">   83</span>            }</div>
+<div class="line"><span class="lineno">   84</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data_html_af3b84ae2a81b1b6a1a0de31b819f6880"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_difficulty_data.html#af3b84ae2a81b1b6a1a0de31b819f6880">BrawlLib.SSBB.Types.EventMatchDifficultyData._unknown09</a></div><div class="ttdeci">byte _unknown09</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:116</div></div>
 </div><!-- fragment -->
 </div>
 </div>

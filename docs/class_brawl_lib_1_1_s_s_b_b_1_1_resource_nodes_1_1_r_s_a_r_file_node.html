@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40a</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.41</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -315,6 +315,8 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:ace9e162c2909e71e9ee234ba60c1bc90"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ace9e162c2909e71e9ee234ba60c1bc90">ClosestMatching</a><code> [get]</code></td></tr>
+<tr class="separator:ace9e162c2909e71e9ee234ba60c1bc90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70bad02e1393f4f8d0c3d1ea8fac307f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_group_node.html">RSARGroupNode</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a70bad02e1393f4f8d0c3d1ea8fac307f">GroupRefNodes</a><code> [get]</code></td></tr>
 <tr class="separator:a70bad02e1393f4f8d0c3d1ea8fac307f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc9834bac67f188722b6ffac42b7fe8f"><td class="memItemLeft" align="right" valign="top">virtual string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#afc9834bac67f188722b6ffac42b7fe8f">GroupRefs</a><code> [get]</code></td></tr>
@@ -457,15 +459,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   71</span>        {</div>
-<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ac457137609e94b9aa70aa792c6d68546">_rsarSoundEntries</a>.Contains(n))</div>
-<div class="line"><span class="lineno">   73</span>            {</div>
-<div class="line"><span class="lineno">   74</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ac457137609e94b9aa70aa792c6d68546">_rsarSoundEntries</a>.Add(n);</div>
-<div class="line"><span class="lineno">   75</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a65c2218d346702c20756f8360742f31b">_references</a>.Add(n.TreePath);</div>
-<div class="line"><span class="lineno">   76</span>            }</div>
-<div class="line"><span class="lineno">   77</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_a65c2218d346702c20756f8360742f31b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a65c2218d346702c20756f8360742f31b">BrawlLib.SSBB.ResourceNodes.RSARFileNode._references</a></div><div class="ttdeci">List&lt; string &gt; _references</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:64</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_ac457137609e94b9aa70aa792c6d68546"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ac457137609e94b9aa70aa792c6d68546">BrawlLib.SSBB.ResourceNodes.RSARFileNode._rsarSoundEntries</a></div><div class="ttdeci">List&lt; RSARSoundNode &gt; _rsarSoundEntries</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:67</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>        {</div>
+<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ac457137609e94b9aa70aa792c6d68546">_rsarSoundEntries</a>.Contains(n))</div>
+<div class="line"><span class="lineno">   81</span>            {</div>
+<div class="line"><span class="lineno">   82</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ac457137609e94b9aa70aa792c6d68546">_rsarSoundEntries</a>.Add(n);</div>
+<div class="line"><span class="lineno">   83</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a65c2218d346702c20756f8360742f31b">_references</a>.Add(n.TreePath);</div>
+<div class="line"><span class="lineno">   84</span>            }</div>
+<div class="line"><span class="lineno">   85</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_a65c2218d346702c20756f8360742f31b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a65c2218d346702c20756f8360742f31b">BrawlLib.SSBB.ResourceNodes.RSARFileNode._references</a></div><div class="ttdeci">List&lt; string &gt; _references</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:72</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_ac457137609e94b9aa70aa792c6d68546"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ac457137609e94b9aa70aa792c6d68546">BrawlLib.SSBB.ResourceNodes.RSARFileNode._rsarSoundEntries</a></div><div class="ttdeci">List&lt; RSARSoundNode &gt; _rsarSoundEntries</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:75</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -494,53 +496,53 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a0d20c06f93b5bbadd05a1f98a5689faf">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  183</span>        {</div>
-<div class="line"><span class="lineno">  184</span>            LabelBuilder labl;</div>
-<div class="line"><span class="lineno">  185</span>            <span class="keywordtype">int</span> lablLen, size;</div>
-<div class="line"><span class="lineno">  186</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> addr;</div>
-<div class="line"><span class="lineno">  187</span> </div>
-<div class="line"><span class="lineno">  188</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a0c9cbceecda9744992db97d7ee657bab">Rebuild</a>();</div>
-<div class="line"><span class="lineno">  189</span> </div>
-<div class="line"><span class="lineno">  190</span>            <span class="comment">//Get strings</span></div>
-<div class="line"><span class="lineno">  191</span>            labl = <span class="keyword">new</span> LabelBuilder();</div>
-<div class="line"><span class="lineno">  192</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a8425a04eca1b5044957fcf3ba0681ede">GetStrings</a>(labl);</div>
-<div class="line"><span class="lineno">  193</span>            lablLen = labl.Count == 0 ? 0 : labl.GetSize();</div>
-<div class="line"><span class="lineno">  194</span>            size = WorkingUncompressed.Length + lablLen + <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>;</div>
+<div class="fragment"><div class="line"><span class="lineno">  191</span>        {</div>
+<div class="line"><span class="lineno">  192</span>            LabelBuilder labl;</div>
+<div class="line"><span class="lineno">  193</span>            <span class="keywordtype">int</span> lablLen, size;</div>
+<div class="line"><span class="lineno">  194</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> addr;</div>
 <div class="line"><span class="lineno">  195</span> </div>
-<div class="line"><span class="lineno">  196</span>            <span class="keyword">using</span> (FileStream stream =</div>
-<div class="line"><span class="lineno">  197</span>                <span class="keyword">new</span> FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))</div>
-<div class="line"><span class="lineno">  198</span>            {</div>
-<div class="line"><span class="lineno">  199</span>                stream.SetLength(size);</div>
-<div class="line"><span class="lineno">  200</span>                <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a> map = <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a2f15f57853d50e9e0739f7a7a3d1b5da">FromStreamInternal</a>(stream, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">FileMapProtect</a>.ReadWrite, 0, size))</div>
-<div class="line"><span class="lineno">  201</span>                {</div>
-<div class="line"><span class="lineno">  202</span>                    addr = map.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">Address</a>;</div>
+<div class="line"><span class="lineno">  196</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a0c9cbceecda9744992db97d7ee657bab">Rebuild</a>();</div>
+<div class="line"><span class="lineno">  197</span> </div>
+<div class="line"><span class="lineno">  198</span>            <span class="comment">//Get strings</span></div>
+<div class="line"><span class="lineno">  199</span>            labl = <span class="keyword">new</span> LabelBuilder();</div>
+<div class="line"><span class="lineno">  200</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a8425a04eca1b5044957fcf3ba0681ede">GetStrings</a>(labl);</div>
+<div class="line"><span class="lineno">  201</span>            lablLen = labl.Count == 0 ? 0 : labl.GetSize();</div>
+<div class="line"><span class="lineno">  202</span>            size = WorkingUncompressed.Length + lablLen + <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>;</div>
 <div class="line"><span class="lineno">  203</span> </div>
-<div class="line"><span class="lineno">  204</span>                    <span class="comment">//Write headers</span></div>
-<div class="line"><span class="lineno">  205</span>                    MoveRawUncompressed(addr, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>);</div>
-<div class="line"><span class="lineno">  206</span>                    addr += <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>;</div>
-<div class="line"><span class="lineno">  207</span> </div>
-<div class="line"><span class="lineno">  208</span>                    <span class="comment">//Write strings</span></div>
-<div class="line"><span class="lineno">  209</span>                    <span class="keywordflow">if</span> (lablLen &gt; 0)</div>
-<div class="line"><span class="lineno">  210</span>                    {</div>
-<div class="line"><span class="lineno">  211</span>                        labl.Write(addr);</div>
-<div class="line"><span class="lineno">  212</span>                    }</div>
-<div class="line"><span class="lineno">  213</span> </div>
-<div class="line"><span class="lineno">  214</span>                    addr += lablLen;</div>
+<div class="line"><span class="lineno">  204</span>            <span class="keyword">using</span> (FileStream stream =</div>
+<div class="line"><span class="lineno">  205</span>                <span class="keyword">new</span> FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))</div>
+<div class="line"><span class="lineno">  206</span>            {</div>
+<div class="line"><span class="lineno">  207</span>                stream.SetLength(size);</div>
+<div class="line"><span class="lineno">  208</span>                <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a> map = <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a2f15f57853d50e9e0739f7a7a3d1b5da">FromStreamInternal</a>(stream, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">FileMapProtect</a>.ReadWrite, 0, size))</div>
+<div class="line"><span class="lineno">  209</span>                {</div>
+<div class="line"><span class="lineno">  210</span>                    addr = map.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">Address</a>;</div>
+<div class="line"><span class="lineno">  211</span> </div>
+<div class="line"><span class="lineno">  212</span>                    <span class="comment">//Write headers</span></div>
+<div class="line"><span class="lineno">  213</span>                    MoveRawUncompressed(addr, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>);</div>
+<div class="line"><span class="lineno">  214</span>                    addr += <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>;</div>
 <div class="line"><span class="lineno">  215</span> </div>
-<div class="line"><span class="lineno">  216</span>                    <span class="comment">//Write sound data</span></div>
-<div class="line"><span class="lineno">  217</span>                    <span class="keywordtype">int</span> audioLen = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>;</div>
-<div class="line"><span class="lineno">  218</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">Move</a>(addr, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a>, (uint) audioLen);</div>
-<div class="line"><span class="lineno">  219</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#aa61337421095373ecd78811beda82cec">Close</a>();</div>
-<div class="line"><span class="lineno">  220</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a> = <span class="keyword">new</span> DataSource(addr, audioLen);</div>
-<div class="line"><span class="lineno">  221</span>                }</div>
-<div class="line"><span class="lineno">  222</span>            }</div>
-<div class="line"><span class="lineno">  223</span>        }</div>
+<div class="line"><span class="lineno">  216</span>                    <span class="comment">//Write strings</span></div>
+<div class="line"><span class="lineno">  217</span>                    <span class="keywordflow">if</span> (lablLen &gt; 0)</div>
+<div class="line"><span class="lineno">  218</span>                    {</div>
+<div class="line"><span class="lineno">  219</span>                        labl.Write(addr);</div>
+<div class="line"><span class="lineno">  220</span>                    }</div>
+<div class="line"><span class="lineno">  221</span> </div>
+<div class="line"><span class="lineno">  222</span>                    addr += lablLen;</div>
+<div class="line"><span class="lineno">  223</span> </div>
+<div class="line"><span class="lineno">  224</span>                    <span class="comment">//Write sound data</span></div>
+<div class="line"><span class="lineno">  225</span>                    <span class="keywordtype">int</span> audioLen = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>;</div>
+<div class="line"><span class="lineno">  226</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">Move</a>(addr, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a>, (uint) audioLen);</div>
+<div class="line"><span class="lineno">  227</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#aa61337421095373ecd78811beda82cec">Close</a>();</div>
+<div class="line"><span class="lineno">  228</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a> = <span class="keyword">new</span> DataSource(addr, audioLen);</div>
+<div class="line"><span class="lineno">  229</span>                }</div>
+<div class="line"><span class="lineno">  230</span>            }</div>
+<div class="line"><span class="lineno">  231</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">BrawlLib.Internal.IO.FileMap</a></div><div class="ttdef"><b>Definition:</b> FileMap.cs:10</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_a2f15f57853d50e9e0739f7a7a3d1b5da"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a2f15f57853d50e9e0739f7a7a3d1b5da">BrawlLib.Internal.IO.FileMap.FromStreamInternal</a></div><div class="ttdeci">static FileMap FromStreamInternal(FileStream stream, FileMapProtect prot, int offset, int length)</div><div class="ttdef"><b>Definition:</b> FileMap.cs:152</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ad16926b6ffda7cc52f6636d26a338511"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">BrawlLib.Internal.IO.FileMap.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> FileMap.cs:16</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html">BrawlLib.Internal.Memory</a></div><div class="ttdef"><b>Definition:</b> Memory.cs:8</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html_a22c0cb3641b22e5ce664d45ad2f10132"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">BrawlLib.Internal.Memory.Move</a></div><div class="ttdeci">static void Move(VoidPtr dst, VoidPtr src, uint size)</div><div class="ttdef"><b>Definition:</b> Memory.cs:9</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_a8425a04eca1b5044957fcf3ba0681ede"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a8425a04eca1b5044957fcf3ba0681ede">BrawlLib.SSBB.ResourceNodes.RSARFileNode.GetStrings</a></div><div class="ttdeci">virtual void GetStrings(LabelBuilder builder)</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:151</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_a8425a04eca1b5044957fcf3ba0681ede"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a8425a04eca1b5044957fcf3ba0681ede">BrawlLib.SSBB.ResourceNodes.RSARFileNode.GetStrings</a></div><div class="ttdeci">virtual void GetStrings(LabelBuilder builder)</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:159</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_adcd7dd8ede903eabd734ece3d50f9a9a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">BrawlLib.SSBB.ResourceNodes.RSARFileNode._audioSource</a></div><div class="ttdeci">DataSource _audioSource</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a0c9cbceecda9744992db97d7ee657bab"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a0c9cbceecda9744992db97d7ee657bab">BrawlLib.SSBB.ResourceNodes.ResourceNode.Rebuild</a></div><div class="ttdeci">virtual void Rebuild()</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:987</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_acba0e48a7ed4557ceefbbc7b19c36b2d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">BrawlLib.SSBB.ResourceNodes.ResourceNode.WorkingUncompressed</a></div><div class="ttdeci">DataSource WorkingUncompressed</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:183</div></div>
@@ -576,33 +578,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented in <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_w_s_d_node.html#a147dcc2b79af52452637c8a72165040f">BrawlLib.SSBB.ResourceNodes.RWSDNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>        {</div>
-<div class="line"><span class="lineno">   33</span>            <span class="keywordtype">string</span> closestMatch = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   34</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#afc9834bac67f188722b6ffac42b7fe8f">GroupRefs</a>)</div>
-<div class="line"><span class="lineno">   35</span>            {</div>
-<div class="line"><span class="lineno">   36</span>                <span class="keywordflow">if</span> (closestMatch == <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><span class="lineno">   37</span>                {</div>
-<div class="line"><span class="lineno">   38</span>                    closestMatch = s;</div>
-<div class="line"><span class="lineno">   39</span>                }</div>
-<div class="line"><span class="lineno">   40</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   41</span>                {</div>
-<div class="line"><span class="lineno">   42</span>                    <span class="keywordtype">int</span> one = closestMatch.Length;</div>
-<div class="line"><span class="lineno">   43</span>                    <span class="keywordtype">int</span> two = s.Length;</div>
-<div class="line"><span class="lineno">   44</span>                    <span class="keywordtype">int</span> min = Math.Min(one, two);</div>
-<div class="line"><span class="lineno">   45</span>                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; min; i++)</div>
-<div class="line"><span class="lineno">   46</span>                    {</div>
-<div class="line"><span class="lineno">   47</span>                        <span class="keywordflow">if</span> (<span class="keywordtype">char</span>.ToLower(s[i]) != <span class="keywordtype">char</span>.ToLower(closestMatch[i]) &amp;&amp; i &gt; 1)</div>
-<div class="line"><span class="lineno">   48</span>                        {</div>
-<div class="line"><span class="lineno">   49</span>                            closestMatch = closestMatch.Substring(0, i - 1);</div>
-<div class="line"><span class="lineno">   50</span>                            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   51</span>                        }</div>
-<div class="line"><span class="lineno">   52</span>                    }</div>
-<div class="line"><span class="lineno">   53</span>                }</div>
-<div class="line"><span class="lineno">   54</span>            }</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = $<span class="stringliteral">&quot;[{_fileIndex}] {closestMatch}&quot;</span>;</div>
-<div class="line"><span class="lineno">   57</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_afc9834bac67f188722b6ffac42b7fe8f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#afc9834bac67f188722b6ffac42b7fe8f">BrawlLib.SSBB.ResourceNodes.RSARFileNode.GroupRefs</a></div><div class="ttdeci">virtual string[] GroupRefs</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:62</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>        {</div>
+<div class="line"><span class="lineno">   64</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = $<span class="stringliteral">&quot;[{_fileIndex}] {ClosestMatching}&quot;</span>;</div>
+<div class="line"><span class="lineno">   65</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
 </div><!-- fragment -->
 </div>
@@ -632,8 +610,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented in <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_e_q_node.html#a1d23668f1f5bb4400c23f8b2942fef58">BrawlLib.SSBB.ResourceNodes.RSEQNode</a>, and <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_w_s_d_node.html#a35e7a39ac45c10671606bebebfd9f0e6">BrawlLib.SSBB.ResourceNodes.RWSDNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  152</span>        {</div>
-<div class="line"><span class="lineno">  153</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  160</span>        {</div>
+<div class="line"><span class="lineno">  161</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -661,29 +639,29 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_n_w4_r_node.html#a160dbe902f9ef479a2d44412e69800bd">BrawlLib.SSBB.ResourceNodes.NW4RNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  156</span>        {</div>
-<div class="line"><span class="lineno">  157</span>            base.OnInitialize();</div>
-<div class="line"><span class="lineno">  158</span> </div>
-<div class="line"><span class="lineno">  159</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a1dd1ddeee36a09b27c98d95d2415a1d9">_replaced</a>)</div>
-<div class="line"><span class="lineno">  160</span>            {</div>
-<div class="line"><span class="lineno">  161</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a049e0587ffdff4663e95607c8459fa54">_groupRefs</a> = <span class="keyword">new</span> List&lt;RSARGroupNode&gt;();</div>
-<div class="line"><span class="lineno">  162</span>            }</div>
-<div class="line"><span class="lineno">  163</span> </div>
-<div class="line"><span class="lineno">  164</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  165</span>            {</div>
-<div class="line"><span class="lineno">  166</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a390294b21218af6211793dc142907447">_parent</a> == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  167</span>                {</div>
-<div class="line"><span class="lineno">  168</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = Path.GetFileNameWithoutExtension(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a8a3a2097354831c43d47ab029479522a">_origPath</a>);</div>
-<div class="line"><span class="lineno">  169</span>                }</div>
-<div class="line"><span class="lineno">  170</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  171</span>                {</div>
-<div class="line"><span class="lineno">  172</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = $<span class="stringliteral">&quot;[{_fileIndex}] {ResourceFileType.ToString()}&quot;</span>;</div>
-<div class="line"><span class="lineno">  173</span>                }</div>
-<div class="line"><span class="lineno">  174</span>            }</div>
-<div class="line"><span class="lineno">  175</span> </div>
-<div class="line"><span class="lineno">  176</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  177</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_a049e0587ffdff4663e95607c8459fa54"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a049e0587ffdff4663e95607c8459fa54">BrawlLib.SSBB.ResourceNodes.RSARFileNode._groupRefs</a></div><div class="ttdeci">List&lt; RSARGroupNode &gt; _groupRefs</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:59</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>        {</div>
+<div class="line"><span class="lineno">  165</span>            base.OnInitialize();</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a1dd1ddeee36a09b27c98d95d2415a1d9">_replaced</a>)</div>
+<div class="line"><span class="lineno">  168</span>            {</div>
+<div class="line"><span class="lineno">  169</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a049e0587ffdff4663e95607c8459fa54">_groupRefs</a> = <span class="keyword">new</span> List&lt;RSARGroupNode&gt;();</div>
+<div class="line"><span class="lineno">  170</span>            }</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  173</span>            {</div>
+<div class="line"><span class="lineno">  174</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a390294b21218af6211793dc142907447">_parent</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  175</span>                {</div>
+<div class="line"><span class="lineno">  176</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = Path.GetFileNameWithoutExtension(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a8a3a2097354831c43d47ab029479522a">_origPath</a>);</div>
+<div class="line"><span class="lineno">  177</span>                }</div>
+<div class="line"><span class="lineno">  178</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  179</span>                {</div>
+<div class="line"><span class="lineno">  180</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = $<span class="stringliteral">&quot;[{_fileIndex}] {ResourceFileType.ToString()}&quot;</span>;</div>
+<div class="line"><span class="lineno">  181</span>                }</div>
+<div class="line"><span class="lineno">  182</span>            }</div>
+<div class="line"><span class="lineno">  183</span> </div>
+<div class="line"><span class="lineno">  184</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  185</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_a049e0587ffdff4663e95607c8459fa54"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a049e0587ffdff4663e95607c8459fa54">BrawlLib.SSBB.ResourceNodes.RSARFileNode._groupRefs</a></div><div class="ttdeci">List&lt; RSARGroupNode &gt; _groupRefs</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:67</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a1dd1ddeee36a09b27c98d95d2415a1d9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a1dd1ddeee36a09b27c98d95d2415a1d9">BrawlLib.SSBB.ResourceNodes.ResourceNode._replaced</a></div><div class="ttdeci">bool _replaced</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:827</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a390294b21218af6211793dc142907447"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a390294b21218af6211793dc142907447">BrawlLib.SSBB.ResourceNodes.ResourceNode._parent</a></div><div class="ttdeci">ResourceNode _parent</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:142</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a8a3a2097354831c43d47ab029479522a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a8a3a2097354831c43d47ab029479522a">BrawlLib.SSBB.ResourceNodes.ResourceNode._origPath</a></div><div class="ttdeci">string _origPath</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
@@ -713,13 +691,13 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   80</span>        {</div>
-<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ac457137609e94b9aa70aa792c6d68546">_rsarSoundEntries</a>.Contains(n))</div>
-<div class="line"><span class="lineno">   82</span>            {</div>
-<div class="line"><span class="lineno">   83</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ac457137609e94b9aa70aa792c6d68546">_rsarSoundEntries</a>.Remove(n);</div>
-<div class="line"><span class="lineno">   84</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a65c2218d346702c20756f8360742f31b">_references</a>.Remove(n.TreePath);</div>
-<div class="line"><span class="lineno">   85</span>            }</div>
-<div class="line"><span class="lineno">   86</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   88</span>        {</div>
+<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ac457137609e94b9aa70aa792c6d68546">_rsarSoundEntries</a>.Contains(n))</div>
+<div class="line"><span class="lineno">   90</span>            {</div>
+<div class="line"><span class="lineno">   91</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ac457137609e94b9aa70aa792c6d68546">_rsarSoundEntries</a>.Remove(n);</div>
+<div class="line"><span class="lineno">   92</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a65c2218d346702c20756f8360742f31b">_references</a>.Remove(n.TreePath);</div>
+<div class="line"><span class="lineno">   93</span>            }</div>
+<div class="line"><span class="lineno">   94</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -878,17 +856,69 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  120</span>        {</div>
-<div class="line"><span class="lineno">  121</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  122</span>            {</div>
-<div class="line"><span class="lineno">  123</span>                <span class="keywordflow">if</span> (RSARNode != <span class="keyword">null</span> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a> != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  124</span>                {</div>
-<div class="line"><span class="lineno">  125</span>                    <span class="keywordflow">return</span> ((uint) (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a> - RSARNode.Header)).ToString(<span class="stringliteral">&quot;X&quot;</span>);</div>
-<div class="line"><span class="lineno">  126</span>                }</div>
-<div class="line"><span class="lineno">  127</span> </div>
-<div class="line"><span class="lineno">  128</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0&quot;</span>;</div>
-<div class="line"><span class="lineno">  129</span>            }</div>
-<div class="line"><span class="lineno">  130</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  128</span>        {</div>
+<div class="line"><span class="lineno">  129</span>            <span class="keyword">get</span></div>
+<div class="line"><span class="lineno">  130</span>            {</div>
+<div class="line"><span class="lineno">  131</span>                <span class="keywordflow">if</span> (RSARNode != <span class="keyword">null</span> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  132</span>                {</div>
+<div class="line"><span class="lineno">  133</span>                    <span class="keywordflow">return</span> ((uint) (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#adcd7dd8ede903eabd734ece3d50f9a9a">_audioSource</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a> - RSARNode.Header)).ToString(<span class="stringliteral">&quot;X&quot;</span>);</div>
+<div class="line"><span class="lineno">  134</span>                }</div>
+<div class="line"><span class="lineno">  135</span> </div>
+<div class="line"><span class="lineno">  136</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0&quot;</span>;</div>
+<div class="line"><span class="lineno">  137</span>            }</div>
+<div class="line"><span class="lineno">  138</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ace9e162c2909e71e9ee234ba60c1bc90" name="ace9e162c2909e71e9ee234ba60c1bc90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace9e162c2909e71e9ee234ba60c1bc90">&#9670;&#160;</a></span>ClosestMatching</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string BrawlLib.SSBB.ResourceNodes.RSARFileNode.ClosestMatching</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   32</span>        {</div>
+<div class="line"><span class="lineno">   33</span>            <span class="keyword">get</span></div>
+<div class="line"><span class="lineno">   34</span>            {</div>
+<div class="line"><span class="lineno">   35</span>                <span class="keywordtype">string</span> closestMatch = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   36</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#afc9834bac67f188722b6ffac42b7fe8f">GroupRefs</a>)</div>
+<div class="line"><span class="lineno">   37</span>                {</div>
+<div class="line"><span class="lineno">   38</span>                    <span class="keywordflow">if</span> (closestMatch == <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><span class="lineno">   39</span>                    {</div>
+<div class="line"><span class="lineno">   40</span>                        closestMatch = s;</div>
+<div class="line"><span class="lineno">   41</span>                    }</div>
+<div class="line"><span class="lineno">   42</span>                    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   43</span>                    {</div>
+<div class="line"><span class="lineno">   44</span>                        <span class="keywordtype">int</span> one = closestMatch.Length;</div>
+<div class="line"><span class="lineno">   45</span>                        <span class="keywordtype">int</span> two = s.Length;</div>
+<div class="line"><span class="lineno">   46</span>                        <span class="keywordtype">int</span> min = Math.Min(one, two);</div>
+<div class="line"><span class="lineno">   47</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; min; i++)</div>
+<div class="line"><span class="lineno">   48</span>                        {</div>
+<div class="line"><span class="lineno">   49</span>                            <span class="keywordflow">if</span> (<span class="keywordtype">char</span>.ToLower(s[i]) != <span class="keywordtype">char</span>.ToLower(closestMatch[i]) &amp;&amp; i &gt; 1)</div>
+<div class="line"><span class="lineno">   50</span>                            {</div>
+<div class="line"><span class="lineno">   51</span>                                closestMatch = closestMatch.Substring(0, i - 1);</div>
+<div class="line"><span class="lineno">   52</span>                                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   53</span>                            }</div>
+<div class="line"><span class="lineno">   54</span>                        }</div>
+<div class="line"><span class="lineno">   55</span>                    }</div>
+<div class="line"><span class="lineno">   56</span>                }</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>                <span class="keywordflow">return</span> closestMatch;</div>
+<div class="line"><span class="lineno">   59</span>            }</div>
+<div class="line"><span class="lineno">   60</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_afc9834bac67f188722b6ffac42b7fe8f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#afc9834bac67f188722b6ffac42b7fe8f">BrawlLib.SSBB.ResourceNodes.RSARFileNode.GroupRefs</a></div><div class="ttdeci">virtual string[] GroupRefs</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:70</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -933,17 +963,17 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  139</span>        {</div>
-<div class="line"><span class="lineno">  140</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  141</span>            {</div>
-<div class="line"><span class="lineno">  142</span>                <span class="keywordflow">if</span> (RSARNode != <span class="keyword">null</span> &amp;&amp; Data != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  143</span>                {</div>
-<div class="line"><span class="lineno">  144</span>                    <span class="keywordflow">return</span> ((uint) (Data - RSARNode.Header)).ToString(<span class="stringliteral">&quot;X&quot;</span>);</div>
-<div class="line"><span class="lineno">  145</span>                }</div>
-<div class="line"><span class="lineno">  146</span> </div>
-<div class="line"><span class="lineno">  147</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0&quot;</span>;</div>
-<div class="line"><span class="lineno">  148</span>            }</div>
-<div class="line"><span class="lineno">  149</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  147</span>        {</div>
+<div class="line"><span class="lineno">  148</span>            <span class="keyword">get</span></div>
+<div class="line"><span class="lineno">  149</span>            {</div>
+<div class="line"><span class="lineno">  150</span>                <span class="keywordflow">if</span> (RSARNode != <span class="keyword">null</span> &amp;&amp; Data != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  151</span>                {</div>
+<div class="line"><span class="lineno">  152</span>                    <span class="keywordflow">return</span> ((uint) (Data - RSARNode.Header)).ToString(<span class="stringliteral">&quot;X&quot;</span>);</div>
+<div class="line"><span class="lineno">  153</span>                }</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0&quot;</span>;</div>
+<div class="line"><span class="lineno">  156</span>            }</div>
+<div class="line"><span class="lineno">  157</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1076,18 +1106,18 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  101</span>        {</div>
-<div class="line"><span class="lineno">  102</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  103</span>            {</div>
-<div class="line"><span class="lineno">  104</span>                <span class="keywordflow">if</span> (RSARNode != <span class="keyword">null</span> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a7f6f4003d150740601613f457c105842">_infoHdr</a> != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  105</span>                {</div>
-<div class="line"><span class="lineno">  106</span>                    <span class="keywordflow">return</span> ((uint) (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a7f6f4003d150740601613f457c105842">_infoHdr</a> - RSARNode.Header)).ToString(<span class="stringliteral">&quot;X&quot;</span>);</div>
-<div class="line"><span class="lineno">  107</span>                }</div>
-<div class="line"><span class="lineno">  108</span> </div>
-<div class="line"><span class="lineno">  109</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0&quot;</span>;</div>
-<div class="line"><span class="lineno">  110</span>            }</div>
-<div class="line"><span class="lineno">  111</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_a7f6f4003d150740601613f457c105842"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a7f6f4003d150740601613f457c105842">BrawlLib.SSBB.ResourceNodes.RSARFileNode._infoHdr</a></div><div class="ttdeci">VoidPtr _infoHdr</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:113</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>        {</div>
+<div class="line"><span class="lineno">  110</span>            <span class="keyword">get</span></div>
+<div class="line"><span class="lineno">  111</span>            {</div>
+<div class="line"><span class="lineno">  112</span>                <span class="keywordflow">if</span> (RSARNode != <span class="keyword">null</span> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a7f6f4003d150740601613f457c105842">_infoHdr</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  113</span>                {</div>
+<div class="line"><span class="lineno">  114</span>                    <span class="keywordflow">return</span> ((uint) (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a7f6f4003d150740601613f457c105842">_infoHdr</a> - RSARNode.Header)).ToString(<span class="stringliteral">&quot;X&quot;</span>);</div>
+<div class="line"><span class="lineno">  115</span>                }</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0&quot;</span>;</div>
+<div class="line"><span class="lineno">  118</span>            }</div>
+<div class="line"><span class="lineno">  119</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node_html_a7f6f4003d150740601613f457c105842"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#a7f6f4003d150740601613f457c105842">BrawlLib.SSBB.ResourceNodes.RSARFileNode._infoHdr</a></div><div class="ttdeci">VoidPtr _infoHdr</div><div class="ttdef"><b>Definition:</b> RSARFileNode.cs:121</div></div>
 </div><!-- fragment -->
 </div>
 </div>

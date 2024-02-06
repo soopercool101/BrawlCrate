@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40a</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.41</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -280,7 +280,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   93</span>                n.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a3357fe21b6c9d62d03af01e3aacff7e6">ShowDialog</a>(<span class="stringliteral">&quot;Resize&quot;</span>, <span class="stringliteral">&quot;Enter the new size:&quot;</span>, t.NumEntries) == DialogResult.OK)</div>
 <div class="line"><span class="lineno">   94</span>            {</div>
 <div class="line"><span class="lineno">   95</span>                List&lt;byte&gt; newList = <span class="keyword">new</span> List&lt;byte&gt;();</div>
-<div class="line"><span class="lineno">   96</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n.NewValue * t.NumEntries; i++)</div>
+<div class="line"><span class="lineno">   96</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n.NewValue * 4; i++)</div>
 <div class="line"><span class="lineno">   97</span>                {</div>
 <div class="line"><span class="lineno">   98</span>                    newList.Add(i &lt; t.EntryList.Count ? t.EntryList[i] : (<span class="keywordtype">byte</span>) 0);</div>
 <div class="line"><span class="lineno">   99</span>                }</div>

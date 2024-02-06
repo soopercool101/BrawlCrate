@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40a</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.41</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -91,6 +91,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a7975f453176452e609ba2ea232a23e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cb1d722e0b78bc93c057f5ff2d61ef1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a0cb1d722e0b78bc93c057f5ff2d61ef1">ColorSmashTex0</a> (int paletteCount, int mipCount=1)</td></tr>
 <tr class="separator:a0cb1d722e0b78bc93c057f5ff2d61ef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5448bb0fbd6c8043b3d633660b2c39f2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a5448bb0fbd6c8043b3d633660b2c39f2">ColorSmashTex0</a> (<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>[] nodes, int paletteCount, int mipCount=1)</td></tr>
+<tr class="separator:a5448bb0fbd6c8043b3d633660b2c39f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f1a6bf2107d16cf10a4477fbf61af50"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a5f1a6bf2107d16cf10a4477fbf61af50">ColorSmashImport</a> (<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BRRESNode</a> b)</td></tr>
 <tr class="separator:a5f1a6bf2107d16cf10a4477fbf61af50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47ee4ea87e79febf27f753b10dd1bbcd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a47ee4ea87e79febf27f753b10dd1bbcd">ColorSmashImport</a> (<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BRRESNode</a> b, string[] fileNames, int colors)</td></tr>
@@ -128,49 +130,49 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  309</span>        {</div>
-<div class="line"><span class="lineno">  310</span>            <span class="keywordflow">foreach</span> (FileInfo f <span class="keywordflow">in</span> OutputDir.GetFiles())</div>
-<div class="line"><span class="lineno">  311</span>            {</div>
-<div class="line"><span class="lineno">  312</span>                <span class="keywordflow">try</span></div>
+<div class="fragment"><div class="line"><span class="lineno">  305</span>        {</div>
+<div class="line"><span class="lineno">  306</span>            <span class="keywordflow">foreach</span> (FileInfo f <span class="keywordflow">in</span> OutputDir.GetFiles())</div>
+<div class="line"><span class="lineno">  307</span>            {</div>
+<div class="line"><span class="lineno">  308</span>                <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  309</span>                {</div>
+<div class="line"><span class="lineno">  310</span>                    f.Delete();</div>
+<div class="line"><span class="lineno">  311</span>                }</div>
+<div class="line"><span class="lineno">  312</span>                <span class="keywordflow">catch</span></div>
 <div class="line"><span class="lineno">  313</span>                {</div>
-<div class="line"><span class="lineno">  314</span>                    f.Delete();</div>
+<div class="line"><span class="lineno">  314</span>                    <span class="comment">// ignored</span></div>
 <div class="line"><span class="lineno">  315</span>                }</div>
-<div class="line"><span class="lineno">  316</span>                <span class="keywordflow">catch</span></div>
-<div class="line"><span class="lineno">  317</span>                {</div>
-<div class="line"><span class="lineno">  318</span>                    <span class="comment">// ignored</span></div>
-<div class="line"><span class="lineno">  319</span>                }</div>
-<div class="line"><span class="lineno">  320</span>            }</div>
-<div class="line"><span class="lineno">  321</span> </div>
-<div class="line"><span class="lineno">  322</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  316</span>            }</div>
+<div class="line"><span class="lineno">  317</span> </div>
+<div class="line"><span class="lineno">  318</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  319</span>            {</div>
+<div class="line"><span class="lineno">  320</span>                OutputDir.Delete();</div>
+<div class="line"><span class="lineno">  321</span>            }</div>
+<div class="line"><span class="lineno">  322</span>            <span class="keywordflow">catch</span></div>
 <div class="line"><span class="lineno">  323</span>            {</div>
-<div class="line"><span class="lineno">  324</span>                OutputDir.Delete();</div>
+<div class="line"><span class="lineno">  324</span>                <span class="comment">// ignored</span></div>
 <div class="line"><span class="lineno">  325</span>            }</div>
-<div class="line"><span class="lineno">  326</span>            <span class="keywordflow">catch</span></div>
-<div class="line"><span class="lineno">  327</span>            {</div>
-<div class="line"><span class="lineno">  328</span>                <span class="comment">// ignored</span></div>
-<div class="line"><span class="lineno">  329</span>            }</div>
-<div class="line"><span class="lineno">  330</span> </div>
-<div class="line"><span class="lineno">  331</span>            <span class="keywordflow">foreach</span> (FileInfo f <span class="keywordflow">in</span> InputDir.GetFiles())</div>
-<div class="line"><span class="lineno">  332</span>            {</div>
-<div class="line"><span class="lineno">  333</span>                <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  326</span> </div>
+<div class="line"><span class="lineno">  327</span>            <span class="keywordflow">foreach</span> (FileInfo f <span class="keywordflow">in</span> InputDir.GetFiles())</div>
+<div class="line"><span class="lineno">  328</span>            {</div>
+<div class="line"><span class="lineno">  329</span>                <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  330</span>                {</div>
+<div class="line"><span class="lineno">  331</span>                    f.Delete();</div>
+<div class="line"><span class="lineno">  332</span>                }</div>
+<div class="line"><span class="lineno">  333</span>                <span class="keywordflow">catch</span></div>
 <div class="line"><span class="lineno">  334</span>                {</div>
-<div class="line"><span class="lineno">  335</span>                    f.Delete();</div>
+<div class="line"><span class="lineno">  335</span>                    <span class="comment">// ignored</span></div>
 <div class="line"><span class="lineno">  336</span>                }</div>
-<div class="line"><span class="lineno">  337</span>                <span class="keywordflow">catch</span></div>
-<div class="line"><span class="lineno">  338</span>                {</div>
-<div class="line"><span class="lineno">  339</span>                    <span class="comment">// ignored</span></div>
-<div class="line"><span class="lineno">  340</span>                }</div>
-<div class="line"><span class="lineno">  341</span>            }</div>
-<div class="line"><span class="lineno">  342</span> </div>
-<div class="line"><span class="lineno">  343</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  337</span>            }</div>
+<div class="line"><span class="lineno">  338</span> </div>
+<div class="line"><span class="lineno">  339</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  340</span>            {</div>
+<div class="line"><span class="lineno">  341</span>                InputDir.Delete();</div>
+<div class="line"><span class="lineno">  342</span>            }</div>
+<div class="line"><span class="lineno">  343</span>            <span class="keywordflow">catch</span></div>
 <div class="line"><span class="lineno">  344</span>            {</div>
-<div class="line"><span class="lineno">  345</span>                InputDir.Delete();</div>
+<div class="line"><span class="lineno">  345</span>                <span class="comment">// ignored</span></div>
 <div class="line"><span class="lineno">  346</span>            }</div>
-<div class="line"><span class="lineno">  347</span>            <span class="keywordflow">catch</span></div>
-<div class="line"><span class="lineno">  348</span>            {</div>
-<div class="line"><span class="lineno">  349</span>                <span class="comment">// ignored</span></div>
-<div class="line"><span class="lineno">  350</span>            }</div>
-<div class="line"><span class="lineno">  351</span>        }</div>
+<div class="line"><span class="lineno">  347</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -225,100 +227,100 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  214</span>        {</div>
-<div class="line"><span class="lineno">  215</span>            Process cSmash = Process.Start(<span class="keyword">new</span> ProcessStartInfo</div>
-<div class="line"><span class="lineno">  216</span>            {</div>
-<div class="line"><span class="lineno">  217</span>                FileName = Path.Combine(Program.AppPath, <span class="stringliteral">&quot;color_smash.exe&quot;</span>),</div>
-<div class="line"><span class="lineno">  218</span>                WindowStyle = ProcessWindowStyle.Hidden,</div>
-<div class="line"><span class="lineno">  219</span>                Arguments = $<span class="stringliteral">&quot;-c RGB5A3 -n {paletteCount}&quot;</span></div>
-<div class="line"><span class="lineno">  220</span>            });</div>
-<div class="line"><span class="lineno">  221</span>            cSmash?.WaitForExit();</div>
-<div class="line"><span class="lineno">  222</span> </div>
-<div class="line"><span class="lineno">  223</span>            List&lt;TEX0Node&gt; textureList = <span class="keyword">new</span> List&lt;TEX0Node&gt;();</div>
-<div class="line"><span class="lineno">  224</span>            <span class="keywordtype">int</span> count = 0;</div>
-<div class="line"><span class="lineno">  225</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html">BRESGroupNode</a> texGroup = b.GetOrCreateFolder&lt;<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>&gt;();</div>
-<div class="line"><span class="lineno">  226</span>            <span class="keywordflow">foreach</span> (FileInfo f <span class="keywordflow">in</span> OutputDir.GetFiles())</div>
-<div class="line"><span class="lineno">  227</span>            {</div>
-<div class="line"><span class="lineno">  228</span>                FileInfo f2 = <span class="keyword">new</span> FileInfo($<span class="stringliteral">&quot;{InputDir.FullName}\\{f.Name}&quot;</span>);</div>
-<div class="line"><span class="lineno">  229</span>                <span class="keywordtype">int</span> i = <span class="keywordtype">int</span>.Parse(f.Name.Substring(0, f.Name.IndexOf(<span class="stringliteral">&quot;.&quot;</span>, StringComparison.Ordinal)));</div>
-<div class="line"><span class="lineno">  230</span>                <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a> dlg = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a>())</div>
-<div class="line"><span class="lineno">  231</span>                {</div>
-<div class="line"><span class="lineno">  232</span>                    dlg.ImageSource = f.FullName;</div>
-<div class="line"><span class="lineno">  233</span>                    dlg.ChkImportPalette.Checked = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  234</span>                    dlg.numLOD.Value = mips;</div>
-<div class="line"><span class="lineno">  235</span>                    dlg.Automatic = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  236</span>                    dlg.StartingFormat = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.CI8;</div>
-<div class="line"><span class="lineno">  237</span> </div>
-<div class="line"><span class="lineno">  238</span>                    <span class="keywordflow">if</span> (dlg.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#a06d84530672b848a25f613f25bef274d">ShowDialog</a>(<a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>, b) != DialogResult.OK)</div>
-<div class="line"><span class="lineno">  239</span>                    {</div>
-<div class="line"><span class="lineno">  240</span>                        <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  241</span>                    }</div>
-<div class="line"><span class="lineno">  242</span> </div>
-<div class="line"><span class="lineno">  243</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t = dlg.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#ae7d4ed60a324c7e5fc67ad5ff5cf95d5">TEX0TextureNode</a>;</div>
-<div class="line"><span class="lineno">  244</span>                    t.Name = names[i];</div>
-<div class="line"><span class="lineno">  245</span>                    textureList.Add(t);</div>
-<div class="line"><span class="lineno">  246</span>                    dlg.Dispose();</div>
-<div class="line"><span class="lineno">  247</span>                    t.OriginalPath = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  248</span>                    <span class="keywordflow">if</span> (texGroup.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count &gt; count + 1)</div>
-<div class="line"><span class="lineno">  249</span>                    {</div>
-<div class="line"><span class="lineno">  250</span>                        texGroup.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html#a83b6ac59edfec2dbc5b403bd9b5d243a">RemoveChild</a>(t);</div>
-<div class="line"><span class="lineno">  251</span>                        texGroup.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4deb065d8c17c60adcf25165090a8db2">InsertChild</a>(t, <span class="keyword">false</span>, index + count);</div>
-<div class="line"><span class="lineno">  252</span>                    }</div>
-<div class="line"><span class="lineno">  253</span> </div>
-<div class="line"><span class="lineno">  254</span>                    count++;</div>
-<div class="line"><span class="lineno">  255</span>                }</div>
-<div class="line"><span class="lineno">  256</span> </div>
-<div class="line"><span class="lineno">  257</span>                f2.Delete();</div>
-<div class="line"><span class="lineno">  258</span>            }</div>
-<div class="line"><span class="lineno">  259</span> </div>
-<div class="line"><span class="lineno">  260</span>            <span class="keywordflow">if</span> (textureList.Count &gt; 0)</div>
-<div class="line"><span class="lineno">  261</span>            {</div>
-<div class="line"><span class="lineno">  262</span>                textureList.Remove(textureList.Last());</div>
-<div class="line"><span class="lineno">  263</span>                <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t <span class="keywordflow">in</span> textureList)</div>
-<div class="line"><span class="lineno">  264</span>                {</div>
-<div class="line"><span class="lineno">  265</span>                    t.SharesData = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  266</span>                }</div>
-<div class="line"><span class="lineno">  267</span>            }</div>
-<div class="line"><span class="lineno">  268</span> </div>
-<div class="line"><span class="lineno">  269</span>            <span class="keywordflow">if</span> (InputDir.GetFiles().Length &gt; 0)</div>
-<div class="line"><span class="lineno">  270</span>            {</div>
-<div class="line"><span class="lineno">  271</span>                MessageBox.Show(</div>
-<div class="line"><span class="lineno">  272</span>                    <span class="stringliteral">&quot;One or more files threw an error. Please ensure all relevant textures can be Color Smashed together.&quot;</span>,</div>
-<div class="line"><span class="lineno">  273</span>                    <span class="stringliteral">&quot;Error&quot;</span>, MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
-<div class="line"><span class="lineno">  274</span> </div>
-<div class="line"><span class="lineno">  275</span>                <span class="keywordflow">foreach</span> (FileInfo f <span class="keywordflow">in</span> InputDir.GetFiles())</div>
-<div class="line"><span class="lineno">  276</span>                {</div>
-<div class="line"><span class="lineno">  277</span>                    <span class="keywordtype">int</span> i = <span class="keywordtype">int</span>.Parse(f.Name.Substring(0, f.Name.IndexOf(<span class="stringliteral">&quot;.&quot;</span>, StringComparison.Ordinal)));</div>
-<div class="line"><span class="lineno">  278</span>                    <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a> dlg = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a>())</div>
-<div class="line"><span class="lineno">  279</span>                    {</div>
-<div class="line"><span class="lineno">  280</span>                        dlg.ImageSource = f.FullName;</div>
-<div class="line"><span class="lineno">  281</span>                        dlg.numLOD.Value = mips;</div>
-<div class="line"><span class="lineno">  282</span>                        dlg.Automatic = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  283</span> </div>
-<div class="line"><span class="lineno">  284</span>                        <span class="keywordflow">if</span> (dlg.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#a06d84530672b848a25f613f25bef274d">ShowDialog</a>(<a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>, b) != DialogResult.OK)</div>
-<div class="line"><span class="lineno">  285</span>                        {</div>
-<div class="line"><span class="lineno">  286</span>                            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  287</span>                        }</div>
-<div class="line"><span class="lineno">  288</span> </div>
-<div class="line"><span class="lineno">  289</span>                        <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t = dlg.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#ae7d4ed60a324c7e5fc67ad5ff5cf95d5">TEX0TextureNode</a>;</div>
-<div class="line"><span class="lineno">  290</span>                        t.Name = names[i];</div>
-<div class="line"><span class="lineno">  291</span> </div>
-<div class="line"><span class="lineno">  292</span>                        dlg.Dispose();</div>
-<div class="line"><span class="lineno">  293</span>                        t.OriginalPath = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  294</span>                        <span class="keywordflow">if</span> (texGroup.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count &gt; count + 1)</div>
-<div class="line"><span class="lineno">  295</span>                        {</div>
-<div class="line"><span class="lineno">  296</span>                            texGroup.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html#a83b6ac59edfec2dbc5b403bd9b5d243a">RemoveChild</a>(t);</div>
-<div class="line"><span class="lineno">  297</span>                            texGroup.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4deb065d8c17c60adcf25165090a8db2">InsertChild</a>(t, <span class="keyword">false</span>, index + count);</div>
-<div class="line"><span class="lineno">  298</span>                        }</div>
-<div class="line"><span class="lineno">  299</span> </div>
-<div class="line"><span class="lineno">  300</span>                        count++;</div>
-<div class="line"><span class="lineno">  301</span>                    }</div>
-<div class="line"><span class="lineno">  302</span>                }</div>
-<div class="line"><span class="lineno">  303</span>            }</div>
-<div class="line"><span class="lineno">  304</span> </div>
-<div class="line"><span class="lineno">  305</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
-<div class="line"><span class="lineno">  306</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_color_smash_html_a77e12d081bcfc10bea6d11e723c095b2"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">BrawlCrate.ExternalInterfacing.ColorSmash.ClearDirectories</a></div><div class="ttdeci">static void ClearDirectories()</div><div class="ttdef"><b>Definition:</b> ColorSmash.cs:308</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  210</span>        {</div>
+<div class="line"><span class="lineno">  211</span>            Process cSmash = Process.Start(<span class="keyword">new</span> ProcessStartInfo</div>
+<div class="line"><span class="lineno">  212</span>            {</div>
+<div class="line"><span class="lineno">  213</span>                FileName = Path.Combine(Program.AppPath, <span class="stringliteral">&quot;color_smash.exe&quot;</span>),</div>
+<div class="line"><span class="lineno">  214</span>                WindowStyle = ProcessWindowStyle.Hidden,</div>
+<div class="line"><span class="lineno">  215</span>                Arguments = $<span class="stringliteral">&quot;-c RGB5A3 -n {paletteCount}&quot;</span></div>
+<div class="line"><span class="lineno">  216</span>            });</div>
+<div class="line"><span class="lineno">  217</span>            cSmash?.WaitForExit();</div>
+<div class="line"><span class="lineno">  218</span> </div>
+<div class="line"><span class="lineno">  219</span>            List&lt;TEX0Node&gt; textureList = <span class="keyword">new</span> List&lt;TEX0Node&gt;();</div>
+<div class="line"><span class="lineno">  220</span>            <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><span class="lineno">  221</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html">BRESGroupNode</a> texGroup = b.GetOrCreateFolder&lt;<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>&gt;();</div>
+<div class="line"><span class="lineno">  222</span>            <span class="keywordflow">foreach</span> (FileInfo f <span class="keywordflow">in</span> OutputDir.GetFiles())</div>
+<div class="line"><span class="lineno">  223</span>            {</div>
+<div class="line"><span class="lineno">  224</span>                FileInfo f2 = <span class="keyword">new</span> FileInfo($<span class="stringliteral">&quot;{InputDir.FullName}\\{f.Name}&quot;</span>);</div>
+<div class="line"><span class="lineno">  225</span>                <span class="keywordtype">int</span> i = <span class="keywordtype">int</span>.Parse(f.Name.Substring(0, f.Name.IndexOf(<span class="stringliteral">&quot;.&quot;</span>, StringComparison.Ordinal)));</div>
+<div class="line"><span class="lineno">  226</span>                <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a> dlg = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a>())</div>
+<div class="line"><span class="lineno">  227</span>                {</div>
+<div class="line"><span class="lineno">  228</span>                    dlg.ImageSource = f.FullName;</div>
+<div class="line"><span class="lineno">  229</span>                    dlg.ChkImportPalette.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  230</span>                    dlg.numLOD.Value = mips;</div>
+<div class="line"><span class="lineno">  231</span>                    dlg.Automatic = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  232</span>                    dlg.StartingFormat = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.CI8;</div>
+<div class="line"><span class="lineno">  233</span> </div>
+<div class="line"><span class="lineno">  234</span>                    <span class="keywordflow">if</span> (dlg.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#a06d84530672b848a25f613f25bef274d">ShowDialog</a>(<a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>, b) != DialogResult.OK)</div>
+<div class="line"><span class="lineno">  235</span>                    {</div>
+<div class="line"><span class="lineno">  236</span>                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  237</span>                    }</div>
+<div class="line"><span class="lineno">  238</span> </div>
+<div class="line"><span class="lineno">  239</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t = dlg.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#ae7d4ed60a324c7e5fc67ad5ff5cf95d5">TEX0TextureNode</a>;</div>
+<div class="line"><span class="lineno">  240</span>                    t.Name = names[i];</div>
+<div class="line"><span class="lineno">  241</span>                    textureList.Add(t);</div>
+<div class="line"><span class="lineno">  242</span>                    dlg.Dispose();</div>
+<div class="line"><span class="lineno">  243</span>                    t.OriginalPath = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  244</span>                    <span class="keywordflow">if</span> (texGroup.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count &gt; count + 1)</div>
+<div class="line"><span class="lineno">  245</span>                    {</div>
+<div class="line"><span class="lineno">  246</span>                        texGroup.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html#a83b6ac59edfec2dbc5b403bd9b5d243a">RemoveChild</a>(t);</div>
+<div class="line"><span class="lineno">  247</span>                        texGroup.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4deb065d8c17c60adcf25165090a8db2">InsertChild</a>(t, <span class="keyword">false</span>, index + count);</div>
+<div class="line"><span class="lineno">  248</span>                    }</div>
+<div class="line"><span class="lineno">  249</span> </div>
+<div class="line"><span class="lineno">  250</span>                    count++;</div>
+<div class="line"><span class="lineno">  251</span>                }</div>
+<div class="line"><span class="lineno">  252</span> </div>
+<div class="line"><span class="lineno">  253</span>                f2.Delete();</div>
+<div class="line"><span class="lineno">  254</span>            }</div>
+<div class="line"><span class="lineno">  255</span> </div>
+<div class="line"><span class="lineno">  256</span>            <span class="keywordflow">if</span> (textureList.Count &gt; 0)</div>
+<div class="line"><span class="lineno">  257</span>            {</div>
+<div class="line"><span class="lineno">  258</span>                textureList.Remove(textureList.Last());</div>
+<div class="line"><span class="lineno">  259</span>                <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t <span class="keywordflow">in</span> textureList)</div>
+<div class="line"><span class="lineno">  260</span>                {</div>
+<div class="line"><span class="lineno">  261</span>                    t.SharesData = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  262</span>                }</div>
+<div class="line"><span class="lineno">  263</span>            }</div>
+<div class="line"><span class="lineno">  264</span> </div>
+<div class="line"><span class="lineno">  265</span>            <span class="keywordflow">if</span> (InputDir.GetFiles().Length &gt; 0)</div>
+<div class="line"><span class="lineno">  266</span>            {</div>
+<div class="line"><span class="lineno">  267</span>                MessageBox.Show(</div>
+<div class="line"><span class="lineno">  268</span>                    <span class="stringliteral">&quot;One or more files threw an error. Please ensure all relevant textures can be Color Smashed together.&quot;</span>,</div>
+<div class="line"><span class="lineno">  269</span>                    <span class="stringliteral">&quot;Error&quot;</span>, MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
+<div class="line"><span class="lineno">  270</span> </div>
+<div class="line"><span class="lineno">  271</span>                <span class="keywordflow">foreach</span> (FileInfo f <span class="keywordflow">in</span> InputDir.GetFiles())</div>
+<div class="line"><span class="lineno">  272</span>                {</div>
+<div class="line"><span class="lineno">  273</span>                    <span class="keywordtype">int</span> i = <span class="keywordtype">int</span>.Parse(f.Name.Substring(0, f.Name.IndexOf(<span class="stringliteral">&quot;.&quot;</span>, StringComparison.Ordinal)));</div>
+<div class="line"><span class="lineno">  274</span>                    <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a> dlg = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a>())</div>
+<div class="line"><span class="lineno">  275</span>                    {</div>
+<div class="line"><span class="lineno">  276</span>                        dlg.ImageSource = f.FullName;</div>
+<div class="line"><span class="lineno">  277</span>                        dlg.numLOD.Value = mips;</div>
+<div class="line"><span class="lineno">  278</span>                        dlg.Automatic = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  279</span> </div>
+<div class="line"><span class="lineno">  280</span>                        <span class="keywordflow">if</span> (dlg.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#a06d84530672b848a25f613f25bef274d">ShowDialog</a>(<a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>, b) != DialogResult.OK)</div>
+<div class="line"><span class="lineno">  281</span>                        {</div>
+<div class="line"><span class="lineno">  282</span>                            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  283</span>                        }</div>
+<div class="line"><span class="lineno">  284</span> </div>
+<div class="line"><span class="lineno">  285</span>                        <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t = dlg.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#ae7d4ed60a324c7e5fc67ad5ff5cf95d5">TEX0TextureNode</a>;</div>
+<div class="line"><span class="lineno">  286</span>                        t.Name = names[i];</div>
+<div class="line"><span class="lineno">  287</span> </div>
+<div class="line"><span class="lineno">  288</span>                        dlg.Dispose();</div>
+<div class="line"><span class="lineno">  289</span>                        t.OriginalPath = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  290</span>                        <span class="keywordflow">if</span> (texGroup.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count &gt; count + 1)</div>
+<div class="line"><span class="lineno">  291</span>                        {</div>
+<div class="line"><span class="lineno">  292</span>                            texGroup.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html#a83b6ac59edfec2dbc5b403bd9b5d243a">RemoveChild</a>(t);</div>
+<div class="line"><span class="lineno">  293</span>                            texGroup.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4deb065d8c17c60adcf25165090a8db2">InsertChild</a>(t, <span class="keyword">false</span>, index + count);</div>
+<div class="line"><span class="lineno">  294</span>                        }</div>
+<div class="line"><span class="lineno">  295</span> </div>
+<div class="line"><span class="lineno">  296</span>                        count++;</div>
+<div class="line"><span class="lineno">  297</span>                    }</div>
+<div class="line"><span class="lineno">  298</span>                }</div>
+<div class="line"><span class="lineno">  299</span>            }</div>
+<div class="line"><span class="lineno">  300</span> </div>
+<div class="line"><span class="lineno">  301</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
+<div class="line"><span class="lineno">  302</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_color_smash_html_a77e12d081bcfc10bea6d11e723c095b2"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">BrawlCrate.ExternalInterfacing.ColorSmash.ClearDirectories</a></div><div class="ttdeci">static void ClearDirectories()</div><div class="ttdef"><b>Definition:</b> ColorSmash.cs:304</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html">BrawlCrate.UI.MainForm</a></div><div class="ttdef"><b>Definition:</b> MainForm.cs:34</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_ac31238e8420903855e77a7289986aece"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">BrawlCrate.UI.MainForm.Instance</a></div><div class="ttdeci">static MainForm Instance</div><div class="ttdef"><b>Definition:</b> MainForm.cs:36</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">BrawlLib.Internal.Windows.Forms.TextureConverterDialog</a></div><div class="ttdef"><b>Definition:</b> TextureConverterDialog.cs:24</div></div>
@@ -356,23 +358,23 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  185</span>        {</div>
-<div class="line"><span class="lineno">  186</span>            <span class="keywordflow">if</span> (!<a class="code hl_property" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a16ef9b357f81bd5045508231241775be">CanRunColorSmash</a> || b == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  187</span>            {</div>
-<div class="line"><span class="lineno">  188</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  189</span>            }</div>
-<div class="line"><span class="lineno">  190</span> </div>
-<div class="line"><span class="lineno">  191</span>            <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a> frm = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a>())</div>
-<div class="line"><span class="lineno">  192</span>            {</div>
-<div class="line"><span class="lineno">  193</span>                <span class="keywordflow">if</span> (Program.OpenFiles(<span class="stringliteral">&quot;Portable Network Graphics|*.png&quot;</span>, out <span class="keywordtype">string</span>[] fileNames) &gt; 0 &amp;&amp;</div>
-<div class="line"><span class="lineno">  194</span>                    frm.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a3357fe21b6c9d62d03af01e3aacff7e6">ShowDialog</a>(<span class="stringliteral">&quot;Color Smasher&quot;</span>, <span class="stringliteral">&quot;How many colors?&quot;</span>, 256) == DialogResult.OK)</div>
-<div class="line"><span class="lineno">  195</span>                {</div>
-<div class="line"><span class="lineno">  196</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a5f1a6bf2107d16cf10a4477fbf61af50">ColorSmashImport</a>(b, fileNames, frm.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a9e8299c7f01bc764c58a02811df1925c">NewValue</a>);</div>
-<div class="line"><span class="lineno">  197</span>                }</div>
-<div class="line"><span class="lineno">  198</span>            }</div>
-<div class="line"><span class="lineno">  199</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_color_smash_html_a16ef9b357f81bd5045508231241775be"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a16ef9b357f81bd5045508231241775be">BrawlCrate.ExternalInterfacing.ColorSmash.CanRunColorSmash</a></div><div class="ttdeci">static bool CanRunColorSmash</div><div class="ttdef"><b>Definition:</b> ColorSmash.cs:18</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_color_smash_html_a5f1a6bf2107d16cf10a4477fbf61af50"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a5f1a6bf2107d16cf10a4477fbf61af50">BrawlCrate.ExternalInterfacing.ColorSmash.ColorSmashImport</a></div><div class="ttdeci">static void ColorSmashImport(BRRESNode b)</div><div class="ttdef"><b>Definition:</b> ColorSmash.cs:184</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  181</span>        {</div>
+<div class="line"><span class="lineno">  182</span>            <span class="keywordflow">if</span> (!<a class="code hl_property" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a16ef9b357f81bd5045508231241775be">CanRunColorSmash</a> || b == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  183</span>            {</div>
+<div class="line"><span class="lineno">  184</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  185</span>            }</div>
+<div class="line"><span class="lineno">  186</span> </div>
+<div class="line"><span class="lineno">  187</span>            <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a> frm = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a>())</div>
+<div class="line"><span class="lineno">  188</span>            {</div>
+<div class="line"><span class="lineno">  189</span>                <span class="keywordflow">if</span> (Program.OpenFiles(<span class="stringliteral">&quot;Portable Network Graphics|*.png&quot;</span>, out <span class="keywordtype">string</span>[] fileNames) &gt; 0 &amp;&amp;</div>
+<div class="line"><span class="lineno">  190</span>                    frm.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a3357fe21b6c9d62d03af01e3aacff7e6">ShowDialog</a>(<span class="stringliteral">&quot;Color Smasher&quot;</span>, <span class="stringliteral">&quot;How many colors?&quot;</span>, 256) == DialogResult.OK)</div>
+<div class="line"><span class="lineno">  191</span>                {</div>
+<div class="line"><span class="lineno">  192</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a5f1a6bf2107d16cf10a4477fbf61af50">ColorSmashImport</a>(b, fileNames, frm.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a9e8299c7f01bc764c58a02811df1925c">NewValue</a>);</div>
+<div class="line"><span class="lineno">  193</span>                }</div>
+<div class="line"><span class="lineno">  194</span>            }</div>
+<div class="line"><span class="lineno">  195</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_color_smash_html_a16ef9b357f81bd5045508231241775be"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a16ef9b357f81bd5045508231241775be">BrawlCrate.ExternalInterfacing.ColorSmash.CanRunColorSmash</a></div><div class="ttdeci">static bool CanRunColorSmash</div><div class="ttdef"><b>Definition:</b> ColorSmash.cs:17</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_color_smash_html_a5f1a6bf2107d16cf10a4477fbf61af50"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a5f1a6bf2107d16cf10a4477fbf61af50">BrawlCrate.ExternalInterfacing.ColorSmash.ColorSmashImport</a></div><div class="ttdeci">static void ColorSmashImport(BRRESNode b)</div><div class="ttdef"><b>Definition:</b> ColorSmash.cs:180</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">BrawlLib.Internal.Windows.Forms.NumericInputForm</a></div><div class="ttdef"><b>Definition:</b> NumericInputForm.cs:7</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form_html_a3357fe21b6c9d62d03af01e3aacff7e6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a3357fe21b6c9d62d03af01e3aacff7e6">BrawlLib.Internal.Windows.Forms.NumericInputForm.ShowDialog</a></div><div class="ttdeci">new DialogResult ShowDialog()</div><div class="ttdef"><b>Definition:</b> NumericInputForm.cs:20</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form_html_a9e8299c7f01bc764c58a02811df1925c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a9e8299c7f01bc764c58a02811df1925c">BrawlLib.Internal.Windows.Forms.NumericInputForm.NewValue</a></div><div class="ttdeci">int NewValue</div><div class="ttdef"><b>Definition:</b> NumericInputForm.cs:16</div></div>
@@ -418,23 +420,23 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  202</span>        {</div>
-<div class="line"><span class="lineno">  203</span>            Dictionary&lt;int, string&gt; names = <span class="keyword">new</span> Dictionary&lt;int, string&gt;();</div>
-<div class="line"><span class="lineno">  204</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> fileNames)</div>
-<div class="line"><span class="lineno">  205</span>            {</div>
-<div class="line"><span class="lineno">  206</span>                File.Copy(s, Path.Combine(InputDir.FullName, $<span class="stringliteral">&quot;{names.Count:D5}.png&quot;</span>));</div>
-<div class="line"><span class="lineno">  207</span>                names.Add(names.Count, Path.GetFileNameWithoutExtension(s));</div>
-<div class="line"><span class="lineno">  208</span>            }</div>
-<div class="line"><span class="lineno">  209</span> </div>
-<div class="line"><span class="lineno">  210</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#af86d9feb62b08452b8af76ba34f2d086">ColorSmasher</a>(colors, b, b.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a23061c4d865f85a43d2930f25dd5a9a2">ImageCount</a>, names);</div>
-<div class="line"><span class="lineno">  211</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_color_smash_html_af86d9feb62b08452b8af76ba34f2d086"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#af86d9feb62b08452b8af76ba34f2d086">BrawlCrate.ExternalInterfacing.ColorSmash.ColorSmasher</a></div><div class="ttdeci">static void ColorSmasher(int paletteCount, BRRESNode b, int index, Dictionary&lt; int, string &gt; names, int mips=1)</div><div class="ttdef"><b>Definition:</b> ColorSmash.cs:213</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  198</span>        {</div>
+<div class="line"><span class="lineno">  199</span>            Dictionary&lt;int, string&gt; names = <span class="keyword">new</span> Dictionary&lt;int, string&gt;();</div>
+<div class="line"><span class="lineno">  200</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> fileNames)</div>
+<div class="line"><span class="lineno">  201</span>            {</div>
+<div class="line"><span class="lineno">  202</span>                File.Copy(s, Path.Combine(InputDir.FullName, $<span class="stringliteral">&quot;{names.Count:D5}.png&quot;</span>));</div>
+<div class="line"><span class="lineno">  203</span>                names.Add(names.Count, Path.GetFileNameWithoutExtension(s));</div>
+<div class="line"><span class="lineno">  204</span>            }</div>
+<div class="line"><span class="lineno">  205</span> </div>
+<div class="line"><span class="lineno">  206</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#af86d9feb62b08452b8af76ba34f2d086">ColorSmasher</a>(colors, b, b.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a23061c4d865f85a43d2930f25dd5a9a2">ImageCount</a>, names);</div>
+<div class="line"><span class="lineno">  207</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_color_smash_html_af86d9feb62b08452b8af76ba34f2d086"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#af86d9feb62b08452b8af76ba34f2d086">BrawlCrate.ExternalInterfacing.ColorSmash.ColorSmasher</a></div><div class="ttdeci">static void ColorSmasher(int paletteCount, BRRESNode b, int index, Dictionary&lt; int, string &gt; names, int mips=1)</div><div class="ttdef"><b>Definition:</b> ColorSmash.cs:209</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node_html_a23061c4d865f85a43d2930f25dd5a9a2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a23061c4d865f85a43d2930f25dd5a9a2">BrawlLib.SSBB.ResourceNodes.BRRESNode.ImageCount</a></div><div class="ttdeci">int ImageCount</div><div class="ttdef"><b>Definition:</b> BRRESNode.cs:29</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a7975f453176452e609ba2ea232a23e7d" name="a7975f453176452e609ba2ea232a23e7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7975f453176452e609ba2ea232a23e7d">&#9670;&#160;</a></span>ColorSmashTex0() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7975f453176452e609ba2ea232a23e7d">&#9670;&#160;</a></span>ColorSmashTex0() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -455,15 +457,15 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   74</span>        {</div>
-<div class="line"><span class="lineno">   75</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a7975f453176452e609ba2ea232a23e7d">ColorSmashTex0</a>(-1);</div>
-<div class="line"><span class="lineno">   76</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_color_smash_html_a7975f453176452e609ba2ea232a23e7d"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a7975f453176452e609ba2ea232a23e7d">BrawlCrate.ExternalInterfacing.ColorSmash.ColorSmashTex0</a></div><div class="ttdeci">static void ColorSmashTex0()</div><div class="ttdef"><b>Definition:</b> ColorSmash.cs:73</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>        {</div>
+<div class="line"><span class="lineno">   74</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a7975f453176452e609ba2ea232a23e7d">ColorSmashTex0</a>(-1);</div>
+<div class="line"><span class="lineno">   75</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_color_smash_html_a7975f453176452e609ba2ea232a23e7d"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a7975f453176452e609ba2ea232a23e7d">BrawlCrate.ExternalInterfacing.ColorSmash.ColorSmashTex0</a></div><div class="ttdeci">static void ColorSmashTex0()</div><div class="ttdef"><b>Definition:</b> ColorSmash.cs:72</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a0cb1d722e0b78bc93c057f5ff2d61ef1" name="a0cb1d722e0b78bc93c057f5ff2d61ef1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0cb1d722e0b78bc93c057f5ff2d61ef1">&#9670;&#160;</a></span>ColorSmashTex0() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cb1d722e0b78bc93c057f5ff2d61ef1">&#9670;&#160;</a></span>ColorSmashTex0() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -495,120 +497,24 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   79</span>        {</div>
-<div class="line"><span class="lineno">   80</span>            <span class="comment">// If this was selected via keycode when it&#39;s invalid, return without error</span></div>
-<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (!<a class="code hl_property" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a16ef9b357f81bd5045508231241775be">CanRunColorSmash</a> || <a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>.<a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">SelectedNodes</a>.Count &lt;= 1)</div>
-<div class="line"><span class="lineno">   82</span>            {</div>
-<div class="line"><span class="lineno">   83</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   84</span>            }</div>
-<div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>            <span class="comment">// Clear the directories. If they aren&#39;t empty, the implementation WILL NOT work</span></div>
-<div class="line"><span class="lineno">   87</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
-<div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>            <span class="comment">// Throw error if color smash directory isn&#39;t empty</span></div>
-<div class="line"><span class="lineno">   90</span>            <span class="keywordflow">if</span> (InputDir.GetFiles().Length &gt; 0 || OutputDir.GetFiles().Length &gt; 0)</div>
-<div class="line"><span class="lineno">   91</span>            {</div>
-<div class="line"><span class="lineno">   92</span>                MessageBox.Show(</div>
-<div class="line"><span class="lineno">   93</span>                    <span class="stringliteral">&quot;One or more files exist in the required Color Smash folder. Please delete these nodes manually and try again&quot;</span>,</div>
-<div class="line"><span class="lineno">   94</span>                    <span class="stringliteral">&quot;Error&quot;</span>, MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
-<div class="line"><span class="lineno">   95</span>                <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
-<div class="line"><span class="lineno">   96</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   97</span>            }</div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>            List&lt;TEX0Node&gt; textureList = <span class="keyword">new</span> List&lt;TEX0Node&gt;();</div>
-<div class="line"><span class="lineno">  100</span>            Dictionary&lt;int, string&gt; names = <span class="keyword">new</span> Dictionary&lt;int, string&gt;();</div>
-<div class="line"><span class="lineno">  101</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BRRESNode</a> b = (((<a class="code hl_class" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html">TEX0Wrapper</a>) <a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>.<a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">SelectedNodes</a>[0]).Resource as <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>)?</div>
-<div class="line"><span class="lineno">  102</span>                .BRESNode;</div>
-<div class="line"><span class="lineno">  103</span>            <span class="keywordflow">if</span> (b == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  104</span>            {</div>
-<div class="line"><span class="lineno">  105</span>                MessageBox.Show(</div>
-<div class="line"><span class="lineno">  106</span>                    <span class="stringliteral">&quot;The BRRES could not be found. Color Smashing is only supported for TEX0 nodes in BRRES groups&quot;</span>,</div>
-<div class="line"><span class="lineno">  107</span>                    <span class="stringliteral">&quot;Error&quot;</span>, MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
-<div class="line"><span class="lineno">  108</span>                <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
-<div class="line"><span class="lineno">  109</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  110</span>            }</div>
-<div class="line"><span class="lineno">  111</span> </div>
-<div class="line"><span class="lineno">  112</span>            <span class="keywordtype">int</span> index = <span class="keywordtype">int</span>.MaxValue;</div>
-<div class="line"><span class="lineno">  113</span>            <span class="keywordtype">bool</span> detectPalettes = paletteCount &lt;= 0;</div>
-<div class="line"><span class="lineno">  114</span>            <span class="keywordflow">if</span> (detectPalettes)</div>
-<div class="line"><span class="lineno">  115</span>            {</div>
-<div class="line"><span class="lineno">  116</span>                paletteCount = 0;</div>
-<div class="line"><span class="lineno">  117</span>            }</div>
-<div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>            <span class="keywordflow">foreach</span> (TreeNode n <span class="keywordflow">in</span> <a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>.<a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">SelectedNodes</a>)</div>
-<div class="line"><span class="lineno">  120</span>            {</div>
-<div class="line"><span class="lineno">  121</span>                <span class="comment">// If this was selected via keycode when it&#39;s invalid, return without error</span></div>
-<div class="line"><span class="lineno">  122</span>                <span class="keywordflow">if</span> (!(n is <a class="code hl_class" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html">TEX0Wrapper</a>))</div>
-<div class="line"><span class="lineno">  123</span>                {</div>
-<div class="line"><span class="lineno">  124</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
-<div class="line"><span class="lineno">  125</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  126</span>                }</div>
-<div class="line"><span class="lineno">  127</span> </div>
-<div class="line"><span class="lineno">  128</span>                <span class="keywordflow">if</span> (((<a class="code hl_class" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html">TEX0Wrapper</a>) n).Resource is <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t)</div>
-<div class="line"><span class="lineno">  129</span>                {</div>
-<div class="line"><span class="lineno">  130</span>                    <span class="keywordflow">if</span> (t.BRESNode != b)</div>
-<div class="line"><span class="lineno">  131</span>                    {</div>
-<div class="line"><span class="lineno">  132</span>                        MessageBox.Show(<span class="stringliteral">&quot;Color Smash is only supported for nodes in the same BRRES&quot;</span>, <span class="stringliteral">&quot;Error&quot;</span>,</div>
-<div class="line"><span class="lineno">  133</span>                            MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
-<div class="line"><span class="lineno">  134</span>                        <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
-<div class="line"><span class="lineno">  135</span>                        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  136</span>                    }</div>
-<div class="line"><span class="lineno">  137</span> </div>
-<div class="line"><span class="lineno">  138</span>                    textureList.Add(t);</div>
-<div class="line"><span class="lineno">  139</span>                    <span class="keywordtype">int</span> placement = t.Parent.Children.IndexOf(t);</div>
-<div class="line"><span class="lineno">  140</span>                    names.Add(placement, t.Name);</div>
-<div class="line"><span class="lineno">  141</span>                    <span class="keywordflow">if</span> (placement &lt; index)</div>
-<div class="line"><span class="lineno">  142</span>                    {</div>
-<div class="line"><span class="lineno">  143</span>                        index = placement;</div>
-<div class="line"><span class="lineno">  144</span>                    }</div>
-<div class="line"><span class="lineno">  145</span> </div>
-<div class="line"><span class="lineno">  146</span>                    t.Export($<span class="stringliteral">&quot;{InputDir.FullName}\\{placement:D5}.png&quot;</span>);</div>
-<div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>                    <span class="keywordflow">if</span> (detectPalettes &amp;&amp; paletteCount &lt; 256)</div>
-<div class="line"><span class="lineno">  149</span>                    {</div>
-<div class="line"><span class="lineno">  150</span>                        <span class="keywordflow">if</span> (!t.HasPalette || t.GetPaletteNode() == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  151</span>                        {</div>
-<div class="line"><span class="lineno">  152</span>                            paletteCount = 256;</div>
-<div class="line"><span class="lineno">  153</span>                        }</div>
-<div class="line"><span class="lineno">  154</span>                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t.HasPalette &amp;&amp; t.GetPaletteNode() != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><span class="lineno">  155</span>                                 t.GetPaletteNode().Palette.Entries.Length &gt; paletteCount)</div>
-<div class="line"><span class="lineno">  156</span>                        {</div>
-<div class="line"><span class="lineno">  157</span>                            paletteCount = (short) Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);</div>
-<div class="line"><span class="lineno">  158</span>                        }</div>
-<div class="line"><span class="lineno">  159</span>                    }</div>
-<div class="line"><span class="lineno">  160</span>                }</div>
-<div class="line"><span class="lineno">  161</span>            }</div>
-<div class="line"><span class="lineno">  162</span> </div>
-<div class="line"><span class="lineno">  163</span>            <span class="keywordflow">if</span> (index == <span class="keywordtype">int</span>.MaxValue)</div>
-<div class="line"><span class="lineno">  164</span>            {</div>
-<div class="line"><span class="lineno">  165</span>                MessageBox.Show(<span class="stringliteral">&quot;Could not properly get the index of the images&quot;</span>, <span class="stringliteral">&quot;Error&quot;</span>,</div>
-<div class="line"><span class="lineno">  166</span>                    MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
-<div class="line"><span class="lineno">  167</span>                <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
-<div class="line"><span class="lineno">  168</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  169</span>            }</div>
-<div class="line"><span class="lineno">  170</span> </div>
-<div class="line"><span class="lineno">  171</span>            <span class="keywordflow">if</span> (detectPalettes &amp;&amp; paletteCount == 0)</div>
-<div class="line"><span class="lineno">  172</span>            {</div>
-<div class="line"><span class="lineno">  173</span>                paletteCount = 256;</div>
-<div class="line"><span class="lineno">  174</span>            }</div>
-<div class="line"><span class="lineno">  175</span> </div>
-<div class="line"><span class="lineno">  176</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t <span class="keywordflow">in</span> textureList)</div>
-<div class="line"><span class="lineno">  177</span>            {</div>
-<div class="line"><span class="lineno">  178</span>                t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a2d3f89d0871fbc0902df0afe8a018bdd">Remove</a>(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  179</span>            }</div>
-<div class="line"><span class="lineno">  180</span> </div>
-<div class="line"><span class="lineno">  181</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#af86d9feb62b08452b8af76ba34f2d086">ColorSmasher</a>(paletteCount, b, index, names, mipCount);</div>
-<div class="line"><span class="lineno">  182</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>        {</div>
+<div class="line"><span class="lineno">   79</span>            <span class="comment">// If this was selected via keycode when it&#39;s invalid, return without error</span></div>
+<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">if</span> (!<a class="code hl_property" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a16ef9b357f81bd5045508231241775be">CanRunColorSmash</a> || <a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>.<a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">SelectedNodes</a>.Count &lt;= 1)</div>
+<div class="line"><span class="lineno">   81</span>            {</div>
+<div class="line"><span class="lineno">   82</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   83</span>            }</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a7975f453176452e609ba2ea232a23e7d">ColorSmashTex0</a>(<a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>.<a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">SelectedNodes</a>.Where(o =&gt; o is <a class="code hl_class" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html">TEX0Wrapper</a>).Select(o =&gt; ((<a class="code hl_class" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html">TEX0Wrapper</a>)o).Resource as <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>).ToArray(), paletteCount,</div>
+<div class="line"><span class="lineno">   86</span>                mipCount);</div>
+<div class="line"><span class="lineno">   87</span>        }</div>
 <div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper_html"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html">BrawlCrate.NodeWrappers.TEX0Wrapper</a></div><div class="ttdef"><b>Definition:</b> TEX0Wrapper.cs:19</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a68ab544bb15a5ffcc22b7e124964f386"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">BrawlCrate.UI.MainForm.resourceTree</a></div><div class="ttdeci">ResourceTree resourceTree</div><div class="ttdef"><b>Definition:</b> MainForm.cs:2416</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a68ab544bb15a5ffcc22b7e124964f386"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">BrawlCrate.UI.MainForm.resourceTree</a></div><div class="ttdeci">ResourceTree resourceTree</div><div class="ttdef"><b>Definition:</b> MainForm.cs:2418</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_resource_tree_html_a9a8d45c4b5b1baa036818419e7ee5d9f"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">BrawlCrate.UI.ResourceTree.SelectedNodes</a></div><div class="ttdeci">new List&lt; TreeNode &gt; SelectedNodes</div><div class="ttdef"><b>Definition:</b> ResourceTree.cs:58</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BrawlLib.SSBB.ResourceNodes.BRRESNode</a></div><div class="ttdef"><b>Definition:</b> BRRESNode.cs:19</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_a2d3f89d0871fbc0902df0afe8a018bdd"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a2d3f89d0871fbc0902df0afe8a018bdd">BrawlLib.SSBB.ResourceNodes.TEX0Node.Remove</a></div><div class="ttdeci">override void Remove()</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:344</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="af4e046ada39404e70ec1b4351d448257" name="af4e046ada39404e70ec1b4351d448257"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4e046ada39404e70ec1b4351d448257">&#9670;&#160;</a></span>ColorSmashTex0() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af4e046ada39404e70ec1b4351d448257">&#9670;&#160;</a></span>ColorSmashTex0() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -640,57 +546,194 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   25</span>        {</div>
-<div class="line"><span class="lineno">   26</span>            <span class="comment">// If this was selected via keycode when it&#39;s invalid, return without error</span></div>
-<div class="line"><span class="lineno">   27</span>            <span class="keywordflow">if</span> (!<a class="code hl_property" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a16ef9b357f81bd5045508231241775be">CanRunColorSmash</a> || <a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>.<a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">SelectedNodes</a>.Count &lt;= 1)</div>
-<div class="line"><span class="lineno">   28</span>            {</div>
-<div class="line"><span class="lineno">   29</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   30</span>            }</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>            <span class="keywordtype">short</span> paletteCount = 0;</div>
-<div class="line"><span class="lineno">   33</span>            <span class="keywordtype">int</span> mipCount = 1;</div>
-<div class="line"><span class="lineno">   34</span>            <span class="keywordflow">foreach</span> (TreeNode n <span class="keywordflow">in</span> <a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>.<a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">SelectedNodes</a>)</div>
-<div class="line"><span class="lineno">   35</span>            {</div>
-<div class="line"><span class="lineno">   36</span>                <span class="keywordflow">if</span> (n is <a class="code hl_class" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html">TEX0Wrapper</a> tw)</div>
-<div class="line"><span class="lineno">   37</span>                {</div>
-<div class="line"><span class="lineno">   38</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t = (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>) tw.Resource;</div>
-<div class="line"><span class="lineno">   39</span>                    if (paletteCount &lt; 256)</div>
-<div class="line"><span class="lineno">   40</span>                    {</div>
-<div class="line"><span class="lineno">   41</span>                        <span class="keywordflow">if</span> (!t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a07890fc90e3deb8cb77986059efca1cb">HasPalette</a> || t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>() == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   42</span>                        {</div>
-<div class="line"><span class="lineno">   43</span>                            paletteCount = 256;</div>
-<div class="line"><span class="lineno">   44</span>                        }</div>
-<div class="line"><span class="lineno">   45</span>                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a07890fc90e3deb8cb77986059efca1cb">HasPalette</a> &amp;&amp; t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>() != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><span class="lineno">   46</span>                                 t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>().<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_l_t0_node.html#a29a3610291b1285d3ff15167b0480124">Palette</a>.Entries.Length &gt; paletteCount)</div>
-<div class="line"><span class="lineno">   47</span>                        {</div>
-<div class="line"><span class="lineno">   48</span>                            paletteCount = (short) Math.Min(t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>().<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_l_t0_node.html#a29a3610291b1285d3ff15167b0480124">Palette</a>.Entries.Length, 256);</div>
-<div class="line"><span class="lineno">   49</span>                        }</div>
-<div class="line"><span class="lineno">   50</span>                    }</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>                    <span class="keywordflow">if</span> (t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#adddf8f24ccaf247e7b25cb8db3510757">LevelOfDetail</a> &gt; mipCount)</div>
-<div class="line"><span class="lineno">   53</span>                    {</div>
-<div class="line"><span class="lineno">   54</span>                        mipCount = t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#adddf8f24ccaf247e7b25cb8db3510757">LevelOfDetail</a>;</div>
-<div class="line"><span class="lineno">   55</span>                    }</div>
-<div class="line"><span class="lineno">   56</span>                }</div>
-<div class="line"><span class="lineno">   57</span>            }</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>            <span class="keywordflow">if</span> (paletteCount == 0)</div>
-<div class="line"><span class="lineno">   60</span>            {</div>
-<div class="line"><span class="lineno">   61</span>                paletteCount = 256;</div>
-<div class="line"><span class="lineno">   62</span>            }</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>            <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a> frm = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a>())</div>
-<div class="line"><span class="lineno">   65</span>            {</div>
-<div class="line"><span class="lineno">   66</span>                <span class="keywordflow">if</span> (frm.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a3357fe21b6c9d62d03af01e3aacff7e6">ShowDialog</a>(<span class="stringliteral">&quot;Color Smasher&quot;</span>, <span class="stringliteral">&quot;How many colors?&quot;</span>, paletteCount) == DialogResult.OK)</div>
-<div class="line"><span class="lineno">   67</span>                {</div>
-<div class="line"><span class="lineno">   68</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a7975f453176452e609ba2ea232a23e7d">ColorSmashTex0</a>(frm.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a9e8299c7f01bc764c58a02811df1925c">NewValue</a>, mipCount);</div>
-<div class="line"><span class="lineno">   69</span>                }</div>
-<div class="line"><span class="lineno">   70</span>            }</div>
-<div class="line"><span class="lineno">   71</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>        {</div>
+<div class="line"><span class="lineno">   25</span>            <span class="comment">// If this was selected via keycode when it&#39;s invalid, return without error</span></div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">if</span> (!<a class="code hl_property" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a16ef9b357f81bd5045508231241775be">CanRunColorSmash</a> || <a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>.<a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">SelectedNodes</a>.Count &lt;= 1)</div>
+<div class="line"><span class="lineno">   27</span>            {</div>
+<div class="line"><span class="lineno">   28</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   29</span>            }</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>            <span class="keywordtype">short</span> paletteCount = 0;</div>
+<div class="line"><span class="lineno">   32</span>            <span class="keywordtype">int</span> mipCount = 1;</div>
+<div class="line"><span class="lineno">   33</span>            <span class="keywordflow">foreach</span> (TreeNode n <span class="keywordflow">in</span> <a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>.<a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">SelectedNodes</a>)</div>
+<div class="line"><span class="lineno">   34</span>            {</div>
+<div class="line"><span class="lineno">   35</span>                <span class="keywordflow">if</span> (n is <a class="code hl_class" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html">TEX0Wrapper</a> tw)</div>
+<div class="line"><span class="lineno">   36</span>                {</div>
+<div class="line"><span class="lineno">   37</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t = (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>) tw.Resource;</div>
+<div class="line"><span class="lineno">   38</span>                    if (paletteCount &lt; 256)</div>
+<div class="line"><span class="lineno">   39</span>                    {</div>
+<div class="line"><span class="lineno">   40</span>                        <span class="keywordflow">if</span> (!t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a07890fc90e3deb8cb77986059efca1cb">HasPalette</a> || t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>() == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   41</span>                        {</div>
+<div class="line"><span class="lineno">   42</span>                            paletteCount = 256;</div>
+<div class="line"><span class="lineno">   43</span>                        }</div>
+<div class="line"><span class="lineno">   44</span>                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a07890fc90e3deb8cb77986059efca1cb">HasPalette</a> &amp;&amp; t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>() != <span class="keyword">null</span> &amp;&amp;</div>
+<div class="line"><span class="lineno">   45</span>                                 t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>().<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_l_t0_node.html#a29a3610291b1285d3ff15167b0480124">Palette</a>.Entries.Length &gt; paletteCount)</div>
+<div class="line"><span class="lineno">   46</span>                        {</div>
+<div class="line"><span class="lineno">   47</span>                            paletteCount = (short) Math.Min(t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>().<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_l_t0_node.html#a29a3610291b1285d3ff15167b0480124">Palette</a>.Entries.Length, 256);</div>
+<div class="line"><span class="lineno">   48</span>                        }</div>
+<div class="line"><span class="lineno">   49</span>                    }</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>                    <span class="keywordflow">if</span> (t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#adddf8f24ccaf247e7b25cb8db3510757">LevelOfDetail</a> &gt; mipCount)</div>
+<div class="line"><span class="lineno">   52</span>                    {</div>
+<div class="line"><span class="lineno">   53</span>                        mipCount = t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#adddf8f24ccaf247e7b25cb8db3510757">LevelOfDetail</a>;</div>
+<div class="line"><span class="lineno">   54</span>                    }</div>
+<div class="line"><span class="lineno">   55</span>                }</div>
+<div class="line"><span class="lineno">   56</span>            }</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>            <span class="keywordflow">if</span> (paletteCount == 0)</div>
+<div class="line"><span class="lineno">   59</span>            {</div>
+<div class="line"><span class="lineno">   60</span>                paletteCount = 256;</div>
+<div class="line"><span class="lineno">   61</span>            }</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>            <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a> frm = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a>())</div>
+<div class="line"><span class="lineno">   64</span>            {</div>
+<div class="line"><span class="lineno">   65</span>                <span class="keywordflow">if</span> (frm.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a3357fe21b6c9d62d03af01e3aacff7e6">ShowDialog</a>(<span class="stringliteral">&quot;Color Smasher&quot;</span>, <span class="stringliteral">&quot;How many colors?&quot;</span>, paletteCount) == DialogResult.OK)</div>
+<div class="line"><span class="lineno">   66</span>                {</div>
+<div class="line"><span class="lineno">   67</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a7975f453176452e609ba2ea232a23e7d">ColorSmashTex0</a>(frm.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a9e8299c7f01bc764c58a02811df1925c">NewValue</a>, mipCount);</div>
+<div class="line"><span class="lineno">   68</span>                }</div>
+<div class="line"><span class="lineno">   69</span>            }</div>
+<div class="line"><span class="lineno">   70</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_l_t0_node_html_a29a3610291b1285d3ff15167b0480124"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_l_t0_node.html#a29a3610291b1285d3ff15167b0480124">BrawlLib.SSBB.ResourceNodes.PLT0Node.Palette</a></div><div class="ttdeci">ColorPalette Palette</div><div class="ttdef"><b>Definition:</b> PLT0Node.cs:31</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_a07890fc90e3deb8cb77986059efca1cb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a07890fc90e3deb8cb77986059efca1cb">BrawlLib.SSBB.ResourceNodes.TEX0Node.HasPalette</a></div><div class="ttdeci">bool HasPalette</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:104</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_a5e69cb130db768a0891871067e871223"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">BrawlLib.SSBB.ResourceNodes.TEX0Node.GetPaletteNode</a></div><div class="ttdeci">PLT0Node GetPaletteNode()</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:106</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_adddf8f24ccaf247e7b25cb8db3510757"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#adddf8f24ccaf247e7b25cb8db3510757">BrawlLib.SSBB.ResourceNodes.TEX0Node.LevelOfDetail</a></div><div class="ttdeci">int LevelOfDetail</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:103</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_a07890fc90e3deb8cb77986059efca1cb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a07890fc90e3deb8cb77986059efca1cb">BrawlLib.SSBB.ResourceNodes.TEX0Node.HasPalette</a></div><div class="ttdeci">bool HasPalette</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:106</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_a5e69cb130db768a0891871067e871223"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">BrawlLib.SSBB.ResourceNodes.TEX0Node.GetPaletteNode</a></div><div class="ttdeci">PLT0Node GetPaletteNode()</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:108</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_adddf8f24ccaf247e7b25cb8db3510757"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#adddf8f24ccaf247e7b25cb8db3510757">BrawlLib.SSBB.ResourceNodes.TEX0Node.LevelOfDetail</a></div><div class="ttdeci">int LevelOfDetail</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:105</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5448bb0fbd6c8043b3d633660b2c39f2" name="a5448bb0fbd6c8043b3d633660b2c39f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5448bb0fbd6c8043b3d633660b2c39f2">&#9670;&#160;</a></span>ColorSmashTex0() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void BrawlCrate.ExternalInterfacing.ColorSmash.ColorSmashTex0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>[]&#160;</td>
+          <td class="paramname"><em>nodes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>paletteCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mipCount</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   90</span>        {</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>            <span class="comment">// Clear the directories. If they aren&#39;t empty, the implementation WILL NOT work</span></div>
+<div class="line"><span class="lineno">   93</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>            <span class="comment">// Throw error if color smash directory isn&#39;t empty</span></div>
+<div class="line"><span class="lineno">   96</span>            <span class="keywordflow">if</span> (InputDir.GetFiles().Length &gt; 0 || OutputDir.GetFiles().Length &gt; 0)</div>
+<div class="line"><span class="lineno">   97</span>            {</div>
+<div class="line"><span class="lineno">   98</span>                MessageBox.Show(</div>
+<div class="line"><span class="lineno">   99</span>                    <span class="stringliteral">&quot;One or more files exist in the required Color Smash folder. Please delete these nodes manually and try again&quot;</span>,</div>
+<div class="line"><span class="lineno">  100</span>                    <span class="stringliteral">&quot;Error&quot;</span>, MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
+<div class="line"><span class="lineno">  101</span>                <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
+<div class="line"><span class="lineno">  102</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  103</span>            }</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>            List&lt;TEX0Node&gt; textureList = <span class="keyword">new</span> List&lt;TEX0Node&gt;();</div>
+<div class="line"><span class="lineno">  106</span>            Dictionary&lt;int, string&gt; names = <span class="keyword">new</span> Dictionary&lt;int, string&gt;();</div>
+<div class="line"><span class="lineno">  107</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BRRESNode</a> b = (((<a class="code hl_class" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html">TEX0Wrapper</a>) <a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>.<a class="code hl_variable" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a68ab544bb15a5ffcc22b7e124964f386">resourceTree</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_resource_tree.html#a9a8d45c4b5b1baa036818419e7ee5d9f">SelectedNodes</a>[0]).Resource as <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>)?</div>
+<div class="line"><span class="lineno">  108</span>                .BRESNode;</div>
+<div class="line"><span class="lineno">  109</span>            <span class="keywordflow">if</span> (b == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  110</span>            {</div>
+<div class="line"><span class="lineno">  111</span>                MessageBox.Show(</div>
+<div class="line"><span class="lineno">  112</span>                    <span class="stringliteral">&quot;The BRRES could not be found. Color Smashing is only supported for TEX0 nodes in BRRES groups&quot;</span>,</div>
+<div class="line"><span class="lineno">  113</span>                    <span class="stringliteral">&quot;Error&quot;</span>, MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
+<div class="line"><span class="lineno">  114</span>                <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
+<div class="line"><span class="lineno">  115</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  116</span>            }</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>            <span class="keywordtype">int</span> index = <span class="keywordtype">int</span>.MaxValue;</div>
+<div class="line"><span class="lineno">  119</span>            <span class="keywordtype">bool</span> detectPalettes = paletteCount &lt;= 0;</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">if</span> (detectPalettes)</div>
+<div class="line"><span class="lineno">  121</span>            {</div>
+<div class="line"><span class="lineno">  122</span>                paletteCount = 0;</div>
+<div class="line"><span class="lineno">  123</span>            }</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t <span class="keywordflow">in</span> nodes)</div>
+<div class="line"><span class="lineno">  126</span>            {</div>
+<div class="line"><span class="lineno">  127</span>                <span class="keywordflow">if</span> (t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_entry_node.html#a2dab2eb49a2f7b97dbe480cdca1ed776">BRESNode</a> != b)</div>
+<div class="line"><span class="lineno">  128</span>                {</div>
+<div class="line"><span class="lineno">  129</span>                    MessageBox.Show(<span class="stringliteral">&quot;Color Smash is only supported for nodes in the same BRRES&quot;</span>, <span class="stringliteral">&quot;Error&quot;</span>,</div>
+<div class="line"><span class="lineno">  130</span>                        MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
+<div class="line"><span class="lineno">  131</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
+<div class="line"><span class="lineno">  132</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  133</span>                }</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>                textureList.Add(t);</div>
+<div class="line"><span class="lineno">  136</span>                <span class="keywordtype">int</span> placement = t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">Parent</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.IndexOf(t);</div>
+<div class="line"><span class="lineno">  137</span>                names.Add(placement, t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a8d9cd4693d0e3ecc858edfb42a45ddaf">Name</a>);</div>
+<div class="line"><span class="lineno">  138</span>                <span class="keywordflow">if</span> (placement &lt; index)</div>
+<div class="line"><span class="lineno">  139</span>                {</div>
+<div class="line"><span class="lineno">  140</span>                    index = placement;</div>
+<div class="line"><span class="lineno">  141</span>                }</div>
+<div class="line"><span class="lineno">  142</span> </div>
+<div class="line"><span class="lineno">  143</span>                t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a3d24251d005bf6c142b106f32e7c29de">Export</a>($<span class="stringliteral">&quot;{InputDir.FullName}\\{placement:D5}.png&quot;</span>);</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>                <span class="keywordflow">if</span> (detectPalettes &amp;&amp; paletteCount &lt; 256)</div>
+<div class="line"><span class="lineno">  146</span>                {</div>
+<div class="line"><span class="lineno">  147</span>                    <span class="keywordflow">if</span> (!t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a07890fc90e3deb8cb77986059efca1cb">HasPalette</a> || t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>() == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  148</span>                    {</div>
+<div class="line"><span class="lineno">  149</span>                        paletteCount = 256;</div>
+<div class="line"><span class="lineno">  150</span>                    }</div>
+<div class="line"><span class="lineno">  151</span>                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a07890fc90e3deb8cb77986059efca1cb">HasPalette</a> &amp;&amp; t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>() != <span class="keyword">null</span> &amp;&amp;</div>
+<div class="line"><span class="lineno">  152</span>                             t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>().<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_l_t0_node.html#a29a3610291b1285d3ff15167b0480124">Palette</a>.Entries.Length &gt; paletteCount)</div>
+<div class="line"><span class="lineno">  153</span>                    {</div>
+<div class="line"><span class="lineno">  154</span>                        paletteCount = (short) Math.Min(t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a5e69cb130db768a0891871067e871223">GetPaletteNode</a>().<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_l_t0_node.html#a29a3610291b1285d3ff15167b0480124">Palette</a>.Entries.Length, 256);</div>
+<div class="line"><span class="lineno">  155</span>                    }</div>
+<div class="line"><span class="lineno">  156</span>                }</div>
+<div class="line"><span class="lineno">  157</span>            }</div>
+<div class="line"><span class="lineno">  158</span> </div>
+<div class="line"><span class="lineno">  159</span>            <span class="keywordflow">if</span> (index == <span class="keywordtype">int</span>.MaxValue)</div>
+<div class="line"><span class="lineno">  160</span>            {</div>
+<div class="line"><span class="lineno">  161</span>                MessageBox.Show(<span class="stringliteral">&quot;Could not properly get the index of the images&quot;</span>, <span class="stringliteral">&quot;Error&quot;</span>,</div>
+<div class="line"><span class="lineno">  162</span>                    MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
+<div class="line"><span class="lineno">  163</span>                <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#a77e12d081bcfc10bea6d11e723c095b2">ClearDirectories</a>();</div>
+<div class="line"><span class="lineno">  164</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  165</span>            }</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>            <span class="keywordflow">if</span> (detectPalettes &amp;&amp; paletteCount == 0)</div>
+<div class="line"><span class="lineno">  168</span>            {</div>
+<div class="line"><span class="lineno">  169</span>                paletteCount = 256;</div>
+<div class="line"><span class="lineno">  170</span>            }</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a> t <span class="keywordflow">in</span> textureList)</div>
+<div class="line"><span class="lineno">  173</span>            {</div>
+<div class="line"><span class="lineno">  174</span>                t.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a2d3f89d0871fbc0902df0afe8a018bdd">Remove</a>(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  175</span>            }</div>
+<div class="line"><span class="lineno">  176</span> </div>
+<div class="line"><span class="lineno">  177</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_color_smash.html#af86d9feb62b08452b8af76ba34f2d086">ColorSmasher</a>(paletteCount, b, index, names, mipCount);</div>
+<div class="line"><span class="lineno">  178</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_entry_node_html_a2dab2eb49a2f7b97dbe480cdca1ed776"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_entry_node.html#a2dab2eb49a2f7b97dbe480cdca1ed776">BrawlLib.SSBB.ResourceNodes.BRESEntryNode.BRESNode</a></div><div class="ttdeci">BRRESNode BRESNode</div><div class="ttdef"><b>Definition:</b> BRRESNode.cs:1039</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BrawlLib.SSBB.ResourceNodes.BRRESNode</a></div><div class="ttdef"><b>Definition:</b> BRRESNode.cs:19</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_aa2ac75c861a66d004f89ae1186256310"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">BrawlLib.SSBB.ResourceNodes.ResourceNode.Parent</a></div><div class="ttdeci">ResourceNode Parent</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:245</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_a2d3f89d0871fbc0902df0afe8a018bdd"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a2d3f89d0871fbc0902df0afe8a018bdd">BrawlLib.SSBB.ResourceNodes.TEX0Node.Remove</a></div><div class="ttdeci">override void Remove()</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:346</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_a3d24251d005bf6c142b106f32e7c29de"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a3d24251d005bf6c142b106f32e7c29de">BrawlLib.SSBB.ResourceNodes.TEX0Node.Export</a></div><div class="ttdeci">override void Export(string outPath)</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:434</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_a8d9cd4693d0e3ecc858edfb42a45ddaf"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#a8d9cd4693d0e3ecc858edfb42a45ddaf">BrawlLib.SSBB.ResourceNodes.TEX0Node.Name</a></div><div class="ttdeci">override string Name</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:206</div></div>
 </div><!-- fragment -->
 </div>
 </div>

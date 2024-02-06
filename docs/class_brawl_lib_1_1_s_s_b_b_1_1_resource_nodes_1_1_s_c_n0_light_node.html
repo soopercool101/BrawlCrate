@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40a</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.41</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -1869,7 +1869,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  447</span>            _spotFunc = Data-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a1536b66eee973186bca6914c549115e7">_spotFunc</a>;</div>
 <div class="line"><span class="lineno">  448</span> </div>
 <div class="line"><span class="lineno">  449</span>            <span class="comment">//Read user data</span></div>
-<div class="line"><span class="lineno">  450</span>            (_userEntries = <span class="keyword">new</span> UserDataCollection()).Read(Data-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a293195de2b775c0fe2e8b8ef25deca94">UserData</a>);</div>
+<div class="line"><span class="lineno">  450</span>            (_userEntries = <span class="keyword">new</span> UserDataCollection()).Read(Data-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a293195de2b775c0fe2e8b8ef25deca94">UserData</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>);</div>
 <div class="line"><span class="lineno">  451</span> </div>
 <div class="line"><span class="lineno">  452</span>            <span class="comment">//Don&#39;t bother reading data if the entry is null</span></div>
 <div class="line"><span class="lineno">  453</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">Name</a> == <span class="stringliteral">&quot;&lt;null&gt;&quot;</span>)</div>
@@ -1924,6 +1924,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  502</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a1dd1ddeee36a09b27c98d95d2415a1d9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a1dd1ddeee36a09b27c98d95d2415a1d9">BrawlLib.SSBB.ResourceNodes.ResourceNode._replaced</a></div><div class="ttdeci">bool _replaced</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:827</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_abfa51c429fe706bd4af8810b7fe320fc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">BrawlLib.SSBB.ResourceNodes.ResourceNode.Name</a></div><div class="ttdeci">virtual string Name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:223</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_acba0e48a7ed4557ceefbbc7b19c36b2d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">BrawlLib.SSBB.ResourceNodes.ResourceNode.WorkingUncompressed</a></div><div class="ttdeci">DataSource WorkingUncompressed</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:183</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node_html_a7a872ccd4a23258813abc4453feb0e50"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a7a872ccd4a23258813abc4453feb0e50">BrawlLib.SSBB.ResourceNodes.SCN0EntryNode.ReadColors</a></div><div class="ttdeci">void ReadColors(uint flags, uint bit, ref RGBAPixel solidColor, ref List&lt; RGBAPixel &gt; colors, int frameCount, VoidPtr address, ref bool constant, ref int numEntries)</div><div class="ttdef"><b>Definition:</b> SCN0GroupNode.cs:396</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_light_node_html_a7aabfc925d37687dabc58b1b89707ebb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_light_node.html#a7aabfc925d37687dabc58b1b89707ebb">BrawlLib.SSBB.ResourceNodes.SCN0LightNode.FixedFlags</a></div><div class="ttdeci">FixedFlags</div><div class="ttdef"><b>Definition:</b> SCN0LightNode.cs:319</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">BrawlLib.Imaging.RGBAPixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:327</div></div>

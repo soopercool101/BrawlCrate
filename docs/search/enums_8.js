@@ -13,6 +13,7 @@ var searchData=
   ['indtexstageid_10',['IndTexStageID',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a5b1d6cacdbec37175905fadf38b9d380',1,'BrawlLib::Wii::Graphics']]],
   ['indtextureindices_11',['IndTextureIndices',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations.html#af55a381d6cbbb9ef1875ee050ea03f91',1,'BrawlLib::SSBB::Types::Animations']]],
   ['indtexwrap_12',['IndTexWrap',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a94babd8bae22049c4fbf8558f709f287',1,'BrawlLib::Wii::Graphics']]],
-  ['itemlevelenum_13',['ItemLevelEnum',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#ae0ddcad83907accaa5508d766d9ac247',1,'BrawlLib::SSBB::ResourceNodes::EventMatchNode']]],
-  ['itemoverridesetting_14',['ItemOverrideSetting',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_project_plus.html#a028ca6522cb8ff3e35b0d1be39991340',1,'BrawlLib::SSBB::Types::ProjectPlus']]]
+  ['itemblastzonedespawnoptions_13',['ItemBlastzoneDespawnOptions',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_param_entry_node.html#afbd0e7b1ec96bf5b4e9383611457e752',1,'BrawlLib::SSBB::ResourceNodes::ItmParamEntryNode']]],
+  ['itemlevelenum_14',['ItemLevelEnum',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#ae0ddcad83907accaa5508d766d9ac247',1,'BrawlLib::SSBB::ResourceNodes::EventMatchNode']]],
+  ['itemoverridesetting_15',['ItemOverrideSetting',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_project_plus.html#a028ca6522cb8ff3e35b0d1be39991340',1,'BrawlLib::SSBB::Types::ProjectPlus']]]
 ];

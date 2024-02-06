@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40a</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.41</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -140,11 +140,11 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 2543</span>        {</div>
-<div class="line"><span class="lineno"> 2544</span>            InitializeComponent();</div>
-<div class="line"><span class="lineno"> 2545</span> </div>
-<div class="line"><span class="lineno"> 2546</span>            Init();</div>
-<div class="line"><span class="lineno"> 2547</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 2545</span>        {</div>
+<div class="line"><span class="lineno"> 2546</span>            InitializeComponent();</div>
+<div class="line"><span class="lineno"> 2547</span> </div>
+<div class="line"><span class="lineno"> 2548</span>            Init();</div>
+<div class="line"><span class="lineno"> 2549</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -171,13 +171,13 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 2550</span>        {</div>
-<div class="line"><span class="lineno"> 2551</span>            container.Add(<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno"> 2552</span> </div>
-<div class="line"><span class="lineno"> 2553</span>            InitializeComponent();</div>
+<div class="fragment"><div class="line"><span class="lineno"> 2552</span>        {</div>
+<div class="line"><span class="lineno"> 2553</span>            container.Add(<span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno"> 2554</span> </div>
-<div class="line"><span class="lineno"> 2555</span>            Init();</div>
-<div class="line"><span class="lineno"> 2556</span>        }</div>
+<div class="line"><span class="lineno"> 2555</span>            InitializeComponent();</div>
+<div class="line"><span class="lineno"> 2556</span> </div>
+<div class="line"><span class="lineno"> 2557</span>            Init();</div>
+<div class="line"><span class="lineno"> 2558</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -205,58 +205,58 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 2564</span>        {</div>
-<div class="line"><span class="lineno"> 2565</span>            <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno"> 2566</span>            {</div>
-<div class="line"><span class="lineno"> 2567</span>                <span class="keywordflow">if</span> (recentFileToolStripItem == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno"> 2568</span>                {</div>
-<div class="line"><span class="lineno"> 2569</span>                    <span class="keywordflow">throw</span> <span class="keyword">new</span> OperationCanceledException(<span class="stringliteral">&quot;recentFileToolStripItem can not be null!&quot;</span>);</div>
-<div class="line"><span class="lineno"> 2570</span>                }</div>
-<div class="line"><span class="lineno"> 2571</span> </div>
-<div class="line"><span class="lineno"> 2572</span>                <span class="comment">// check if the file is already in the collection</span></div>
-<div class="line"><span class="lineno"> 2573</span>                <span class="keywordtype">int</span> alreadyIn = GetIndexOfRecentFile(fileName);</div>
-<div class="line"><span class="lineno"> 2574</span>                <span class="keywordflow">if</span> (alreadyIn != -1) <span class="comment">// remove it</span></div>
-<div class="line"><span class="lineno"> 2575</span>                {</div>
-<div class="line"><span class="lineno"> 2576</span>                    Settings.Default.RecentFiles.RemoveAt(alreadyIn);</div>
-<div class="line"><span class="lineno"> 2577</span>                    <span class="keywordflow">if</span> (recentFileToolStripItem.DropDownItems.Count &gt; alreadyIn)</div>
-<div class="line"><span class="lineno"> 2578</span>                    {</div>
-<div class="line"><span class="lineno"> 2579</span>                        recentFileToolStripItem.DropDownItems.RemoveAt(alreadyIn);</div>
-<div class="line"><span class="lineno"> 2580</span>                    }</div>
-<div class="line"><span class="lineno"> 2581</span>                }</div>
-<div class="line"><span class="lineno"> 2582</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (alreadyIn == 0) <span class="comment">// it´s the latest file so return</span></div>
-<div class="line"><span class="lineno"> 2583</span>                {</div>
-<div class="line"><span class="lineno"> 2584</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno"> 2585</span>                }</div>
-<div class="line"><span class="lineno"> 2586</span> </div>
-<div class="line"><span class="lineno"> 2587</span>                <span class="comment">// insert the file on top of the list</span></div>
-<div class="line"><span class="lineno"> 2588</span>                Settings.Default.RecentFiles.Insert(0, fileName);</div>
-<div class="line"><span class="lineno"> 2589</span>                recentFileToolStripItem.DropDownItems.Insert(0, <span class="keyword">new</span> FileMenuItem(fileName));</div>
-<div class="line"><span class="lineno"> 2590</span> </div>
-<div class="line"><span class="lineno"> 2591</span>                <span class="comment">// remove any beyond the max size, if max size is reached</span></div>
-<div class="line"><span class="lineno"> 2592</span>                <span class="keywordflow">while</span> (Settings.Default.RecentFiles.Count &gt; Settings.Default.RecentFilesMax)</div>
-<div class="line"><span class="lineno"> 2593</span>                {</div>
-<div class="line"><span class="lineno"> 2594</span>                    Settings.Default.RecentFiles.RemoveAt(Settings.Default.RecentFilesMax);</div>
-<div class="line"><span class="lineno"> 2595</span>                }</div>
-<div class="line"><span class="lineno"> 2596</span> </div>
-<div class="line"><span class="lineno"> 2597</span>                <span class="keywordflow">while</span> (recentFileToolStripItem.DropDownItems.Count &gt; Settings.Default.RecentFilesMax)</div>
-<div class="line"><span class="lineno"> 2598</span>                {</div>
-<div class="line"><span class="lineno"> 2599</span>                    recentFileToolStripItem.DropDownItems.RemoveAt(Settings.Default.RecentFilesMax);</div>
-<div class="line"><span class="lineno"> 2600</span>                }</div>
-<div class="line"><span class="lineno"> 2601</span> </div>
-<div class="line"><span class="lineno"> 2602</span>                <span class="comment">// enable the menu item if it´s disabled</span></div>
-<div class="line"><span class="lineno"> 2603</span>                <span class="keywordflow">if</span> (!recentFileToolStripItem.Enabled)</div>
-<div class="line"><span class="lineno"> 2604</span>                {</div>
-<div class="line"><span class="lineno"> 2605</span>                    recentFileToolStripItem.Enabled = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno"> 2606</span>                }</div>
-<div class="line"><span class="lineno"> 2607</span> </div>
-<div class="line"><span class="lineno"> 2608</span>                <span class="comment">// save the changes</span></div>
-<div class="line"><span class="lineno"> 2609</span>                Settings.Default.Save();</div>
-<div class="line"><span class="lineno"> 2610</span>            }</div>
-<div class="line"><span class="lineno"> 2611</span>            <span class="keywordflow">catch</span></div>
-<div class="line"><span class="lineno"> 2612</span>            {</div>
-<div class="line"><span class="lineno"> 2613</span>                <span class="comment">// ignored</span></div>
-<div class="line"><span class="lineno"> 2614</span>            }</div>
-<div class="line"><span class="lineno"> 2615</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 2566</span>        {</div>
+<div class="line"><span class="lineno"> 2567</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno"> 2568</span>            {</div>
+<div class="line"><span class="lineno"> 2569</span>                <span class="keywordflow">if</span> (recentFileToolStripItem == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno"> 2570</span>                {</div>
+<div class="line"><span class="lineno"> 2571</span>                    <span class="keywordflow">throw</span> <span class="keyword">new</span> OperationCanceledException(<span class="stringliteral">&quot;recentFileToolStripItem can not be null!&quot;</span>);</div>
+<div class="line"><span class="lineno"> 2572</span>                }</div>
+<div class="line"><span class="lineno"> 2573</span> </div>
+<div class="line"><span class="lineno"> 2574</span>                <span class="comment">// check if the file is already in the collection</span></div>
+<div class="line"><span class="lineno"> 2575</span>                <span class="keywordtype">int</span> alreadyIn = GetIndexOfRecentFile(fileName);</div>
+<div class="line"><span class="lineno"> 2576</span>                <span class="keywordflow">if</span> (alreadyIn != -1) <span class="comment">// remove it</span></div>
+<div class="line"><span class="lineno"> 2577</span>                {</div>
+<div class="line"><span class="lineno"> 2578</span>                    Settings.Default.RecentFiles.RemoveAt(alreadyIn);</div>
+<div class="line"><span class="lineno"> 2579</span>                    <span class="keywordflow">if</span> (recentFileToolStripItem.DropDownItems.Count &gt; alreadyIn)</div>
+<div class="line"><span class="lineno"> 2580</span>                    {</div>
+<div class="line"><span class="lineno"> 2581</span>                        recentFileToolStripItem.DropDownItems.RemoveAt(alreadyIn);</div>
+<div class="line"><span class="lineno"> 2582</span>                    }</div>
+<div class="line"><span class="lineno"> 2583</span>                }</div>
+<div class="line"><span class="lineno"> 2584</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (alreadyIn == 0) <span class="comment">// it´s the latest file so return</span></div>
+<div class="line"><span class="lineno"> 2585</span>                {</div>
+<div class="line"><span class="lineno"> 2586</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno"> 2587</span>                }</div>
+<div class="line"><span class="lineno"> 2588</span> </div>
+<div class="line"><span class="lineno"> 2589</span>                <span class="comment">// insert the file on top of the list</span></div>
+<div class="line"><span class="lineno"> 2590</span>                Settings.Default.RecentFiles.Insert(0, fileName);</div>
+<div class="line"><span class="lineno"> 2591</span>                recentFileToolStripItem.DropDownItems.Insert(0, <span class="keyword">new</span> FileMenuItem(fileName));</div>
+<div class="line"><span class="lineno"> 2592</span> </div>
+<div class="line"><span class="lineno"> 2593</span>                <span class="comment">// remove any beyond the max size, if max size is reached</span></div>
+<div class="line"><span class="lineno"> 2594</span>                <span class="keywordflow">while</span> (Settings.Default.RecentFiles.Count &gt; Settings.Default.RecentFilesMax)</div>
+<div class="line"><span class="lineno"> 2595</span>                {</div>
+<div class="line"><span class="lineno"> 2596</span>                    Settings.Default.RecentFiles.RemoveAt(Settings.Default.RecentFilesMax);</div>
+<div class="line"><span class="lineno"> 2597</span>                }</div>
+<div class="line"><span class="lineno"> 2598</span> </div>
+<div class="line"><span class="lineno"> 2599</span>                <span class="keywordflow">while</span> (recentFileToolStripItem.DropDownItems.Count &gt; Settings.Default.RecentFilesMax)</div>
+<div class="line"><span class="lineno"> 2600</span>                {</div>
+<div class="line"><span class="lineno"> 2601</span>                    recentFileToolStripItem.DropDownItems.RemoveAt(Settings.Default.RecentFilesMax);</div>
+<div class="line"><span class="lineno"> 2602</span>                }</div>
+<div class="line"><span class="lineno"> 2603</span> </div>
+<div class="line"><span class="lineno"> 2604</span>                <span class="comment">// enable the menu item if it´s disabled</span></div>
+<div class="line"><span class="lineno"> 2605</span>                <span class="keywordflow">if</span> (!recentFileToolStripItem.Enabled)</div>
+<div class="line"><span class="lineno"> 2606</span>                {</div>
+<div class="line"><span class="lineno"> 2607</span>                    recentFileToolStripItem.Enabled = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno"> 2608</span>                }</div>
+<div class="line"><span class="lineno"> 2609</span> </div>
+<div class="line"><span class="lineno"> 2610</span>                <span class="comment">// save the changes</span></div>
+<div class="line"><span class="lineno"> 2611</span>                Settings.Default.Save();</div>
+<div class="line"><span class="lineno"> 2612</span>            }</div>
+<div class="line"><span class="lineno"> 2613</span>            <span class="keywordflow">catch</span></div>
+<div class="line"><span class="lineno"> 2614</span>            {</div>
+<div class="line"><span class="lineno"> 2615</span>                <span class="comment">// ignored</span></div>
+<div class="line"><span class="lineno"> 2616</span>            }</div>
+<div class="line"><span class="lineno"> 2617</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -282,10 +282,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 2681</span>        {</div>
-<div class="line"><span class="lineno"> 2682</span>            Settings.Default.RecentFiles.Clear();</div>
-<div class="line"><span class="lineno"> 2683</span>            ReCreateItems();</div>
-<div class="line"><span class="lineno"> 2684</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 2683</span>        {</div>
+<div class="line"><span class="lineno"> 2684</span>            Settings.Default.RecentFiles.Clear();</div>
+<div class="line"><span class="lineno"> 2685</span>            ReCreateItems();</div>
+<div class="line"><span class="lineno"> 2686</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -312,14 +312,14 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 2501</span>        {</div>
-<div class="line"><span class="lineno"> 2502</span>            <span class="keywordflow">if</span> (disposing)</div>
-<div class="line"><span class="lineno"> 2503</span>            {</div>
-<div class="line"><span class="lineno"> 2504</span>                components?.Dispose();</div>
-<div class="line"><span class="lineno"> 2505</span>            }</div>
-<div class="line"><span class="lineno"> 2506</span> </div>
-<div class="line"><span class="lineno"> 2507</span>            base.Dispose(disposing);</div>
-<div class="line"><span class="lineno"> 2508</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 2503</span>        {</div>
+<div class="line"><span class="lineno"> 2504</span>            <span class="keywordflow">if</span> (disposing)</div>
+<div class="line"><span class="lineno"> 2505</span>            {</div>
+<div class="line"><span class="lineno"> 2506</span>                components?.Dispose();</div>
+<div class="line"><span class="lineno"> 2507</span>            }</div>
+<div class="line"><span class="lineno"> 2508</span> </div>
+<div class="line"><span class="lineno"> 2509</span>            base.Dispose(disposing);</div>
+<div class="line"><span class="lineno"> 2510</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -343,20 +343,20 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 2634</span>        {</div>
-<div class="line"><span class="lineno"> 2635</span>            <span class="keyword">get</span> =&gt; recentFileToolStripItem;</div>
-<div class="line"><span class="lineno"> 2636</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno"> 2637</span>            {</div>
-<div class="line"><span class="lineno"> 2638</span>                <span class="keywordflow">if</span> (recentFileToolStripItem == value)</div>
-<div class="line"><span class="lineno"> 2639</span>                {</div>
-<div class="line"><span class="lineno"> 2640</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno"> 2641</span>                }</div>
-<div class="line"><span class="lineno"> 2642</span> </div>
-<div class="line"><span class="lineno"> 2643</span>                recentFileToolStripItem = value;</div>
+<div class="fragment"><div class="line"><span class="lineno"> 2636</span>        {</div>
+<div class="line"><span class="lineno"> 2637</span>            <span class="keyword">get</span> =&gt; recentFileToolStripItem;</div>
+<div class="line"><span class="lineno"> 2638</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno"> 2639</span>            {</div>
+<div class="line"><span class="lineno"> 2640</span>                <span class="keywordflow">if</span> (recentFileToolStripItem == value)</div>
+<div class="line"><span class="lineno"> 2641</span>                {</div>
+<div class="line"><span class="lineno"> 2642</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno"> 2643</span>                }</div>
 <div class="line"><span class="lineno"> 2644</span> </div>
-<div class="line"><span class="lineno"> 2645</span>                ReCreateItems();</div>
-<div class="line"><span class="lineno"> 2646</span>            }</div>
-<div class="line"><span class="lineno"> 2647</span>        }</div>
+<div class="line"><span class="lineno"> 2645</span>                recentFileToolStripItem = value;</div>
+<div class="line"><span class="lineno"> 2646</span> </div>
+<div class="line"><span class="lineno"> 2647</span>                ReCreateItems();</div>
+<div class="line"><span class="lineno"> 2648</span>            }</div>
+<div class="line"><span class="lineno"> 2649</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

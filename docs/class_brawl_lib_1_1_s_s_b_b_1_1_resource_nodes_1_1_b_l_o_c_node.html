@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40a</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.41</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -258,6 +258,8 @@ Public Member Functions</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:ace234b6251d600311b0d10190705b7ee"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#ace234b6251d600311b0d10190705b7ee">ResourceFileType</a><code> [get]</code></td></tr>
 <tr class="separator:ace234b6251d600311b0d10190705b7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50c6ed86e8d0315cc3ecb1bee62ad45c"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_u8_entry_node.html#a01271b2db05d6f6775e823bfc1da8ce8">Type</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#a50c6ed86e8d0315cc3ecb1bee62ad45c">AllowedChildTypes</a><code> [get]</code></td></tr>
+<tr class="separator:a50c6ed86e8d0315cc3ecb1bee62ad45c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4b819e3c2bed40cfbe9e0b9a1ed81ab"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#ab4b819e3c2bed40cfbe9e0b9a1ed81ab">Version</a><code> [get, set]</code></td></tr>
 <tr class="separator:ab4b819e3c2bed40cfbe9e0b9a1ed81ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab6471d3520424008df6866509b0e487"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#aab6471d3520424008df6866509b0e487">ExtParam</a><code> [get, set]</code></td></tr>
@@ -465,15 +467,15 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a827da2b5393280f05854efd78e273152">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>        {</div>
-<div class="line"><span class="lineno">   75</span>            <span class="keywordtype">int</span> size = BLOC.Size + Children.Count * 4;</div>
-<div class="line"><span class="lineno">   76</span>            <span class="keywordflow">foreach</span> (ResourceNode node <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
-<div class="line"><span class="lineno">   77</span>            {</div>
-<div class="line"><span class="lineno">   78</span>                size += node.CalculateSize(force);</div>
-<div class="line"><span class="lineno">   79</span>            }</div>
-<div class="line"><span class="lineno">   80</span> </div>
-<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">return</span> size;</div>
-<div class="line"><span class="lineno">   82</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>        {</div>
+<div class="line"><span class="lineno">   77</span>            <span class="keywordtype">int</span> size = BLOC.Size + Children.Count * 4;</div>
+<div class="line"><span class="lineno">   78</span>            <span class="keywordflow">foreach</span> (ResourceNode node <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
+<div class="line"><span class="lineno">   79</span>            {</div>
+<div class="line"><span class="lineno">   80</span>                size += node.CalculateSize(force);</div>
+<div class="line"><span class="lineno">   81</span>            }</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>            <span class="keywordflow">return</span> size;</div>
+<div class="line"><span class="lineno">   84</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac9fe20e01ee816de58d8b2fa8d50f6f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">BrawlLib.SSBB.ResourceNodes.ResourceNode.Children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; Children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:262</div></div>
 </div><!-- fragment -->
 </div>
@@ -502,12 +504,12 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_u8_entry_node.html#a81160d3233f1329c749bef0b83f97b3e">BrawlLib.SSBB.ResourceNodes.U8EntryNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>        {</div>
-<div class="line"><span class="lineno">   41</span>            base.OnInitialize();</div>
-<div class="line"><span class="lineno">   42</span>            _version = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#a3e784a856ef9c403ebce8f2ba806542f">_version</a>;</div>
-<div class="line"><span class="lineno">   43</span>            _extParam = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#af3dd8d950067faaae09800b17c08258f">_extParam</a>;</div>
-<div class="line"><span class="lineno">   44</span>            <span class="keywordflow">return</span> Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ad32c58cf943824845b13b9c24e4ad0c5">_count</a> &gt; 0;</div>
-<div class="line"><span class="lineno">   45</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>        {</div>
+<div class="line"><span class="lineno">   43</span>            base.OnInitialize();</div>
+<div class="line"><span class="lineno">   44</span>            _version = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#a3e784a856ef9c403ebce8f2ba806542f">_version</a>;</div>
+<div class="line"><span class="lineno">   45</span>            _extParam = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#af3dd8d950067faaae09800b17c08258f">_extParam</a>;</div>
+<div class="line"><span class="lineno">   46</span>            <span class="keywordflow">return</span> Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ad32c58cf943824845b13b9c24e4ad0c5">_count</a> &gt; 0;</div>
+<div class="line"><span class="lineno">   47</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c_html_a3e784a856ef9c403ebce8f2ba806542f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#a3e784a856ef9c403ebce8f2ba806542f">BrawlLib.SSBB.Types.Subspace.BLOC._version</a></div><div class="ttdeci">bint _version</div><div class="ttdef"><b>Definition:</b> BLOC.cs:15</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c_html_ad32c58cf943824845b13b9c24e4ad0c5"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ad32c58cf943824845b13b9c24e4ad0c5">BrawlLib.SSBB.Types.Subspace.BLOC._count</a></div><div class="ttdeci">bint _count</div><div class="ttdef"><b>Definition:</b> BLOC.cs:14</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c_html_af3dd8d950067faaae09800b17c08258f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#af3dd8d950067faaae09800b17c08258f">BrawlLib.SSBB.Types.Subspace.BLOC._extParam</a></div><div class="ttdeci">int _extParam</div><div class="ttdef"><b>Definition:</b> BLOC.cs:16</div></div>
@@ -538,30 +540,30 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acc31994201c76c84a2518686a093fea1">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>        {</div>
-<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ad32c58cf943824845b13b9c24e4ad0c5">_count</a>; i++)</div>
-<div class="line"><span class="lineno">   50</span>            {</div>
-<div class="line"><span class="lineno">   51</span>                <span class="comment">//source decleration</span></div>
-<div class="line"><span class="lineno">   52</span>                DataSource source;</div>
-<div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>                <span class="comment">//Enumerate datasources for each child node</span></div>
-<div class="line"><span class="lineno">   55</span>                <span class="keywordflow">if</span> (i == Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ad32c58cf943824845b13b9c24e4ad0c5">_count</a> - 1)</div>
-<div class="line"><span class="lineno">   56</span>                {</div>
-<div class="line"><span class="lineno">   57</span>                    source = <span class="keyword">new</span> DataSource((*Header)[i],</div>
-<div class="line"><span class="lineno">   58</span>                        <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a> + <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a> - (*Header)[i]);</div>
-<div class="line"><span class="lineno">   59</span>                }</div>
-<div class="line"><span class="lineno">   60</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   61</span>                {</div>
-<div class="line"><span class="lineno">   62</span>                    source = <span class="keyword">new</span> DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);</div>
-<div class="line"><span class="lineno">   63</span>                }</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>                <span class="comment">//Call NodeFactory on datasource to initiate various files</span></div>
-<div class="line"><span class="lineno">   66</span>                <span class="keywordflow">if</span> (NodeFactory.FromSource(<span class="keyword">this</span>, source, <span class="keyword">false</span>) == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   67</span>                {</div>
-<div class="line"><span class="lineno">   68</span>                    <span class="keyword">new</span> BLOCEntryNode().Initialize(<span class="keyword">this</span>, source);</div>
-<div class="line"><span class="lineno">   69</span>                }</div>
-<div class="line"><span class="lineno">   70</span>            }</div>
-<div class="line"><span class="lineno">   71</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>        {</div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ad32c58cf943824845b13b9c24e4ad0c5">_count</a>; i++)</div>
+<div class="line"><span class="lineno">   52</span>            {</div>
+<div class="line"><span class="lineno">   53</span>                <span class="comment">//source decleration</span></div>
+<div class="line"><span class="lineno">   54</span>                DataSource source;</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>                <span class="comment">//Enumerate datasources for each child node</span></div>
+<div class="line"><span class="lineno">   57</span>                <span class="keywordflow">if</span> (i == Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ad32c58cf943824845b13b9c24e4ad0c5">_count</a> - 1)</div>
+<div class="line"><span class="lineno">   58</span>                {</div>
+<div class="line"><span class="lineno">   59</span>                    source = <span class="keyword">new</span> DataSource((*Header)[i],</div>
+<div class="line"><span class="lineno">   60</span>                        <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a> + <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a> - (*Header)[i]);</div>
+<div class="line"><span class="lineno">   61</span>                }</div>
+<div class="line"><span class="lineno">   62</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   63</span>                {</div>
+<div class="line"><span class="lineno">   64</span>                    source = <span class="keyword">new</span> DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);</div>
+<div class="line"><span class="lineno">   65</span>                }</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>                <span class="comment">//Call NodeFactory on datasource to initiate various files</span></div>
+<div class="line"><span class="lineno">   68</span>                <span class="keywordflow">if</span> (NodeFactory.FromSource(<span class="keyword">this</span>, source, <span class="keyword">false</span>) == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   69</span>                {</div>
+<div class="line"><span class="lineno">   70</span>                    <span class="keyword">new</span> BLOCEntryNode().Initialize(<span class="keyword">this</span>, source);</div>
+<div class="line"><span class="lineno">   71</span>                }</div>
+<div class="line"><span class="lineno">   72</span>            }</div>
+<div class="line"><span class="lineno">   73</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_acba0e48a7ed4557ceefbbc7b19c36b2d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">BrawlLib.SSBB.ResourceNodes.ResourceNode.WorkingUncompressed</a></div><div class="ttdeci">DataSource WorkingUncompressed</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:183</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_a0f9a87e8ce6929677cf3b301b82e9c86"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">BrawlLib.SSBB.ResourceNodes.DataSource.Length</a></div><div class="ttdeci">int Length</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:32</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_ae84563550ab4a05aa5c916f03260d08d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">BrawlLib.SSBB.ResourceNodes.DataSource.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:31</div></div>
@@ -609,28 +611,28 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a041a23bb933e6da8b0e03fdf664ba5db">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   85</span>        {</div>
-<div class="line"><span class="lineno">   86</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html">BLOC</a>* header = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html">BLOC</a>*) address;</div>
-<div class="line"><span class="lineno">   87</span>            *header = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html">BLOC</a>();</div>
-<div class="line"><span class="lineno">   88</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#a220cc06bd3d645a759aa67ecde64c283">_tag</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html">BLOC</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#aec7b6496773f9781eb0b361132a5afca">Tag</a>;</div>
-<div class="line"><span class="lineno">   89</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ad32c58cf943824845b13b9c24e4ad0c5">_count</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count;</div>
-<div class="line"><span class="lineno">   90</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#a3e784a856ef9c403ebce8f2ba806542f">_version</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#ab4b819e3c2bed40cfbe9e0b9a1ed81ab">Version</a>;</div>
-<div class="line"><span class="lineno">   91</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#af3dd8d950067faaae09800b17c08258f">_extParam</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#aab6471d3520424008df6866509b0e487">ExtParam</a>;</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span>            uint offset = (uint) (0x10 + <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count * 4);</div>
-<div class="line"><span class="lineno">   94</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count; i++)</div>
-<div class="line"><span class="lineno">   95</span>            {</div>
-<div class="line"><span class="lineno">   96</span>                <span class="keywordflow">if</span> (i &gt; 0)</div>
-<div class="line"><span class="lineno">   97</span>                {</div>
-<div class="line"><span class="lineno">   98</span>                    offset += (uint) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>[i - 1].<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ad9688db6e97ee62b1eb0fc4592b48cbd">CalculateSize</a>(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   99</span>                }</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>                *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) (address + <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html">BLOC</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#af454129b084a857546fbb3735757b40b">Size</a> + i * 4) = offset;</div>
-<div class="line"><span class="lineno">  102</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">_children</a>[i].Rebuild(address + offset, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">_children</a>[i].<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ad9688db6e97ee62b1eb0fc4592b48cbd">CalculateSize</a>(<span class="keyword">false</span>), <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  103</span>            }</div>
-<div class="line"><span class="lineno">  104</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node_html_aab6471d3520424008df6866509b0e487"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#aab6471d3520424008df6866509b0e487">BrawlLib.SSBB.ResourceNodes.BLOCNode.ExtParam</a></div><div class="ttdeci">int ExtParam</div><div class="ttdef"><b>Definition:</b> BLOCNode.cs:28</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node_html_ab4b819e3c2bed40cfbe9e0b9a1ed81ab"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#ab4b819e3c2bed40cfbe9e0b9a1ed81ab">BrawlLib.SSBB.ResourceNodes.BLOCNode.Version</a></div><div class="ttdeci">int Version</div><div class="ttdef"><b>Definition:</b> BLOCNode.cs:16</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>        {</div>
+<div class="line"><span class="lineno">   88</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html">BLOC</a>* header = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html">BLOC</a>*) address;</div>
+<div class="line"><span class="lineno">   89</span>            *header = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html">BLOC</a>();</div>
+<div class="line"><span class="lineno">   90</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#a220cc06bd3d645a759aa67ecde64c283">_tag</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html">BLOC</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#aec7b6496773f9781eb0b361132a5afca">Tag</a>;</div>
+<div class="line"><span class="lineno">   91</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ad32c58cf943824845b13b9c24e4ad0c5">_count</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count;</div>
+<div class="line"><span class="lineno">   92</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#a3e784a856ef9c403ebce8f2ba806542f">_version</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#ab4b819e3c2bed40cfbe9e0b9a1ed81ab">Version</a>;</div>
+<div class="line"><span class="lineno">   93</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#af3dd8d950067faaae09800b17c08258f">_extParam</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#aab6471d3520424008df6866509b0e487">ExtParam</a>;</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>            uint offset = (uint) (0x10 + <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count * 4);</div>
+<div class="line"><span class="lineno">   96</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count; i++)</div>
+<div class="line"><span class="lineno">   97</span>            {</div>
+<div class="line"><span class="lineno">   98</span>                <span class="keywordflow">if</span> (i &gt; 0)</div>
+<div class="line"><span class="lineno">   99</span>                {</div>
+<div class="line"><span class="lineno">  100</span>                    offset += (uint) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>[i - 1].<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ad9688db6e97ee62b1eb0fc4592b48cbd">CalculateSize</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  101</span>                }</div>
+<div class="line"><span class="lineno">  102</span> </div>
+<div class="line"><span class="lineno">  103</span>                *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) (address + <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html">BLOC</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#af454129b084a857546fbb3735757b40b">Size</a> + i * 4) = offset;</div>
+<div class="line"><span class="lineno">  104</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">_children</a>[i].Rebuild(address + offset, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">_children</a>[i].<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ad9688db6e97ee62b1eb0fc4592b48cbd">CalculateSize</a>(<span class="keyword">false</span>), <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  105</span>            }</div>
+<div class="line"><span class="lineno">  106</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node_html_aab6471d3520424008df6866509b0e487"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#aab6471d3520424008df6866509b0e487">BrawlLib.SSBB.ResourceNodes.BLOCNode.ExtParam</a></div><div class="ttdeci">int ExtParam</div><div class="ttdef"><b>Definition:</b> BLOCNode.cs:30</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node_html_ab4b819e3c2bed40cfbe9e0b9a1ed81ab"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html#ab4b819e3c2bed40cfbe9e0b9a1ed81ab">BrawlLib.SSBB.ResourceNodes.BLOCNode.Version</a></div><div class="ttdeci">int Version</div><div class="ttdef"><b>Definition:</b> BLOCNode.cs:18</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a713872ebf7495715a72583a8ebe07891"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">BrawlLib.SSBB.ResourceNodes.ResourceNode._children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; _children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:143</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ad9688db6e97ee62b1eb0fc4592b48cbd"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ad9688db6e97ee62b1eb0fc4592b48cbd">BrawlLib.SSBB.ResourceNodes.ResourceNode.CalculateSize</a></div><div class="ttdeci">virtual int CalculateSize(bool force)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:1161</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1buint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1buint.html">BrawlLib.Internal.buint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:59</div></div>
@@ -642,6 +644,28 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
+<a id="a50c6ed86e8d0315cc3ecb1bee62ad45c" name="a50c6ed86e8d0315cc3ecb1bee62ad45c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50c6ed86e8d0315cc3ecb1bee62ad45c">&#9670;&#160;</a></span>AllowedChildTypes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_u8_entry_node.html#a01271b2db05d6f6775e823bfc1da8ce8">Type</a> [] BrawlLib.SSBB.ResourceNodes.BLOCNode.AllowedChildTypes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aab6471d3520424008df6866509b0e487" name="aab6471d3520424008df6866509b0e487"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab6471d3520424008df6866509b0e487">&#9670;&#160;</a></span>ExtParam</h2>
 
@@ -661,14 +685,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   28</span>        {</div>
-<div class="line"><span class="lineno">   29</span>            <span class="keyword">get</span> =&gt; _extParam;</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   31</span>            {</div>
-<div class="line"><span class="lineno">   32</span>                _extParam = value;</div>
-<div class="line"><span class="lineno">   33</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">   34</span>            }</div>
-<div class="line"><span class="lineno">   35</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>        {</div>
+<div class="line"><span class="lineno">   31</span>            <span class="keyword">get</span> =&gt; _extParam;</div>
+<div class="line"><span class="lineno">   32</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">   33</span>            {</div>
+<div class="line"><span class="lineno">   34</span>                _extParam = value;</div>
+<div class="line"><span class="lineno">   35</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">   36</span>            }</div>
+<div class="line"><span class="lineno">   37</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a7d6d973b631a29f1f86bff9500bbb7eb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">BrawlLib.SSBB.ResourceNodes.ResourceNode.SignalPropertyChange</a></div><div class="ttdeci">virtual void SignalPropertyChange()</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:313</div></div>
 </div><!-- fragment -->
 </div>
@@ -714,14 +738,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   16</span>        {</div>
-<div class="line"><span class="lineno">   17</span>            <span class="keyword">get</span> =&gt; _version;</div>
-<div class="line"><span class="lineno">   18</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">   19</span>            {</div>
-<div class="line"><span class="lineno">   20</span>                _version = value;</div>
-<div class="line"><span class="lineno">   21</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">   22</span>            }</div>
-<div class="line"><span class="lineno">   23</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>        {</div>
+<div class="line"><span class="lineno">   19</span>            <span class="keyword">get</span> =&gt; _version;</div>
+<div class="line"><span class="lineno">   20</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">   21</span>            {</div>
+<div class="line"><span class="lineno">   22</span>                _version = value;</div>
+<div class="line"><span class="lineno">   23</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">   24</span>            }</div>
+<div class="line"><span class="lineno">   25</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
