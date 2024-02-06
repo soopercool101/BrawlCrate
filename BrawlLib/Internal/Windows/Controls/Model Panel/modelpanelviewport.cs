@@ -50,7 +50,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                 _spotExponent = _spotExponent,
                 _transFactor = _transFactor,
                 _type = _type,
-                _viewDistance = _viewDistance,
+                //_viewDistance = _viewDistance,
                 _zoomFactor = _zoomFactor,
                 _allowSelection = _allowSelection,
                 _showCamCoords = _showCamCoords,
@@ -73,7 +73,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
         public float _rotFactor = 0.4f;
         public float _transFactor = 0.05f;
         public float _zoomFactor = 2.5f;
-        public float _viewDistance = 5.0f;
+        public float _viewDistance = 0f;
         public float _spotCutoff = 180.0f;
         public float _spotExponent = 100.0f;
 
@@ -818,6 +818,23 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 
         #endregion
 
+        #region Mouse/Keyboard Enumerations
+        public enum CameraControlMode
+        {
+            Flycam,
+            Turntable
+        }
+
+        public enum CameraDragAction
+        {
+            Rotate = 0,
+            Pan,
+            Zoom,
+            Roll
+        }
+
+        #endregion
+
         #region Mouse/Keyboard Functions
 
         private Point? lastHeldMouseLocat = null;
@@ -964,7 +981,18 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                         bool shift = (mod & Keys.Shift) != 0;
                         bool alt = (mod & Keys.Alt) != 0;
 
-                        if (ViewType != ViewportProjection.Perspective && !ctrl)
+                        CameraDragAction action;
+                        if (_scrolling)
+                            action = Properties.Settings.Default.CameraMiddleMouse;
+                        else if (ctrl)
+                            if (alt)
+                                action = Properties.Settings.Default.CameraCtrlAltRMB;
+                            else
+                                action = Properties.Settings.Default.CameraCtrlRMB;
+                        else
+                            action = Properties.Settings.Default.CameraRightMouse;
+
+                        if (ViewType != ViewportProjection.Perspective && action != CameraDragAction.Roll && action != CameraDragAction.Rotate)
                         {
                             xDiff *= 20;
                             yDiff *= 20;
@@ -976,24 +1004,29 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                             yDiff *= 16;
                         }
 
-                        if (_scrolling)
+                        switch (action)
                         {
-                            Translate(0, 0, -yDiff * 0.01f);
-                        }
-                        else if (ctrl)
-                        {
-                            if (alt)
-                            {
-                                Rotate(0, 0, -yDiff * RotationScale);
-                            }
-                            else
-                            {
+                            case CameraDragAction.Zoom:
+                                Translate(0, 0, -yDiff * 0.01f);
+                                break;
+                            case CameraDragAction.Pan:
+                                if (Properties.Settings.Default.CameraPanInvertX)
+                                    xDiff *= -1;
+                                if (Properties.Settings.Default.CameraPanInvertY)
+                                    yDiff *= -1;
+                                Translate(-xDiff * TranslationScale, -yDiff * TranslationScale, 0.0f);
+                                break;
+                            case CameraDragAction.Rotate:
+                                if (Properties.Settings.Default.CameraRotateInvertX)
+                                    xDiff *= -1;
+                                if (Properties.Settings.Default.CameraRotateInvertY)
+                                    yDiff *= -1;
                                 Pivot(yDiff * RotationScale, -xDiff * RotationScale);
-                            }
-                        }
-                        else
-                        {
-                            Translate(-xDiff * TranslationScale, -yDiff * TranslationScale, 0.0f);
+                                break;
+                            case CameraDragAction.Roll:
+                                Rotate(0, 0, -yDiff * RotationScale);
+                                break;
+
                         }
                     }
                 }
@@ -1145,6 +1178,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
         {
             _scrolling = true;
             Camera.Zoom(amt);
+            _viewDistance += amt;
             _scrolling = false;
 
             if (!invoked)
@@ -1192,7 +1226,14 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             x *= _multiplier;
             y *= _multiplier;
 
-            Camera.Pivot(_viewDistance, x, y);
+            if (Properties.Settings.Default.CameraControlMode == CameraControlMode.Flycam)
+            {
+                Camera.Pivot(0, x, y);
+            }
+            else
+            {
+                Camera.Pivot(_viewDistance, x, y);
+            }
 
             if (Pivoted != null)
             {
@@ -1233,6 +1274,18 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
         {
             Camera.ProjectCameraPlanes(new Vector2(mousePoint._x - Region.X, WorldToLocalYf(mousePoint._y)), transform,
                 out xy, out yz, out xz);
+        }
+
+        public override void ResetCamera()
+        {
+            _viewDistance = 0;
+            base.ResetCamera();
+        }
+
+        public override void SetProjectionType(ViewportProjection type)
+        {
+            _viewDistance = 0;
+            base.SetProjectionType(type);
         }
 
         #endregion
@@ -1415,7 +1468,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
         public float _rotFactor = 0.4f;
         public float _transFactor = 0.05f;
         public float _zoomFactor = 2.5f;
-        public float _viewDistance = 5.0f;
+        public float _viewDistance = 0.0f;
         public float _spotCutoff = 180.0f;
         public float _spotExponent = 100.0f;
         private const float v = 1.0f / 255.0f;
@@ -1472,7 +1525,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             v._spotCutoff = _spotCutoff;
             v._spotExponent = _spotExponent;
             v._transFactor = _transFactor;
-            v._viewDistance = _viewDistance;
+            //v._viewDistance = _viewDistance;
             v._zoomFactor = _zoomFactor;
             v._lightEnabled = _lightEnabled;
             v._renderSCN0Controls = _renderSCN0Controls;

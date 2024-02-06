@@ -93,10 +93,15 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 
             cam.Reset();
 
-            cam.Translate(frontMidPt._x, frontMidPt._y, Maths.Max(distX, distY, max._z) + 2.0f);
+            cam.Translate(frontMidPt._x, frontMidPt._y, 0);
             if (CurrentViewport.GetProjectionType() == ViewportProjection.Orthographic)
             {
+                cam.Translate(0, 0, Maths.Max(distX, distY, max._z) + 2.0f);
                 cam.Zoom(Maths.Max(distX, distY, max._z) / (Maths.Max(Size.Height, Size.Width) * 0.01f));
+            }
+            else if (CurrentViewport.GetProjectionType() == ViewportProjection.Perspective)
+            {
+                CurrentViewport.Zoom(Maths.Max(distX, distY, max._z) + 2.0f, true);
             }
 
             Invalidate();
