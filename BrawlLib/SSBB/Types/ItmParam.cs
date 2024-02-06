@@ -28,8 +28,8 @@ namespace BrawlLib.SSBB.Types
         public bfloat _grabRangeDistanceY;
         public bfloat _ecbHeight;
         public bfloat _ecbOffsetY;
-        public bfloat _ecbWidth;
-        public bfloat _unknown0x54;
+        public bfloat _ecbLeft;
+        public bfloat _ecbRight;
         public bfloat _unknown0x58;
         public bfloat _slideAngle;
         public bfloat _slideGravity;
@@ -68,7 +68,7 @@ namespace BrawlLib.SSBB.Types
         public bint _unknown0xCC;
         public bool32 _canReflect;
         public bint _unknown0xD4;
-        public bint _unknown0xD8;
+        public bint _blastzoneDespawn;
         public bool32 _suffersHitstun;
         public bint _unknown0xE0;
         public bint _unknown0xE4;

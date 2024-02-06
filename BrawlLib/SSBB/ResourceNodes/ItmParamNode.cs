@@ -683,24 +683,25 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
-        [DisplayName("ECB Width")]
-        public float EcbWidth
+        [DisplayName("ECB Left")]
+        public float EcbLeft
         {
-            get => Data._ecbWidth;
+            get => Data._ecbLeft;
             set
             {
-                Data._ecbWidth = value;
+                Data._ecbLeft = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x54
+        [Category("Item Parameters")]
+        [DisplayName("ECB Right")]
+        public float EcbRight
         {
-            get => Data._unknown0x54;
+            get => Data._ecbRight;
             set
             {
-                Data._unknown0x54 = value;
+                Data._ecbRight = value;
                 SignalPropertyChange();
             }
         }
@@ -920,11 +921,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             NotGrabbable = 0,
             AutomaticPickup = 1,
-            Type2 = 2,
-            Type3 = 3,
-            Type4 = 4,
-            Type5 = 5,
-            Type6 = 6
+            NoHandAnimationChange = 2,
+            AnimItemHandWave = 3,
+            AnimItemHandPickup = 4,
+            AnimItemHandGrip = 5,
+            AnimItemHandSmash = 6
         }
 
         [Category("Item Parameters")]
@@ -1518,13 +1519,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown0xD8
+
+        public enum ItemBlastzoneDespawnOptions : int
         {
-            get => Data._unknown0xD8;
+            NoDespawn = 0,
+            SidesAndBottomBlastzone = 1,
+            BottomBlastzone = 2,
+            AllBlastzones = 3
+        }
+        [Category("Item Parameters")]
+        public ItemBlastzoneDespawnOptions ItemBlastzoneDespawn
+        {
+            get => (ItemBlastzoneDespawnOptions)(int)Data._blastzoneDespawn;
             set
             {
-                Data._unknown0xD8 = value;
+                Data._blastzoneDespawn = (int)value;
                 SignalPropertyChange();
             }
         }
