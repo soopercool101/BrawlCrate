@@ -669,7 +669,9 @@ namespace BrawlLib.Modeling.Collada
                 PrimitiveEntry prim = new PrimitiveEntry {_type = type};
                 PrimitiveFace p;
                 int val;
-                int stride = 0, elements = 0;
+                int stride = 0;
+                HashSet<int> uniqueOffsets = new HashSet<int>();
+                int elements = 0;
 
                 switch (type)
                 {
@@ -706,21 +708,23 @@ namespace BrawlLib.Modeling.Collada
                 {
                     if (_reader.Name.Equals("input", true))
                     {
-                        prim._inputs.Add(ParseInput());
-                        elements++;
+                        InputEntry entry = ParseInput();
+                        prim._inputs.Add(entry);
+                        uniqueOffsets.Add(entry._offset);
+                        ++elements;
                     }
                     else if (_reader.Name.Equals("p", true))
                     {
-                        List<ushort> indices = new List<ushort>(stride * elements);
+                        List<ushort> indices = new List<ushort>(stride * uniqueOffsets.Count);
 
                         p = new PrimitiveFace();
-                        //p._pointIndices.Capacity = stride * elements;
+                        //p._pointIndices.Capacity = stride * uniqueOffsets.Count;
                         while (_reader.ReadValue(&val))
                         {
                             indices.Add((ushort) val);
                         }
 
-                        p._pointCount = indices.Count / elements;
+                        p._pointCount = indices.Count / uniqueOffsets.Count;
                         p._pointIndices = indices.ToArray();
 
                         switch (type)

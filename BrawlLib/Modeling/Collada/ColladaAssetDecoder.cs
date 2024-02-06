@@ -491,16 +491,19 @@ namespace BrawlLib.Modeling.Collada
             {
                 int count = prim._inputs.Count;
                 //Map inputs to command sequence
-                foreach (InputEntry inp in prim._inputs)
+                for (int i = 0; i < count; ++i)
                 {
+                    InputEntry inp = prim._inputs[i];
+
                     if (inp._outputOffset == -1)
                     {
-                        pCmd[inp._offset].Cmd = 0;
+                        pCmd[i].Cmd = 0;
                     }
                     else
                     {
-                        pCmd[inp._offset].Cmd = (byte) inp._semantic;
-                        pCmd[inp._offset].Index = (byte) inp._outputOffset;
+                        pCmd[i].Cmd = (byte) inp._semantic;
+                        pCmd[i].Index = (byte) inp._outputOffset;
+                        pCmd[i].Offset = (byte)inp._offset;
 
                         //Assign input buffer
                         foreach (SourceEntry src in geo._sources)
@@ -609,31 +612,32 @@ namespace BrawlLib.Modeling.Collada
         private static void RunPrimitiveCmd(byte** pIn, byte** pOut, PrimitiveDecodeCommand* pCmd, int cmdCount,
                                             ushort* pIndex, int count)
         {
+            int stride = 0;
             int buffer;
             while (count-- > 0)
             {
                 for (int i = 0; i < cmdCount; i++)
                 {
                     buffer = pCmd[i].Index;
+                    stride = Math.Max(stride, pCmd[i].Offset);
                     switch ((SemanticType) pCmd[i].Cmd)
                     {
                         case SemanticType.None:
-                            *pIndex += 1;
                             break;
 
                         case SemanticType.VERTEX:
                             //Can't do remap table because weights haven't been assigned yet!
-                            *(ushort*) pOut[buffer] = *pIndex++;
+                            *(ushort*) pOut[buffer] = *(pIndex + pCmd[i].Offset);
                             pOut[buffer] += 2;
                             break;
 
                         case SemanticType.NORMAL:
-                            *(Vector3*) pOut[buffer] = ((Vector3*) pIn[buffer])[*pIndex++];
+                            *(Vector3*) pOut[buffer] = ((Vector3*) pIn[buffer])[*(pIndex + pCmd[i].Offset)];
                             pOut[buffer] += 12;
                             break;
 
                         case SemanticType.COLOR:
-                            float* p = (float*) (pIn[buffer] + *pIndex++ * 16);
+                            float* p = (float*) (pIn[buffer] + *(pIndex + pCmd[i].Offset) * 16);
                             byte* p2 = pOut[buffer];
                             for (int x = 0; x < 4; x++)
                             {
@@ -645,13 +649,14 @@ namespace BrawlLib.Modeling.Collada
 
                         case SemanticType.TEXCOORD:
                             //Flip y axis so coordinates are bottom-up
-                            Vector2 v = ((Vector2*) pIn[buffer])[*pIndex++];
+                            Vector2 v = ((Vector2*) pIn[buffer])[*(pIndex + pCmd[i].Offset)];
                             v._y = 1.0f - v._y;
                             *(Vector2*) pOut[buffer] = v;
                             pOut[buffer] += 8;
                             break;
                     }
                 }
+                pIndex += stride + 1;
             }
         }
 
@@ -660,7 +665,8 @@ namespace BrawlLib.Modeling.Collada
         {
             public byte Cmd;
             public byte Index;
-            public byte Pad1, Pad2;
+            public byte Offset;
+            public byte Padding;
         }
     }
 }
