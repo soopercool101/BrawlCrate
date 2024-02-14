@@ -364,25 +364,25 @@ namespace BrawlLib.Internal.Windows.Controls
 
             //These are used to compensate for padding added on an axis
             float xCorrect = 1.0f, yCorrect = 1.0f;
-            if (tAspect > wAspect)
-            {
-                //Texture is wider, use horizontal fit
-                //X touches the edges of the window, Y has top and bottom padding
-
-                //X
-                texCoord[0] = texCoord[6] = 0.0f;
-                texCoord[2] = texCoord[4] = 1.0f;
-
-                //Y
-                texCoord[1] = texCoord[3] = (yCorrect = tAspect / wAspect) / 2.0f + 0.5f;
-                texCoord[5] = texCoord[7] = 1.0f - texCoord[1];
-
-                bottomRight = new Vector2(halfW,
-                    ((Height - Width / texWidth * texHeight) / Height / 2.0f - 0.5f) * Height);
-                topLeft = new Vector2(-halfW, -bottomRight._y);
-            }
-            else
-            {
+            //if (tAspect > wAspect)
+            //{
+            //    //Texture is wider, use horizontal fit
+            //    //X touches the edges of the window, Y has top and bottom padding
+            //
+            //    //X
+            //    texCoord[0] = texCoord[6] = 0.0f;
+            //    texCoord[2] = texCoord[4] = 1.0f;
+            //
+            //    //Y
+            //    texCoord[1] = texCoord[3] = (yCorrect = tAspect / wAspect) / 2.0f + 0.5f;
+            //    texCoord[5] = texCoord[7] = 1.0f - texCoord[1];
+            //
+            //    bottomRight = new Vector2(halfW,
+            //        ((Height - Width / texWidth * texHeight) / Height / 2.0f - 0.5f) * Height);
+            //    topLeft = new Vector2(-halfW, -bottomRight._y);
+            //}
+            //else
+            //{
                 //Window is wider, use vertical fit
                 //Y touches the edges of the window, X has left and right padding
 
@@ -397,7 +397,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 bottomRight =
                     new Vector2(1.0f - ((Width - Height / texHeight * texWidth) / Width / 2.0f - 0.5f) * Width, -halfH);
                 topLeft = new Vector2(-bottomRight._x, halfH);
-            }
+            //}
 
             //Apply the texcoord bind transform first
             TextureFrameState state = _targetMatRef._bindState;
