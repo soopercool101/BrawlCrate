@@ -53,12 +53,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             uint relOffset = cmd.Apply(Manager.GetUint(index), 0);
-            if (relOffset > _objectSection._dataOffset + _objectSection._dataSize)
+            if (relOffset > _objectSection._dataOffset + _objectSection._dataSize || relOffset > _objectSection.WorkingUncompressed.Length)
             {
                 return null;
             }
 
-            string name = new string((sbyte*) (_objectSection.Header + relOffset));
+            string name = (_objectSection.Header + relOffset).GetUTF8String();
 
             if (string.IsNullOrWhiteSpace(name))
             {
