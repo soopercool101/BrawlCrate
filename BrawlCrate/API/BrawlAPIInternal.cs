@@ -49,10 +49,14 @@ namespace BrawlCrate.API
             Engine = Python.CreateEngine();
             Runtime = Engine.Runtime;
 
+            if (Directory.Exists($"{Application.StartupPath}\\BrawlAPI\\Python"))
+            {
+                Directory.Delete($"{Application.StartupPath}\\BrawlAPI\\Python", true);
+            }
             // Setup IronPython engine
             Engine.SetSearchPaths(new[]
             {
-                $"{Application.StartupPath}\\BrawlAPI\\Python",
+                $"{Application.StartupPath}\\BrawlAPI\\Lib\\Python",
                 $"{Application.StartupPath}\\BrawlAPI\\Lib"
             });
 
