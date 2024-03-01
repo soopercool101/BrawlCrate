@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using System.Collections.Generic;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -47,7 +47,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             RelCommand cmd = Manager.GetCommand(index);
 
             RelocationTarget target = cmd?.GetTargetRelocation();
-            if (target == null || target._sectionID != _objectSection.Index)
+            if (target == null || target._sectionID != _objectSection.Index || target._moduleID != _objectSection.ModuleID)
             {
                 return null;
             }
