@@ -29,17 +29,6 @@ namespace BrawlCrate.API
 
         private static string fsi_path;
 
-        internal static string PythonPath
-        {
-            get => Engine.GetSearchPaths().Count > 0 ? Engine.GetSearchPaths().ElementAt(0) : "(none)";
-            set
-            {
-                Engine.SetSearchPaths(Engine.GetSearchPaths().Append(value).ToArray());
-                Properties.Settings.Default.PythonInstallationPath = value;
-                Properties.Settings.Default.Save();
-            }
-        }
-
         internal static string FSIPath
         {
             get => fsi_path;
@@ -61,7 +50,11 @@ namespace BrawlCrate.API
             Runtime = Engine.Runtime;
 
             // Setup IronPython engine
-            PythonInstall();
+            Engine.SetSearchPaths(new[]
+            {
+                $"{Application.StartupPath}\\BrawlAPI\\Python",
+                $"{Application.StartupPath}\\BrawlAPI\\Lib"
+            });
 
             fsi_path = Properties.Settings.Default.FSharpInstallationPath;
 
@@ -256,186 +249,6 @@ namespace BrawlCrate.API
             }
 
             File.WriteAllText(path, text);
-        }
-
-        internal static void PythonInstall(bool manual = false, bool force = false)
-        {
-            string settingPath = Properties.Settings.Default.PythonInstallationPath;
-            List<string> searchPaths = new List<string>();
-
-            // First, search the directory found in the settings (unless force is active)
-            if (!force && !settingPath.Equals("") && Directory.Exists(settingPath))
-            {
-                searchPaths.Add(Directory.Exists($"{settingPath}\\Lib") ? $"{settingPath}\\Lib" : settingPath);
-            }
-            // Search for any other Python installations in their default directories
-            else if (force || !settingPath.Equals("(none)"))
-            {
-                // Search the PATH environment variable
-                string[] paths = Environment.GetEnvironmentVariable("PATH").Trim(';').Split(';');
-                bool found = false;
-                foreach (string s in paths)
-                {
-                    if (s.Contains("Python") && Directory.Exists($"{s}Lib"))
-                    {
-                        searchPaths.Add($"{s}Lib");
-                        found = true;
-                        break;
-                    }
-                }
-
-                // Search the new installation path for Python
-                if (!found)
-                {
-                    string python3InstallDir =
-                        $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\Programs";
-                    foreach (DirectoryInfo d in Directory.CreateDirectory(python3InstallDir).GetDirectories().Reverse())
-                    {
-                        if (d.Name.StartsWith("Python"))
-                        {
-                            if (Directory.Exists($"{d.FullName}\\Lib"))
-                            {
-                                searchPaths.Add($"{d.FullName}\\Lib");
-                                found = true;
-                                break;
-                            }
-
-                            foreach (DirectoryInfo d2 in d.GetDirectories().Reverse())
-                            {
-                                if (d2.Name.StartsWith("Python") && Directory.Exists($"{d2.FullName}\\Lib"))
-                                {
-                                    searchPaths.Add($"{d2.FullName}\\Lib");
-                                    found = true;
-                                    break;
-                                }
-                            }
-
-                            if (found)
-                            {
-                                break;
-                            }
-                        }
-                    }
-
-                    string vsPyPath = Path.Combine("C:/", "Program Files (x86)", "Microsoft Visual Studio", "Shared");
-                    if (!found && Directory.Exists(vsPyPath))
-                    {
-                        foreach (DirectoryInfo d in Directory.CreateDirectory(vsPyPath).GetDirectories().Reverse())
-                        {
-                            if (found)
-                            {
-                                break;
-                            }
-
-                            if (d.Name.StartsWith("Python"))
-                            {
-                                if (Directory.Exists($"{d.FullName}\\Lib"))
-                                {
-                                    searchPaths.Add($"{d.FullName}\\Lib");
-                                    found = true;
-                                    break;
-                                }
-
-                                foreach (DirectoryInfo d2 in d.GetDirectories().Reverse())
-                                {
-                                    if (d2.Name.StartsWith("Python") && Directory.Exists($"{d2.FullName}\\Lib"))
-                                    {
-                                        searchPaths.Add($"{d2.FullName}\\Lib");
-                                        found = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                // Search the old installation path for Python
-                if (!found)
-                {
-                    foreach (DirectoryInfo d in Directory.CreateDirectory("C:\\").GetDirectories().Reverse())
-                    {
-                        if (d.FullName.StartsWith("C:\\Python") && Directory.Exists($"{d.FullName}\\Lib"))
-                        {
-                            searchPaths.Add($"{d.FullName}\\Lib");
-                            break;
-                        }
-                    }
-                }
-            }
-
-            // Then see if there's a directory included in the installation (This can also be used for additional modules or a primary install, so add it in addition)
-            if (Directory.Exists($"{Application.StartupPath}\\BrawlAPI\\Lib"))
-            {
-                if (!searchPaths.Contains($"{Application.StartupPath}\\BrawlAPI\\Lib"))
-                {
-                    searchPaths.Add($"{Application.StartupPath}\\BrawlAPI\\Lib");
-                }
-            }
-
-            if (force || string.IsNullOrEmpty(settingPath) || settingPath.Equals("(none)"))
-            {
-                if (searchPaths.Count > 0)
-                {
-                    if (manual)
-                    {
-                        MessageBox.Show(
-                            "Python was found to be installed in: \n" + searchPaths[0] +
-                            "\nAdditional modules can be installed in this path or by placing them in the \"BrawlAPI\\Lib\" folder in your BrawlCrate installation.",
-                            "BrawlAPI");
-                    }
-
-                    Properties.Settings.Default.PythonInstallationPath = searchPaths[0];
-                    Properties.Settings.Default.Save();
-                }
-                else if (force || !settingPath.Equals("(none)", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (force && manual)
-                    {
-                        if (string.IsNullOrEmpty(settingPath))
-                        {
-                            Properties.Settings.Default.PythonInstallationPath = "(none)";
-                            Properties.Settings.Default.Save();
-                        }
-
-                        MessageBox.Show(
-                            "Python installation could not be automatically detected. Reinstall Python and try again, or browse manually to your Python installation directory.",
-                            "BrawlAPI");
-                    }
-                    else
-                    {
-#if !MONO
-                        using (VistaFolderBrowserDialog dlg
-                            = new VistaFolderBrowserDialog {UseDescriptionForTitle = true})
-#else
-                        using (FolderBrowserDialog dlg = new FolderBrowserDialog())
-#endif
-                        {
-                            dlg.Description = "Python Installation Path";
-                            if (MessageBox.Show(
-                                    "Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.",
-                                    "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes
-                                && dlg.ShowDialog() == DialogResult.OK)
-                            {
-                                searchPaths.Add(dlg.SelectedPath);
-                                Properties.Settings.Default.PythonInstallationPath = dlg.SelectedPath;
-                                Properties.Settings.Default.Save();
-                            }
-                            else if (!force)
-                            {
-                                MessageBox.Show(
-                                    "Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.",
-                                    "BrawlAPI");
-                                Properties.Settings.Default.PythonInstallationPath = "(none)";
-                                Properties.Settings.Default.Save();
-                            }
-                        }
-                    }
-                }
-            }
-
-            // If any python installations are found, set them as the search paths
-            Engine.SetSearchPaths(searchPaths.ToArray());
         }
 
         internal static void FSharpInstall(bool manual = false, bool force = false)

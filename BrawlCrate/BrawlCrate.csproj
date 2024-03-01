@@ -292,7 +292,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="IronPython" Version="2.7.12" />
+    <PackageReference Include="IronPython" Version="3.4.1" />
+    <PackageReference Include="IronPython.StdLib" Version="3.4.1" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -408,6 +409,75 @@
     <ProjectReference Include="..\BrawlLib\BrawlLib.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\base_events.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\base_subprocess.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\compat.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\constants.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\coroutines.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\events.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\futures.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\locks.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\log.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\proactor_events.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\protocols.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\queues.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\selector_events.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\sslproto.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\streams.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\subprocess.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\tasks.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\test_utils.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\transports.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\unix_events.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\windows_events.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\windows_utils.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="C:\Users\soopercool101\.nuget\packages\ironpython.stdlib\3.4.1\contentFiles\any\any\lib\asyncio\__init__.py">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="discord-rpc.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -420,6 +490,6 @@
     <Exec Command="if EXIST &quot;$(TargetDir)Updater.exe&quot; (&#xD;&#xA;  &quot;$(TargetDir)Updater.exe&quot; -killAll&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Documentation' (&#xD;&#xA;  if not '$(ConfigurationName)' == 'Doxygen' (&#xD;&#xA;    if not '$(ConfigurationName)' == 'Mono' (&#xD;&#xA;      cd $(SolutionDir)ColorSmash\&#xD;&#xA;      cargo build --release --target i686-pc-windows-msvc&#xD;&#xA;    )&#xD;&#xA;  )&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;)" />
   </Target>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)'!='Mono' ">
-    <Exec Command="cd &quot;$(TargetDir)&quot;&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)API\Lib\*&quot; &quot;$(TargetDir)\BrawlAPI\Lib\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)API\Plugins\*&quot; &quot;$(TargetDir)\BrawlAPI\Plugins\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)API\Loaders\*&quot; &quot;$(TargetDir)\BrawlAPI\Loaders\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)API\Resources\*&quot; &quot;$(TargetDir)\BrawlAPI\Resources\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.dll&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;if EXIST &quot;$(SolutionDir)ColorSmash\target\i686-pc-windows-msvc\release\color_smash.exe&quot; (&#xD;&#xA;  %25windir%25\system32\xcopy &quot;$(SolutionDir)ColorSmash\target\i686-pc-windows-msvc\release\color_smash.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  del *.pdb&#xD;&#xA;  del *.config&#xD;&#xA;)&#xD;&#xA;if '$(ConfigurationName)' == 'Documentation' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;)&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)BrawlLib\InternalDocumentation\*&quot; &quot;$(TargetDir)\InternalDocumentation\&quot; /Y /I /S&#xD;&#xA;if '$(ConfigurationName)' == 'Doxygen' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;  RD /S /Q &quot;$(SolutionDir)docs\&quot;&#xD;&#xA;  cd &quot;$(SolutionDir)&quot;&#xD;&#xA;  doxygen -u &quot;$(SolutionDir)\doxygen.conf&quot;&#xD;&#xA;  doxygen &quot;$(SolutionDir)\doxygen.conf&quot;&#xD;&#xA;)" />
+    <Exec Command="cd &quot;$(TargetDir)&quot;&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)API\Lib\*&quot; &quot;$(TargetDir)\BrawlAPI\Lib\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)API\Lib\*&quot; &quot;$(TargetDir)\BrawlAPI\Lib\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)API\Plugins\*&quot; &quot;$(TargetDir)\BrawlAPI\Plugins\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)API\Loaders\*&quot; &quot;$(TargetDir)\BrawlAPI\Loaders\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)API\Resources\*&quot; &quot;$(TargetDir)\BrawlAPI\Resources\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.dll&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(TargetDir)lib&quot; &quot;$(TargetDir)\BrawlAPI\Python&quot; /Y /I /S&#xD;&#xA;RD /S /Q &quot;$(TargetDir)lib&quot;&#xD;&#xA;if EXIST &quot;$(SolutionDir)ColorSmash\target\i686-pc-windows-msvc\release\color_smash.exe&quot; (&#xD;&#xA;  %25windir%25\system32\xcopy &quot;$(SolutionDir)ColorSmash\target\i686-pc-windows-msvc\release\color_smash.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  del *.pdb&#xD;&#xA;  del *.config&#xD;&#xA;)&#xD;&#xA;if '$(ConfigurationName)' == 'Documentation' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;)&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)BrawlLib\InternalDocumentation\*&quot; &quot;$(TargetDir)\InternalDocumentation\&quot; /Y /I /S&#xD;&#xA;if '$(ConfigurationName)' == 'Doxygen' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;  RD /S /Q &quot;$(SolutionDir)docs\&quot;&#xD;&#xA;  cd &quot;$(SolutionDir)&quot;&#xD;&#xA;  doxygen -u &quot;$(SolutionDir)\doxygen.conf&quot;&#xD;&#xA;  doxygen &quot;$(SolutionDir)\doxygen.conf&quot;&#xD;&#xA;)" />
   </Target>
 </Project>

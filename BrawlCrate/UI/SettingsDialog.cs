@@ -94,11 +94,7 @@ namespace BrawlCrate.UI
         private Button btnFSharpDetect;
         private Label label2;
         private TextBox txtBoxFSharpPath;
-        private GroupBox grpBoxPythonAPI;
-        private Button btnPythonBrowse;
-        private Button btnPythonDetect;
         private Label label1;
-        private TextBox txtBoxPythonPath;
         private CheckBox chkBoxRenderARC;
         private CheckBox chkBoxRenderBRRES;
         private GroupBox groupBox1;
@@ -349,7 +345,6 @@ namespace BrawlCrate.UI
             recentFileCountBox.Value = Properties.Settings.Default.RecentFilesMax;
             chkBoxEnableAPI.Checked = Properties.Settings.Default.APIEnabled;
             txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
-            txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
             txtBoxDefaultBuildPath.Text = Properties.Settings.Default.BuildPath;
             rdoAPILoaderWhitelist.Checked = Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist;
             rdoAPILoaderBlacklist.Checked = !Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist;
@@ -366,7 +361,6 @@ namespace BrawlCrate.UI
             chkBoxCamRotateInvertY.Checked = BrawlLib.Properties.Settings.Default.CameraRotateInvertY;
             RefreshLoaderList();
             grpBoxLoaderBehavior.Enabled = chkBoxEnableAPI.Checked;
-            grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
             grpBoxFSharpAPI.Enabled = chkBoxEnableAPI.Checked;
             grpBoxLoaders.Enabled = chkBoxEnableAPI.Checked;
 
@@ -528,10 +522,6 @@ namespace BrawlCrate.UI
             btnFSharpBrowse = new Button();
             btnFSharpDetect = new Button();
             label2 = new Label();
-            grpBoxPythonAPI = new GroupBox();
-            txtBoxPythonPath = new TextBox();
-            btnPythonBrowse = new Button();
-            btnPythonDetect = new Button();
             label1 = new Label();
             grpBoxAPIGeneral = new GroupBox();
             grpBoxLoaderBehavior = new GroupBox();
@@ -579,7 +569,6 @@ namespace BrawlCrate.UI
             tabBrawlAPI.SuspendLayout();
             grpBoxLoaders.SuspendLayout();
             grpBoxFSharpAPI.SuspendLayout();
-            grpBoxPythonAPI.SuspendLayout();
             grpBoxAPIGeneral.SuspendLayout();
             grpBoxLoaderBehavior.SuspendLayout();
             tabDiscord.SuspendLayout();
@@ -1344,7 +1333,6 @@ namespace BrawlCrate.UI
             tabBrawlAPI.Controls.Add(lblAPIRestartNeeded);
             tabBrawlAPI.Controls.Add(grpBoxLoaders);
             tabBrawlAPI.Controls.Add(grpBoxFSharpAPI);
-            tabBrawlAPI.Controls.Add(grpBoxPythonAPI);
             tabBrawlAPI.Controls.Add(grpBoxAPIGeneral);
             tabBrawlAPI.Location = new System.Drawing.Point(4, 22);
             tabBrawlAPI.Name = "tabBrawlAPI";
@@ -1373,9 +1361,9 @@ namespace BrawlCrate.UI
                                                                     | AnchorStyles.Left
                                                                     | AnchorStyles.Right);
             grpBoxLoaders.Controls.Add(lstViewLoaders);
-            grpBoxLoaders.Location = new System.Drawing.Point(8, 297);
+            grpBoxLoaders.Location = new System.Drawing.Point(8, 218);
             grpBoxLoaders.Name = "grpBoxLoaders";
-            grpBoxLoaders.Size = new System.Drawing.Size(349, 159);
+            grpBoxLoaders.Size = new System.Drawing.Size(349, 232);
             grpBoxLoaders.TabIndex = 24;
             grpBoxLoaders.TabStop = false;
             grpBoxLoaders.Text = "Loaders";
@@ -1397,7 +1385,7 @@ namespace BrawlCrate.UI
             lstViewLoaders.Location = new System.Drawing.Point(6, 19);
             lstViewLoaders.MultiSelect = false;
             lstViewLoaders.Name = "lstViewLoaders";
-            lstViewLoaders.Size = new System.Drawing.Size(337, 134);
+            lstViewLoaders.Size = new System.Drawing.Size(337, 207);
             lstViewLoaders.TabIndex = 7;
             lstViewLoaders.UseCompatibleStateImageBehavior = false;
             lstViewLoaders.View = View.Details;
@@ -1416,7 +1404,7 @@ namespace BrawlCrate.UI
             grpBoxFSharpAPI.Controls.Add(btnFSharpBrowse);
             grpBoxFSharpAPI.Controls.Add(btnFSharpDetect);
             grpBoxFSharpAPI.Controls.Add(label2);
-            grpBoxFSharpAPI.Location = new System.Drawing.Point(8, 218);
+            grpBoxFSharpAPI.Location = new System.Drawing.Point(8, 139);
             grpBoxFSharpAPI.Name = "grpBoxFSharpAPI";
             grpBoxFSharpAPI.Size = new System.Drawing.Size(349, 73);
             grpBoxFSharpAPI.TabIndex = 23;
@@ -1466,56 +1454,6 @@ namespace BrawlCrate.UI
             label2.Size = new System.Drawing.Size(85, 13);
             label2.TabIndex = 13;
             label2.Text = "Installation Path:";
-            // 
-            // grpBoxPythonAPI
-            // 
-            grpBoxPythonAPI.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                      | AnchorStyles.Right);
-            grpBoxPythonAPI.Controls.Add(txtBoxPythonPath);
-            grpBoxPythonAPI.Controls.Add(btnPythonBrowse);
-            grpBoxPythonAPI.Controls.Add(btnPythonDetect);
-            grpBoxPythonAPI.Controls.Add(label1);
-            grpBoxPythonAPI.Location = new System.Drawing.Point(8, 139);
-            grpBoxPythonAPI.Name = "grpBoxPythonAPI";
-            grpBoxPythonAPI.Size = new System.Drawing.Size(349, 73);
-            grpBoxPythonAPI.TabIndex = 20;
-            grpBoxPythonAPI.TabStop = false;
-            grpBoxPythonAPI.Text = "Python";
-            // 
-            // txtBoxPythonPath
-            // 
-            txtBoxPythonPath.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                       | AnchorStyles.Right);
-            txtBoxPythonPath.Location = new System.Drawing.Point(11, 38);
-            txtBoxPythonPath.Name = "txtBoxPythonPath";
-            txtBoxPythonPath.Size = new System.Drawing.Size(219, 20);
-            txtBoxPythonPath.TabIndex = 3;
-            txtBoxPythonPath.Text = "(none)";
-            txtBoxPythonPath.TextChanged += new EventHandler(TxtBoxPythonPath_TextChanged);
-            // 
-            // btnPythonBrowse
-            // 
-            btnPythonBrowse.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
-                                                                      | AnchorStyles.Right);
-            btnPythonBrowse.Location = new System.Drawing.Point(236, 36);
-            btnPythonBrowse.Name = "btnPythonBrowse";
-            btnPythonBrowse.Size = new System.Drawing.Size(24, 24);
-            btnPythonBrowse.TabIndex = 21;
-            btnPythonBrowse.Text = "...";
-            btnPythonBrowse.UseVisualStyleBackColor = true;
-            btnPythonBrowse.Click += new EventHandler(BtnPythonBrowse_Click);
-            // 
-            // btnPythonDetect
-            // 
-            btnPythonDetect.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
-                                                                      | AnchorStyles.Right);
-            btnPythonDetect.Location = new System.Drawing.Point(266, 36);
-            btnPythonDetect.Name = "btnPythonDetect";
-            btnPythonDetect.Size = new System.Drawing.Size(75, 24);
-            btnPythonDetect.TabIndex = 22;
-            btnPythonDetect.Text = "Auto-Detect";
-            btnPythonDetect.UseVisualStyleBackColor = true;
-            btnPythonDetect.Click += new EventHandler(BtnPythonDetect_Click);
             // 
             // label1
             // 
@@ -1849,8 +1787,6 @@ namespace BrawlCrate.UI
             grpBoxLoaders.ResumeLayout(false);
             grpBoxFSharpAPI.ResumeLayout(false);
             grpBoxFSharpAPI.PerformLayout();
-            grpBoxPythonAPI.ResumeLayout(false);
-            grpBoxPythonAPI.PerformLayout();
             grpBoxAPIGeneral.ResumeLayout(false);
             grpBoxAPIGeneral.PerformLayout();
             grpBoxLoaderBehavior.ResumeLayout(false);
@@ -2140,44 +2076,8 @@ namespace BrawlCrate.UI
             }
 
             grpBoxLoaderBehavior.Enabled = chkBoxEnableAPI.Checked;
-            grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
             grpBoxFSharpAPI.Enabled = chkBoxEnableAPI.Checked;
             grpBoxLoaders.Enabled = chkBoxEnableAPI.Checked;
-        }
-
-        private void TxtBoxPythonPath_TextChanged(object sender, EventArgs e)
-        {
-            if (_updating)
-            {
-                return;
-            }
-
-            Properties.Settings.Default.PythonInstallationPath = txtBoxPythonPath.Text;
-            Properties.Settings.Default.Save();
-            lblAPIRestartNeeded.Visible = true;
-        }
-
-        private void BtnPythonBrowse_Click(object sender, EventArgs e)
-        {
-#if !MONO
-            using (VistaFolderBrowserDialog f = new VistaFolderBrowserDialog
-                {UseDescriptionForTitle = true})
-#else
-            using (FolderBrowserDialog f = new FolderBrowserDialog())
-#endif
-            {
-                f.Description = "Python Installation Path";
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    txtBoxPythonPath.Text = f.SelectedPath;
-                }
-            }
-        }
-
-        private void BtnPythonDetect_Click(object sender, EventArgs e)
-        {
-            BrawlAPIInternal.PythonInstall(true, true);
-            txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
         }
 
         private void TxtBoxFSharpPath_TextChanged(object sender, EventArgs e)
