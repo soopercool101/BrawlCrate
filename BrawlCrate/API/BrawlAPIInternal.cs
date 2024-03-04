@@ -56,6 +56,7 @@ namespace BrawlCrate.API
             // Setup IronPython engine
             Engine.SetSearchPaths(new[]
             {
+                $"{Application.StartupPath}\\BrawlAPI\\Lib\\Python",
                 $"{Application.StartupPath}\\BrawlAPI\\Lib"
             });
 
