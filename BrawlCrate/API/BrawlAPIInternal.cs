@@ -54,12 +54,7 @@ namespace BrawlCrate.API
                 Directory.Delete($"{Application.StartupPath}\\BrawlAPI\\Python", true);
             }
             // Setup IronPython engine
-            Engine.SetSearchPaths(new[]
-            {
-                $"{Application.StartupPath}\\BrawlAPI\\Lib\\Python",
-                $"{Application.StartupPath}\\BrawlAPI\\Lib"
-            });
-
+            UpdateSearchPaths();
             fsi_path = Properties.Settings.Default.FSharpInstallationPath;
 
             //Import BrawlCrate and Brawllib
@@ -74,6 +69,15 @@ namespace BrawlCrate.API
 
             // Hook the main form's resourceTree selection changed event to add contextMenu items to wrappers
             MainForm.Instance.resourceTree.SelectionChanged += ResourceTree_SelectionChanged;
+        }
+
+        internal static void UpdateSearchPaths()
+        {
+            string libPath = Path.GetFullPath($"{Application.StartupPath}\\BrawlAPI\\Lib");
+            if (!string.IsNullOrEmpty(libPath))
+            {
+                Engine.SetSearchPaths(Directory.GetDirectories(libPath).Append(libPath).ToArray());
+            }
         }
 
         internal static ScriptEngine Engine { get; set; }

@@ -1458,6 +1458,7 @@ namespace BrawlCrate.UI
             pluginToolStripMenuItem.DropDown.Items.Clear();
             AddPlugins(pluginToolStripMenuItem, Program.ApiPluginPath);
             pluginToolStripMenuItem.Enabled = pluginToolStripMenuItem.HasDropDownItems;
+            BrawlAPIInternal.UpdateSearchPaths();
         }
 
         public static List<FileInfo> GetScripts(string path)
