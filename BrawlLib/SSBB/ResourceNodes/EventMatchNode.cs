@@ -2272,6 +2272,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Event Match")]
         [DisplayName("Song ID")]
+        [TypeConverter(typeof(HexIntConverter))]
         public int SongID
         {
             get => _header._songID;
