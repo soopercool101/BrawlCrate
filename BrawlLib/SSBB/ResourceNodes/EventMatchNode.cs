@@ -2252,8 +2252,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public bool UnknownFlag_40_80000000
+        [Category("Event Match")]
+        public bool DisableStarKO
         {
             get => (_header._flags40 & 0x80000000) != 0;
             set
