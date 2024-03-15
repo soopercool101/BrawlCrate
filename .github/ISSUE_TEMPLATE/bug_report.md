@@ -33,4 +33,4 @@ If there was a crash report, please submit it and include a link to the relevant
 **Additional context**
 Add any other context about the problem here.
 
-Please attach any relevant files you were working on.
+Please attach any relevant files (if they do not have copyrighted content) you were working on. If the file is from a retail game, please instead name the game and the path to the file in the game's filesystem.
