@@ -19,7 +19,7 @@ namespace BrawlLib.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -66,6 +66,26 @@ namespace BrawlLib.Properties {
         public static System.Drawing.Icon BrawlCrateCanaryIcon {
             get {
                 object obj = ResourceManager.GetObject("BrawlCrateCanaryIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon BrawlCrateGoldCanaryIcon {
+            get {
+                object obj = ResourceManager.GetObject("BrawlCrateGoldCanaryIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon BrawlCrateGoldIcon {
+            get {
+                object obj = ResourceManager.GetObject("BrawlCrateGoldIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -446,9 +466,9 @@ namespace BrawlLib.Properties {
                     return BrawlCratePresentIcon;
                 }
 #if CANARY
-                return BrawlCrateCanaryIcon;
+                return BrawlLib.BrawlCrate.PerSessionSettings.IsBrawlCrateGold ? BrawlCrateGoldCanaryIcon : BrawlCrateCanaryIcon;
 #else
-                return BrawlCrateIcon;
+                return BrawlLib.BrawlCrate.PerSessionSettings.IsBrawlCrateGold ? BrawlCrateGoldIcon : BrawlCrateIcon;
 #endif
             }
         }

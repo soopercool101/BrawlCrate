@@ -193,6 +193,11 @@ Full changelog and documentation can be viewed from the help menu.";
             AssemblyTitleFull += " DEBUG";
             AssemblyTitleShort += " DEBUG";
 #endif
+            if (BrawlLib.BrawlCrate.PerSessionSettings.IsBrawlCrateGold)
+            {
+                AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "BrawlCrate GOLD™");
+                AssemblyTitleShort = AssemblyTitleShort.Replace("BrawlCrate", "BrawlCrate GOLD™");
+            }
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
                     .GetExecutingAssembly()
