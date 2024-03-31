@@ -98,7 +98,7 @@ namespace BrawlLib.SSBB.Types
         public bfloat _scale;
         public byte _team;
         public byte _unknown09;
-        public byte _unknown0a;
+        public byte _spawnPosition;
         public byte _unknown0b;
     }
 

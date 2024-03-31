@@ -221,12 +221,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public byte Unknown0a
+        public byte SpawnPosition
         {
-            get => data._unknown0a;
+            get => data._spawnPosition;
             set
             {
-                data._unknown0a = value;
+                data._spawnPosition = value;
                 SignalPropertyChange();
             }
         }
