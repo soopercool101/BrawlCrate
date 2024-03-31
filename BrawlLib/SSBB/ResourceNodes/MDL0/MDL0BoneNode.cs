@@ -657,7 +657,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
             _extents = header->_extents;
 
-            (_userEntries = new UserDataCollection()).Read(header->UserDataAddress, WorkingUncompressed);
+            (_userEntries = new UserDataCollection()).Read(header->UserDataAddress, RootNode.WorkingUncompressed);
 
             //We don't want to process children because not all have been parsed yet.
             //Child assignments will be handled by the parent group.

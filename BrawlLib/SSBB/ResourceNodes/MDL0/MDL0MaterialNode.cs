@@ -1598,7 +1598,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             (_chan1 = Light->Channel1)._parent = this;
             (_chan2 = Light->Channel2)._parent = this;
 
-            (_userEntries = new UserDataCollection()).Read(header->UserData(_initVersion), WorkingUncompressed);
+            (_userEntries = new UserDataCollection()).Read(header->UserData(_initVersion), RootNode.WorkingUncompressed);
 
             return true;
         }

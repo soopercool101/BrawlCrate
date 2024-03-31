@@ -73,7 +73,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _projType = (ProjectionType) (int) Data->_projectionType;
 
             //Read user data
-            (_userEntries = new UserDataCollection()).Read(Data->UserData, WorkingUncompressed);
+            (_userEntries = new UserDataCollection()).Read(Data->UserData, RootNode.WorkingUncompressed);
 
             return false;
         }
