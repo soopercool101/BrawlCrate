@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.42";
+        public static readonly string TagName = "v0.42-h1";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -199,8 +199,8 @@ Full changelog and documentation can be viewed from the help menu.";
 #endif
             if (BrawlLib.BrawlCrate.PerSessionSettings.IsBrawlCrateGold)
             {
-                AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "BrawlCrate GOLD�");
-                AssemblyTitleShort = AssemblyTitleShort.Replace("BrawlCrate", "BrawlCrate GOLD�");
+                AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "BrawlCrate GOLD\u2122");
+                AssemblyTitleShort = AssemblyTitleShort.Replace("BrawlCrate", "BrawlCrate GOLD\u2122");
             }
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
