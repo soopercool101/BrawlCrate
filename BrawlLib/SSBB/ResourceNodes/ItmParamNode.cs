@@ -1507,7 +1507,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
-        public OffensiveCollisionInteractionTypes KnockbackType
+        public OffensiveCollisionInteractionTypes OffensiveCollisionInteraction
         {
             get => (OffensiveCollisionInteractionTypes)(int)Data._offensiveCollisionInteraction;
             set
