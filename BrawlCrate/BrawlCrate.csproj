@@ -185,7 +185,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>BrawlCrate.Program</StartupObject>
-    <Version.42.0.0</Version>
+    <Version>42.0.0</Version>
     <Authors>soopercool101, NuclearNecrosis, Simon381, Onium, Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Authors>
     <Company>BrawlCrate</Company>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
