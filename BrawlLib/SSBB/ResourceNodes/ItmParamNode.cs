@@ -922,7 +922,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             NotGrabbable = 0,
             AutomaticPickup = 1,
             NoHandAnimationChange = 2,
-            AnimItemHandWave = 3,
+            AnimItemHandHave = 3,
             AnimItemHandPickup = 4,
             AnimItemHandGrip = 5,
             AnimItemHandSmash = 6
