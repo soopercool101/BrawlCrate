@@ -41,10 +41,14 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.41! Here's what's new in this release:
-- Add support for Project+ v2.5, including ItemEx, StageEx, and Subspace improvements
-- Lots of new parsing for Subspace BLOCs and Item Parameters
-- Many bug and crash fixes
+            @"Updated to BrawlCrate v0.42! Here's what's new in this release:
+- Updated IronPython from v2.7.11 to v3.4.1, with an integrated installation
+- Updated known Item Parameters
+- EventMatchFighterNode: Unknown0a -> SpawnPosition
+- Fixes crash when opening Bowser's module in latest P+
+- Fixes regression in which UserEntries would not load properly
+- Fixes bug in which UV viewer would display off by a pixel
+- Added new easter egg
 
 Full changelog and documentation can be viewed from the help menu.";
 
@@ -195,8 +199,8 @@ Full changelog and documentation can be viewed from the help menu.";
 #endif
             if (BrawlLib.BrawlCrate.PerSessionSettings.IsBrawlCrateGold)
             {
-                AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "BrawlCrate GOLD™");
-                AssemblyTitleShort = AssemblyTitleShort.Replace("BrawlCrate", "BrawlCrate GOLD™");
+                AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "BrawlCrate GOLDï¿½");
+                AssemblyTitleShort = AssemblyTitleShort.Replace("BrawlCrate", "BrawlCrate GOLDï¿½");
             }
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
