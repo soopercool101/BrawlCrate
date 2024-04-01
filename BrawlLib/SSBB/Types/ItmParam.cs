@@ -64,10 +64,10 @@ namespace BrawlLib.SSBB.Types
         public bool32 _unknown0xBC;
         public bint _unknown0xC0;
         public bool32 _blinkBeforeDisappearing;
-        public bint _unknown0xC8;
-        public bint _unknown0xCC;
+        public bint _cameraFocus;
+        public bint _offensiveCollisionInteraction;
         public bool32 _canReflect;
-        public bint _unknown0xD4;
+        public bint _defensiveCollisionInteraction;
         public bint _blastzoneDespawn;
         public bool32 _suffersHitstun;
         public bint _unknown0xE0;

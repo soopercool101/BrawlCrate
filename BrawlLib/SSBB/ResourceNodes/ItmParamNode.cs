@@ -1103,8 +1103,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB5g
+        [Category("Item Parameters")]
+        [DisplayName("Disable Z-Drop")]
+        public bool DisableZDrop
         {
             get => Data._flags0xB5[6];
             set
@@ -1475,24 +1476,43 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown0xC8
+        public enum CameraFocusTypes : int
         {
-            get => Data._unknown0xC8;
+            Never = 0,
+            Always = 1,
+            OnCreation = 2,
+            UnknownAlways = 3,
+            UnknownOnCreation = 4
+        }
+
+        [Category("Item Parameters")]
+        [Description("Controls when and if the object takes camera focus")]
+        public CameraFocusTypes CameraFocus
+        {
+            get => (CameraFocusTypes)(int)Data._cameraFocus;
             set
             {
-                Data._unknown0xC8 = value;
+                Data._cameraFocus = (int)value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown0xCC
+
+        public enum OffensiveCollisionInteractionTypes : int
         {
-            get => Data._unknown0xCC;
+            NoHitstunNoKnockback = 0,
+            HitstunNoKnockback = 1,
+            HitstunKnockback = 2,
+            HitstunHorizontalKnockback = 3
+        }
+
+        [Category("Item Parameters")]
+        public OffensiveCollisionInteractionTypes KnockbackType
+        {
+            get => (OffensiveCollisionInteractionTypes)(int)Data._offensiveCollisionInteraction;
             set
             {
-                Data._unknown0xCC = value;
+                Data._offensiveCollisionInteraction = (int)value;
                 SignalPropertyChange();
             }
         }
@@ -1508,13 +1528,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown0xD4
+        public enum DefensiveCollisionInteractionTypes : int
         {
-            get => Data._unknown0xD4;
+            NoBounce = 0,
+            SelfDelete = 1,
+            Bounce = 2
+        }
+
+        [Category("Item Parameters")]
+        public DefensiveCollisionInteractionTypes DefensiveCollisionInteraction
+        {
+            get => (DefensiveCollisionInteractionTypes)(int)Data._defensiveCollisionInteraction;
             set
             {
-                Data._unknown0xD4 = value;
+                Data._defensiveCollisionInteraction = (int)value;
                 SignalPropertyChange();
             }
         }
