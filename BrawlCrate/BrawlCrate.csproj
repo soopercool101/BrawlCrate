@@ -272,11 +272,6 @@
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="BrawlManagers\**" />
-    <EmbeddedResource Remove="BrawlManagers\**" />
-    <None Remove="BrawlManagers\**" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Doxygen" Version="1.8.14">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
