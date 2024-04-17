@@ -1,7 +1,4 @@
 using BrawlCrate.API;
-using BrawlCrate.BrawlManagers.CostumeManager;
-using BrawlCrate.BrawlManagers.SongManager;
-using BrawlCrate.BrawlManagers.StageManager;
 using BrawlCrate.ExternalInterfacing;
 using BrawlCrate.NodeWrappers;
 using BrawlCrate.Properties;
@@ -1351,30 +1348,6 @@ namespace BrawlCrate.UI
             UpdateDiscordRPC(null, null);
         }
 
-        private void CostumeManagerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CostumeManagerForm m = new CostumeManagerForm();
-            m.FormClosed += UpdateDiscordRPC;
-            m.Show();
-            UpdateDiscordRPC(null, null);
-        }
-
-        private void SongManagerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SongManagerForm m = new SongManagerForm(null, true, true, false);
-            m.FormClosed += UpdateDiscordRPC;
-            m.Show();
-            UpdateDiscordRPC(null, null);
-        }
-
-        private void StageManagerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            StageManagerForm m = new StageManagerForm(null, true);
-            m.FormClosed += UpdateDiscordRPC;
-            m.Show();
-            UpdateDiscordRPC(null, null);
-        }
-
         private void recentFilesToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             string fileName = ((RecentFileHandler.FileMenuItem) e.ClickedItem).FileName;
@@ -1595,11 +1568,7 @@ namespace BrawlCrate.UI
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.managersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gCTEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.costumeManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.songManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stageManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorAPI = new System.Windows.Forms.ToolStripSeparator();
             this.runScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openApiFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1926,7 +1895,7 @@ namespace BrawlCrate.UI
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
             {
                 this.settingsToolStripMenuItem,
-                this.managersToolStripMenuItem,
+                this.gCTEditorToolStripMenuItem,
                 this.toolStripSeparatorAPI,
                 this.runScriptToolStripMenuItem,
                 this.openApiFolderToolStripMenuItem,
@@ -1943,48 +1912,12 @@ namespace BrawlCrate.UI
             this.settingsToolStripMenuItem.Text = "&Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click_1);
             // 
-            // managersToolStripMenuItem
-            // 
-            this.managersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
-            {
-                this.gCTEditorToolStripMenuItem,
-                this.costumeManagerToolStripMenuItem,
-                this.songManagerToolStripMenuItem,
-                this.stageManagerToolStripMenuItem
-            });
-            this.managersToolStripMenuItem.Name = "managersToolStripMenuItem";
-            this.managersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.managersToolStripMenuItem.Text = "Managers";
-            // 
             // gCTEditorToolStripMenuItem
             // 
             this.gCTEditorToolStripMenuItem.Name = "gCTEditorToolStripMenuItem";
             this.gCTEditorToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.gCTEditorToolStripMenuItem.Text = "Code Manager";
             this.gCTEditorToolStripMenuItem.Click += new System.EventHandler(this.GCTEditorToolStripMenuItem_Click);
-            // 
-            // costumeManagerToolStripMenuItem
-            // 
-            this.costumeManagerToolStripMenuItem.Name = "costumeManagerToolStripMenuItem";
-            this.costumeManagerToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.costumeManagerToolStripMenuItem.Text = "Costume Manager";
-            this.costumeManagerToolStripMenuItem.Click +=
-                new System.EventHandler(this.CostumeManagerToolStripMenuItem_Click);
-            // 
-            // songManagerToolStripMenuItem
-            // 
-            this.songManagerToolStripMenuItem.Name = "songManagerToolStripMenuItem";
-            this.songManagerToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.songManagerToolStripMenuItem.Text = "Song Manager";
-            this.songManagerToolStripMenuItem.Click += new System.EventHandler(this.SongManagerToolStripMenuItem_Click);
-            // 
-            // stageManagerToolStripMenuItem
-            // 
-            this.stageManagerToolStripMenuItem.Name = "stageManagerToolStripMenuItem";
-            this.stageManagerToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.stageManagerToolStripMenuItem.Text = "Stage Manager";
-            this.stageManagerToolStripMenuItem.Click +=
-                new System.EventHandler(this.StageManagerToolStripMenuItem_Click);
             // 
             // toolStripSeparatorAPI
             // 
@@ -2459,10 +2392,6 @@ namespace BrawlCrate.UI
         public ToolStripMenuItem editToolStripMenuItem;
         private VideoPlaybackPanel videoPlaybackPanel1;
         private ToolStripMenuItem gCTEditorToolStripMenuItem;
-        private ToolStripMenuItem managersToolStripMenuItem;
-        private ToolStripMenuItem costumeManagerToolStripMenuItem;
-        private ToolStripMenuItem songManagerToolStripMenuItem;
-        private ToolStripMenuItem stageManagerToolStripMenuItem;
         private ToolStripMenuItem recentFilesToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         public ToolStripMenuItem checkForUpdatesToolStripMenuItem;

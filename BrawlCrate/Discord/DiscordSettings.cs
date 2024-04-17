@@ -1,7 +1,4 @@
-﻿using BrawlCrate.BrawlManagers.CostumeManager;
-using BrawlCrate.BrawlManagers.SongManager;
-using BrawlCrate.BrawlManagers.StageManager;
-using BrawlCrate.UI;
+﻿using BrawlCrate.UI;
 using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
@@ -72,27 +69,6 @@ namespace BrawlCrate.Discord
                 FormCollection fc = Application.OpenForms;
                 foreach (Form frm in fc)
                 {
-                    if (frm is CostumeManagerForm)
-                    {
-                        DiscordController.presence.details = "Managing Costumes";
-                        usingManager = true;
-                        break;
-                    }
-
-                    if (frm is SongManagerForm)
-                    {
-                        DiscordController.presence.details = "Managing Songs";
-                        usingManager = true;
-                        break;
-                    }
-
-                    if (frm is StageManagerForm)
-                    {
-                        DiscordController.presence.details = "Managing Stages";
-                        usingManager = true;
-                        break;
-                    }
-
                     if (!(frm is GCTEditor editor))
                     {
                         continue;

@@ -272,20 +272,9 @@
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="BrawlManagers\SongManager\speaker.png" />
-    <None Remove="BrawlManagers\StageManager\border.png" />
-    <None Remove="BrawlManagers\StageManager\button-l.png" />
-    <None Remove="BrawlManagers\StageManager\button-start.png" />
-    <None Remove="BrawlManagers\StageManager\button-z.png" />
-    <None Remove="BrawlManagers\StageManager\XX.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BrawlManagers\SongManager\speaker.png" />
-    <EmbeddedResource Include="BrawlManagers\StageManager\border.png" />
-    <EmbeddedResource Include="BrawlManagers\StageManager\button-l.png" />
-    <EmbeddedResource Include="BrawlManagers\StageManager\button-start.png" />
-    <EmbeddedResource Include="BrawlManagers\StageManager\button-z.png" />
-    <EmbeddedResource Include="BrawlManagers\StageManager\XX.png" />
+    <Compile Remove="BrawlManagers\**" />
+    <EmbeddedResource Remove="BrawlManagers\**" />
+    <None Remove="BrawlManagers\**" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Doxygen" Version="1.8.14">
