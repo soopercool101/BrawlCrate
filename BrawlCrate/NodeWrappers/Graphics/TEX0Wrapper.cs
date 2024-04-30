@@ -1,6 +1,7 @@
 ﻿using BrawlCrate.ExternalInterfacing;
 using BrawlCrate.UI;
 using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
@@ -319,7 +320,7 @@ namespace BrawlCrate.NodeWrappers
                         }
                     }
 
-                    if (tx0.HasPalette)
+                    if (tx0.HasPalette && tx0.GetPaletteNode() != null)
                     {
                         tx0.GetPaletteNode().Name = "InfStc." + tx0.texSortNum.ToString("0000");
                     }
@@ -417,7 +418,11 @@ namespace BrawlCrate.NodeWrappers
 
                 if (!autoFoundFolder)
                 {
+#if MONO
                     FolderBrowserDialog f = new FolderBrowserDialog
+#else
+                    VistaFolderBrowserDialog f = new VistaFolderBrowserDialog
+#endif
                     {
                         Description = "Select the \"portrite\" folder"
                     };
