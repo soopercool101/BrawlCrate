@@ -1,7 +1,9 @@
 ﻿using BrawlCrate.ExternalInterfacing;
 using BrawlCrate.UI;
 using BrawlLib.Internal.Windows.Forms;
+#if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
@@ -418,10 +420,10 @@ namespace BrawlCrate.NodeWrappers
 
                 if (!autoFoundFolder)
                 {
-#if MONO
-                    FolderBrowserDialog f = new FolderBrowserDialog
-#else
+#if !MONO
                     VistaFolderBrowserDialog f = new VistaFolderBrowserDialog
+#else
+                    FolderBrowserDialog f = new FolderBrowserDialog
 #endif
                     {
                         Description = "Select the \"portrite\" folder"
