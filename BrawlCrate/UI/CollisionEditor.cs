@@ -2975,8 +2975,6 @@ namespace BrawlCrate.UI
                 {
                     p.IsItems = false;
                     chkTypeItems.Checked = false;
-                    p.IsPokemonTrainer = false;
-                    chkTypePokemonTrainer.Checked = false;
                 }
                 else
                 {
@@ -3054,8 +3052,6 @@ namespace BrawlCrate.UI
                 p.IsPokemonTrainer = selection;
                 if (p.IsPokemonTrainer)
                 {
-                    p.IsCharacters = false;
-                    chkTypeCharacters.Checked = false;
                     p.IsFallThrough = false;
                     chkFallThrough.Checked = false;
                     p.IsNoWalljump = false;
