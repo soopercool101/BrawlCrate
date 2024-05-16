@@ -13,7 +13,7 @@ BrawlBox and BrawlLib were maintained initially by [Kryal](https://code.google.c
 
 BrawlCrate also incorporates a modified version of the [Color Smash tool originally by Peter Hatch](https://github.com/PeterHatch/color-smash).
 
-Current BrawlCrate contributors: [soopercool101](https://github.com/soopercool101), [NuclearNecrosis](https://github.com/NuclearNecro), [Simon381](https://github.com/STulling), [Onium](https://github.com/HavKT)
+Current BrawlCrate contributors: [soopercool101](https://github.com/soopercool101)
 
 Join the [Brawl Knowledge Compendium Discord](https://discord.gg/s7c8763) to talk to the developers.
 
