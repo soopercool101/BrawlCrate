@@ -139,7 +139,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (LevelOfDetail > 1)
                 name += "m_";
             name += $"{_textureHash}_";
-            if (HasPalette)
+            if (HasPalette && _paletteHash != "")
                 name += $"{_paletteHash}_";
             else if (Format == WiiPixelFormat.CI4 || Format == WiiPixelFormat.CI8)
                 name += "$_";
