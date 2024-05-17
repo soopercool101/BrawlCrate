@@ -13,8 +13,10 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.IO.Hashing;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -39,6 +41,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         private WiiPixelFormat _format;
         private int _lod;
         private bool _hasPalette;
+        private string _textureHash => GetTextureHash();
+        private string _paletteHash => GetTlutHash();
 
         public int texSortNum;
 
@@ -104,6 +108,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("G3D Texture")] public WiiPixelFormat Format => SharesData ? SourceNode.Format : _format;
         [Category("G3D Texture")] public int LevelOfDetail => SharesData ? SourceNode.LevelOfDetail : _lod;
         [Category("G3D Texture")] public bool HasPalette => SharesData ? SourceNode.HasPalette : _hasPalette;
+        [Category("Dolphin")] public string DolphinTextureName => BuildDolphinTextureName();
 
         public PLT0Node GetPaletteNode()
         {
@@ -126,6 +131,83 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int DataSize()
         {
             return TextureConverter.Get(Format).GetMipOffset(Width, Height, LevelOfDetail + 1);
+        }
+
+        private string BuildDolphinTextureName()
+        {
+            var name = $"tex1_{Width}x{Height}_";
+            if (LevelOfDetail > 1)
+                name += "m_";
+            name += $"{_textureHash}_";
+            if (HasPalette)
+                name += $"{_paletteHash}_";
+            else if (Format == WiiPixelFormat.CI4 || Format == WiiPixelFormat.CI8)
+                name += "$_";
+            name += $"{(int)Format}";
+            return name;
+        }
+
+        private string GetTextureHash()
+        {
+            var offset = OffsetToData();
+            // Get size for first mip only
+            var length = TextureConverter.Get(Format).GetMipOffset(Width, Height, 2);
+            // Get raw pixel data
+            byte[] pixelData = new byte[length];
+            Marshal.Copy(WorkingUncompressed.Address + offset, pixelData, 0, length);
+            // Hash it
+            return XxHash64.HashToUInt64(pixelData).ToString("x16");
+        }
+
+        private static (int start, int length) GetTlutRange(WiiPixelFormat format, ReadOnlySpan<byte> bytes)
+        {
+            int start = 0xffff, length = 0;
+
+            switch (format)
+            {
+                case WiiPixelFormat.CI4:
+                    foreach (byte b in bytes)
+                    {
+                        int low_nibble = b & 0xf;
+                        int high_nibble = b >> 4;
+
+                        start = Math.Min(start, Math.Min(low_nibble, high_nibble));
+                        length = Math.Max(length, Math.Max(low_nibble, high_nibble));
+                    }
+                    break;
+
+                case WiiPixelFormat.CI8:
+                    foreach (byte b in bytes)
+                    {
+                        int texture_byte = b;
+                        start = Math.Min(start, texture_byte);
+                        length = Math.Max(length, texture_byte);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+            return (start * 2, (length + 1 - start) * 2);
+        }
+
+        private string GetTlutHash()
+        {
+            ImageConverter converter = new ImageConverter();
+            var image = (byte[])converter.ConvertTo(GetImage(0), typeof(byte[]));
+            (int start, int length) = GetTlutRange(Format, image.AsSpan());
+
+            var palette = GetPaletteNode();
+            if (palette != null)
+            {
+                var paletteData = palette.GetRawData();
+                if (paletteData.Length < length)
+                {
+                    return "";
+                }
+                return XxHash64.HashToUInt64(paletteData.Slice(start, length)).ToString("x16");
+            }
+            return "";
         }
 
         // The offset from the start of the header to the start of its data.
