@@ -22,8 +22,8 @@
     <Product>BrawlCrateLib</Product>
     <Copyright>Copyright © 2018 - 2024 soopercool101, NuclearNecrosis, Simon381
 BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Copyright>
-    <AssemblyVersion>0.42.0.0</AssemblyVersion>
-    <FileVersion>0.42.0.0</FileVersion>
+    <AssemblyVersion>0.42.0.1</AssemblyVersion>
+    <FileVersion>0.42.0.1</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Configurations>Debug;Release;Mono;Canary</Configurations>
@@ -158,7 +158,7 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <PackageId>BrawlCrateLib</PackageId>
     <Company>BrawlCrateLib</Company>
     <Authors>soopercool101, Simon381, Onium, Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Authors>
-    <Version>42.0.0</Version>
+    <Version>42.0.1</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="CustomLists\FighterList.txt" />

@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.42";
+        public static readonly string TagName = "v0.42h1";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,7 +41,11 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.42! Here's what's new in this release:
+            @"Updated to BrawlCrate v0.42 Hotfix 1! Here's what's new in this release:
+- (Hotfix 1) Fix crash when loading the program on Windows 7 (API will now be disabled in this instance)
+- (Hotfix 1) Fix crash when a palette is missing on 50CC conversion
+- (Hotfix 1) Allow the Pokemon Trainer collision flag to be set with the Everything collision flag in the default editor
+- (Hotfix 1) Discontinue support for internal BrawlManagers (Check out BrawlInstaller for a more up-to-date version of the concept!)
 - Updated IronPython from v2.7.11 to v3.4.1, with an integrated installation
 - Updated known Item Parameters
 - EventMatchFighterNode: Unknown0a -> SpawnPosition
