@@ -27,6 +27,8 @@ namespace BrawlCrate.API
 
         internal void Execute()
         {
+            if (BrawlAPIInternal.Engine == null)
+                return;
             try
             {
 #if DEBUG

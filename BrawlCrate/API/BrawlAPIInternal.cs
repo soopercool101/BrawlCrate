@@ -12,16 +12,17 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-#if !MONO
-using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
-
-#endif
 
 namespace BrawlCrate.API
 {
     internal static class BrawlAPIInternal
     {
-        internal static bool PythonEnabled => Engine.GetSearchPaths().Count > 0;
+        internal static bool PythonEnabled =>
+#if !MONO
+                // Disable Python API for Windows 7 and below
+                !(Environment.OSVersion.Version.Major < 6 || (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1)) &&
+# endif
+                Engine != null && Engine.GetSearchPaths().Count > 0;
 
         internal static bool FSharpEnabled =>
             Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) &&
@@ -46,26 +47,44 @@ namespace BrawlCrate.API
             MultiSelectContextMenuHooks = new Dictionary<Type, ToolStripMenuItem[]>();
             Plugins = new List<PluginScript>();
             ResourceParsers = new List<PluginResourceParser>();
-            Engine = Python.CreateEngine();
-            Runtime = Engine.Runtime;
+            try
+            {
+                // Setup IronPython engine
+                Engine = Python.CreateEngine();
+                Runtime = Engine.Runtime;
+                UpdateSearchPaths();
+            }
+            catch
+            {
+                if (Properties.Settings.Default.APIEnabled)
+                {
+                    MessageBox.Show("The Python API could not be loaded correctly, and has been disabled", "BrawlAPI Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Properties.Settings.Default.APIEnabled = false;
+                    Properties.Settings.Default.Save();
+                }
+                Engine = null;
+                Runtime = null;
+            }
 
             if (Directory.Exists($"{Application.StartupPath}\\BrawlAPI\\Python"))
             {
                 Directory.Delete($"{Application.StartupPath}\\BrawlAPI\\Python", true);
             }
-            // Setup IronPython engine
-            UpdateSearchPaths();
             fsi_path = Properties.Settings.Default.FSharpInstallationPath;
 
             //Import BrawlCrate and Brawllib
             Assembly mainAssembly = Assembly.GetExecutingAssembly();
             Assembly brawlLib = Assembly.GetAssembly(typeof(ResourceNode));
 
-            Runtime.LoadAssembly(mainAssembly);
-            Runtime.LoadAssembly(brawlLib);
-            Runtime.LoadAssembly(typeof(string).Assembly);
-            Runtime.LoadAssembly(typeof(Uri).Assembly);
-            Runtime.LoadAssembly(typeof(Form).Assembly);
+            if (Runtime != null)
+            {
+                Runtime.LoadAssembly(mainAssembly);
+                Runtime.LoadAssembly(brawlLib);
+                Runtime.LoadAssembly(typeof(string).Assembly);
+                Runtime.LoadAssembly(typeof(Uri).Assembly);
+                Runtime.LoadAssembly(typeof(Form).Assembly);
+            }
 
             // Hook the main form's resourceTree selection changed event to add contextMenu items to wrappers
             MainForm.Instance.resourceTree.SelectionChanged += ResourceTree_SelectionChanged;
@@ -74,7 +93,7 @@ namespace BrawlCrate.API
         internal static void UpdateSearchPaths()
         {
             string libPath = Path.GetFullPath($"{Application.StartupPath}\\BrawlAPI\\Lib");
-            if (!string.IsNullOrEmpty(libPath))
+            if (!string.IsNullOrEmpty(libPath) && Engine != null)
             {
                 Engine.SetSearchPaths(Directory.GetDirectories(libPath).Append(libPath).ToArray());
             }
@@ -205,7 +224,8 @@ namespace BrawlCrate.API
                 }
 
                 if (path.EndsWith(".py", StringComparison.OrdinalIgnoreCase) && !PythonEnabled ||
-                    path.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase) && !FSharpEnabled)
+                    path.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase) && !FSharpEnabled ||
+                    Engine == null)
                 {
                     return false;
                 }

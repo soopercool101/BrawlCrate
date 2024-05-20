@@ -140,7 +140,7 @@ namespace BrawlCrate.UI
                 RecentFileToolStripItem = recentFilesToolStripMenuItem
             };
 
-            if (Properties.Settings.Default.APIEnabled)
+            if (Properties.Settings.Default.APIEnabled && (BrawlAPIInternal.PythonEnabled || BrawlAPIInternal.FSharpEnabled))
             {
                 BrawlAPIInternal.Plugins.Clear();
                 BrawlAPIInternal.ResourceParsers.Clear();
@@ -1431,7 +1431,14 @@ namespace BrawlCrate.UI
             pluginToolStripMenuItem.DropDown.Items.Clear();
             AddPlugins(pluginToolStripMenuItem, Program.ApiPluginPath);
             pluginToolStripMenuItem.Enabled = pluginToolStripMenuItem.HasDropDownItems;
-            BrawlAPIInternal.UpdateSearchPaths();
+            try
+            {
+                BrawlAPIInternal.UpdateSearchPaths();
+            }
+            catch
+            {
+                // ignore
+            }
         }
 
         public static List<FileInfo> GetScripts(string path)
