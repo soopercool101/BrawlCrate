@@ -16,6 +16,14 @@ they be held accountable for the manner in which it is used.
 |************ BrawlCrate Change Log ************|
  ===============================================
  
+ - BrawlCrate v0.42 Hotfix 1 - (5/20/2024)
+ . 50CC converter now properly uses the modern Windows folder picker
+ . Discontinue internal BrawlManagers support (BrawlInstaller has far more functionality than these)
+ . Fix behavior in which the default collision editor would not allow flagging "Everything" and "Pokemon Trainer" at the same time
+ . Fix typo in ItmParam: AnimItemHandWave -> AnimItemHandHave
+ . Fix crash when opening the program on Windows 7
+ . Fix crash when encountering a missing palette file when converting to/from a 50CC system
+ 
  - BrawlCrate v0.42 - (3/31/2024)
  . Update IronPython from v2.7.11 to v3.4.1
    - Python support is now done via a localized installation, rather than userside. This will ensure plugin developers have a consistent version to work off of.
