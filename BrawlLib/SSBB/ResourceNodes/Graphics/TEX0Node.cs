@@ -147,7 +147,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return name;
         }
 
-        private string GetTextureHash()
+        private ReadOnlySpan<byte> GetRawData()
         {
             var offset = OffsetToData();
             // Get size for first mip only
@@ -155,7 +155,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             // Get raw pixel data
             byte[] pixelData = new byte[length];
             Marshal.Copy(WorkingUncompressed.Address + offset, pixelData, 0, length);
-            // Hash it
+            return pixelData;
+        }
+
+        private string GetTextureHash()
+        {
+            var pixelData = GetRawData();
             return XxHash64.HashToUInt64(pixelData).ToString("x16");
         }
 
@@ -193,9 +198,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private string GetTlutHash()
         {
-            ImageConverter converter = new ImageConverter();
-            var image = (byte[])converter.ConvertTo(GetImage(0), typeof(byte[]));
-            (int start, int length) = GetTlutRange(Format, image.AsSpan());
+            var image = GetRawData();
+            (int start, int length) = GetTlutRange(Format, image);
 
             var palette = GetPaletteNode();
             if (palette != null)
