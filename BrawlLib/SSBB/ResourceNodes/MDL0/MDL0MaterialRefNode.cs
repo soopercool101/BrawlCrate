@@ -6,6 +6,7 @@ using BrawlLib.Modeling;
 using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Graphics;
 using BrawlLib.Wii.Models;
+using BrawlLib.Wii.Textures;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -455,6 +456,35 @@ namespace BrawlLib.SSBB.ResourceNodes
                     SignalPropertyChange();
                 }
             }
+        }
+
+        [Category("Dolphin")]
+        public string DolphinTextureName => BuildDolphinTextureName();
+
+        private string BuildDolphinTextureName()
+        {
+            var name = "";
+            if (_texture.Source is TEX0Node)
+            {
+                var texture = _texture.Source as TEX0Node;
+                name = $"tex1_{texture.Width}x{texture.Height}_";
+                var mipFilters = new List<MatTextureMinFilter>
+                {
+                    MatTextureMinFilter.Nearest_Mipmap_Linear,
+                    MatTextureMinFilter.Nearest_Mipmap_Nearest,
+                    MatTextureMinFilter.Linear_Mipmap_Linear,
+                    MatTextureMinFilter.Linear_Mipmap_Nearest
+                };
+                if (texture.LevelOfDetail > 1 || mipFilters.Contains(MinFilter))
+                    name += "m_";
+                name += $"{texture.TextureHash}_";
+                if (texture.HasPalette && !string.IsNullOrEmpty(texture.PaletteHash))
+                    name += $"{texture.PaletteHash}_";
+                else if (texture.Format == WiiPixelFormat.CI4 || texture.Format == WiiPixelFormat.CI8)
+                    name += "$_";
+                name += $"{(int)texture.Format}";
+            }
+            return name;
         }
 
         #endregion
