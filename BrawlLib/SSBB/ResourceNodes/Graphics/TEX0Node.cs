@@ -109,6 +109,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("G3D Texture")] public int LevelOfDetail => SharesData ? SourceNode.LevelOfDetail : _lod;
         [Category("G3D Texture")] public bool HasPalette => SharesData ? SourceNode.HasPalette : _hasPalette;
         [Category("Dolphin")] public string DolphinTextureName => BuildDolphinTextureName();
+        [Browsable(false)] public string TextureHash => _textureHash;
+        [Browsable(false)] public string PaletteHash => _paletteHash;
 
         public PLT0Node GetPaletteNode()
         {
