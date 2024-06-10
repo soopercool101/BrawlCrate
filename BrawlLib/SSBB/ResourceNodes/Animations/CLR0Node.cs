@@ -340,11 +340,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            if (_name == null && Header->_stringOffset != 0 &&
-                WorkingUncompressed.Address > Parent.WorkingUncompressed.Address &&
-                WorkingUncompressed.Address <= Parent.WorkingUncompressed.Address + Parent.WorkingUncompressed.Length)
+            if (_name == null && Header->_stringOffset != 0)
             {
-                _name = Header->ResourceStringAddress.GetUTF8String();
+                _name = Header->ResourceString;
             }
 
             _flags = Header->Flags;

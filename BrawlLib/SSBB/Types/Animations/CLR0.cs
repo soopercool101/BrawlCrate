@@ -217,6 +217,8 @@ namespace BrawlLib.SSBB.Types.Animations
             set => _flags = (uint) value;
         }
 
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
