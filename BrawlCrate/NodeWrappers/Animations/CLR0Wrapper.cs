@@ -1,6 +1,8 @@
-﻿using BrawlLib.SSBB;
+﻿using BrawlLib.Imaging;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -183,6 +185,28 @@ namespace BrawlCrate.NodeWrappers
                 BaseWrapper b = FindResource(n, true);
                 b?.EnsureVisible();
             }
+        }
+
+        public override ResourceNode Duplicate()
+        {
+            CLR0MaterialNode dup = new CLR0MaterialNode();
+            dup.Name = _resource.Name;
+
+            foreach (CLR0MaterialEntryNode ct in _resource.Children)
+            {
+                CLR0MaterialEntryNode cme = new CLR0MaterialEntryNode();
+                cme.Colors = new List<ARGBPixel>();
+                cme.Colors.AddRange(ct.Colors);
+                cme.ColorMask = ct.ColorMask;
+                cme.SolidColor = ct.SolidColor;
+                cme._name = ct._name;
+                dup.AddChild(cme);
+                cme.Target = ct.Target;
+                cme.Constant = ct.Constant;
+            }
+
+            _resource.Parent.InsertChild(dup, Index + 1);
+            return dup;
         }
     }
 
