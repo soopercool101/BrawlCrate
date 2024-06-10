@@ -192,6 +192,7 @@ namespace BrawlCrate.NodeWrappers
             CLR0MaterialNode dup = new CLR0MaterialNode();
             dup.Name = _resource.Name;
 
+            int numFrames = (_resource.Parent as CLR0Node)._numFrames;
             foreach (CLR0MaterialEntryNode ct in _resource.Children)
             {
                 CLR0MaterialEntryNode cme = new CLR0MaterialEntryNode();
@@ -202,7 +203,14 @@ namespace BrawlCrate.NodeWrappers
                 cme._name = ct._name;
                 dup.AddChild(cme);
                 cme.Target = ct.Target;
-                cme.Constant = ct.Constant;
+                if (ct.Constant)
+                {
+                    cme.Constant = ct.Constant;
+                }
+                else
+                {
+                    cme.MakeList(numFrames);
+                }
             }
 
             _resource.Parent.InsertChild(dup, Index + 1);

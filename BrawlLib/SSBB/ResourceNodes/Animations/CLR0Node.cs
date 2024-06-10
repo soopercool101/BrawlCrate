@@ -620,8 +620,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void MakeList()
         {
+            MakeList(((CLR0Node)Parent._parent)._numFrames);
+        }
+
+        public void MakeList(int numFrames)
+        {
             _constant = false;
-            int entries = ((CLR0Node) Parent._parent)._numFrames;
+            int entries = numFrames;
             _numEntries = _colors.Count;
             NumEntries = entries;
         }
