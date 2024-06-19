@@ -30,8 +30,6 @@ namespace BrawlLib.Wii.Textures
         public abstract int BlockHeight { get; }
         public bool IsIndexed => RawFormat == WiiPixelFormat.CI4 || RawFormat == WiiPixelFormat.CI8;
 
-        protected ColorPalette _workingPalette;
-
         public int GetMipOffset(int width, int height, int mipLevel)
         {
             return GetMipOffset(ref width, ref height, mipLevel);
@@ -320,12 +318,12 @@ namespace BrawlLib.Wii.Textures
 
         protected abstract void EncodeBlock(ARGBPixel* sPtr, VoidPtr blockAddr, int width);
 
-        public Bitmap DecodeTexture(TEX0v1* texture)
+        public Bitmap DecodeTexture(TEX0v1* texture, ColorPalette palette = null)
         {
-            return DecodeTexture(texture, 1);
+            return DecodeTexture(texture, 1, palette);
         }
 
-        public virtual Bitmap DecodeTexture(TEX0v1* texture, int mipLevel)
+        public virtual Bitmap DecodeTexture(TEX0v1* texture, int mipLevel, ColorPalette palette = null)
         {
             int w = (ushort) texture->_width, h = (ushort) texture->_height;
             VoidPtr addr = texture->PixelData + GetMipOffset(ref w, ref h, mipLevel);
@@ -341,7 +339,7 @@ namespace BrawlLib.Wii.Textures
                     VoidPtr sPtr = addr + y * bStride;
                     for (int x = 0; x < aw; x += BlockWidth, dPtr += BlockWidth, sPtr += sStep)
                     {
-                        DecodeBlock(sPtr, dPtr, aw);
+                        DecodeBlock(sPtr, dPtr, aw, palette);
                     }
                 }
 
@@ -349,12 +347,12 @@ namespace BrawlLib.Wii.Textures
             }
         }
 
-        public static Bitmap Decode(VoidPtr addr, int w, int h, int mipLevel, WiiPixelFormat fmt)
+        public static Bitmap Decode(VoidPtr addr, int w, int h, int mipLevel, WiiPixelFormat fmt, ColorPalette palette = null)
         {
-            return Get(fmt).DecodeTexture(addr, w, h, mipLevel);
+            return Get(fmt).DecodeTexture(addr, w, h, mipLevel, palette);
         }
 
-        public virtual Bitmap DecodeTexture(VoidPtr addr, int w, int h, int mipLevel)
+        public virtual Bitmap DecodeTexture(VoidPtr addr, int w, int h, int mipLevel, ColorPalette palette = null)
         {
             addr += GetMipOffset(ref w, ref h, mipLevel);
 
@@ -370,7 +368,7 @@ namespace BrawlLib.Wii.Textures
                     VoidPtr sPtr = addr + y * bStride;
                     for (int x = 0; x < aw; x += BlockWidth, dPtr += BlockWidth, sPtr += sStep)
                     {
-                        DecodeBlock(sPtr, dPtr, aw);
+                        DecodeBlock(sPtr, dPtr, aw, palette);
                     }
                 }
 
@@ -385,32 +383,16 @@ namespace BrawlLib.Wii.Textures
 
         public virtual Bitmap DecodeTextureIndexed(TEX0v1* texture, ColorPalette palette, int mipLevel)
         {
-            _workingPalette = palette;
-            try
-            {
-                return DecodeTexture(texture, mipLevel);
-            }
-            finally
-            {
-                _workingPalette = null;
-            }
+            return DecodeTexture(texture, mipLevel, palette);
         }
 
         public virtual Bitmap DecodeTextureIndexed(VoidPtr addr, int w, int h, ColorPalette palette, int mipLevel,
                                                    WiiPixelFormat fmt)
         {
-            _workingPalette = palette;
-            try
-            {
-                return Decode(addr, w, h, mipLevel, fmt);
-            }
-            finally
-            {
-                _workingPalette = null;
-            }
+            return Decode(addr, w, h, mipLevel, fmt, palette);
         }
 
-        protected abstract void DecodeBlock(VoidPtr blockAddr, ARGBPixel* destAddr, int width);
+        protected abstract void DecodeBlock(VoidPtr blockAddr, ARGBPixel* destAddr, int width, ColorPalette palette = null);
 
         public static TextureConverter Get(WiiPixelFormat format)
         {
