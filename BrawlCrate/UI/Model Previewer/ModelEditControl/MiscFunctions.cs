@@ -40,8 +40,25 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             model.ResetToBindState();
         }
 
-        private void cboToolSelect_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void btnTool_CheckedChanged(object sender, EventArgs e)
         {
+            if (((ToolStripButton)sender).Checked)
+            {
+                if (sender == chkToolTranslate)
+                {
+                    chkToolRotate.Checked = chkToolScale.Checked = false;
+                }
+                else if (sender == chkToolRotate)
+                {
+                    chkToolTranslate.Checked = chkToolScale.Checked = false;
+                }
+                else if (sender == chkToolScale)
+                {
+                    chkToolTranslate.Checked = chkToolRotate.Checked = false;
+                }
+            }
+
             _updating = true;
             switch (ControlType)
             {
