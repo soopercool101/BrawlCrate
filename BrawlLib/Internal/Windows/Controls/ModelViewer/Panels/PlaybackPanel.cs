@@ -20,6 +20,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
         private Label label15;
         private Label label1;
         public Label lblLoopFrame;
+        private TrackBar trbFrame;
         public Button btnLast;
 
         private void InitializeComponent()
@@ -37,20 +38,21 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             label15 = new Label();
             label1 = new Label();
             lblLoopFrame = new Label();
+            trbFrame = new TrackBar();
             ((System.ComponentModel.ISupportInitialize) numTotalFrames).BeginInit();
             ((System.ComponentModel.ISupportInitialize) numFPS).BeginInit();
             ((System.ComponentModel.ISupportInitialize) numFrameIndex).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) trbFrame).BeginInit();
             SuspendLayout();
             // 
             // btnPlay
             // 
             btnPlay.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                              | AnchorStyles.Left
                                               | AnchorStyles.Right;
-            btnPlay.Location = new System.Drawing.Point(69, 28);
+            btnPlay.Location = new System.Drawing.Point(458, 28);
             btnPlay.Margin = new Padding(1);
             btnPlay.Name = "btnPlay";
-            btnPlay.Size = new System.Drawing.Size(313, 32);
+            btnPlay.Size = new System.Drawing.Size(44, 32);
             btnPlay.TabIndex = 14;
             btnPlay.Text = "Play";
             btnPlay.UseVisualStyleBackColor = true;
@@ -60,7 +62,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             // 
             numTotalFrames.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             numTotalFrames.Enabled = false;
-            numTotalFrames.Location = new System.Drawing.Point(397, 5);
+            numTotalFrames.Location = new System.Drawing.Point(517, 5);
             numTotalFrames.Maximum = new decimal(new int[]
             {
                 65536,
@@ -75,7 +77,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             // 
             // numFPS
             // 
-            numFPS.Location = new System.Drawing.Point(53, 4);
+            numFPS.Location = new System.Drawing.Point(40, 41);
             numFPS.Maximum = new decimal(new int[]
             {
                 2000,
@@ -104,7 +106,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             // 
             // label14
             // 
-            label14.Location = new System.Drawing.Point(3, 3);
+            label14.Location = new System.Drawing.Point(3, 40);
             label14.Name = "label14";
             label14.Size = new System.Drawing.Size(65, 20);
             label14.TabIndex = 17;
@@ -113,7 +115,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             // 
             // chkLoop
             // 
-            chkLoop.Location = new System.Drawing.Point(98, 5);
+            chkLoop.Location = new System.Drawing.Point(85, 40);
             chkLoop.Name = "chkLoop";
             chkLoop.Size = new System.Drawing.Size(81, 20);
             chkLoop.TabIndex = 16;
@@ -124,7 +126,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             // numFrameIndex
             // 
             numFrameIndex.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            numFrameIndex.Location = new System.Drawing.Point(334, 5);
+            numFrameIndex.Location = new System.Drawing.Point(454, 5);
             numFrameIndex.Maximum = new decimal(new int[]
             {
                 0,
@@ -133,16 +135,16 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
                 0
             });
             numFrameIndex.Name = "numFrameIndex";
-            numFrameIndex.Size = new System.Drawing.Size(52, 22);
+            numFrameIndex.Size = new System.Drawing.Size(52, 19);
             numFrameIndex.TabIndex = 12;
             numFrameIndex.ValueChanged += new EventHandler(numFrameIndex_ValueChanged);
             // 
             // btnPrevFrame
             // 
             btnPrevFrame.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                                   | AnchorStyles.Left;
+                                                   | AnchorStyles.Right;
             btnPrevFrame.Enabled = false;
-            btnPrevFrame.Location = new System.Drawing.Point(36, 28);
+            btnPrevFrame.Location = new System.Drawing.Point(424, 28);
             btnPrevFrame.Margin = new Padding(1);
             btnPrevFrame.Name = "btnPrevFrame";
             btnPrevFrame.Size = new System.Drawing.Size(32, 32);
@@ -156,7 +158,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             btnNextFrame.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
                                                    | AnchorStyles.Right;
             btnNextFrame.Enabled = false;
-            btnNextFrame.Location = new System.Drawing.Point(384, 28);
+            btnNextFrame.Location = new System.Drawing.Point(504, 28);
             btnNextFrame.Margin = new Padding(1);
             btnNextFrame.Name = "btnNextFrame";
             btnNextFrame.Size = new System.Drawing.Size(32, 32);
@@ -168,9 +170,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             // btnFirst
             // 
             btnFirst.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                               | AnchorStyles.Left;
+                                               | AnchorStyles.Right;
             btnFirst.Enabled = false;
-            btnFirst.Location = new System.Drawing.Point(3, 28);
+            btnFirst.Location = new System.Drawing.Point(390, 28);
             btnFirst.Margin = new Padding(1);
             btnFirst.Name = "btnFirst";
             btnFirst.Size = new System.Drawing.Size(32, 32);
@@ -184,7 +186,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             btnLast.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
                                               | AnchorStyles.Right;
             btnLast.Enabled = false;
-            btnLast.Location = new System.Drawing.Point(417, 28);
+            btnLast.Location = new System.Drawing.Point(537, 28);
             btnLast.Margin = new Padding(1);
             btnLast.Name = "btnLast";
             btnLast.Size = new System.Drawing.Size(32, 32);
@@ -196,7 +198,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             // label15
             // 
             label15.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label15.Location = new System.Drawing.Point(281, 5);
+            label15.Location = new System.Drawing.Point(413, 4);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(55, 20);
             label15.TabIndex = 23;
@@ -206,7 +208,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label1.Location = new System.Drawing.Point(386, 4);
+            label1.Location = new System.Drawing.Point(506, 4);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(14, 20);
             label1.TabIndex = 24;
@@ -218,12 +220,22 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             lblLoopFrame.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLoopFrame.AutoSize = true;
             lblLoopFrame.ForeColor = System.Drawing.Color.DarkRed;
-            lblLoopFrame.Location = new System.Drawing.Point(194, 7);
+            lblLoopFrame.Location = new System.Drawing.Point(293, 43);
             lblLoopFrame.Name = "lblLoopFrame";
-            lblLoopFrame.Size = new System.Drawing.Size(84, 17);
+            lblLoopFrame.Size = new System.Drawing.Size(65, 12);
             lblLoopFrame.TabIndex = 25;
             lblLoopFrame.Text = "Loop Frame";
             lblLoopFrame.Visible = false;
+            // 
+            // trbFrame
+            // 
+            trbFrame.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                               | AnchorStyles.Right;
+            trbFrame.Location = new System.Drawing.Point(3, 3);
+            trbFrame.Name = "trbFrame";
+            trbFrame.Size = new System.Drawing.Size(404, 45);
+            trbFrame.TabIndex = 26;
+            trbFrame.ValueChanged += new EventHandler(trbFrame_ValueChanged);
             // 
             // ModelPlaybackPanel
             // 
@@ -240,11 +252,13 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             Controls.Add(label15);
             Controls.Add(chkLoop);
             Controls.Add(label1);
+            Controls.Add(trbFrame);
             Name = "ModelPlaybackPanel";
-            Size = new System.Drawing.Size(454, 65);
+            Size = new System.Drawing.Size(574, 65);
             ((System.ComponentModel.ISupportInitialize) numTotalFrames).EndInit();
             ((System.ComponentModel.ISupportInitialize) numFPS).EndInit();
             ((System.ComponentModel.ISupportInitialize) numFrameIndex).EndInit();
+            ((System.ComponentModel.ISupportInitialize) trbFrame).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -310,12 +324,19 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
         public void numFrameIndex_ValueChanged(object sender, EventArgs e)
         {
             lblLoopFrame.Visible = numFrameIndex.Value > _mainWindow.MaxFrame;
+            trbFrame.Value = (int)numFrameIndex.Value;
             _mainWindow.numFrameIndex_ValueChanged(sender, e);
         }
 
         public void numTotalFrames_ValueChanged(object sender, EventArgs e)
         {
+            trbFrame.Maximum = (int)numTotalFrames.Value;
             _mainWindow.numTotalFrames_ValueChanged(sender, e);
+        }
+
+        private void trbFrame_ValueChanged(object sender, EventArgs e)
+        {
+            numFrameIndex.Value = trbFrame.Value;
         }
 
         internal void UpdateInterface(int animFrame, int loopMax)
