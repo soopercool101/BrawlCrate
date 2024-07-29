@@ -1532,7 +1532,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             NoBounce = 0,
             SelfDelete = 1,
-            Bounce = 2
+            Bounce = 2,
+            Unknown3 = 3
         }
 
         [Category("Item Parameters")]
