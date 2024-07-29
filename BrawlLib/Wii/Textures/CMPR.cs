@@ -21,7 +21,7 @@ namespace BrawlLib.Wii.Textures
         //private List<CMPBlock> _blockCache = new List<CMPBlock>();
         //private int _blockIndex;
 
-        protected override void DecodeBlock(VoidPtr blockAddr, ARGBPixel* dPtr, int width)
+        protected override void DecodeBlock(VoidPtr blockAddr, ARGBPixel* dPtr, int width, ColorPalette palette = null)
         {
             CMPRBlock* sPtr = (CMPRBlock*) blockAddr;
             //ARGBPixel* dPtr = (ARGBPixel*)destAddr;

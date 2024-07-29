@@ -1,5 +1,6 @@
 ﻿using BrawlLib.Imaging;
 using BrawlLib.Internal;
+using System.Drawing.Imaging;
 
 namespace BrawlLib.Wii.Textures
 {
@@ -13,7 +14,7 @@ namespace BrawlLib.Wii.Textures
         //public override PixelFormat DecodedFormat { get { return PixelFormat.Format24bppRgb; } }
         public override WiiPixelFormat RawFormat => WiiPixelFormat.RGB565;
 
-        protected override void DecodeBlock(VoidPtr blockAddr, ARGBPixel* dPtr, int width)
+        protected override void DecodeBlock(VoidPtr blockAddr, ARGBPixel* dPtr, int width, ColorPalette palette = null)
         {
             wRGB565Pixel* sPtr = (wRGB565Pixel*) blockAddr;
             //RGBPixel* dPtr = (RGBPixel*)destAddr;
