@@ -1019,10 +1019,14 @@ namespace BrawlLib.Wii.Animations
             int numFrames = kf.FrameLimit;
             KeyframeEntry frame, root = kf._keyArrays[index]._keyRoot;
             bfloat* pVal = (bfloat*) addr;
-            float val, frameScale = numFrames <= 1 ? 1 : 1.0f / (numFrames - 1);
+            float val = numFrames <= 1 ? 1 : 1.0f / (numFrames - 1);
             float min, max, stride, step;
             int span, i;
             int keyCount = kf._keyArrays[index]._keyCount;
+
+            int keyFrameRange = root._prev._index - root._next._index;
+            float oneMinusEpsilon = BitConverter.ToSingle(BitConverter.GetBytes(BitConverter.ToInt32(BitConverter.GetBytes(1.0f), 0) - 1), 0);
+            float frameScale = keyFrameRange == 0 ? 0.0f : oneMinusEpsilon / keyFrameRange;
 
             if (format == AnimDataFormat.L4)
             {
