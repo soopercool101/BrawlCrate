@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -297,6 +298,27 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void Dispose()
         {
+            if (!Populated)
+            {
+                int timeoutSecs = 5;
+                // wait 5 seconds to see if population finishes
+                while (!Populated && timeoutSecs >= 0)
+                {
+                    Thread.Sleep(1000);
+                    --timeoutSecs;
+                }
+                // attempt to cancel population if it hasn't finished still
+                if (!Populated)
+                {
+                    populator.CancelAsync();
+                    for (int i = 0; i < 5; i++) // wait 5 more seconds for cancellation to finish hopefully
+                    {
+                        Thread.Sleep(1000);
+                    }
+                    Debug.WriteLine("Cancelled population");
+                }
+            }
+            populator?.Dispose();
             _files.Remove(ModuleID);
             base.Dispose();
         }
@@ -445,18 +467,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
                     }
                 }
-
                 Sections[5].Populate();
 
                 watch.Stop();
                 Console.WriteLine("Took {0} seconds to relocate {1} module", watch.ElapsedMilliseconds / 1000d, Name);
             };
 
-            using (BackgroundWorker b = new BackgroundWorker())
+            Populated = false;
+            populator = new BackgroundWorker();
+            populator.WorkerSupportsCancellation = true;
+            populator.RunWorkerCompleted += (sender, args) =>
             {
-                b.DoWork += new DoWorkEventHandler(work);
-                b.RunWorkerAsync();
-            }
+                Populated = true;
+            };
+            populator.DoWork += new DoWorkEventHandler(work);
+            populator.RunWorkerAsync();
 
             // Stage module conversion
             byte* bptr = (byte*) WorkingUncompressed.Address;
@@ -492,6 +517,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             UpdateItemIDs();
         }
+
+        private BackgroundWorker populator;
+        public bool Populated = false;
 
         public void ApplyRelocations()
         {
