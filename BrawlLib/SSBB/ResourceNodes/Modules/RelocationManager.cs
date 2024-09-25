@@ -251,12 +251,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void LinkBranch(int index, bool isLinked)
         {
-            PPCBranch branch = (PPCBranch) GetCode(index);
-            int destIndex = -1;
+            PPCBranch branch = GetCode(index) as PPCBranch;
+            if (branch == null)
+            {
+                Console.Write($@"Incorrectly read branch at {index}");
+                return;
+            }
             if (!branch.Absolute)
             {
                 //TODO: check if the branch goes outside of the section, handle accordingly
-                destIndex = (index * 4 + branch.DataOffset).RoundDown(4) / 4;
+                int destIndex = (index * 4 + branch.DataOffset).RoundDown(4) / 4;
                 RelocationTarget dest = CreateTarget(destIndex);
                 if (dest.Section != null)
                 {
