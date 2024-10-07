@@ -115,15 +115,36 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override TransformType ControlType
         {
-            get => (TransformType) cboToolSelect.SelectedIndex;
+            get
+            {
+                if (chkToolTranslate.Checked)
+                    return TransformType.Translation;
+                if (chkToolRotate.Checked)
+                    return TransformType.Rotation;
+                if (chkToolScale.Checked)
+                    return TransformType.Scale;
+                return TransformType.None;
+            }
             set
             {
-                if ((TransformType) cboToolSelect.SelectedIndex == value)
+                switch (value)
                 {
-                    return;
+                    case TransformType.Translation:
+                        chkToolRotate.Checked = chkToolScale.Checked = false;
+                        chkToolTranslate.Checked = true;
+                        break;
+                    case TransformType.Rotation:
+                        chkToolTranslate.Checked = chkToolScale.Checked = false;
+                        chkToolRotate.Checked = true;
+                        break;
+                    case TransformType.Scale:
+                        chkToolTranslate.Checked = chkToolRotate.Checked = false;
+                        chkToolScale.Checked = true;
+                        break;
+                    default:
+                        chkToolTranslate.Checked = chkToolRotate.Checked = chkToolScale.Checked = false;
+                        break;
                 }
-
-                cboToolSelect.SelectedIndex = (int) value;
             }
         }
 
