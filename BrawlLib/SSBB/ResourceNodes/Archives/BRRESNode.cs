@@ -974,7 +974,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                             new SRT0Node().Initialize(this, hdr, hdr->_size);
                             break;
                         default:
-                            new BRESEntryNode().Initialize(this, hdr, hdr->_size);
+                            BRESEntryNode a = new BRESEntryNode();
+                            a.Initialize(this, hdr, hdr->_size);
+                            if (a._name == null )
+                            {
+                                a._name = group->First[i].GetName();
+                            }
                             break;
                     }
                 }
