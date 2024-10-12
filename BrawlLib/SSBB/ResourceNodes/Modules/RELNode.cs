@@ -302,7 +302,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             // If not populated, try to give it time to finish
             if (!Populated && populator?.IsBusy == true)
             {
-                _resetEvent.WaitOne();
+                _resetEvent.WaitOne(5000);
             }
             populator?.Dispose();
             _files.Remove(ModuleID);
