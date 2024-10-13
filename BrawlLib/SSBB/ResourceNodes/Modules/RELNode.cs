@@ -295,24 +295,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #endregion
 
+        private AutoResetEvent _resetEvent = new AutoResetEvent(false);
 
         public override void Dispose()
         {
             // If not populated, try to give it time to finish
-            if (!Populated)
+            if (!Populated && populator?.IsBusy == true)
             {
-                var sw = new Stopwatch();
-                sw.Start();
-                while (!Populated)
-                {
-                    Application.DoEvents();
-                    // Wait max 5 seconds before forcefully disposing
-                    if (sw.ElapsedMilliseconds > 5000)
-                    {
-                        break;
-                    }
-                }
-                sw.Stop();
+                _resetEvent.WaitOne(5000);
             }
             populator?.Dispose();
             _files.Remove(ModuleID);
@@ -467,6 +457,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 watch.Stop();
                 Console.WriteLine("Took {0} seconds to relocate {1} module", watch.ElapsedMilliseconds / 1000d, Name);
+                _resetEvent.Set();
             };
 
             Populated = false;
