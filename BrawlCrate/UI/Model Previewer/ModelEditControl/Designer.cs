@@ -144,7 +144,6 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         public ToolStripMenuItem chkBRRESAnims;
         private ToolStripButton chkZoomExtents;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripComboBox cboToolSelect;
         private ToolStripDropDownButton dropdownOverlays;
         private ToolStripMenuItem chkAllOverlays;
         private ToolStripMenuItem chkBoundaries;
@@ -180,6 +179,9 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         private ToolStripMenuItem btnWeightEditor;
         private ToolStripMenuItem btnVertexEditor;
         private ToolStripMenuItem toggleMetals;
+        private ToolStripButton chkToolTranslate;
+        private ToolStripButton chkToolRotate;
+        private ToolStripButton chkToolScale;
         public RightPanel rightPanel;
 
         private void InitializeComponent()
@@ -330,7 +332,9 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             chkZoomExtents = new ToolStripButton();
             btnSaveCam = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
-            cboToolSelect = new ToolStripComboBox();
+            chkToolTranslate = new ToolStripButton();
+            chkToolRotate = new ToolStripButton();
+            chkToolScale = new ToolStripButton();
             panel2 = new Panel();
             spltRight = new Splitter();
             panel1 = new Panel();
@@ -1574,21 +1578,21 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             toolStrip1.Dock = DockStyle.Fill;
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[]
-            {
-                chkBones,
-                chkPolygons,
-                chkVertices,
-                chkCollisions,
-                dropdownOverlays,
-                toolStripSeparator1,
-                chkFloor,
-                button1,
-                chkZoomExtents,
-                btnSaveCam,
-                toolStripSeparator2,
-                cboToolSelect
-            });
+            toolStrip1.Items.AddRange(new ToolStripItem[] {
+            chkBones,
+            chkPolygons,
+            chkVertices,
+            chkCollisions,
+            dropdownOverlays,
+            toolStripSeparator1,
+            chkFloor,
+            button1,
+            chkZoomExtents,
+            btnSaveCam,
+            toolStripSeparator2,
+            chkToolTranslate,
+            chkToolRotate,
+            chkToolScale});
             toolStrip1.Location = new System.Drawing.Point(464, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Padding = new Padding(6, 0, 0, 0);
@@ -1737,20 +1741,35 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             toolStripSeparator2.Name = "toolStripSeparator2";
             toolStripSeparator2.Size = new System.Drawing.Size(6, 6);
             // 
-            // cboToolSelect
+            // chkToolTranslate
             // 
-            cboToolSelect.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboToolSelect.FlatStyle = FlatStyle.Standard;
-            cboToolSelect.Items.AddRange(new object[]
-            {
-                "Translation",
-                "Rotation",
-                "Scale",
-                "None"
-            });
-            cboToolSelect.Name = "cboToolSelect";
-            cboToolSelect.Size = new System.Drawing.Size(121, 28);
-            cboToolSelect.SelectedIndexChanged += new EventHandler(cboToolSelect_SelectedIndexChanged);
+            chkToolTranslate.CheckOnClick = true;
+            chkToolTranslate.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            chkToolTranslate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            chkToolTranslate.Name = "chkToolTranslate";
+            chkToolTranslate.Size = new System.Drawing.Size(41, 19);
+            chkToolTranslate.Text = "Move";
+            chkToolTranslate.CheckedChanged += new EventHandler(btnTool_CheckedChanged);
+            // 
+            // chkToolRotate
+            // 
+            chkToolRotate.CheckOnClick = true;
+            chkToolRotate.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            chkToolRotate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            chkToolRotate.Name = "chkToolRotate";
+            chkToolRotate.Size = new System.Drawing.Size(45, 19);
+            chkToolRotate.Text = "Rotate";
+            chkToolRotate.CheckedChanged += new EventHandler(btnTool_CheckedChanged);
+            // 
+            // chkToolScale
+            // 
+            chkToolScale.CheckOnClick = true;
+            chkToolScale.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            chkToolScale.ImageTransparentColor = System.Drawing.Color.Magenta;
+            chkToolScale.Name = "chkToolScale";
+            chkToolScale.Size = new System.Drawing.Size(38, 19);
+            chkToolScale.Text = "Scale";
+            chkToolScale.CheckedChanged += new EventHandler(btnTool_CheckedChanged);
             // 
             // panel2
             // 
@@ -2078,7 +2097,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             _interpolationEditor.Dock = DockStyle.Fill;
             _interpolationEditor.Visible = false;
 
-            cboToolSelect.SelectedIndex = 1;
+            chkToolTranslate.Checked = true;
             chkZoomExtents.Enabled = false;
 
             _currentProjBox = perspectiveToolStripMenuItem;
