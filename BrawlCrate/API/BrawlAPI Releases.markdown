@@ -8,9 +8,9 @@ Plugins listed here can be easily installed via the subscription service. In Bra
 
 ### Unofficial
 #### Brawl
-- [Mawwwk's Plugins](https://github.com/markymawk/BrawlCratePlugins)
-- [BrawlInstaller](https://github.com/squidgy617/BrawlInstallerPlugins)
 - [BrawlCrate Plugins by Squidgy](https://github.com/squidgy617/SquidgyBrawlCratePlugins)
+- [BrawlInstaller](https://github.com/squidgy617/BrawlInstallerPlugins)
+- [mawwwk Plug-ins Pack](https://github.com/markymawk/BrawlCratePlugins)
 #### Mario Kart Wii
 - [BrawlCrate MKWii Animation Plugin](https://github.com/HEJ0/BrawlCrate-MKWii-Animation-Plugin)
 - [KCL Visible Collision Tool](https://github.com/shxd10/KCL-Visible-Collision-Tool-py)
