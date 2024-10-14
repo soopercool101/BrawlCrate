@@ -7,10 +7,13 @@ Plugins listed here can be easily installed via the subscription service. In Bra
 - [Project M 3.6 Stage Templates](https://github.com/soopercool101/ProjectMStageTemplatePlugins)
 
 ### Unofficial
+#### Brawl
 - [Mawwwk's Plugins](https://github.com/markymawk/BrawlCratePlugins)
 - [BrawlInstaller](https://github.com/squidgy617/BrawlInstallerPlugins)
-- [BrawlCrate MKWii Animation Plugin](https://github.com/HEJ0/BrawlCrate-MKWii-Animation-Plugin)
 - [BrawlCrate Plugins by Squidgy](https://github.com/squidgy617/SquidgyBrawlCratePlugins)
+#### Mario Kart Wii
+- [BrawlCrate MKWii Animation Plugin](https://github.com/HEJ0/BrawlCrate-MKWii-Animation-Plugin)
+- [KCL Visible Collision Tool](https://github.com/shxd10/KCL-Visible-Collision-Tool-py)
 
 ### BrawlBox*
 - Official ([Plugins](https://github.com/libertyernie/brawltools/tree/master/BrawlBox/Plugins)) ([Loaders](https://github.com/libertyernie/brawltools/tree/master/BrawlBox/Loaders))
