@@ -535,7 +535,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return clrRelocated;
         }
 
-        internal void ClearCommands()
+        public void ClearCommands()
         {
             _commands = new Dictionary<int, RelCommand>();
         }
