@@ -56,8 +56,8 @@ namespace BrawlLib.SSBB.Types.BrawlEx
         public buint _canWallJump; // 0xE4 - Whether the fighter can jump off walls
         public buint _canCling;    // 0xE8 - Whether the fighter can cling to walls
         public buint _canZAir;     // 0xEC - Whether the fighter can use an aerial tether
-        public buint _u12Flag;     // 0xF0 - Usage unknown
-        public buint _u13Flag;     // 0xF4 - Usage unknown
+        public buint _thrownType;  // 0xF0 - Animation used when thrown
+        public buint _grabSize;    // 0xF4 - Animation used when grabbed
 
         public buint _textureLoad;  // 0xF8 - 0/1/2/3/4/5
         public buint _aiController; // 0xFC
