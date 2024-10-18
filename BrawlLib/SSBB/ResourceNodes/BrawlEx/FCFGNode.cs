@@ -66,8 +66,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public uint _canWallJump;          // 0xE4 - Whether the fighter can jump off walls
         public uint _canCling;             // 0xE8 - Whether the fighter can cling to walls
         public uint _canZAir;              // 0xEC - Whether the fighter can use an aerial tether
-        public uint _u12Flag;              // 0xF0 - Usage unknown
-        public uint _u13Flag;              // 0xF4 - Usage unknown
+        public uint _thrownType;           // 0xF0 - Animation used when thrown
+        public uint _grabSize;             // 0xF4 - Animation used when grabbed
 
         public uint _textureLoad;  // 0xF8 - 0/1/2/3/4/5
         public uint _aiController; // 0xFC
@@ -1044,30 +1044,46 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
             }
         }
 
-        [Category("Misc")]
-        [Description("Usage Unknown.")]
-        [DisplayName("U12 Flag")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint U12Flag
+        [Browsable(false)]
+        public enum ThrownTypes : uint
         {
-            get => _u12Flag;
+            Default = 0x00000000,
+            Small = 0x00000001,
+            Big = 0x00000002,
+            Girl = 0x00000003
+        }
+
+        [Browsable(true)]
+        [Category("Misc")]
+        [Description("Sets the specific animation set to be used when this character is thrown.")]
+        [DisplayName("Thrown Type")]
+        public ThrownTypes ThrownType
+        {
+            get => (ThrownTypes) _thrownType;
             set
             {
-                _u12Flag = value;
+                _thrownType = (uint) value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Misc")]
-        [Description("Usage Unknown.")]
-        [DisplayName("U13 Flag")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint U13Flag
+        [Browsable(false)]
+        public enum GrabSizes : uint
         {
-            get => _u13Flag;
+            Tall = 0x00000000,
+            Short = 0x00000001,
+        }
+
+        [Browsable(true)]
+        [Category("Misc")]
+        [Description("Used to change the animation when this character and victims are held in a grab.")]
+        [DisplayName("Grab Size")]
+        public GrabSizes GrabSize
+        {
+            get => (GrabSizes) _grabSize;
             set
             {
-                _u13Flag = value;
+                _grabSize = (uint) value;
                 SignalPropertyChange();
             }
         }
@@ -1197,8 +1213,8 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
             hdr->_canWallJump = _canWallJump;
             hdr->_canCling = _canCling;
             hdr->_canZAir = _canZAir;
-            hdr->_u12Flag = _u12Flag;
-            hdr->_u13Flag = _u13Flag;
+            hdr->_thrownType = _thrownType;
+            hdr->_grabSize = _grabSize;
             hdr->_textureLoad = _textureLoad;
             hdr->_aiController = _aiController;
         }
@@ -1318,8 +1334,8 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
             _canWallJump = Header->_canWallJump;
             _canCling = Header->_canCling;
             _canZAir = Header->_canZAir;
-            _u12Flag = Header->_u12Flag;
-            _u13Flag = Header->_u13Flag;
+            _thrownType = Header->_thrownType;
+            _grabSize = Header->_grabSize;
 
             _textureLoad = Header->_textureLoad;
             _aiController = Header->_aiController;
