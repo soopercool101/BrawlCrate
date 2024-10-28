@@ -12,6 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal VoidPtr Header => WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.RELSection;
+        [Browsable(false)] public override bool supportsCompression => false;
 
         [Browsable(false)] public override uint ASMOffset => (uint) _dataOffset;
 
