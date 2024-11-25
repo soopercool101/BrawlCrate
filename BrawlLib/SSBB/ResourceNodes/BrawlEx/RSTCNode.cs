@@ -12,10 +12,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal RSTC* Header => (RSTC*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.RSTC;
 
-        public uint _tag;         // 0x00 - Uneditable; RSTC
-        public uint _size;        // 0x04 - Uneditable; Should be "E0"
-        public uint _version;     // 0x08 - Version; Only parses "1" currently
-        public byte _unknown0x0C; // 0x0C - Unused?
+        public uint _tag = RSTC.Tag;    // 0x00 - Uneditable; RSTC
+        public uint _size = 0xE0;       // 0x04 - Default "0xE0", uneditable without codeset changes
+        public uint _version = 1;       // 0x08 - Version; Only parses "1" currently
+        public byte _unknown0x0C;       // 0x0C - Unused?
 
         public byte
             _charNum; // 0x0D - Number of characters in the char list; should be generated automatically. Max is 100? (Maybe 104, or may have padding).
@@ -25,7 +25,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte
             _randNum; // 0x0F - Number of characters in the random list; should be generated automatically. Max is 100? (Maybe 104, or may have padding).
 
-        [Description("Editing this may result in the file no longer working, this needs code changes to function properly")]
+        [Description("Editing this may result in the file no longer working, this needs codeset changes to function properly")]
         public int MaxEntries
         {
             get
