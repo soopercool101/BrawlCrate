@@ -939,6 +939,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 ? new RELNode()
                 : null;
         }
+        internal static ResourceNode TryParseGeneric(DataSource source, ResourceNode parent)
+        {
+            RELHeader* header = (RELHeader*)source.Address;
+            return header->_info._numSections <= 20 &&
+                   header->_bssAlign == 8 &&
+                   header->_moduleAlign == 32
+                ? new RELNode()
+                : null;
+        }
 
         #region Module ID Names
 
