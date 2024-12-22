@@ -357,7 +357,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = _idNames.ContainsKey(_id) ? _idNames[_id] : Path.GetFileName(_origPath);
+                _name = _idNames.ContainsKey(_id) ? _idNames[_id] : (string.IsNullOrEmpty(_origPath) ? $"module0x{_id:X2}" : Path.GetFileName(_origPath));
             }
 
             if (!_files.ContainsKey(ModuleID))
