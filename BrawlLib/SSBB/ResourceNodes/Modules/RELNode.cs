@@ -585,6 +585,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _imports.Clear();
             Dictionary<uint, ImportData> tempImports = new Dictionary<uint, ImportData>();
+            if (_sections == null)
+            {
+                Populate();
+            }
             foreach (ModuleSectionNode s in _sections)
             {
                 foreach (ImportData e in tempImports.Values)
