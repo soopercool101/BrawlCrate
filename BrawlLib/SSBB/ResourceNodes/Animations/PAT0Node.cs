@@ -1419,7 +1419,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_textureNode == null)
                 {
-                    _textureNode = RootNode.FindChildByType(_tex, true, ResourceType.TEX0) as TEX0Node;
+                    var containingArchives = GetContainingArchives();
+                    foreach(var archive in containingArchives)
+                    {
+                        _textureNode = archive.FindChildByType(_tex, true, ResourceType.TEX0) as TEX0Node;
+                        if (_textureNode != null)
+                            break;
+                    }
                     if (_textureNode == null)
                     {
                         return 0;
@@ -1439,7 +1445,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_textureNode == null)
             {
-                _textureNode = RootNode.FindChildByType(_tex, true, ResourceType.TEX0) as TEX0Node;
+                var containingArchives = GetContainingArchives();
+                foreach(var archive in containingArchives)
+                {
+                    _textureNode = archive.FindChildByType(_tex, true, ResourceType.TEX0) as TEX0Node;
+                    if (_textureNode != null)
+                        break;
+                }
                 if (_textureNode == null)
                 {
                     return null;
@@ -1448,10 +1460,47 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (!string.IsNullOrEmpty(_plt) && _paletteNode == null)
             {
-                _paletteNode = RootNode.FindChildByType(_plt, true, ResourceType.PLT0) as PLT0Node;
+                var containingArchives = GetContainingArchives();
+                foreach(var archive in containingArchives)
+                {
+                    _paletteNode = archive.FindChildByType(_plt, true, ResourceType.PLT0) as PLT0Node;
+                    if (_paletteNode != null)
+                        break;
+                }
             }
 
             return _textureNode.GetImage(index, _paletteNode);
+        }
+
+        private List<ResourceNode> GetContainingArchives()
+        {
+            var nodes = new List<ResourceNode>();
+            var currentNode = Parent;
+            var topLevelArchives = new List<Type> { typeof(ARCNode), typeof(U8Node) };
+            var archives = new List<Type> { typeof(ARCNode), typeof(U8Node), typeof(BRRESNode) };
+            while (currentNode != RootNode)
+            {
+                var topLevelNode = false;
+                if (!archives.Contains(currentNode.GetType()))
+                {
+                    currentNode = currentNode.Parent;
+                    continue;
+                }
+                else
+                {
+                    if (topLevelArchives.Contains(currentNode.GetType()))
+                    {
+                        topLevelNode = true;
+                    }
+                    nodes.Add(currentNode);
+                    currentNode = currentNode.Parent;
+                }
+                if (topLevelNode)
+                {
+                    break;
+                }
+            }
+            return nodes;
         }
 
         public TEX0Node _textureNode;
