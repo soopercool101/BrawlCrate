@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -1419,7 +1420,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_textureNode == null)
                 {
-                    _textureNode = RootNode.FindChildByType(_tex, true, ResourceType.TEX0) as TEX0Node;
+                    _textureNode = GetTexture();
                     if (_textureNode == null)
                     {
                         return 0;
@@ -1439,7 +1440,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_textureNode == null)
             {
-                _textureNode = RootNode.FindChildByType(_tex, true, ResourceType.TEX0) as TEX0Node;
+                _textureNode = GetTexture();
                 if (_textureNode == null)
                 {
                     return null;
@@ -1448,10 +1449,30 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (!string.IsNullOrEmpty(_plt) && _paletteNode == null)
             {
-                _paletteNode = RootNode.FindChildByType(_plt, true, ResourceType.PLT0) as PLT0Node;
+                _paletteNode = _textureNode?.GetPaletteNode();
             }
 
             return _textureNode.GetImage(index, _paletteNode);
+        }
+
+        private TEX0Node GetTexture()
+        {
+            var pat0 = Parent?.Parent?.Parent as PAT0Node;
+            var bres = pat0?.BRESNode;
+            var texture = bres?.FindChildByType(_tex, true, ResourceType.TEX0) as TEX0Node ?? null;
+            if (texture == null && bres?.Parent != null)
+            {
+                foreach(var brres in bres.Parent.Children.Where(o => o is BRRESNode b && b.FileType == ARCFileType.TextureData))
+                {
+                    var foundNode = brres.FindChildByType(_tex, true, ResourceType.TEX0);
+                    if (texture != null)
+                    {
+                        texture = foundNode as TEX0Node;
+                        break;
+                    }
+                }
+            }
+            return texture;
         }
 
         public TEX0Node _textureNode;
