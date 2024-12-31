@@ -1464,10 +1464,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 foreach(var brres in bres.Parent.Children.Where(o => o is BRRESNode b && (b.FileType == ARCFileType.TextureData || b.FileType == ARCFileType.MiscData)))
                 {
-                    var foundNode = brres.FindChildByType(_tex, true, ResourceType.TEX0);
-                    if (foundNode != null)
+                    if (brres.FindChildByType(_tex, true, ResourceType.TEX0) is TEX0Node t)
                     {
-                        texture = foundNode as TEX0Node;
+                        texture = t;
                         break;
                     }
                 }
