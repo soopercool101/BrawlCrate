@@ -417,7 +417,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
                 {
                     ContextMenuStrip = ctxBones;
                     nameToolStripMenuItem.Text = SelectedBone.Name;
-                    boneIndex.Text = "Bone Index: " + SelectedBone.BoneIndex;
+                    boneIndex.Text = $"Bone Index: {SelectedBone.BoneIndex} (0x{SelectedBone.BoneIndex:X})";
                 }
                 else
                 {
