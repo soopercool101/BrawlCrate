@@ -66,21 +66,30 @@ namespace BrawlLib.Internal.Windows.Forms
                 }
             }
 
-            Show();
+            if (Properties.Settings.Default.ShowProgressBars)
+            {
+                Show();
+            }
 
             if (Owner != null)
             {
                 CenterToParent();
             }
 
-            Application.DoEvents();
+            if (Properties.Settings.Default.ShowProgressBars)
+            {
+                Application.DoEvents();
+            }
         }
 
         public void Update(float value)
         {
             progressBar1.CurrentValue = value;
-            Application.DoEvents();
-            Thread.Sleep(0);
+            if (Properties.Settings.Default.ShowProgressBars)
+            {
+                Application.DoEvents();
+                Thread.Sleep(0);
+            }
         }
 
         public void Finish()
