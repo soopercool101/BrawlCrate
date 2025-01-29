@@ -463,12 +463,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             Populated = false;
             populator = new BackgroundWorker();
             populator.WorkerSupportsCancellation = true;
+            var mre = new ManualResetEvent(false);
             populator.RunWorkerCompleted += (sender, args) =>
             {
                 Populated = true;
+                mre.Set();
             };
             populator.DoWork += new DoWorkEventHandler(work);
             populator.RunWorkerAsync();
+            // If settings are configured to apply relocations synchronously, wait for background work to complete
+            if (Properties.Settings.Default.ApplyRelocationsSynchronously)
+            {
+                mre.WaitOne();
+            }
 
             // Stage module conversion
             byte* bptr = (byte*) WorkingUncompressed.Address;

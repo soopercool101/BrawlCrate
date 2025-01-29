@@ -12,7 +12,7 @@ namespace BrawlLib.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.6.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -191,10 +191,9 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Flycam")]
-        public BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraControlMode CameraControlMode {
+        public global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraControlMode CameraControlMode {
             get {
-                return ((BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraControlMode)(this["CameraControlMode"]));
+                return ((global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraControlMode)(this["CameraControlMode"]));
             }
             set {
                 this["CameraControlMode"] = value;
@@ -203,10 +202,9 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Pan")]
-        public BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraRightMouse {
+        public global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraRightMouse {
             get {
-                return ((BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraRightMouse"]));
+                return ((global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraRightMouse"]));
             }
             set {
                 this["CameraRightMouse"] = value;
@@ -215,10 +213,9 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Zoom")]
-        public BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraMiddleMouse {
+        public global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraMiddleMouse {
             get {
-                return ((BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraMiddleMouse"]));
+                return ((global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraMiddleMouse"]));
             }
             set {
                 this["CameraMiddleMouse"] = value;
@@ -227,88 +224,80 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Rotate")]
-        public BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraCtrlRMB {
+        public global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraCtrlRMB {
             get {
-                return ((BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraCtrlRMB"]));
+                return ((global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraCtrlRMB"]));
             }
             set {
                 this["CameraCtrlRMB"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Roll")]
-        public BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraCtrlAltRMB
-        {
-            get
-            {
-                return ((BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraCtrlAltRMB"]));
+        public global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraCtrlAltRMB {
+            get {
+                return ((global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraCtrlAltRMB"]));
             }
-            set
-            {
+            set {
                 this["CameraCtrlAltRMB"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool CameraPanInvertX
-        {
-            get
-            {
+        public bool CameraPanInvertX {
+            get {
                 return ((bool)(this["CameraPanInvertX"]));
             }
-            set
-            {
+            set {
                 this["CameraPanInvertX"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool CameraPanInvertY
-        {
-            get
-            {
+        public bool CameraPanInvertY {
+            get {
                 return ((bool)(this["CameraPanInvertY"]));
             }
-            set
-            {
+            set {
                 this["CameraPanInvertY"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool CameraRotateInvertX
-        {
-            get
-            {
+        public bool CameraRotateInvertX {
+            get {
                 return ((bool)(this["CameraRotateInvertX"]));
             }
-            set
-            {
+            set {
                 this["CameraRotateInvertX"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool CameraRotateInvertY
-        {
-            get
-            {
+        public bool CameraRotateInvertY {
+            get {
                 return ((bool)(this["CameraRotateInvertY"]));
             }
-            set
-            {
+            set {
                 this["CameraRotateInvertY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ApplyRelocationsSynchronously {
+            get {
+                return ((bool)(this["ApplyRelocationsSynchronously"]));
             }
         }
     }
