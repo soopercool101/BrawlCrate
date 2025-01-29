@@ -173,7 +173,15 @@ namespace BrawlLib.Internal.Windows.Forms
             DialogResult = DialogResult.Cancel;
             try
             {
-                return base.ShowDialog(owner);
+                if (!Automatic)
+                {
+                    return base.ShowDialog(owner);
+                }
+                else
+                {
+                    LoadTextureConverter();
+                    return DialogResult;
+                }
             }
             //catch (Exception x) { MessageBox.Show(x.ToString()); return DialogResult.Cancel; }
             finally
@@ -195,7 +203,15 @@ namespace BrawlLib.Internal.Windows.Forms
             DialogResult = DialogResult.Cancel;
             try
             {
-                return base.ShowDialog(owner);
+                if (!Automatic)
+                {
+                    return base.ShowDialog(owner);
+                }
+                else
+                {
+                    LoadTextureConverter();
+                    return DialogResult;
+                }
             }
             //catch (Exception x) { MessageBox.Show(x.ToString()); return DialogResult.Cancel; }
             finally
@@ -218,7 +234,15 @@ namespace BrawlLib.Internal.Windows.Forms
             DialogResult = DialogResult.Cancel;
             try
             {
-                return base.ShowDialog(owner);
+                if (!Automatic)
+                {
+                    return base.ShowDialog(owner);
+                }
+                else
+                {
+                    LoadTextureConverter();
+                    return DialogResult;
+                }
             }
             //catch (Exception x) { MessageBox.Show(x.ToString()); return DialogResult.Cancel; }
             finally
@@ -239,7 +263,15 @@ namespace BrawlLib.Internal.Windows.Forms
             DialogResult = DialogResult.Cancel;
             try
             {
-                return base.ShowDialog(owner);
+                if (!Automatic)
+                {
+                    return base.ShowDialog(owner);
+                }
+                else
+                {
+                    LoadTextureConverter();
+                    return DialogResult;
+                }
             }
             //catch (Exception x) { MessageBox.Show(x.ToString()); return DialogResult.Cancel; }
             finally
@@ -260,7 +292,15 @@ namespace BrawlLib.Internal.Windows.Forms
             DialogResult = DialogResult.Cancel;
             try
             {
-                return base.ShowDialog(owner);
+                if (!Automatic)
+                {
+                    return base.ShowDialog(owner);
+                }
+                else
+                {
+                    LoadTextureConverter();
+                    return DialogResult;
+                }
             }
             //catch (Exception x) { MessageBox.Show(x.ToString()); return DialogResult.Cancel; }
             finally
@@ -281,7 +321,15 @@ namespace BrawlLib.Internal.Windows.Forms
             DialogResult = DialogResult.Cancel;
             try
             {
-                return base.ShowDialog(owner);
+                if (!Automatic)
+                {
+                    return base.ShowDialog(owner);
+                }
+                else
+                {
+                    LoadTextureConverter();
+                    return DialogResult;
+                }
             }
             //catch (Exception x) { MessageBox.Show(x.ToString()); return DialogResult.Cancel; }
             finally
@@ -302,7 +350,15 @@ namespace BrawlLib.Internal.Windows.Forms
             DialogResult = DialogResult.Cancel;
             try
             {
-                return base.ShowDialog(owner);
+                if (!Automatic)
+                {
+                    return base.ShowDialog(owner);
+                }
+                else
+                {
+                    LoadTextureConverter();
+                    return DialogResult;
+                }
             }
             //catch (Exception x) { MessageBox.Show(x.ToString()); return DialogResult.Cancel; }
             finally
@@ -317,6 +373,11 @@ namespace BrawlLib.Internal.Windows.Forms
         {
             base.OnShown(e);
 
+            LoadTextureConverter();
+        }
+
+        private void LoadTextureConverter()
+        {
             if (_base == null)
             {
                 if (_imageSource == null)
@@ -357,7 +418,7 @@ namespace BrawlLib.Internal.Windows.Forms
             {
                 _updating = true;
                 cboFormat.SelectedItem = _origREFT.TextureFormat;
-                numLOD.Value = _origREFT.LevelOfDetail.Clamp((int) numLOD.Minimum, (int) numLOD.Maximum);
+                numLOD.Value = _origREFT.LevelOfDetail.Clamp((int)numLOD.Minimum, (int)numLOD.Maximum);
 
                 FixPaletteFields();
 
