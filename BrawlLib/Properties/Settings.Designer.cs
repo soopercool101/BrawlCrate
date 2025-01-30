@@ -300,5 +300,14 @@ namespace BrawlLib.Properties {
                 return ((bool)(this["ShowProgressBars"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ApplyRelocationsAsync {
+            get {
+                return ((bool)(this["ApplyRelocationsAsync"]));
+            }
+        }
     }
 }
