@@ -45,19 +45,19 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="CameraControlMode" Type="BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraControlMode" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Flycam</Value>
     </Setting>
     <Setting Name="CameraRightMouse" Type="BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Pan</Value>
     </Setting>
     <Setting Name="CameraMiddleMouse" Type="BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Zoom</Value>
     </Setting>
     <Setting Name="CameraCtrlRMB" Type="BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Rotate</Value>
     </Setting>
     <Setting Name="CameraCtrlAltRMB" Type="BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Roll</Value>
     </Setting>
     <Setting Name="CameraPanInvertX" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
