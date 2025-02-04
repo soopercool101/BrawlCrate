@@ -1949,7 +1949,7 @@ namespace BrawlCrate.UI
             // 
             this.reloadPluginsToolStripMenuItem.Name = "reloadPluginsToolStripMenuItem";
             this.reloadPluginsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.reloadPluginsToolStripMenuItem.Text = "Reload Plugins";
+            this.reloadPluginsToolStripMenuItem.Text = "&Reload Plugins";
             this.reloadPluginsToolStripMenuItem.Click +=
                 new System.EventHandler(this.reloadPluginsToolStripMenuItem_Click);
             // 
