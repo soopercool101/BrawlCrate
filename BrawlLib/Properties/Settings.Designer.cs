@@ -191,6 +191,7 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Flycam")]
         public global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraControlMode CameraControlMode {
             get {
                 return ((global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraControlMode)(this["CameraControlMode"]));
@@ -202,6 +203,7 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Pan")]
         public global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraRightMouse {
             get {
                 return ((global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraRightMouse"]));
@@ -213,6 +215,7 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Zoom")]
         public global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraMiddleMouse {
             get {
                 return ((global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraMiddleMouse"]));
@@ -224,6 +227,7 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Rotate")]
         public global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraCtrlRMB {
             get {
                 return ((global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraCtrlRMB"]));
@@ -235,6 +239,7 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Roll")]
         public global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction CameraCtrlAltRMB {
             get {
                 return ((global::BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction)(this["CameraCtrlAltRMB"]));
