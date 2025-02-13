@@ -459,7 +459,14 @@ namespace BrawlLib.Internal.Windows.Forms
                 chkConstrainProps.Checked = false;
                 numW.Value = InitialSize.Value.Width;
                 numH.Value = InitialSize.Value.Height;
-                btnApplyDims.PerformClick();
+                if (!Automatic)
+                {
+                    btnApplyDims.PerformClick();
+                }
+                else
+                {
+                    ResizeImage(InitialSize.Value.Width, InitialSize.Value.Height);
+                }
             }
 
             if (InitialFormat != null)
