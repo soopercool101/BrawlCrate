@@ -417,58 +417,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                     ((int) (_impOffset - (dataOffset + dataSize))).ClampMin(0);
             }
 
-            //Larger modules may take slightly longer to relocate
-            //Use a background worker so the UI thread isn't suspended
-            Action<object, DoWorkEventArgs> work = (object sender, DoWorkEventArgs e) =>
+            if (!Properties.Settings.Default.ApplyRelocationsAsync)
             {
-                Stopwatch watch = Stopwatch.StartNew();
-
-                ApplyRelocations();
-
-                //Scan for branches, add extra tags
-                foreach (ModuleSectionNode s in Sections)
-                {
-                    if (s.HasCode)
-                    {
-                        PPCOpCode code;
-                        buint* opPtr = s.BufferAddress;
-                        for (int i = 0; i < s._dataBuffer.Length / 4; i++)
-                        {
-                            if ((code = (uint) *opPtr++) is PPCBranch && !(code is PPCblr || code is PPCbctr))
-                            {
-                                s._manager.LinkBranch(i, true);
-                            }
-                        }
-
-                        KeyValuePair<int, RelCommand>[] cmds = s._manager.GetCommands();
-                        foreach (KeyValuePair<int, RelCommand> x in cmds)
-                        {
-                            RelocationTarget target = x.Value.GetTargetRelocation();
-                            string value = null;
-                            if (target.Section != null && target._sectionID == 5 &&
-                                !string.IsNullOrEmpty(value = target.Section._manager.GetString(target._index)))
-                            {
-                                s._manager.AddTag(x.Key, value);
-                            }
-                        }
-                    }
-                }
-                Sections[5].Populate();
-
-                watch.Stop();
-                Console.WriteLine("Took {0} seconds to relocate {1} module", watch.ElapsedMilliseconds / 1000d, Name);
-                _resetEvent.Set();
-            };
-
-            Populated = false;
-            populator = new BackgroundWorker();
-            populator.WorkerSupportsCancellation = true;
-            populator.RunWorkerCompleted += (sender, args) =>
+                PopulateRelAsync();
+            }
+            else
             {
-                Populated = true;
-            };
-            populator.DoWork += new DoWorkEventHandler(work);
-            populator.RunWorkerAsync();
+                PopulateRelSynchronous();
+            }
 
             // Stage module conversion
             byte* bptr = (byte*) WorkingUncompressed.Address;
@@ -503,6 +459,73 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _itemIDOffsets = CrayonItemOffsets;
             }
             UpdateItemIDs();
+        }
+
+        private void PopulateRelAsync()
+        {
+            //Larger modules may take slightly longer to relocate
+            //Use a background worker so the UI thread isn't suspended
+            Action<object, DoWorkEventArgs> work = (object sender, DoWorkEventArgs e) =>
+            {
+                PopulateRel();
+            };
+
+            Populated = false;
+            populator = new BackgroundWorker();
+            populator.WorkerSupportsCancellation = true;
+            populator.RunWorkerCompleted += (sender, args) =>
+            {
+                Populated = true;
+            };
+            populator.DoWork += new DoWorkEventHandler(work);
+            populator.RunWorkerAsync();
+        }
+
+        private void PopulateRelSynchronous()
+        {
+            PopulateRel();
+            Populated = true;
+        }
+
+        private void PopulateRel()
+        {
+            Stopwatch watch = Stopwatch.StartNew();
+
+            ApplyRelocations();
+
+            //Scan for branches, add extra tags
+            foreach (ModuleSectionNode s in Sections)
+            {
+                if (s.HasCode)
+                {
+                    PPCOpCode code;
+                    buint* opPtr = s.BufferAddress;
+                    for (int i = 0; i < s._dataBuffer.Length / 4; i++)
+                    {
+                        if ((code = (uint)*opPtr++) is PPCBranch && !(code is PPCblr || code is PPCbctr))
+                        {
+                            s._manager.LinkBranch(i, true);
+                        }
+                    }
+
+                    KeyValuePair<int, RelCommand>[] cmds = s._manager.GetCommands();
+                    foreach (KeyValuePair<int, RelCommand> x in cmds)
+                    {
+                        RelocationTarget target = x.Value.GetTargetRelocation();
+                        string value = null;
+                        if (target.Section != null && target._sectionID == 5 &&
+                            !string.IsNullOrEmpty(value = target.Section._manager.GetString(target._index)))
+                        {
+                            s._manager.AddTag(x.Key, value);
+                        }
+                    }
+                }
+            }
+            Sections[5].Populate();
+
+            watch.Stop();
+            Console.WriteLine("Took {0} seconds to relocate {1} module", watch.ElapsedMilliseconds / 1000d, Name);
+            _resetEvent.Set();
         }
 
         private BackgroundWorker populator;
