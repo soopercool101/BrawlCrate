@@ -419,11 +419,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (!Properties.Settings.Default.ApplyRelocationsAsync)
             {
-                PopulateRelAsync();
+                PopulateRelSynchronous();
             }
             else
             {
-                PopulateRelSynchronous();
+                PopulateRelAsync();
             }
 
             // Stage module conversion
