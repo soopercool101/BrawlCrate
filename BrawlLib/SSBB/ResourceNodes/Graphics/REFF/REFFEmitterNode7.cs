@@ -976,7 +976,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType != ReffType.Billboard)
                 {
-                    return ((Ahead) _drawSetting.typeOption).ToString();
+                    return ((Ahead) _drawSetting.typeDir).ToString();
                 }
 
                 return "";
@@ -985,7 +985,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType != ReffType.Billboard && !string.IsNullOrEmpty(value))
                 {
-                    _drawSetting.typeOption = (byte) (Ahead) Enum.Parse(typeof(Ahead), value);
+                    _drawSetting.typeDir = (byte) (Ahead) Enum.Parse(typeof(Ahead), value);
                     SignalPropertyChange();
                 }
             }
@@ -1090,7 +1090,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType == ReffType.Directional && !string.IsNullOrEmpty(value))
                 {
-                    typeOption2._data = (byte) (DirectionalPivot) Enum.Parse(typeof(StripeTexmapType), value);
+                    typeOption2._data = (byte) (DirectionalPivot) Enum.Parse(typeof(DirectionalPivot), value);
                     SignalPropertyChange();
                 }
             }
