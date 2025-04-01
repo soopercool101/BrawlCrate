@@ -251,11 +251,18 @@ namespace BrawlLib.Wii.Compression
         {
             using (LZ77 lz = new LZ77())
             {
-                using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm,
-                    (extendedFormat ? "Extended " : "") + "LZ77",
-                    $"Compressing {r.Name}, please wait...", false))
+                if (Properties.Settings.Default.ShowProgressBars)
                 {
-                    return lz.Compress(srcAddr, srcLen, outStream, prog, extendedFormat);
+                    using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm,
+                                        (extendedFormat ? "Extended " : "") + "LZ77",
+                                        $"Compressing {r.Name}, please wait...", false))
+                    {
+                        return lz.Compress(srcAddr, srcLen, outStream, prog, extendedFormat);
+                    }
+                }
+                else
+                {
+                    return lz.Compress(srcAddr, srcLen, outStream, null, extendedFormat);
                 }
             }
         }
