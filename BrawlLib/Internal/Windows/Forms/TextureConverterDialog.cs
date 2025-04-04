@@ -106,6 +106,10 @@ namespace BrawlLib.Internal.Windows.Forms
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public TPLPaletteNode TPLPaletteNode => _origTPLPlt;
 
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int MaxPaletteCount { get; set; } = 256;
+
         private FileMap _textureData;
         private Label label11;
         private NumericUpDown numH;
@@ -894,12 +898,12 @@ namespace BrawlLib.Internal.Windows.Forms
                 case WiiPixelFormat.CI8:
                 {
                     grpPalette.Enabled = true;
-                    numPaletteCount.Maximum = 256;
-                    numPaletteCount.Value = Math.Min(256, _colorInfo.ColorCount.Align(16));
+                    numPaletteCount.Maximum = MaxPaletteCount;
+                    numPaletteCount.Value = Math.Min(MaxPaletteCount, _colorInfo.ColorCount.Align(16));
                     cboPaletteFormat.SelectedItem =
                         _colorInfo.AlphaColors == 0 ? WiiPaletteFormat.RGB565 : WiiPaletteFormat.RGB5A3;
                     int sourcePaletteSize = _source.Palette.Entries.Length;
-                    if (sourcePaletteSize > 0 && sourcePaletteSize <= 256)
+                    if (sourcePaletteSize > 0 && sourcePaletteSize <= MaxPaletteCount)
                     {
                         numPaletteCount.Value = sourcePaletteSize.Align(16);
                     }
