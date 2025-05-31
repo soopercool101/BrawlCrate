@@ -1,0 +1,17 @@
+st_fzero Section [1]: 0x00007E4C
+Damage caused by the cars. By default 0x14 (20 in decimal)
+Default: 0x38A00014
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [1]: 0x0000E390
+How much damage fighters take from the ground while the platform is moving (default: 0xF or 15)
+Default: 0x38A0000F
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [1]: 0x0000E4E0
+How much damage fighters take from the wall between stops 2 and 3 (default: 0xA or 10)
+Default: 0x38A0000A
+	/EndDescription
+1111    // Flags for which bytes are underlined

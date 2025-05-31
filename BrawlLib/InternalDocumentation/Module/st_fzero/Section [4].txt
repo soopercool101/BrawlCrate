@@ -1,0 +1,162 @@
+st_fzero Section [4]: 0x00000008
+Factor influencing camera parameters. Negative values appear to change camera distance and angle while positive values influence camera limits?
+Default: 0xC4610000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000044
+0: enables warning sign "opening" and "closing" animations
+any other value: disables these animations
+Default: 0x00000000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000048
+Y-distance of warning sign
+Default: 0x41200000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x0000004C
+Z-distance of warning sign 
+Default: 0x42C80000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000058
+How much time in advance is allowed for the platform to slow down at the next stop
+Default: 0x42F00000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x0000005C
+How many frames in advance should the platform "stopping" sound play when it stops
+Default: 0x42700000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000060
+Oddly enough, any value besides 16384 causes the platform to freeze above its first starting point and the stage becomes still.
+Default: 0x46800000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000064
+This influences the platform's animation method right before stopping at a point, but changing its value at all leads to glitchy effects.
+Default: 0x3B800000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x0000006C
+Frame when the first "whoosh" sound effect plays in between stop 1 (the finish line) and stop 2 (the slightly slanted area with two platforms)
+Default: 0x42480000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000070
+Frame when the second "whoosh" sound effect plays in between stop 1 (the finish line) and stop 2 (the slightly slanted area with two platforms)
+Default: 0x43430000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000074
+Frame when the third "whoosh" sound effect plays in between stop 1 (the finish line) and stop 2 (the slightly slanted area with two platforms)
+Default: 0x436E0000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000078
+Frame when the fourth "whoosh" sound effect plays in between stop 1 (the finish line) and stop 2 (the slightly slanted area with two platforms)
+Default: 0x438C0000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x0000007C
+Frame when the fifth "whoosh" sound effect plays in between stop 1 (the finish line) and stop 2 (the slightly slanted area with two platforms)
+Default: 0x43A00000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000080
+Frame when the first "whoosh" sound effect plays in between stop 2 (slanted area) and stop 3 (on top of the airship)
+Default: 0x42480000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000084
+Frame when the second "whoosh" sound effect plays in between stop 2 (slanted area) and stop 3 (on top of the airship)
+Default: 0x42C80000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x000000F8
+Any nonzero values will cause all platforms in the stage to be misaligned as well as (if the value is positive) the platform resuming movement instantly without any warning
+Default: 0x00000000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x000000FC
+Time it takes for the platform to lower into the ground after stopping at a point
+Default: 0x42F00000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000104
+Platform lowering (or raising) distance after stopping at a point
+Default: 0x447A0000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000108
+Time it takes for the platform to come back when the warning appears
+Default: 0x43B40000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x0000010C
+Platform raising (or lowering) distance when the warning appears
+Default: 0x447A0000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000124
+Also controls racer hitbox size? 
+Default: 0x45000000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000128
+Distance from the fighting area at each stop before you hear the "woosh" sound effect from the cars
+Default: 0x447A0000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000148
+Appears to determine car collision in a way?
+Default: 0x40A00000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x0000014C
+Racer hitbox size
+Default: 0x41A00000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x00000150
+Car hitstun magnitude (bigger value = longer hitstun)
+Default: 0x3F000000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x0000015C
+Setting this to anything other than 0 stops the cars from spawning
+Default: 0x00000000
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_fzero Section [4]: 0x000001B8
+Wall hitbox influence (when the platform is right next to it)?
+Default: 0x40A00000
+	/EndDescription
+1111    // Flags for which bytes are underlined
