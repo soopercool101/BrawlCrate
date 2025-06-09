@@ -504,7 +504,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void Replace(string fileName)
         {
             string ext = Path.GetExtension(fileName);
-            if (!string.Equals(ext, ".tex0", StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrEmpty(ext) && !string.Equals(ext, ".tmp", StringComparison.OrdinalIgnoreCase) && !string.Equals(ext, ".tex0", StringComparison.OrdinalIgnoreCase))
             {
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
                 {
