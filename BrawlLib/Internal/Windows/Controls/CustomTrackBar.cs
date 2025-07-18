@@ -16,7 +16,7 @@ namespace BrawlLib.Internal.Windows.Controls
             {
                 if (!_isScrolling)
                 {
-                    base.Value = value;
+                    base.Value = value.Clamp(Minimum, Maximum);
                 }
             }
         }
