@@ -883,7 +883,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal ARCFileType _fileType;
 
-        [Category("ARC Entry")]
+        [Category("\t\t\t\t\tARC Entry")]
         public ARCFileType FileType
         {
             get => _fileType;
@@ -897,7 +897,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal short _fileIndex;
 
-        [Category("ARC Entry")]
+        [Category("\t\t\t\t\tARC Entry")]
         public short FileIndex
         {
             get => Parent is ARCNode ? _fileIndex : (short)Index;
@@ -911,7 +911,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal byte _group;
 
-        [Category("ARC Entry")]
+        [Category("\t\t\t\t\tARC Entry")]
         public byte GroupID
         {
             get => Parent is ARCNode ? _group : (byte)0;
@@ -923,13 +923,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("ARC Entry")]
+        [Category("\t\t\t\t\tARC Entry")]
         [Browsable(true)]
         public int AbsoluteIndex => Index;
 
         internal short _redirectIndex = -1;
 
-        [Category("ARC Entry")]
+        [Category("\t\t\t\t\tARC Entry")]
         public short RedirectIndex
         {
             get => Parent is ARCNode ? _redirectIndex : (short)-1;
@@ -954,7 +954,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("ARC Entry")]
+        [Category("\t\t\t\t\tARC Entry")]
         [Browsable(false)]
         public string RedirectTargetName
         {
@@ -974,7 +974,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("ARC Entry")]
+        [Category("\t\t\t\t\tARC Entry")]
         [TypeConverter(typeof(DropDownListARCEntry))]
         public string RedirectTarget
         {
