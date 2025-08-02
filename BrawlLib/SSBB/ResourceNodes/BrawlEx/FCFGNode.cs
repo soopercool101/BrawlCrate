@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class FCFGNode : ResourceNode
+    public unsafe class FCFGNode : ARCEntryNode
     {
         internal FCFG* Header => (FCFG*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.FCFG;

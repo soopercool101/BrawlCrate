@@ -7,7 +7,7 @@ using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class RSTCNode : ResourceNode
+    public unsafe class RSTCNode : ARCEntryNode
     {
         internal RSTC* Header => (RSTC*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.RSTC;

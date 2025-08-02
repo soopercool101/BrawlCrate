@@ -8,7 +8,7 @@ using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
-    public unsafe class TLSTNode : ResourceNode
+    public unsafe class TLSTNode : ARCEntryNode
     {
         internal TLST* Header => (TLST*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.TLST;

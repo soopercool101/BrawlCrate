@@ -5,7 +5,7 @@ using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class SLTCNode : ResourceNode
+    public unsafe class SLTCNode : ARCEntryNode
     {
         internal SLTC* Header => (SLTC*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SLTC;

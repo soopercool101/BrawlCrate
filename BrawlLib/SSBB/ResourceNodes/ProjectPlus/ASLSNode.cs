@@ -6,7 +6,7 @@ using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
-    public unsafe class ASLSNode : ResourceNode
+    public unsafe class ASLSNode : ARCEntryNode
     {
         internal ASLS* Header => (ASLS*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ASLS;

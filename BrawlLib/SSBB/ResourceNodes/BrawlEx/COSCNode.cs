@@ -5,7 +5,7 @@ using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class COSCNode : ResourceNode
+    public unsafe class COSCNode : ARCEntryNode
     {
         internal COSC* Header => (COSC*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.COSC;

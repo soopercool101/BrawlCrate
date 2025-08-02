@@ -8,7 +8,7 @@ using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
-    public unsafe class STEXNode : ResourceNode
+    public unsafe class STEXNode : ARCEntryNode
     {
         internal STEX* Header => (STEX*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.STEX;

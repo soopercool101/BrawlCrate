@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class CSSCNode : ResourceNode
+    public unsafe class CSSCNode : ARCEntryNode
     {
         internal CSSC* Header => (CSSC*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CSSC;
