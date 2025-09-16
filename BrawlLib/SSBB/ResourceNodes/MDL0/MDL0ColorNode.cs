@@ -102,6 +102,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _enc.Write((byte*) header + 0x20);
                 _enc.Dispose();
                 _enc = null;
+
+                _hdr = *header;
+                _format = (WiiColorComponentType)(int)_hdr._format;
             }
             else
             {
