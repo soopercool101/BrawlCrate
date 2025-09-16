@@ -19,7 +19,20 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Color Data")] public int ID => _hdr._index;
         [Category("Color Data")] public bool IsRGBA => _hdr._isRGBA != 0;
-        [Category("Color Data")] public WiiColorComponentType Format => (WiiColorComponentType) (int) _hdr._format;
+
+        public WiiColorComponentType _format;
+
+        [Category("Color Data")]
+        public WiiColorComponentType Format
+        {
+            get => _format;
+            set
+            {
+                _format = value;
+                SignalPropertyChange();
+            }
+        }
+
         [Category("Color Data")] public byte EntryStride => _hdr._entryStride;
         [Category("Color Data")] public int NumEntries => _hdr._numEntries;
 
@@ -45,6 +58,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _colors = null;
 
             _hdr = *Header;
+            _format = (WiiColorComponentType)(int)_hdr._format;
 
             //SetSizeInternal(_hdr._dataLen);
 
@@ -62,7 +76,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (Model._isImport || _changed)
             {
-                _enc = new ColorCodec(Colors);
+                _enc = new ColorCodec(Colors, Format);
                 return _enc._dataLen.Align(0x20) + 0x20;
             }
 

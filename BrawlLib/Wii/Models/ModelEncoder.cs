@@ -352,7 +352,7 @@ namespace BrawlLib.Wii.Models
 
                                             break;
                                         case 2:
-                                            ColorCodec col = new ColorCodec(obj._manager.GetColors(x - 2, false));
+                                            ColorCodec col = new ColorCodec(obj._manager.GetColors(x - 2, false), WiiColorComponentType.RGB8);
                                             aList.Add(col);
                                             if (!direct)
                                             {
@@ -441,7 +441,7 @@ namespace BrawlLib.Wii.Models
 
                                 Collada._importOptions._singleColorNodeEntries = le.ToArray();
 
-                                ColorCodec col = new ColorCodec(Collada._importOptions._singleColorNodeEntries);
+                                ColorCodec col = new ColorCodec(Collada._importOptions._singleColorNodeEntries, WiiColorComponentType.RGB8);
                                 linker._colors = new List<ColorCodec> {col};
                                 assetLen += col._dataLen.Align(0x20) + 0x20;
                                 entries = 1;

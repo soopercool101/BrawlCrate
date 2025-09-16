@@ -150,19 +150,19 @@ namespace BrawlLib.Wii.Models
 
         public Remapper _remapData;
 
-        public ColorCodec(RGBAPixel[] pixels)
+        public ColorCodec(RGBAPixel[] pixels, WiiColorComponentType type)
         {
             _srcCount = pixels.Length;
             _handle = GCHandle.Alloc(pixels, GCHandleType.Pinned);
             _pData = (RGBAPixel*) _handle.AddrOfPinnedObject();
-            Evaluate();
+            Evaluate(type);
         }
 
-        public ColorCodec(RGBAPixel* sPtr, int count)
+        public ColorCodec(RGBAPixel* sPtr, int count, WiiColorComponentType type)
         {
             _pData = sPtr;
             _srcCount = count;
-            Evaluate();
+            Evaluate(type);
         }
 
         ~ColorCodec()
@@ -181,7 +181,7 @@ namespace BrawlLib.Wii.Models
             GC.SuppressFinalize(this);
         }
 
-        private void Evaluate()
+        private void Evaluate(WiiColorComponentType type)
         {
             //Colors will almost always need remapping
             _remapData = new Remapper();
@@ -202,13 +202,13 @@ namespace BrawlLib.Wii.Models
             _hasAlpha = i < _srcCount;
 
             //Determine format
-            if (_hasAlpha)
+            if (_hasAlpha && type != WiiColorComponentType.RGBA8 && type != WiiColorComponentType.RGBA4)
             {
                 _outType = WiiColorComponentType.RGBA8;
             }
             else
             {
-                _outType = WiiColorComponentType.RGB8;
+                _outType = type;
             }
 
             switch (_outType)
