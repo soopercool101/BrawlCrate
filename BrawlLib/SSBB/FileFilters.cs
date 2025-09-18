@@ -42,7 +42,7 @@ namespace BrawlLib.SSBB
             SupportedFilesHandler.GetCompleteFilter("plt0");
 
         public static string CHR0Import =
-            SupportedFilesHandler.GetCompleteFilter("chr0", "anim", "txt", "json");
+            SupportedFilesHandler.GetCompleteFilter("chr0", "anim", "txt", "json", "smd");
 
         public static string CHR0Export =
             SupportedFilesHandler.GetCompleteFilter("chr0", "anim");
