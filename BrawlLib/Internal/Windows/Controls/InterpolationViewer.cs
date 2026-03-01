@@ -1,4 +1,5 @@
-﻿using BrawlLib.OpenGL;
+﻿using BrawlLib.Internal.Audio;
+using BrawlLib.OpenGL;
 using BrawlLib.Wii.Animations;
 using OpenTK.Graphics.OpenGL;
 using System;
@@ -430,12 +431,21 @@ namespace BrawlLib.Internal.Windows.Controls
             }
 
             //Calculate X Scale
-            _xScale = Width / (float) i;
+            _xScale = (i == 0) ? 5f : Width / (float) i;
 
             FindMaxMin();
 
             //Calculate Y Scale
-            _yScale = Height / (_maxVal - _minVal);
+            _yScale = _maxVal - _minVal;
+            if (_yScale != 0)
+                _yScale = Height / _yScale;
+            else //prevent a completely horizontal line from failing to render!
+            {
+                _yScale = 5f;
+                _minVal -= 15f;
+                _maxVal += 30f;
+            }
+
         }
 
         #endregion
