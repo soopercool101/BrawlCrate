@@ -123,6 +123,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             // boneTree
             // 
             boneTree.CheckBoxes = true;
+            boneTree.ShowNodeToolTips = true;
             boneTree.Dock = DockStyle.Fill;
             boneTree.FullRowSelect = true;
             boneTree.HideSelection = false;
@@ -400,6 +401,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
         {
             TreeNode node = new TreeNode {Tag = bone, Text = bone.Name, Checked = bone.IsRendering};
 
+            node.ToolTipText = $"Bone Index: {bone.BoneIndex} (0x{bone.BoneIndex:X})";
             _treeNodes[bone.BoneIndex] = node;
             nodes.Add(node);
 
