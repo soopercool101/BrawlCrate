@@ -1449,7 +1449,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (!string.IsNullOrEmpty(_plt) && _paletteNode == null)
             {
-                _paletteNode = _textureNode?.GetPaletteNode();
+                _paletteNode = GetPalette();
+                if (_paletteNode == null)
+                {
+                    _paletteNode = _textureNode?.GetPaletteNode();
+                }
             }
 
             return _textureNode.GetImage(index, _paletteNode);
@@ -1472,6 +1476,25 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
             return texture;
+        }
+
+        private PLT0Node GetPalette()
+        {
+            var pat0 = Parent?.Parent?.Parent as PAT0Node;
+            var bres = pat0?.BRESNode;
+            var palette = bres?.FindChildByType(_plt, true, ResourceType.PLT0) as PLT0Node ?? null;
+            if (palette == null && bres?.Parent != null)
+            {
+                foreach (var brres in bres.Parent.Children.Where(o => o is BRRESNode b && (b.FileType == ARCFileType.TextureData || b.FileType == ARCFileType.MiscData)))
+                {
+                    if (brres.FindChildByType(_plt, true, ResourceType.PLT0) is PLT0Node p)
+                    {
+                        palette = p;
+                        break;
+                    }
+                }
+            }
+            return palette;
         }
 
         public TEX0Node _textureNode;
