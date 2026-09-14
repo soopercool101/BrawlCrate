@@ -99,6 +99,9 @@ namespace BrawlLib.Internal.Windows.Forms
             txtName.Name = "txtName";
             txtName.Size = new System.Drawing.Size(260, 20);
             txtName.TabIndex = 0;
+            txtName.ShortcutsEnabled = true;
+            txtName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             // 
             // btnCancel
             // 
