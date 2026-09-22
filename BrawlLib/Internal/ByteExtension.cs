@@ -22,6 +22,21 @@
             b = (byte)(value + b.GetUpper() * 0x10);
         }
 
+        public static bool GetBit(this byte b, byte index)
+        {
+            return ((b >> index) & 1) == 1;
+        }
+
+        public static void SetBit(ref this byte b, byte index, bool value = true)
+        {
+            b |= (byte)(1 << index);
+            if (!value)
+            {
+                // ~ doesn't work on bytes so... sure why not let's just or then xor it
+                b ^= (byte)(1 << index);
+            }
+        }
+
         public static int CompareBits(this byte b1, byte b2)
         {
             for (int i = 8, b = 0x80; i-- != 0; b >>= 1)
