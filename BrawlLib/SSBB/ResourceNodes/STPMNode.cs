@@ -17,10 +17,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Header->_count > 0;
         }
 
-        public override string GetName()
-        {
-            return base.GetName("Stage Parameters");
-        }
+        public override string FileTypeString => "Stage Parameters";
 
         private const int _entrySize = 260;
 

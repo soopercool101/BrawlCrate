@@ -55,10 +55,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        public override string GetName()
-        {
-            return base.GetName("Stage Trap Data Table");
-        }
+        public override string FileTypeString => "Stage Trap Data Table";
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {

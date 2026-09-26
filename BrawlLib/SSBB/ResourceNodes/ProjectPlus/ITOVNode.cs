@@ -30,10 +30,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
-        public override string GetName()
-        {
-            return GetName("Item Override");
-        }
+        public override string FileTypeString => "Item Override";
 
         public override bool OnInitialize()
         {
@@ -671,10 +668,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             set => Data._overrideDrWrightBuilding = value;
         }
 
-        public override string GetName()
-        {
-            return GetName("Item Override");
-        }
+        public override string FileTypeString => "Item Override";
 
         public override bool OnInitialize()
         {

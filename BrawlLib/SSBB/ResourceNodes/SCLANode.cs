@@ -39,10 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override string GetName()
-        {
-            return base.GetName("Stage Collision Attributes");
-        }
+        public override string FileTypeString => "Stage Collision Attributes";
 
         public override int OnCalculateSize(bool force)
         {

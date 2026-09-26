@@ -895,6 +895,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public virtual string FileTypeString => _fileType.ToString();
+
         internal short _fileIndex;
 
         [Category("\t\t\t\t\tARC Entry")]
@@ -1056,7 +1058,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return _name;
             }
-            return GetName(_fileType.ToString());
+            return GetName(FileTypeString);
         }
 
         public virtual string GetName(string fileType)

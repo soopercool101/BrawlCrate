@@ -16,10 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Header->_count > 0;
         }
 
-        public override string GetName()
-        {
-            return base.GetName("Movie Parameters");
-        }
+        public override string FileTypeString => "Movie Parameters";
 
         private const int _entrySize = 88;
 

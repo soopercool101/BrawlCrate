@@ -46,10 +46,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override string GetName()
-        {
-            return base.GetName("Collision Data");
-        }
+        public override string FileTypeString => "Collision Data";
 
         private int _pointCount, _planeCount;
 

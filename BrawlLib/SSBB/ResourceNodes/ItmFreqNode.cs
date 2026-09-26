@@ -16,10 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ItmFreqHeader* Header => (ItmFreqHeader*)WorkingUncompressed.Address;
         internal ItmFreqTableList* TableList => (ItmFreqTableList*) (WorkingUncompressed.Address + Header->_DataLength - 0x08);
 
-        public override string GetName()
-        {
-            return base.GetName("Item Generation");
-        }
+        public override string FileTypeString => "Item Generation";
 
         public ItmFreqNode()
         {

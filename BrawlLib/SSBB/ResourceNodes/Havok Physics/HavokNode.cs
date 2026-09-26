@@ -17,10 +17,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.Havok;
         public override bool supportsCompression => false;
 
-        public override string GetName()
-        {
-            return base.GetName("HavokData");
-        }
+        public override string FileTypeString => "HavokData";
 
         [Category("Havok Physics")] public int UserTag => Header->_userTag;
         [Category("Havok Physics")] public int Version => Header->_classVersion;

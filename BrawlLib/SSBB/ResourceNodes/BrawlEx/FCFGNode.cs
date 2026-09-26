@@ -1348,12 +1348,7 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
             return false;
         }
 
-        public override string GetName()
-        {
-            if (!(Parent is ARCNode) && !string.IsNullOrEmpty(_origPath))
-                return Path.GetFileNameWithoutExtension(_origPath);
-            return GetName("Fighter Data");
-        }
+        public override string FileTypeString => "Fighter Data";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {

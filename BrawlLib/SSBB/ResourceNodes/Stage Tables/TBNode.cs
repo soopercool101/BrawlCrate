@@ -10,10 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private uint _rawTag;
 
-        public override string GetName()
-        {
-            return GetName(UncompressedSource.Tag);
-        }
+        public override string FileTypeString => UncompressedSource.Tag;
 
         private int _unknown0x8;
         public int Unknown0x8

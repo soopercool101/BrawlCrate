@@ -271,12 +271,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        public override string GetName()
-        {
-            if (!(Parent is ARCNode) && !string.IsNullOrEmpty(_origPath))
-                return Path.GetFileNameWithoutExtension(_origPath);
-            return GetName("Slot Data");
-        }
+        public override string FileTypeString => "Slot Data";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {

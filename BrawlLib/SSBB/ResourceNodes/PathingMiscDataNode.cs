@@ -57,10 +57,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        public override string GetName()
-        {
-            return base.GetName("Pathing Data");
-        }
+        public override string FileTypeString => "Pathing Data";
 
         internal uint curDataOffset;
 

@@ -16,10 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Header->_count > 0;
         }
 
-        public override string GetName()
-        {
-            return base.GetName("Adventure Parameters");
-        }
+        public override string FileTypeString => "Adventure Parameters";
 
         private const int _entrySize = 260;
 

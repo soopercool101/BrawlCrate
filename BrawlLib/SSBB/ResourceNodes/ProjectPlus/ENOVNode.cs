@@ -9,1320 +9,1009 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
     {
         public ENOV Data;
 
-        [Category("Enemy Override")]
-        public string EnemyOverrideFolder { get; set; }
+        private string _enemyOverrideFolder;
 
         [Category("Enemy Override")]
-        public string StageItemFolder { get; set; }
+        public string EnemyOverrideFolder
+        {
+            get => _enemyOverrideFolder;
+            set
+            {
+                _enemyOverrideFolder = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private string _stageItemFolder;
+        [Category("Enemy Override")]
+        public string StageItemFolder
+        {
+            get => _stageItemFolder;
+            set
+            {
+                _stageItemFolder = value;
+                SignalPropertyChange();
+            }
+        }
 
 
         [Category("Enemy Override")]
         public bool UseIndividualFolders
         {
             get => Data.UseIndividualFolders;
-            set => Data.UseIndividualFolders = value;
+            set
+            {
+                Data.UseIndividualFolders = value;
+                SignalPropertyChange();
+            }
         }
 
         [Category("Enemy Override")]
         public bool OverrideModuleCommon
         {
             get => Data.OverrideModuleCommon;
-            set => Data.OverrideModuleCommon = value;
+            set
+            {
+                Data.OverrideModuleCommon = value;
+                SignalPropertyChange();
+            }
         }
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideCommon
+        public ArchiveOverrideSetting OverrideSettingsCommon
         {
-            get => Data.OverrideCommon;
-            set => Data.OverrideCommon = value;
+            get => Data.OverrideSettingsCommon;
+            set
+            {
+                Data.OverrideSettingsCommon = value;
+                SignalPropertyChange();
+            }
         }
+        private OverriddenEnemyClass _goomba;
 
         [Category("Enemy Override")]
-        public byte FaceIndexGoomba
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Goomba
         {
-            get => Data.FaceIndexGoomba;
-            set => Data.FaceIndexGoomba = value;
+            get => _goomba;
+            set
+            {
+                _goomba = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleGoomba
-        {
-            get => Data.OverrideModuleGoomba;
-            set => Data.OverrideModuleGoomba = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGoomba
-        {
-            get => Data.OverrideGoomba;
-            set => Data.OverrideGoomba = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexPoppant
-        {
-            get => Data.FaceIndexPoppant;
-            set => Data.FaceIndexPoppant = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModulePoppant
-        {
-            get => Data.OverrideModulePoppant;
-            set => Data.OverrideModulePoppant = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePoppant
-        {
-            get => Data.OverridePoppant;
-            set => Data.OverridePoppant = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexFeyesh
-        {
-            get => Data.FaceIndexFeyesh;
-            set => Data.FaceIndexFeyesh = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleFeyesh
-        {
-            get => Data.OverrideModuleFeyesh;
-            set => Data.OverrideModuleFeyesh = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideFeyesh
-        {
-            get => Data.OverrideFeyesh;
-            set => Data.OverrideFeyesh = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexJyk
-        {
-            get => Data.FaceIndexJyk;
-            set => Data.FaceIndexJyk = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleJyk
-        {
-            get => Data.OverrideModuleJyk;
-            set => Data.OverrideModuleJyk = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideJyk
-        {
-            get => Data.OverrideJyk;
-            set => Data.OverrideJyk = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexAuroros
-        {
-            get => Data.FaceIndexAuroros;
-            set => Data.FaceIndexAuroros = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleAuroros
-        {
-            get => Data.OverrideModuleAuroros;
-            set => Data.OverrideModuleAuroros = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideAuroros
-        {
-            get => Data.OverrideAuroros;
-            set => Data.OverrideAuroros = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexCymul
-        {
-            get => Data.FaceIndexCymul;
-            set => Data.FaceIndexCymul = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleCymul
-        {
-            get => Data.OverrideModuleCymul;
-            set => Data.OverrideModuleCymul = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideCymul
-        {
-            get => Data.OverrideCymul;
-            set => Data.OverrideCymul = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexRoturret
-        {
-            get => Data.FaceIndexRoturret;
-            set => Data.FaceIndexRoturret = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleRoturret
-        {
-            get => Data.OverrideModuleRoturret;
-            set => Data.OverrideModuleRoturret = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideRoturret
-        {
-            get => Data.OverrideRoturret;
-            set => Data.OverrideRoturret = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexBorboras
-        {
-            get => Data.FaceIndexBorboras;
-            set => Data.FaceIndexBorboras = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleBorboras
-        {
-            get => Data.OverrideModuleBorboras;
-            set => Data.OverrideModuleBorboras = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideBorboras
-        {
-            get => Data.OverrideBorboras;
-            set => Data.OverrideBorboras = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexGiantGoomba
-        {
-            get => Data.FaceIndexGiantGoomba;
-            set => Data.FaceIndexGiantGoomba = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleGiantGoomba
-        {
-            get => Data.OverrideModuleGiantGoomba;
-            set => Data.OverrideModuleGiantGoomba = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGiantGoomba
-        {
-            get => Data.OverrideGiantGoomba;
-            set => Data.OverrideGiantGoomba = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexBuckot
-        {
-            get => Data.FaceIndexBuckot;
-            set => Data.FaceIndexBuckot = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleBuckot
-        {
-            get => Data.OverrideModuleBuckot;
-            set => Data.OverrideModuleBuckot = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideBuckot
-        {
-            get => Data.OverrideBuckot;
-            set => Data.OverrideBuckot = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexBucculus
-        {
-            get => Data.FaceIndexBucculus;
-            set => Data.FaceIndexBucculus = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleBucculus
-        {
-            get => Data.OverrideModuleBucculus;
-            set => Data.OverrideModuleBucculus = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideBucculus
-        {
-            get => Data.OverrideBucculus;
-            set => Data.OverrideBucculus = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexGreap
-        {
-            get => Data.FaceIndexGreap;
-            set => Data.FaceIndexGreap = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleGreap
-        {
-            get => Data.OverrideModuleGreap;
-            set => Data.OverrideModuleGreap = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGreap
-        {
-            get => Data.OverrideGreap;
-            set => Data.OverrideGreap = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexArmight
-        {
-            get => Data.FaceIndexArmight;
-            set => Data.FaceIndexArmight = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleArmight
-        {
-            get => Data.OverrideModuleArmight;
-            set => Data.OverrideModuleArmight = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideArmight
-        {
-            get => Data.OverrideArmight;
-            set => Data.OverrideArmight = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexBulletBill
-        {
-            get => Data.FaceIndexBulletBill;
-            set => Data.FaceIndexBulletBill = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleBulletBill
-        {
-            get => Data.OverrideModuleBulletBill;
-            set => Data.OverrideModuleBulletBill = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideBulletBill
-        {
-            get => Data.OverrideBulletBill;
-            set => Data.OverrideBulletBill = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexRoader
-        {
-            get => Data.FaceIndexRoader;
-            set => Data.FaceIndexRoader = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleRoader
-        {
-            get => Data.OverrideModuleRoader;
-            set => Data.OverrideModuleRoader = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideRoader
-        {
-            get => Data.OverrideRoader;
-            set => Data.OverrideRoader = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexSpaak
-        {
-            get => Data.FaceIndexSpaak;
-            set => Data.FaceIndexSpaak = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleSpaak
-        {
-            get => Data.OverrideModuleSpaak;
-            set => Data.OverrideModuleSpaak = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideSpaak
-        {
-            get => Data.OverrideSpaak;
-            set => Data.OverrideSpaak = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexMite
-        {
-            get => Data.FaceIndexMite;
-            set => Data.FaceIndexMite = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleMite
-        {
-            get => Data.OverrideModuleMite;
-            set => Data.OverrideModuleMite = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideMite
-        {
-            get => Data.OverrideMite;
-            set => Data.OverrideMite = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexTicken
-        {
-            get => Data.FaceIndexTicken;
-            set => Data.FaceIndexTicken = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleTicken
-        {
-            get => Data.OverrideModuleTicken;
-            set => Data.OverrideModuleTicken = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideTicken
-        {
-            get => Data.OverrideTicken;
-            set => Data.OverrideTicken = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexTowtow
-        {
-            get => Data.FaceIndexTowtow;
-            set => Data.FaceIndexTowtow = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleTowtow
-        {
-            get => Data.OverrideModuleTowtow;
-            set => Data.OverrideModuleTowtow = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideTowtow
-        {
-            get => Data.OverrideTowtow;
-            set => Data.OverrideTowtow = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexHammerBro
-        {
-            get => Data.FaceIndexHammerBro;
-            set => Data.FaceIndexHammerBro = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleHammerBro
-        {
-            get => Data.OverrideModuleHammerBro;
-            set => Data.OverrideModuleHammerBro = value;
-        }
-
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideHammerBro
-        {
-            get => Data.OverrideHammerBro;
-            set => Data.OverrideHammerBro = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexBytan
-        {
-            get => Data.FaceIndexBytan;
-            set => Data.FaceIndexBytan = value;
-        }
+        private OverriddenEnemyClass _poppant;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleBytan
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Poppant
         {
-            get => Data.OverrideModuleBytan;
-            set => Data.OverrideModuleBytan = value;
+            get => _poppant;
+            set
+            {
+                _poppant = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideBytan
-        {
-            get => Data.OverrideBytan;
-            set => Data.OverrideBytan = value;
-        }
-
-        [Category("Enemy Override")]
-        public byte FaceIndexFloow
-        {
-            get => Data.FaceIndexFloow;
-            set => Data.FaceIndexFloow = value;
-        }
-
-        [Category("Enemy Override")]
-        public bool OverrideModuleFloow
-        {
-            get => Data.OverrideModuleFloow;
-            set => Data.OverrideModuleFloow = value;
-        }
+        private OverriddenEnemyClass _feyesh;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideFloow
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Feyesh
         {
-            get => Data.OverrideFloow;
-            set => Data.OverrideFloow = value;
+            get => _feyesh;
+            set
+            {
+                _feyesh = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexPuppit
-        {
-            get => Data.FaceIndexPuppit;
-            set => Data.FaceIndexPuppit = value;
-        }
+        private OverriddenEnemyClass _jyk;
 
         [Category("Enemy Override")]
-        public bool OverrideModulePuppit
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Jyk
         {
-            get => Data.OverrideModulePuppit;
-            set => Data.OverrideModulePuppit = value;
+            get => _jyk;
+            set
+            {
+                _jyk = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePuppit
-        {
-            get => Data.OverridePuppit;
-            set => Data.OverridePuppit = value;
-        }
+        private OverriddenEnemyClass _auroros;
 
         [Category("Enemy Override")]
-        public byte FaceIndexPrimid
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Auroros
         {
-            get => Data.FaceIndexPrimid;
-            set => Data.FaceIndexPrimid = value;
+            get => _auroros;
+            set
+            {
+                _auroros = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModulePrimid
-        {
-            get => Data.OverrideModulePrimid;
-            set => Data.OverrideModulePrimid = value;
-        }
+        private OverriddenEnemyClass _cymul;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePrimid
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Cymul
         {
-            get => Data.OverridePrimid;
-            set => Data.OverridePrimid = value;
+            get => _cymul;
+            set
+            {
+                _cymul = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexShellpod
-        {
-            get => Data.FaceIndexShellpod;
-            set => Data.FaceIndexShellpod = value;
-        }
+        private OverriddenEnemyClass _roturret;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleShellpod
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Roturret
         {
-            get => Data.OverrideModuleShellpod;
-            set => Data.OverrideModuleShellpod = value;
+            get => _roturret;
+            set
+            {
+                _roturret = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideShellpod
-        {
-            get => Data.OverrideShellpod;
-            set => Data.OverrideShellpod = value;
-        }
+        private OverriddenEnemyClass _borboras;
 
         [Category("Enemy Override")]
-        public byte FaceIndexKoopa
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Borboras
         {
-            get => Data.FaceIndexKoopa;
-            set => Data.FaceIndexKoopa = value;
+            get => _borboras;
+            set
+            {
+                _borboras = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleKoopa
-        {
-            get => Data.OverrideModuleKoopa;
-            set => Data.OverrideModuleKoopa = value;
-        }
+        private OverriddenEnemyClass _giantGoomba;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideKoopa
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Giant Goomba")]
+        public OverriddenEnemyClass GiantGoomba
         {
-            get => Data.OverrideKoopa;
-            set => Data.OverrideKoopa = value;
+            get => _giantGoomba;
+            set
+            {
+                _giantGoomba = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexShaydas
-        {
-            get => Data.FaceIndexShaydas;
-            set => Data.FaceIndexShaydas = value;
-        }
+        private OverriddenEnemyClass _buckot;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleShaydas
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Buckot
         {
-            get => Data.OverrideModuleShaydas;
-            set => Data.OverrideModuleShaydas = value;
+            get => _buckot;
+            set
+            {
+                _buckot = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideShaydas
-        {
-            get => Data.OverrideShaydas;
-            set => Data.OverrideShaydas = value;
-        }
+        private OverriddenEnemyClass _bucculus;
 
         [Category("Enemy Override")]
-        public byte FaceIndexBombed
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Bucculus
         {
-            get => Data.FaceIndexBombed;
-            set => Data.FaceIndexBombed = value;
+            get => _bucculus;
+            set
+            {
+                _bucculus = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleBombed
-        {
-            get => Data.OverrideModuleBombed;
-            set => Data.OverrideModuleBombed = value;
-        }
+        private OverriddenEnemyClass _greap;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideBombed
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Greap
         {
-            get => Data.OverrideBombed;
-            set => Data.OverrideBombed = value;
+            get => _greap;
+            set
+            {
+                _greap = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexPrimidMetal
-        {
-            get => Data.FaceIndexPrimidMetal;
-            set => Data.FaceIndexPrimidMetal = value;
-        }
+        private OverriddenEnemyClass _armight;
 
         [Category("Enemy Override")]
-        public bool OverrideModulePrimidMetal
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Armight
         {
-            get => Data.OverrideModulePrimidMetal;
-            set => Data.OverrideModulePrimidMetal = value;
+            get => _armight;
+            set
+            {
+                _armight = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePrimidMetal
-        {
-            get => Data.OverridePrimidMetal;
-            set => Data.OverridePrimidMetal = value;
-        }
+        private OverriddenEnemyClass _bulletBill;
 
         [Category("Enemy Override")]
-        public byte FaceIndexNagagog
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Bullet Bill")]
+        public OverriddenEnemyClass BulletBill
         {
-            get => Data.FaceIndexNagagog;
-            set => Data.FaceIndexNagagog = value;
+            get => _bulletBill;
+            set
+            {
+                _bulletBill = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleNagagog
-        {
-            get => Data.OverrideModuleNagagog;
-            set => Data.OverrideModuleNagagog = value;
-        }
+        private OverriddenEnemyClass _roader;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideNagagog
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Roader
         {
-            get => Data.OverrideNagagog;
-            set => Data.OverrideNagagog = value;
+            get => _roader;
+            set
+            {
+                _roader = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexTrowlon
-        {
-            get => Data.FaceIndexTrowlon;
-            set => Data.FaceIndexTrowlon = value;
-        }
+        private OverriddenEnemyClass _spaak;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleTrowlon
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Spaak
         {
-            get => Data.OverrideModuleTrowlon;
-            set => Data.OverrideModuleTrowlon = value;
+            get => _spaak;
+            set
+            {
+                _spaak = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideTrowlon
-        {
-            get => Data.OverrideTrowlon;
-            set => Data.OverrideTrowlon = value;
-        }
+        private OverriddenEnemyClass _mite;
 
         [Category("Enemy Override")]
-        public byte FaceIndexPrimidBig
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Mite
         {
-            get => Data.FaceIndexPrimidBig;
-            set => Data.FaceIndexPrimidBig = value;
+            get => _mite;
+            set
+            {
+                _mite = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModulePrimidBig
-        {
-            get => Data.OverrideModulePrimidBig;
-            set => Data.OverrideModulePrimidBig = value;
-        }
+        private OverriddenEnemyClass _ticken;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePrimidBig
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Ticken
         {
-            get => Data.OverridePrimidBig;
-            set => Data.OverridePrimidBig = value;
+            get => _ticken;
+            set
+            {
+                _ticken = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexPrimidBoom
-        {
-            get => Data.FaceIndexPrimidBoom;
-            set => Data.FaceIndexPrimidBoom = value;
-        }
+        private OverriddenEnemyClass _towtow;
 
         [Category("Enemy Override")]
-        public bool OverrideModulePrimidBoom
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Towtow
         {
-            get => Data.OverrideModulePrimidBoom;
-            set => Data.OverrideModulePrimidBoom = value;
+            get => _towtow;
+            set
+            {
+                _towtow = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePrimidBoom
-        {
-            get => Data.OverridePrimidBoom;
-            set => Data.OverridePrimidBoom = value;
-        }
+        private OverriddenEnemyClass _hammerBro;
 
         [Category("Enemy Override")]
-        public byte FaceIndexPrimidFire
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Hammer Bro")]
+        public OverriddenEnemyClass HammerBro
         {
-            get => Data.FaceIndexPrimidFire;
-            set => Data.FaceIndexPrimidFire = value;
+            get => _hammerBro;
+            set
+            {
+                _hammerBro = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModulePrimidFire
-        {
-            get => Data.OverrideModulePrimidFire;
-            set => Data.OverrideModulePrimidFire = value;
-        }
+        private OverriddenEnemyClass _bytan;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePrimidFire
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Bytan
         {
-            get => Data.OverridePrimidFire;
-            set => Data.OverridePrimidFire = value;
+            get => _bytan;
+            set
+            {
+                _bytan = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexPrimidScope
-        {
-            get => Data.FaceIndexPrimidScope;
-            set => Data.FaceIndexPrimidScope = value;
-        }
+        private OverriddenEnemyClass _floow;
 
         [Category("Enemy Override")]
-        public bool OverrideModulePrimidScope
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Floow
         {
-            get => Data.OverrideModulePrimidScope;
-            set => Data.OverrideModulePrimidScope = value;
+            get => _floow;
+            set
+            {
+                _floow = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePrimidScope
-        {
-            get => Data.OverridePrimidScope;
-            set => Data.OverridePrimidScope = value;
-        }
+        private OverriddenEnemyClass _puppit;
 
         [Category("Enemy Override")]
-        public byte FaceIndexPrimidSword
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Puppit
         {
-            get => Data.FaceIndexPrimidSword;
-            set => Data.FaceIndexPrimidSword = value;
+            get => _puppit;
+            set
+            {
+                _puppit = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModulePrimidSword
-        {
-            get => Data.OverrideModulePrimidSword;
-            set => Data.OverrideModulePrimidSword = value;
-        }
+        private OverriddenEnemyClass _primid;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePrimidSword
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Primid
         {
-            get => Data.OverridePrimidSword;
-            set => Data.OverridePrimidSword = value;
+            get => _primid;
+            set
+            {
+                _primid = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexGamyga
-        {
-            get => Data.FaceIndexGamyga;
-            set => Data.FaceIndexGamyga = value;
-        }
+        private OverriddenEnemyClass _shellpod;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleGamyga
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Shellpod
         {
-            get => Data.OverrideModuleGamyga;
-            set => Data.OverrideModuleGamyga = value;
+            get => _shellpod;
+            set
+            {
+                _shellpod = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGamyga
-        {
-            get => Data.OverrideGamyga;
-            set => Data.OverrideGamyga = value;
-        }
+        private OverriddenEnemyClass _koopa;
 
         [Category("Enemy Override")]
-        public byte FaceIndexROBBlaster
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Koopa
         {
-            get => Data.FaceIndexROBBlaster;
-            set => Data.FaceIndexROBBlaster = value;
+            get => _koopa;
+            set
+            {
+                _koopa = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleROBBlaster
-        {
-            get => Data.OverrideModuleROBBlaster;
-            set => Data.OverrideModuleROBBlaster = value;
-        }
+        private OverriddenEnemyClass _shaydas;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideROBBlaster
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Shaydas
         {
-            get => Data.OverrideROBBlaster;
-            set => Data.OverrideROBBlaster = value;
+            get => _shaydas;
+            set
+            {
+                _shaydas = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexROBDistance
-        {
-            get => Data.FaceIndexROBDistance;
-            set => Data.FaceIndexROBDistance = value;
-        }
+        private OverriddenEnemyClass _bombed;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleROBDistance
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Bombed
         {
-            get => Data.OverrideModuleROBDistance;
-            set => Data.OverrideModuleROBDistance = value;
+            get => _bombed;
+            set
+            {
+                _bombed = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideROBDistance
-        {
-            get => Data.OverrideROBDistance;
-            set => Data.OverrideROBDistance = value;
-        }
+        private OverriddenEnemyClass _metalPrimid;
 
         [Category("Enemy Override")]
-        public byte FaceIndexROBLauncher
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Metal Primid")]
+        public OverriddenEnemyClass MetalPrimid
         {
-            get => Data.FaceIndexROBLauncher;
-            set => Data.FaceIndexROBLauncher = value;
+            get => _metalPrimid;
+            set
+            {
+                _metalPrimid = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleROBLauncher
-        {
-            get => Data.OverrideModuleROBLauncher;
-            set => Data.OverrideModuleROBLauncher = value;
-        }
+        private OverriddenEnemyClass _nagagog;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideROBLauncher
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Nagagog
         {
-            get => Data.OverrideROBLauncher;
-            set => Data.OverrideROBLauncher = value;
+            get => _nagagog;
+            set
+            {
+                _nagagog = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexROBSentry
-        {
-            get => Data.FaceIndexROBSentry;
-            set => Data.FaceIndexROBSentry = value;
-        }
+        private OverriddenEnemyClass _trowlon;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleROBSentry
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Trowlon
         {
-            get => Data.OverrideModuleROBSentry;
-            set => Data.OverrideModuleROBSentry = value;
+            get => _trowlon;
+            set
+            {
+                _trowlon = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideROBSentry
-        {
-            get => Data.OverrideROBSentry;
-            set => Data.OverrideROBSentry = value;
-        }
+        private OverriddenEnemyClass _bigPrimid;
 
         [Category("Enemy Override")]
-        public byte FaceIndexAutolance
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Big Primid")]
+        public OverriddenEnemyClass BigPrimid
         {
-            get => Data.FaceIndexAutolance;
-            set => Data.FaceIndexAutolance = value;
+            get => _bigPrimid;
+            set
+            {
+                _bigPrimid = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleAutolance
-        {
-            get => Data.OverrideModuleAutolance;
-            set => Data.OverrideModuleAutolance = value;
-        }
+        private OverriddenEnemyClass _boomPrimid;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideAutolance
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Boom Primid")]
+        public OverriddenEnemyClass BoomPrimid
         {
-            get => Data.OverrideAutolance;
-            set => Data.OverrideAutolance = value;
+            get => _boomPrimid;
+            set
+            {
+                _boomPrimid = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexArmank
-        {
-            get => Data.FaceIndexArmank;
-            set => Data.FaceIndexArmank = value;
-        }
+        private OverriddenEnemyClass _firePrimid;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleArmank
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Fire Primid")]
+        public OverriddenEnemyClass FirePrimid
         {
-            get => Data.OverrideModuleArmank;
-            set => Data.OverrideModuleArmank = value;
+            get => _firePrimid;
+            set
+            {
+                _firePrimid = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideArmank
-        {
-            get => Data.OverrideArmank;
-            set => Data.OverrideArmank = value;
-        }
+        private OverriddenEnemyClass _scopePrimid;
 
         [Category("Enemy Override")]
-        public byte FaceIndexGlire
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Scope Primid")]
+        public OverriddenEnemyClass ScopePrimid
         {
-            get => Data.FaceIndexGlire;
-            set => Data.FaceIndexGlire = value;
+            get => _scopePrimid;
+            set
+            {
+                _scopePrimid = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleGlire
-        {
-            get => Data.OverrideModuleGlire;
-            set => Data.OverrideModuleGlire = value;
-        }
+        private OverriddenEnemyClass _swordPrimid;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGlire
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Sword Primid")]
+        public OverriddenEnemyClass SwordPrimid
         {
-            get => Data.OverrideGlire;
-            set => Data.OverrideGlire = value;
+            get => _swordPrimid;
+            set
+            {
+                _swordPrimid = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexGlice
-        {
-            get => Data.FaceIndexGlice;
-            set => Data.FaceIndexGlice = value;
-        }
+        private OverriddenEnemyClass _gamyga;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleGlice
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Gamyga
         {
-            get => Data.OverrideModuleGlice;
-            set => Data.OverrideModuleGlice = value;
+            get => _gamyga;
+            set
+            {
+                _gamyga = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGlice
-        {
-            get => Data.OverrideGlice;
-            set => Data.OverrideGlice = value;
-        }
+        private OverriddenEnemyClass _rObBlasterStationary;
 
         [Category("Enemy Override")]
-        public byte FaceIndexGlunder
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("R.O.B. Blaster (Stationary)")]
+        public OverriddenEnemyClass ROBBlasterStationary
         {
-            get => Data.FaceIndexGlunder;
-            set => Data.FaceIndexGlunder = value;
+            get => _rObBlasterStationary;
+            set
+            {
+                _rObBlasterStationary = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleGlunder
-        {
-            get => Data.OverrideModuleGlunder;
-            set => Data.OverrideModuleGlunder = value;
-        }
+        private OverriddenEnemyClass _rObBlasterMobile;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGlunder
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("R.O.B. Blaster (Mobile)")]
+        public OverriddenEnemyClass ROBBlasterMobile
         {
-            get => Data.OverrideGlunder;
-            set => Data.OverrideGlunder = value;
+            get => _rObBlasterMobile;
+            set
+            {
+                _rObBlasterMobile = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexPeteyPiranha
-        {
-            get => Data.FaceIndexPeteyPiranha;
-            set => Data.FaceIndexPeteyPiranha = value;
-        }
+        private OverriddenEnemyClass _rOBLauncher;
 
         [Category("Enemy Override")]
-        public bool OverrideModulePeteyPiranha
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("R.O.B. Launcher")]
+        public OverriddenEnemyClass ROBLauncher
         {
-            get => Data.OverrideModulePeteyPiranha;
-            set => Data.OverrideModulePeteyPiranha = value;
+            get => _rOBLauncher;
+            set
+            {
+                _rOBLauncher = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePeteyPiranha
-        {
-            get => Data.OverridePeteyPiranha;
-            set => Data.OverridePeteyPiranha = value;
-        }
+        private OverriddenEnemyClass _rOBSentry;
 
         [Category("Enemy Override")]
-        public byte FaceIndexGamygaBase01
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("R.O.B. Sentry")]
+        public OverriddenEnemyClass ROBSentry
         {
-            get => Data.FaceIndexGamygaBase01;
-            set => Data.FaceIndexGamygaBase01 = value;
+            get => _rOBSentry;
+            set
+            {
+                _rOBSentry = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleGamygaBase01
-        {
-            get => Data.OverrideModuleGamygaBase01;
-            set => Data.OverrideModuleGamygaBase01 = value;
-        }
+        private OverriddenEnemyClass _autolance;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGamygaBase01
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Autolance
         {
-            get => Data.OverrideGamygaBase01;
-            set => Data.OverrideGamygaBase01 = value;
+            get => _autolance;
+            set
+            {
+                _autolance = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexGamygaBase02
-        {
-            get => Data.FaceIndexGamygaBase02;
-            set => Data.FaceIndexGamygaBase02 = value;
-        }
+        private OverriddenEnemyClass _armank;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleGamygaBase02
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Armank
         {
-            get => Data.OverrideModuleGamygaBase02;
-            set => Data.OverrideModuleGamygaBase02 = value;
+            get => _armank;
+            set
+            {
+                _armank = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGamygaBase02
-        {
-            get => Data.OverrideGamygaBase02;
-            set => Data.OverrideGamygaBase02 = value;
-        }
+        private OverriddenEnemyClass _glire;
 
         [Category("Enemy Override")]
-        public byte FaceIndexGamygaBase03
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Glire
         {
-            get => Data.FaceIndexGamygaBase03;
-            set => Data.FaceIndexGamygaBase03 = value;
+            get => _glire;
+            set
+            {
+                _glire = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleGamygaBase03
-        {
-            get => Data.OverrideModuleGamygaBase03;
-            set => Data.OverrideModuleGamygaBase03 = value;
-        }
+        private OverriddenEnemyClass _glice;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGamygaBase03
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Glice
         {
-            get => Data.OverrideGamygaBase03;
-            set => Data.OverrideGamygaBase03 = value;
+            get => _glice;
+            set
+            {
+                _glice = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexGamygaBase04
-        {
-            get => Data.FaceIndexGamygaBase04;
-            set => Data.FaceIndexGamygaBase04 = value;
-        }
+        private OverriddenEnemyClass _glunder;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleGamygaBase04
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Glunder
         {
-            get => Data.OverrideModuleGamygaBase04;
-            set => Data.OverrideModuleGamygaBase04 = value;
+            get => _glunder;
+            set
+            {
+                _glunder = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGamygaBase04
-        {
-            get => Data.OverrideGamygaBase04;
-            set => Data.OverrideGamygaBase04 = value;
-        }
+        private OverriddenEnemyClass _peteyPiranha;
 
         [Category("Enemy Override")]
-        public byte FaceIndexGalleom
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Petey Piranha")]
+        public OverriddenEnemyClass PeteyPiranha
         {
-            get => Data.FaceIndexGalleom;
-            set => Data.FaceIndexGalleom = value;
+            get => _peteyPiranha;
+            set
+            {
+                _peteyPiranha = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleGalleom
-        {
-            get => Data.OverrideModuleGalleom;
-            set => Data.OverrideModuleGalleom = value;
-        }
+        private OverriddenEnemyClass _gamygaBase1;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideGalleom
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Gamyga Base 1")]
+        public OverriddenEnemyClass GamygaBase1
         {
-            get => Data.OverrideGalleom;
-            set => Data.OverrideGalleom = value;
+            get => _gamygaBase1;
+            set
+            {
+                _gamygaBase1 = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexRidley
-        {
-            get => Data.FaceIndexRidley;
-            set => Data.FaceIndexRidley = value;
-        }
+        private OverriddenEnemyClass _gamygaBase2;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleRidley
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Gamyga Base 2")]
+        public OverriddenEnemyClass GamygaBase2
         {
-            get => Data.OverrideModuleRidley;
-            set => Data.OverrideModuleRidley = value;
+            get => _gamygaBase2;
+            set
+            {
+                _gamygaBase2 = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideRidley
-        {
-            get => Data.OverrideRidley;
-            set => Data.OverrideRidley = value;
-        }
+        private OverriddenEnemyClass _gamygaBase3;
 
         [Category("Enemy Override")]
-        public byte FaceIndexRayquaza
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Gamyga Base 3")]
+        public OverriddenEnemyClass GamygaBase3
         {
-            get => Data.FaceIndexRayquaza;
-            set => Data.FaceIndexRayquaza = value;
+            get => _gamygaBase3;
+            set
+            {
+                _gamygaBase3 = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleRayquaza
-        {
-            get => Data.OverrideModuleRayquaza;
-            set => Data.OverrideModuleRayquaza = value;
-        }
+        private OverriddenEnemyClass _gamygaBase4;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideRayquaza
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Gamyga Base 4")]
+        public OverriddenEnemyClass GamygaBase4
         {
-            get => Data.OverrideRayquaza;
-            set => Data.OverrideRayquaza = value;
+            get => _gamygaBase4;
+            set
+            {
+                _gamygaBase4 = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexDuon
-        {
-            get => Data.FaceIndexDuon;
-            set => Data.FaceIndexDuon = value;
-        }
+        private OverriddenEnemyClass _galleom;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleDuon
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Galleom
         {
-            get => Data.OverrideModuleDuon;
-            set => Data.OverrideModuleDuon = value;
+            get => _galleom;
+            set
+            {
+                _galleom = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideDuon
-        {
-            get => Data.OverrideDuon;
-            set => Data.OverrideDuon = value;
-        }
+        private OverriddenEnemyClass _ridley;
 
         [Category("Enemy Override")]
-        public byte FaceIndexPorky
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Ridley
         {
-            get => Data.FaceIndexPorky;
-            set => Data.FaceIndexPorky = value;
+            get => _ridley;
+            set
+            {
+                _ridley = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModulePorky
-        {
-            get => Data.OverrideModulePorky;
-            set => Data.OverrideModulePorky = value;
-        }
+        private OverriddenEnemyClass _rayquaza;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverridePorky
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Rayquaza
         {
-            get => Data.OverridePorky;
-            set => Data.OverridePorky = value;
+            get => _rayquaza;
+            set
+            {
+                _rayquaza = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexMetaRidley
-        {
-            get => Data.FaceIndexMetaRidley;
-            set => Data.FaceIndexMetaRidley = value;
-        }
+        private OverriddenEnemyClass _duon;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleMetaRidley
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Duon
         {
-            get => Data.OverrideModuleMetaRidley;
-            set => Data.OverrideModuleMetaRidley = value;
+            get => _duon;
+            set
+            {
+                _duon = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideMetaRidley
-        {
-            get => Data.OverrideMetaRidley;
-            set => Data.OverrideMetaRidley = value;
-        }
+        private OverriddenEnemyClass _porky;
 
         [Category("Enemy Override")]
-        public byte FaceIndexFalconFlyer
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Porky
         {
-            get => Data.FaceIndexFalconFlyer;
-            set => Data.FaceIndexFalconFlyer = value;
+            get => _porky;
+            set
+            {
+                _porky = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleFalconFlyer
-        {
-            get => Data.OverrideModuleFalconFlyer;
-            set => Data.OverrideModuleFalconFlyer = value;
-        }
+        private OverriddenEnemyClass _metaRidley;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideFalconFlyer
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Meta Ridley")]
+        public OverriddenEnemyClass MetaRidley
         {
-            get => Data.OverrideFalconFlyer;
-            set => Data.OverrideFalconFlyer = value;
+            get => _metaRidley;
+            set
+            {
+                _metaRidley = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexTabuu
-        {
-            get => Data.FaceIndexTabuu;
-            set => Data.FaceIndexTabuu = value;
-        }
+        private OverriddenEnemyClass _falconFlyer;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleTabuu
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Falcon Flyer")]
+        public OverriddenEnemyClass FalconFlyer
         {
-            get => Data.OverrideModuleTabuu;
-            set => Data.OverrideModuleTabuu = value;
+            get => _falconFlyer;
+            set
+            {
+                _falconFlyer = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideTabuu
-        {
-            get => Data.OverrideTabuu;
-            set => Data.OverrideTabuu = value;
-        }
+        private OverriddenEnemyClass _tabuu;
 
         [Category("Enemy Override")]
-        public byte FaceIndexMasterhand
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public OverriddenEnemyClass Tabuu
         {
-            get => Data.FaceIndexMasterhand;
-            set => Data.FaceIndexMasterhand = value;
+            get => _tabuu;
+            set
+            {
+                _tabuu = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public bool OverrideModuleMasterhand
-        {
-            get => Data.OverrideModuleMasterhand;
-            set => Data.OverrideModuleMasterhand = value;
-        }
+        private OverriddenEnemyClass _masterHand;
 
         [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideMasterhand
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Master Hand")]
+        public OverriddenEnemyClass MasterHand
         {
-            get => Data.OverrideMasterhand;
-            set => Data.OverrideMasterhand = value;
+            get => _masterHand;
+            set
+            {
+                _masterHand = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public byte FaceIndexCrazyhand
-        {
-            get => Data.FaceIndexCrazyhand;
-            set => Data.FaceIndexCrazyhand = value;
-        }
+        private OverriddenEnemyClass _crazyHand;
 
         [Category("Enemy Override")]
-        public bool OverrideModuleCrazyhand
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [DisplayName("Crazy Hand")]
+        public OverriddenEnemyClass CrazyHand
         {
-            get => Data.OverrideModuleCrazyhand;
-            set => Data.OverrideModuleCrazyhand = value;
+            get => _crazyHand;
+            set
+            {
+                _crazyHand = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Enemy Override")]
-        public ArchiveOverrideSetting OverrideCrazyhand
-        {
-            get => Data.OverrideCrazyhand;
-            set => Data.OverrideCrazyhand = value;
-        }
+        public override string FileTypeString => "Enemy Override";
 
         public override bool OnInitialize()
         {
             Data = *(ENOV*)WorkingUncompressed.Address;
-            EnemyOverrideFolder = WorkingUncompressed.Address.GetUTF8String(4, 12);
-            StageItemFolder = WorkingUncompressed.Address.GetUTF8String(16, 12);
+            _enemyOverrideFolder = WorkingUncompressed.Address.GetUTF8String(4, 12);
+            _stageItemFolder = WorkingUncompressed.Address.GetUTF8String(16, 12);
+            _goomba = new OverriddenEnemyClass(this, Data._goomba);
+            _poppant = new OverriddenEnemyClass(this, Data._poppant);
+            _feyesh = new OverriddenEnemyClass(this, Data._feyesh);
+            _jyk = new OverriddenEnemyClass(this, Data._jyk);
+            _auroros = new OverriddenEnemyClass(this, Data._auroros);
+            _cymul = new OverriddenEnemyClass(this, Data._cymul);
+            _roturret = new OverriddenEnemyClass(this, Data._roturret);
+            _borboras = new OverriddenEnemyClass(this, Data._borboras);
+            _giantGoomba = new OverriddenEnemyClass(this, Data._giantGoomba);
+            _buckot = new OverriddenEnemyClass(this, Data._buckot);
+            _bucculus = new OverriddenEnemyClass(this, Data._bucculus);
+            _greap = new OverriddenEnemyClass(this, Data._greap);
+            _armight = new OverriddenEnemyClass(this, Data._armight);
+            _bulletBill = new OverriddenEnemyClass(this, Data._bulletBill);
+            _roader = new OverriddenEnemyClass(this, Data._roader);
+            _spaak = new OverriddenEnemyClass(this, Data._spaak);
+            _mite = new OverriddenEnemyClass(this, Data._mite);
+            _ticken = new OverriddenEnemyClass(this, Data._ticken);
+            _towtow = new OverriddenEnemyClass(this, Data._towtow);
+            _hammerBro = new OverriddenEnemyClass(this, Data._hammerBro);
+            _bytan = new OverriddenEnemyClass(this, Data._bytan);
+            _floow = new OverriddenEnemyClass(this, Data._floow);
+            _puppit = new OverriddenEnemyClass(this, Data._puppit);
+            _primid = new OverriddenEnemyClass(this, Data._primid);
+            _shellpod = new OverriddenEnemyClass(this, Data._shellpod);
+            _koopa = new OverriddenEnemyClass(this, Data._koopa);
+            _shaydas = new OverriddenEnemyClass(this, Data._shaydas);
+            _bombed = new OverriddenEnemyClass(this, Data._bombed);
+            _metalPrimid = new OverriddenEnemyClass(this, Data._metalPrimid);
+            _nagagog = new OverriddenEnemyClass(this, Data._nagagog);
+            _trowlon = new OverriddenEnemyClass(this, Data._trowlon);
+            _bigPrimid = new OverriddenEnemyClass(this, Data._bigPrimid);
+            _boomPrimid = new OverriddenEnemyClass(this, Data._boomPrimid);
+            _firePrimid = new OverriddenEnemyClass(this, Data._firePrimid);
+            _scopePrimid = new OverriddenEnemyClass(this, Data._scopePrimid);
+            _swordPrimid = new OverriddenEnemyClass(this, Data._swordPrimid);
+            _gamyga = new OverriddenEnemyClass(this, Data._gamyga);
+            _rObBlasterStationary = new OverriddenEnemyClass(this, Data._rOBBlasterStationary);
+            _rObBlasterMobile = new OverriddenEnemyClass(this, Data._rOBBlasterMobile);
+            _rOBLauncher = new OverriddenEnemyClass(this, Data._rOBLauncher);
+            _rOBSentry = new OverriddenEnemyClass(this, Data._rOBSentry);
+            _autolance = new OverriddenEnemyClass(this, Data._autolance);
+            _armank = new OverriddenEnemyClass(this, Data._armank);
+            _glire = new OverriddenEnemyClass(this, Data._glire);
+            _glice = new OverriddenEnemyClass(this, Data._glice);
+            _glunder = new OverriddenEnemyClass(this, Data._glunder);
+            _peteyPiranha = new OverriddenEnemyClass(this, Data._peteyPiranha);
+            _gamygaBase1 = new OverriddenEnemyClass(this, Data._gamygaBase1);
+            _gamygaBase2 = new OverriddenEnemyClass(this, Data._gamygaBase2);
+            _gamygaBase3 = new OverriddenEnemyClass(this, Data._gamygaBase3);
+            _gamygaBase4 = new OverriddenEnemyClass(this, Data._gamygaBase4);
+            _galleom = new OverriddenEnemyClass(this, Data._galleom);
+            _ridley = new OverriddenEnemyClass(this, Data._ridley);
+            _rayquaza = new OverriddenEnemyClass(this, Data._rayquaza);
+            _duon = new OverriddenEnemyClass(this, Data._duon);
+            _porky = new OverriddenEnemyClass(this, Data._porky);
+            _metaRidley = new OverriddenEnemyClass(this, Data._metaRidley);
+            _falconFlyer = new OverriddenEnemyClass(this, Data._falconFlyer);
+            _tabuu = new OverriddenEnemyClass(this, Data._tabuu);
+            _masterHand = new OverriddenEnemyClass(this, Data._masterHand);
+            _crazyHand = new OverriddenEnemyClass(this, Data._crazyHand);
+
             return false;
         }
 
@@ -1333,6 +1022,67 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
+            Data._goomba = _goomba;
+            Data._poppant = _poppant;
+            Data._feyesh = _feyesh;
+            Data._jyk = _jyk;
+            Data._auroros = _auroros;
+            Data._cymul = _cymul;
+            Data._roturret = _roturret;
+            Data._borboras = _borboras;
+            Data._giantGoomba = _giantGoomba;
+            Data._buckot = _buckot;
+            Data._bucculus = _bucculus;
+            Data._greap = _greap;
+            Data._armight = _armight;
+            Data._bulletBill = _bulletBill;
+            Data._roader = _roader;
+            Data._spaak = _spaak;
+            Data._mite = _mite;
+            Data._ticken = _ticken;
+            Data._towtow = _towtow;
+            Data._hammerBro = _hammerBro;
+            Data._bytan = _bytan;
+            Data._floow = _floow;
+            Data._puppit = _puppit;
+            Data._primid = _primid;
+            Data._shellpod = _shellpod;
+            Data._koopa = _koopa;
+            Data._shaydas = _shaydas;
+            Data._bombed = _bombed;
+            Data._metalPrimid = _metalPrimid;
+            Data._nagagog = _nagagog;
+            Data._trowlon = _trowlon;
+            Data._bigPrimid = _bigPrimid;
+            Data._boomPrimid = _boomPrimid;
+            Data._firePrimid = _firePrimid;
+            Data._scopePrimid = _scopePrimid;
+            Data._swordPrimid = _swordPrimid;
+            Data._gamyga = _gamyga;
+            Data._rOBBlasterStationary = _rObBlasterStationary;
+            Data._rOBBlasterMobile = _rObBlasterMobile;
+            Data._rOBLauncher = _rOBLauncher;
+            Data._rOBSentry = _rOBSentry;
+            Data._autolance = _autolance;
+            Data._armank = _armank;
+            Data._glire = _glire;
+            Data._glice = _glice;
+            Data._glunder = _glunder;
+            Data._peteyPiranha = _peteyPiranha;
+            Data._gamygaBase1 = _gamygaBase1;
+            Data._gamygaBase2 = _gamygaBase2;
+            Data._gamygaBase3 = _gamygaBase3;
+            Data._gamygaBase4 = _gamygaBase4;
+            Data._galleom = _galleom;
+            Data._ridley = _ridley;
+            Data._rayquaza = _rayquaza;
+            Data._duon = _duon;
+            Data._porky = _porky;
+            Data._metaRidley = _metaRidley;
+            Data._falconFlyer = _falconFlyer;
+            Data._tabuu = _tabuu;
+            Data._masterHand = _masterHand;
+            Data._crazyHand = _crazyHand;
             *(ENOV*)address = Data;
             address.WriteUTF8String(ENOV.Tag, false, 0, 4);
             address.WriteUTF8String(EnemyOverrideFolder, false, 4, 12);
@@ -1342,6 +1092,74 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == ENOV.Tag ? new ENOVNode() : null;
+        }
+    }
+
+    public class OverriddenEnemyClass
+    {
+        public ENOVNode _parent;
+        public OverriddenEnemy Data;
+
+        public byte FaceIndex
+        {
+            get => Data.FaceIndex;
+            set
+            {
+                Data.FaceIndex = value;
+                _parent.SignalPropertyChange();
+            }
+        }
+
+        public bool OverrideModule
+        {
+            get => Data.OverrideModule;
+            set
+            {
+                Data.OverrideModule = value;
+                _parent.SignalPropertyChange();
+            }
+        }
+
+        public ArchiveOverrideSetting OverrideSetting
+        {
+            get => Data.OverrideSetting;
+            set
+            {
+                Data.OverrideSetting = value;
+                _parent.SignalPropertyChange();
+            }
+        }
+
+        public OverriddenEnemyClass()
+        {
+            Data = new OverriddenEnemy();
+        }
+
+        public OverriddenEnemyClass(ENOVNode parent, OverriddenEnemy e)
+        {
+            _parent = parent;
+            Data = e;
+        }
+
+        public OverriddenEnemyClass(OverriddenEnemy e)
+        {
+            Data = e;
+        }
+
+        public override string ToString()
+        {
+            // If settings are default, don't bother showing summary. Helps show what's actually overridden at a glance
+            return Data._data == 0 ? string.Empty : Data.ToString();
+        }
+
+        public static implicit operator OverriddenEnemy(OverriddenEnemyClass val)
+        {
+            return val.Data;
+        }
+
+        public static implicit operator OverriddenEnemyClass(OverriddenEnemy val)
+        {
+            return new OverriddenEnemyClass(val);
         }
     }
 }
