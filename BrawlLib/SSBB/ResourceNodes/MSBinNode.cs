@@ -1,6 +1,7 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Wii;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -9,6 +10,9 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public override ResourceType ResourceFileType => ResourceType.MSBin;
         public List<string> _strings = new List<string>();
+
+        [Category("MSBin")]
+        public int NumEntries => _strings.Count;
 
         public override bool OnInitialize()
         {
