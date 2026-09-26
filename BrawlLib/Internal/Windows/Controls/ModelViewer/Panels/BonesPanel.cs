@@ -304,6 +304,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
         public BonesPanel()
         {
             InitializeComponent();
+            chkFlat.Checked = false;
         }
 
         public ModelEditorBase _mainWindow;
