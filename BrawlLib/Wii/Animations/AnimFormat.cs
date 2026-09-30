@@ -51,8 +51,8 @@ namespace BrawlLib.Wii.Animations
                 file.WriteLine("timeUnit ntscf;");
                 file.WriteLine("linearUnit cm;");
                 file.WriteLine("angularUnit deg;");
-                file.WriteLine("startTime 0;");
-                file.WriteLine($"endTime {node.FrameCount - 1};");
+                file.WriteLine("startTime 1;");
+                file.WriteLine($"endTime {node.FrameCount};");
                 foreach (MDL0BoneNode b in model.AllBones)
                 {
                     if (!(node.FindChild(b.Name, true) is CHR0EntryNode e))
@@ -84,8 +84,16 @@ namespace BrawlLib.Wii.Animations
                         for (KeyframeEntry entry = array._keyRoot._next; entry != array._keyRoot; entry = entry._next)
                         {
                             float angle = (float) Math.Atan(entry._tangent) * Maths._rad2degf;
+                            float angle2 = angle;
+                            if (entry._next != array._keyRoot && //Done to allow in/out key handle splits to store properly.
+                                entry._next._value == entry._value &&
+                                entry._next._index == entry._index)
+                            {
+                                entry = entry._next;
+                                angle2 = (float)Math.Atan(entry._tangent) * Maths._rad2degf;
+                            }
                             file.WriteLine("    {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10};",
-                                entry._index,
+                                entry._index+1,
                                 entry._value.ToString(CultureInfo.InvariantCulture.NumberFormat),
                                 "fixed",
                                 "fixed",
@@ -94,7 +102,7 @@ namespace BrawlLib.Wii.Animations
                                 "0",
                                 angle.ToString(CultureInfo.InvariantCulture.NumberFormat),
                                 "1",
-                                angle.ToString(CultureInfo.InvariantCulture.NumberFormat),
+                                angle2.ToString(CultureInfo.InvariantCulture.NumberFormat),
                                 "1");
                         }
 
@@ -118,6 +126,9 @@ namespace BrawlLib.Wii.Animations
             {
                 float start = 0.0f;
                 float end = 0.0f;
+                float frameAlign = 0.0f;
+                double angMode = Maths._deg2rad, tanMode;
+                bool isStartZero = true, isHSDimport = false, isHSDmayaVer = false, isMeleeModel = false;
                 string line;
                 while (true)
                 {
@@ -143,17 +154,28 @@ namespace BrawlLib.Wii.Animations
                         case "startTime":
                         case "startUnitless":
                             float.TryParse(val, out start);
+                            if (start == 0)
+                                isStartZero = true;
                             break;
                         case "endTime":
                         case "endUnitless":
                             float.TryParse(val, out end);
                             break;
-
-                        case "animVersion":
+                        case "angularUnit":
+                            string[] angLine = line.Split(' ');
+                            if (angLine[1].Contains("deg"))
+                                angMode = Maths._deg2rad;
+                            else if (angLine[1].Contains("rad"))
+                                angMode = 1.0d;
+                            break;
                         case "mayaVersion":
+                            string[] verLine = line.Split(' ');
+                            if (verLine[1].Contains("2015"))
+                                isHSDmayaVer = true;
+                            break;
+                        case "animVersion":
                         case "timeUnit":
                         case "linearUnit":
-                        case "angularUnit":
                         default:
                             break;
                     }
@@ -161,6 +183,11 @@ namespace BrawlLib.Wii.Animations
 
                 int frameCount = (int) (end - start + 1.5f);
                 node.FrameCount = frameCount;
+                if (start == 0.0f)
+                {
+                    end++;
+                } 
+
 
                 while (true)
                 {
@@ -182,6 +209,8 @@ namespace BrawlLib.Wii.Animations
 
                     string t = anim[2];
                     string bone = anim[3];
+                    if (bone.Contains("JOBJ_"))
+                        isMeleeModel = true;
                     int mode = -1;
                     if (t.StartsWith("scale"))
                     {
@@ -244,10 +273,14 @@ namespace BrawlLib.Wii.Animations
                     if (line.StartsWith("animData"))
                     {
                         CHR0EntryNode e;
+                        if (angMode == Maths._deg2rad)
+                            tanMode = 1.0;
+                        else
+                            tanMode = Maths._rad2deg;
 
                         if ((e = node.FindChild(bone, false) as CHR0EntryNode) == null)
                         {
-                            e = new CHR0EntryNode {_name = bone};
+                            e = new CHR0EntryNode { _name = bone };
                             node.AddChild(e);
                         }
 
@@ -266,14 +299,19 @@ namespace BrawlLib.Wii.Animations
                             if (tag == "keys")
                             {
                                 List<KeyframeEntry> l = new List<KeyframeEntry>();
+                                List<string> lines = new List<string>();
                                 while (true)
                                 {
-                                    line = file.ReadLine().TrimStart();
-
-                                    if (line == "}")
+                                    string newline = file.ReadLine().TrimStart();
+                                    if (newline == "}")
                                     {
                                         break;
                                     }
+                                    lines.Add(newline);
+                                }
+                                for (int k = 0; k < lines.Count; k++)
+                                {
+                                    line = lines[k];
 
                                     string[] s = line.Split(' ');
 
@@ -282,26 +320,33 @@ namespace BrawlLib.Wii.Animations
                                         s[si] = s[si].Trim('\n', ';', ' ');
                                     }
 
+
                                     float.TryParse(s[0], NumberStyles.Number, CultureInfo.InvariantCulture,
                                         out float inVal);
                                     float.TryParse(s[1], NumberStyles.Number, CultureInfo.InvariantCulture,
                                         out float outVal);
+                                    if (start == 0.0f)
+                                        inVal++;
 
+                                    if (angMode == 1.0d && (mode >= 3 && mode <= 5)) //only do so for rotation if accepting radians!
+                                    {
+                                        outVal = (float)(Maths._rad2deg * (double)outVal);
+                                    }
                                     float weight1 = 0;
                                     float weight2 = 0;
 
                                     float angle1 = 0;
                                     float angle2 = 0;
 
-                                    bool firstFixed = false;
-                                    bool secondFixed = false;
+                                    bool firstFixed = false, secondFixed = false;
+                                    bool isAuto = false, hasStep = false;
                                     switch (s[2])
                                     {
                                         case "linear":
-                                        case "spline":
                                         case "auto":
+                                            isAuto = true;
                                             break;
-
+                                        case "spline":
                                         case "fixed":
                                             firstFixed = true;
                                             float.TryParse(s[7], NumberStyles.Number, CultureInfo.InvariantCulture,
@@ -314,10 +359,9 @@ namespace BrawlLib.Wii.Animations
                                     switch (s[3])
                                     {
                                         case "linear":
-                                        case "spline":
                                         case "auto":
                                             break;
-
+                                        case "spline":
                                         case "fixed":
                                             secondFixed = true;
                                             if (firstFixed)
@@ -336,13 +380,32 @@ namespace BrawlLib.Wii.Animations
                                             }
 
                                             break;
+                                        case "step":
+                                            secondFixed = true;
+                                            hasStep = true;
+                                            angle2 = 0;
+                                            weight2 = 1;
+                                            break;
                                     }
 
                                     bool anyFixed = secondFixed || firstFixed;
                                     bool bothFixed = secondFixed && firstFixed;
-
+                                    isHSDimport = isHSDmayaVer && isStartZero && isMeleeModel;
+                                    
                                     KeyframeEntry x = e.SetKeyframe(mode, (int) (inVal - 0.5f), outVal, true);
-                                    if (!anyFixed)
+                                    if (isAuto && hasStep)
+                                    {
+                                        x._tangent = 0;
+                                        if (x._prev != null)
+                                        {
+                                            x._tangent = x._prev._tangent;
+                                            x.InsertAfter(new KeyframeEntry(x)
+                                            { _tangent = 0, _isStep = true });
+                                        }
+                                        else //don't waste data on the first key! Only have the step handle.
+                                            x._isStep = true;
+                                    }
+                                    else if (!anyFixed)
                                     {
                                         l.Add(x);
                                     }
@@ -350,16 +413,63 @@ namespace BrawlLib.Wii.Animations
                                     {
                                         if (bothFixed)
                                         {
-                                            x._tangent = (float) Math.Tan((angle1 + angle2) / 2 * Maths._deg2radf) *
-                                                         ((weight1 + weight2) / 2);
+                                            float outTangent = 0.0f;
+                                            if (!isHSDimport)
+                                            {
+                                                if (mode >= 3 && mode <= 5)
+                                                {
+                                                    x._tangent = (float)(tanMode * Math.Tan((double)angle1 * angMode));
+                                                    outTangent = (float)(tanMode * Math.Tan((double)angle2 * angMode));
+                                                }
+                                                else
+                                                {
+                                                    x._tangent = (float)(tanMode * Math.Tan((double)angle1 * Maths._deg2rad));
+                                                    outTangent = (float)(tanMode * Math.Tan((double)angle2 * Maths._deg2rad));
+                                                }
+                                            }
+                                            else //Set up this way to not be fancy. 
+                                            {
+                                                //When HSD's Melee exports load fine, this entire section can be removed.
+                                                if (mode >= 3 && mode <= 5)
+                                                {
+                                                    x._tangent = (float)((double)angle1 * angMode);
+                                                    outTangent = (float)((double)angle2 * angMode);
+                                                }
+                                                else
+                                                {
+                                                    x._tangent = (float)((double)angle1 * Maths._deg2rad);
+                                                    outTangent = (float)((double)angle2 * Maths._deg2rad);
+                                                }
+                                            }
+                                            
+
+                                                
+                                            if (Math.Round(x._tangent,5) != Math.Round(outTangent,5))
+                                            {
+                                                x.InsertAfter(new KeyframeEntry(x)
+                                                { _tangent = outTangent });
+                                            }
+                                            //anticpate step
+                                            if (x._prev != null && 
+                                                x._prev._isStep)
+                                            {
+                                                x._prev.InsertAfter(new KeyframeEntry(x._index - 1, x._prev._value, x._parent)
+                                                {   _tangent = 0    });
+                                            }
                                         }
                                         else if (firstFixed)
                                         {
-                                            x._tangent = (float) Math.Tan(angle1 * Maths._deg2radf) * weight1;
+                                            if (!isHSDimport)
+                                                x._tangent = (float)(tanMode * Math.Tan(((double)angle1 * angMode) * weight1));
+                                            else
+                                                x._tangent = (float)((double)angle1 * angMode) * weight1;
                                         }
                                         else
                                         {
-                                            x._tangent = (float) Math.Tan(angle2 * Maths._deg2radf) * weight2;
+                                            if (!isHSDimport)
+                                                x._tangent = (float)(tanMode * Math.Tan(((double)angle2 * angMode) * weight2));
+                                            else
+                                                x._tangent = (float)((double)angle2 * angMode) * weight2;
                                         }
                                     }
                                 }
@@ -395,6 +505,13 @@ namespace BrawlLib.Wii.Animations
                                         break;
                                     case "outputUnit":
 
+                                        break;
+                                    case "tangentAngleUnit":
+                                        string[] angLine = line.Split(' ');
+                                        if (angLine[1].Contains("deg"))
+                                            tanMode = 1.0;
+                                        else if (angLine[1].Contains("rad"))
+                                            tanMode = Maths._rad2deg;
                                         break;
                                     case "preInfinity":
                                     case "postInfinity":
