@@ -401,7 +401,7 @@ namespace BrawlLib.Internal.Windows.Controls
 
         public FloatKeyframe()
         {
-            _entry = new KeyframeEntry(-1, 0);
+            _entry = new KeyframeEntry(-1, 0, null);
         }
 
         public FloatKeyframe(KeyframeEntry e)
