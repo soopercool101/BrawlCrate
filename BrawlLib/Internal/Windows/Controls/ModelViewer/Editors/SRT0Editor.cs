@@ -1154,7 +1154,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
                     SRT0TextureNode;
             if (_target != null)
             {
-                _target.Keyframes._keyArrays[type]._keyRoot = new KeyframeEntry(-1, type < 2 ? 1 : 0);
+                _target.Keyframes._keyArrays[type]._keyRoot = new KeyframeEntry(-1, type < 2 ? 1 : 0, _target.Keyframes._keyArrays[type]);
                 _target.Keyframes._keyArrays[type]._keyCount = 0;
                 _target.SignalPropertyChange();
                 ResetBox(type);

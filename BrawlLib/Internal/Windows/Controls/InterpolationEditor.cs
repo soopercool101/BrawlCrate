@@ -679,8 +679,7 @@ namespace BrawlLib.Internal.Windows.Controls
             {
                 if (chkUseOut.Checked)
                 {
-                    SelectedKeyframe.InsertAfter(new KeyframeEntry(SelectedKeyframe._index, SelectedKeyframe._value)
-                        {_tangent = SelectedKeyframe._tangent});
+                    SelectedKeyframe.InsertAfter(new KeyframeEntry(SelectedKeyframe));
                 }
                 else
                 {

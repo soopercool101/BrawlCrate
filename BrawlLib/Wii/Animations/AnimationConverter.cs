@@ -10,7 +10,7 @@ namespace BrawlLib.Wii.Animations
     {
         #region Decoding
 
-        public static KeyframeCollection DecodeKeyframes(VoidPtr entry, NW4RAnimationNode node, int arrayCount,
+        public static KeyframeCollection DecodeKeyframes(VoidPtr entry, ResourceNode bone, NW4RAnimationNode node, int arrayCount,
                                                          params float[] defaults)
         {
             //If the node is null, assume the programmer has created a new entry and accessed
@@ -21,7 +21,7 @@ namespace BrawlLib.Wii.Animations
             KeyframeCollection kf;
             if (node is CHR0Node && entry)
             {
-                kf = DecodeCHR0Keyframes((CHR0Entry*) entry, numFrames);
+                kf = DecodeCHR0Keyframes((CHR0Entry*) entry, numFrames, node, bone);
             }
             else if (node is SRT0Node && entry)
             {
@@ -30,6 +30,8 @@ namespace BrawlLib.Wii.Animations
             else
             {
                 kf = new KeyframeCollection(arrayCount, numFrames, defaults);
+                kf._boneName = bone?.Name;
+                kf._animName = node?.Name;
             }
 
             if (node != null)
@@ -149,10 +151,11 @@ namespace BrawlLib.Wii.Animations
             return kf;
         }
 
-        public static KeyframeCollection DecodeCHR0Keyframes(CHR0Entry* entry, int numFrames)
+        public static KeyframeCollection DecodeCHR0Keyframes(CHR0Entry* entry, int numFrames, NW4RAnimationNode node = null, ResourceNode bone = null)
         {
             KeyframeCollection kf = new KeyframeCollection(9, numFrames, 1, 1, 1);
-
+            kf._boneName = bone?.Name;
+            kf._animName = node?.Name;
             if (entry == null)
             {
                 return kf;
@@ -697,7 +700,7 @@ namespace BrawlLib.Wii.Animations
                         {
                             format = AnimDataFormat.I6;
                         }
-                        else if (@group == 1 && frameSpan <= 3.0f)
+                        else if (@group == 1 && frameSpan <= 0.4f)
                         {
                             format = AnimDataFormat.L4;
                         }
@@ -706,7 +709,7 @@ namespace BrawlLib.Wii.Animations
                             format = AnimDataFormat.I12;
                         }
                     }
-                    else if (@group == 1 && frameSpan <= 3.0f)
+                    else if (@group == 1 && frameSpan <= 0.4f)
                     {
                         format = AnimDataFormat.L4;
                     }

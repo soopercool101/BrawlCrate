@@ -770,7 +770,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 if (entry != _keyRoot)
                 {
                     int min = GetKeyframeMinIndex();
-                    KeyframeEntry r = new KeyframeEntry(frameVal + min, ((float) Height - e.Y) / _yScale + _minVal);
+                    KeyframeEntry r = new KeyframeEntry(frameVal + min, ((float) Height - e.Y) / _yScale + _minVal, entry._parent);
                     entry.InsertAfter(r);
                     r.GenerateTangent();
                     _selKey = r;

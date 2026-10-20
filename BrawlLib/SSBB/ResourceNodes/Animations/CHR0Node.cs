@@ -930,7 +930,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_keyframes == null)
                 {
-                    _keyframes = AnimationConverter.DecodeKeyframes(Header, Parent as CHR0Node, 9, 1, 1, 1);
+                    _keyframes = AnimationConverter.DecodeKeyframes(Header, this, Parent as CHR0Node, 9, 1, 1, 1);
                 }
 
                 return _keyframes;
