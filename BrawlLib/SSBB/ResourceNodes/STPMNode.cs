@@ -183,7 +183,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 cur.ShadowYaw = ext.ShadowYaw;
                 cur.Value8 = ext.Value8;
                 cur.Value9 = ext.Value9;
-                cur.StageWindEnabled = ext.StageWindEnabled;
+                cur.PalutenaModelType = ext.PalutenaModelType;
                 cur.CharacterWindEnabled = ext.CharacterWindEnabled;
                 cur.Value50c = ext.Value50c;
                 cur.Value50d = ext.Value50d;
@@ -193,11 +193,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                 cur.Value54 = ext.Value54;
                 cur.Value55 = ext.Value55;
                 cur.Value56 = ext.Value56;
-                cur.EchoDepth = ext.EchoDepth;
-                cur.EchoDepthRemoval = ext.EchoDepthRemoval;
-                cur.EchoRepeats1 = ext.EchoRepeats1;
-                cur.EchoRepeats2 = ext.EchoRepeats2;
-                cur.Value61 = ext.Value61;
+                cur.Value57 = ext.Value57;
+                cur.Value58a = ext.Value58a;
+                cur.Value58b = ext.Value58b;
+                cur.EffectVol = ext.EffectVol;
+                cur.ReverbLPF = ext.ReverbLPF;
+                cur.ReverbType = ext.ReverbType;
+                cur.ReverbColoration = ext.ReverbColoration;
+                cur.ReverbDamping = ext.ReverbDamping;
+                cur.ReverbPreDelay = ext.ReverbPreDelay;
+                cur.ReverbBalance = ext.ReverbBalance;
+                cur.DelayFeedback = ext.DelayFeedback;
+                cur.DelayOutput = ext.DelayOutput;
+                cur.Value60d = ext.Value60d;
+                cur.ReverbTime = ext.ReverbTime;
+                cur.DelayTime = ext.DelayTime;
                 cur.Value62 = ext.Value62;
                 cur.Value63 = ext.Value63;
                 cur.Value64 = ext.Value64;
@@ -822,12 +832,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public bool StageWindEnabled
+        public byte PalutenaModelType
         {
-            get => _values.GetByte(49, 0) != 0;
+            get => _values.GetByte(49, 0);
             set
             {
-                _values.SetByte(49, 0, (byte) (value ? 1 : 0));
+                _values.SetByte(49, 0, value);
                 SignalPropertyChange();
             }
         }
@@ -932,7 +942,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int EchoDepth
+        public int Value57
         {
             get => _values.GetInt(56);
             set
@@ -943,45 +953,155 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int EchoDepthRemoval
+        public byte Value58a
         {
-            get => _values.GetInt(57);
+            get => _values.GetByte(57, 0);
             set
             {
-                _values.SetInt(57, value);
+                _values.SetByte(57, 0, value);
                 SignalPropertyChange();
             }
         }
 
         [Category("STPM Values")]
-        public int EchoRepeats1
+        public byte Value58b
         {
-            get => _values.GetInt(58);
+            get => _values.GetByte(57, 1);
             set
             {
-                _values.SetInt(58, value);
+                _values.SetByte(57, 1, value);
                 SignalPropertyChange();
             }
         }
 
         [Category("STPM Values")]
-        public int EchoRepeats2
+        public byte EffectVol
         {
-            get => _values.GetInt(59);
+            get => _values.GetByte(57,2);
             set
             {
-                _values.SetInt(59, value);
+                _values.SetByte(57, 2, value);
                 SignalPropertyChange();
             }
         }
 
         [Category("STPM Values")]
-        public int Value61
+        public byte ReverbLPF
         {
-            get => _values.GetInt(60);
+            get => _values.GetByte(57, 3);
             set
             {
-                _values.SetInt(60, value);
+                _values.SetByte(57, 3, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte ReverbType
+        {
+            get => _values.GetByte(58, 0);
+            set
+            {
+                _values.SetByte(58, 0, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte ReverbColoration
+        {
+            get => _values.GetByte(58, 1);
+            set
+            {
+                _values.SetByte(58, 1, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte ReverbDamping
+        {
+            get => _values.GetByte(58, 2);
+            set
+            {
+                _values.SetByte(58, 2, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte ReverbPreDelay
+        {
+            get => _values.GetByte(58, 3);
+            set
+            {
+                _values.SetByte(58, 3, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte ReverbBalance
+        {
+            get => _values.GetByte(59, 0);
+            set
+            {
+                _values.SetByte(59, 0, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte DelayFeedback
+        {
+            get => _values.GetByte(59, 1);
+            set
+            {
+                _values.SetByte(59, 1, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte DelayOutput
+        {
+            get => _values.GetByte(59, 2);
+            set
+            {
+                _values.SetByte(59, 2, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte Value60d
+        {
+            get => _values.GetByte(59, 3);
+            set
+            {
+                _values.SetByte(59, 3, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public short ReverbTime
+        {
+            get => _values.GetShort(60,0);
+            set
+            {
+                _values.SetShort(60, 0, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public short DelayTime
+        {
+            get => _values.GetShort(60, 1);
+            set
+            {
+                _values.SetShort(60, 1, value);
                 SignalPropertyChange();
             }
         }
